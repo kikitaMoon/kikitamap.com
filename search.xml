@@ -293,25 +293,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[书单 2018]]></title>
-      <url>/2017/11/14/books/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>书架还空着……</p>
-</blockquote>
-]]></content>
-      
-        <categories>
-            
-            <category> 书单 </category>
-            
-            <category> 2018 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[tidy up the code ...]]></title>
       <url>/2017/11/14/tidyup/</url>
       <content type="html"><![CDATA[<p>学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：<a href="https://github.com/kikitaMoon/ArcGIS-Python" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python</a></p>
