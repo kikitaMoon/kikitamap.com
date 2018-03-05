@@ -3,6 +3,74 @@
   
     
     <entry>
+      <title><![CDATA[主题备忘录]]></title>
+      <url>/2018/02/26/sitebuilding/</url>
+      <content type="html"><![CDATA[<p><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener"><strong>Maupassant 主题</strong></a></p>
+<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p>安装主题和渲染器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-pug --save</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-sass --save</span></span><br></pre></td></tr></table></figure>
+<p>编辑Hexo目录下的 <code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>。</p>
+<h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>默认配置:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">_config.yml_config.ymlfancybox:</span> <span class="literal">true</span> <span class="comment">## If you want to use fancybox please set the value to true.</span></span><br><span class="line"><span class="attr">disqus:</span> <span class="comment">## Your disqus_shortname, e.g. username</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Gitment comment system please set the value to true.</span></span><br><span class="line"><span class="attr">  owner:</span> <span class="comment">## Your GitHub ID, e.g. username</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="comment">## The repository to store your comments, make sure you're the repo's owner, e.g. imsun.github.io</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="comment">## GitHub client ID, e.g. 75752dafe7907a897619</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="comment">## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50</span></span><br><span class="line"><span class="attr">uyan:</span> <span class="comment">## Your uyan_id. e.g. 1234567</span></span><br><span class="line"><span class="attr">livere:</span> <span class="comment">## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz</span></span><br><span class="line"><span class="attr">changyan:</span> <span class="comment">## Your changyan appid, e.g. cyrALsXc8</span></span><br><span class="line"><span class="attr">changyan_conf:</span> <span class="comment">## Your changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b</span></span><br><span class="line"><span class="attr">valine:</span> <span class="comment">## https://valine.js.org</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Valine comment system, please set the value to true.</span></span><br><span class="line"><span class="attr">  appid:</span>  <span class="comment">## Your LeanCloud application App ID, e.g. pRBBL2JR4N7kLEGojrF0MsSs-gzGzoHsz</span></span><br><span class="line"><span class="attr">  appkey:</span>  <span class="comment">## Your LeanCloud application App Key, e.g. tjczHpDfhjYDSYddzymYK1JJ</span></span><br><span class="line"><span class="attr">  notify:</span> <span class="literal">false</span> <span class="comment">## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置</span></span><br><span class="line"><span class="attr">  verify:</span> <span class="literal">false</span> <span class="comment">## Validation code.</span></span><br><span class="line"><span class="attr">  placeholder:</span> <span class="string">Just</span> <span class="string">so</span> <span class="string">so</span> <span class="comment">## Comment box placeholders.</span></span><br><span class="line"><span class="attr">  avatar:</span> <span class="string">'mm'</span> <span class="comment">## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine</span></span><br><span class="line"><span class="attr">  pageSize:</span> <span class="number">10</span> <span class="comment">## Number of comments per page.</span></span><br><span class="line"><span class="attr">  guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment">## Attributes of reviewers.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">google_search:</span> <span class="literal">true</span> <span class="comment">## Use Google search, true/false.</span></span><br><span class="line"><span class="attr">baidu_search:</span> <span class="literal">false</span> <span class="comment">## Use Baidu search, true/false.</span></span><br><span class="line"><span class="attr">swiftype:</span> <span class="comment">## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT</span></span><br><span class="line"><span class="attr">tinysou:</span> <span class="comment">## Your tinysou_key, e.g. 4ac092ad8d749fdc6293</span></span><br><span class="line"><span class="attr">self_search:</span> <span class="literal">false</span> <span class="comment">## Use a jQuery-based local search engine, true/false.</span></span><br><span class="line"><span class="attr">google_analytics:</span> <span class="comment">## Your Google Analytics tracking id, e.g. UA-42425684-2</span></span><br><span class="line"><span class="attr">baidu_analytics:</span> <span class="comment">## Your Baidu Analytics tracking id, e.g. 8006843039519956000</span></span><br><span class="line"><span class="attr">show_category_count:</span> <span class="literal">false</span> <span class="comment">## If you want to show the count of categories in the sidebar widget please set the value to true.</span></span><br><span class="line"><span class="attr">toc_number:</span> <span class="literal">true</span> <span class="comment">## If you want to add list number to toc please set the value to true.</span></span><br><span class="line"><span class="attr">shareto:</span> <span class="literal">false</span> <span class="comment">## If you want to use the share button please set the value to true, you must have hexo-helper-qrcode installed.</span></span><br><span class="line"><span class="attr">busuanzi:</span> <span class="literal">false</span> <span class="comment">## If you want to use Busuanzi page views please set the value to true.</span></span><br><span class="line"><span class="attr">widgets_on_small_screens:</span> <span class="literal">false</span> <span class="comment">## Set to true to enable widgets on small screens.</span></span><br><span class="line"><span class="attr">canvas_nest:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use dynamic background please set the value to true, you can also fill the following parameters to customize the dynamic effect, or just leave them blank to keep the default effect.</span></span><br><span class="line"><span class="attr">  color:</span> <span class="comment">## RGB value of the color, e.g. "100,99,98"</span></span><br><span class="line"><span class="attr">  opacity:</span> <span class="comment">## Transparency of lines, e.g. "0.7"</span></span><br><span class="line"><span class="attr">  zIndex:</span> <span class="comment">## The z-index property of the background, e.g. "-1"</span></span><br><span class="line"><span class="attr">  count:</span> <span class="comment">## Quantity of lines, e.g. "150"</span></span><br><span class="line"><span class="attr">donate:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to show the donate button after each post, please set the value to true and fill the following items according to your need. You can also enable donate button in a page by adding a "donate: true" item to the front-matter.</span></span><br><span class="line"><span class="attr">  github:</span> <span class="comment">## GitHub URL, e.g. https://github.com/Kaiyuan/donate-page</span></span><br><span class="line"><span class="attr">  alipay_qr:</span> <span class="comment">## Path of Alipay QRcode image, e.g. /img/AliPayQR.png</span></span><br><span class="line"><span class="attr">  wechat_qr:</span> <span class="comment">## Path of Wechat QRcode image, e.g. /img/WeChatQR.png</span></span><br><span class="line"><span class="attr">  btc_qr:</span> <span class="comment">## Path of Bitcoin QRcode image, e.g. /img/BTCQR.png</span></span><br><span class="line"><span class="attr">  btc_key:</span> <span class="comment">## Bitcoin key, e.g. 1KuK5eK2BLsqpsFVXXSBG5wbSAwZVadt6L</span></span><br><span class="line"><span class="attr">  paypal_url:</span> <span class="comment">## Paypal URL, e.g. https://paypal.me/tufu9441</span></span><br><span class="line"></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">home</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-home</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">archive</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">archives/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-archive</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">about</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">about/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-user</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">rss</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-rss</span></span><br><span class="line"></span><br><span class="line"><span class="attr">widgets:</span> <span class="comment">## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">search</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">category</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">tag</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_comments</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">links</span></span><br><span class="line"></span><br><span class="line"><span class="attr">links:</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name1</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example1.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name2</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example2.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name3</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example3.com/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">timeline:</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/06/12-Start</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/11/29-XXX</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2015</span><span class="string">/02/18-DDD</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">    word:</span> <span class="string">More</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Static files</span></span><br><span class="line"><span class="attr">js:</span> <span class="string">js</span></span><br><span class="line"><span class="attr">css:</span> <span class="string">css</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Theme version</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">0.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>fancybox - 是否启用<a href="http://fancyapps.com/fancybox/" target="_blank" rel="noopener">Fancybox</a>图片灯箱效果</li>
+<li>disqus - <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus评论</a> shortname</li>
+<li>gitment - <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment评论</a>相关参数</li>
+<li>uyan - <a href="http://www.uyan.cc/" target="_blank" rel="noopener">友言评论</a> id</li>
+<li>livere - <a href="https://livere.com/" target="_blank" rel="noopener">来必力评论</a> data-uid</li>
+<li>changyan - <a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">畅言评论</a> appid</li>
+<li>valine - <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine评论</a>相关参数</li>
+<li>google_search - 默认使用Google搜索引擎</li>
+<li>baidu_search - 若想使用百度搜索，将其设定为<code>true</code>。</li>
+<li>swiftype - <a href="https://swiftype.com/" target="_blank" rel="noopener">Swiftype</a> 站内搜索key</li>
+<li>tinysou - <a href="http://tinysou.com/" target="_blank" rel="noopener">微搜索</a> key</li>
+<li>self_search - 基于jQuery的<a href="http://hahack.com/codes/local-search-engine-for-hexo" target="_blank" rel="noopener">本地搜索引擎</a>，需要安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a>插件使用。</li>
+<li>google_analytics - <a href="https://www.google.com/analytics/" target="_blank" rel="noopener">Google Analytics</a> 跟踪ID</li>
+<li>baidu_analytics - <a href="http://tongji.baidu.com/" target="_blank" rel="noopener">百度统计</a> 跟踪ID</li>
+<li>show_category_count - 是否显示侧边栏分类数目</li>
+<li>toc_number - 是否显示文章中目录列表自动编号</li>
+<li>shareto - 是否使用分享按鈕，需要安装<a href="https://github.com/yscoder/hexo-helper-qrcode" target="_blank" rel="noopener">hexo-helper-qrcode</a>插件使用</li>
+<li>busuanzi - 是否使用<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>页面访问计数</li>
+<li>widgets_on_small_screens - 是否在移动设备屏幕底部显示侧边栏</li>
+<li><a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="noopener">canvas_nest</a> - 是否使用canvas动态背景</li>
+<li>donate - 是否启用捐赠按钮</li>
+<li>menu - 自定义页面及菜单，依照已有格式填写。填写后请在<code>source</code>目录下建立相应名称的文件夹，并包含<code>index.md</code>文件，以正确显示页面。导航菜单中集成了<a href="http://fontawesome.io/" target="_blank" rel="noopener">FontAwesome</a>图标字体，可以在<a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">这里</a>选择新的图标，并按照相关说明使用。</li>
+<li>widgets - 选择和排列希望使用的侧边栏小工具。</li>
+<li>links - 友情链接，请依照格式填写。</li>
+<li>timeline - 网站历史时间线，在页面<code>front-matter</code>中设置<code>layout: timeline</code>可显示。</li>
+<li>Static files - 静态文件存储路径，方便设置CDN缓存。</li>
+<li>Theme version - 主题版本，便于静态文件更新后刷新CDN缓存。</li>
+</ul>
+<h2 id="主题特性"><a href="#主题特性" class="headerlink" title="主题特性"></a>主题特性</h2><h3 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h3><p>若要设置网站Favicon，可以将 <strong>favicon.ico</strong> 放在Hexo根目录的<code>source</code>文件夹下，建议的大小：32px*32px。</p>
+<p>若要为网站添加苹果设备图标，请将命名为 <strong>apple-touch-icon.png</strong> 的图片放在同样的位置，建议的大小：114px*114px。</p>
+<h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>首页默认显示文章摘要而非全文，可以在文章的<code>front-matter</code>中填写一项<code>description:</code>来设置你想显示的摘要，或者直接在文章内容中插入<code>&lt;!--more--&gt;</code>以隐藏后面的内容。<br>若两者都未设置，则自动截取文章第一段作为摘要。</p>
+<h3 id="添加页面"><a href="#添加页面" class="headerlink" title="添加页面"></a>添加页面</h3><p>在<code>source</code>目录下建立相应名称的文件夹，然后在文件夹中建立<code>index.md</code>文件，并在<code>index.md</code>的<code>front-matter</code>中设置layout为<code>layout: page</code>。若需要单栏页面，就将layout设置为 <code>layout: single-column</code>。</p>
+<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p>在文章的<code>front-matter</code>中添加<code>toc: true</code>即可让该篇文章显示目录。</p>
+<h3 id="文章评论"><a href="#文章评论" class="headerlink" title="文章评论"></a>文章评论</h3><p>文章和页面的评论功能可以通过在<code>front-matter</code>中设置<code>comments: true</code>或<code>comments: false</code>来进行开启或关闭（默认开启）。</p>
+<h3 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h3><p>要启用代码高亮，请在Hexo目录的<code>_config.yml</code>中将<code>highlight</code>选项按照如下设置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure>
+<h3 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h3><p>要启用数学公式支持，请在Hexo目录的<code>_config.yml</code>中添加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>并在相应文章的<code>front-matter</code>中添加<code>mathjax: true</code>，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Test</span> <span class="string">Math</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2016</span><span class="bullet">-04</span><span class="bullet">-05</span> <span class="number">14</span><span class="string">:16:00</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">math</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>数学公式的默认定界符是<code>$$...$$</code>和<code>\\[...\\]</code>（对于块级公式），以及<code>$...$</code>和<code>\\(...\\)</code>（对于行内公式）。</p>
+<p>但是，如果你的文章内容中经常出现美元符号“<code>$</code>”, 或者说你想将“<code>$</code>”用作美元符号而非行内公式的定界符，请在Hexo目录的<code>_config.yml</code>中添加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax2:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>而不是<code>mathjax: true</code>。 相应地，在需要使用数学公式的文章的<code>front-matter</code>中也添加<code>mathjax2: true</code>。</p>
+<p><a href="http://zhongpu.info/2016/05/06/Mathjax%20and%20Hexo/" target="_blank" rel="noopener">示例</a>。</p>
+<p><a href="https://www.haomwei.com/images/maupassant.jpg" target="_blank" rel="noopener"><img src="https://www.haomwei.com/images/maupassant.jpg" alt="主题效果"></a>主题效果</p>
+<p>转自：<a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">屠城: 大道至简——Hexo简洁主题推荐</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[解析xml修改切片原点绕开工具的坑]]></title>
       <url>/2018/02/05/AlterXMLScheme/</url>
       <content type="html"><![CDATA[<p>我们可以通过工具 Generate Map Server Cache Tiling Scheme 来生成自定义的切片方案，无论是ArcMap还是ArcGIS Pro ，无论是栅格切片还是矢量切片，都屡试不爽。</p>
@@ -227,23 +295,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tidy up the code ...]]></title>
-      <url>/2017/11/14/tidyup/</url>
-      <content type="html"><![CDATA[<p>学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：<a href="https://github.com/kikitaMoon/ArcGIS-Python" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python</a></p>
-<p>开始从来不知道自己会在编程的道路上越走越远，积极用脑、专注做事可能是推迟进入油腻中年的最好途径。 这一年生命中多了一个人，生活有了很多变化，纵然精力旺盛的我也开始觉得分身乏力，感谢宝宝的乖巧才让我有了很多的时间做“贤妻良母”之外的事情。希望我的宝宝长大后，可以看到妈妈的文字，互相感恩乐观前行。</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_python-toolbox.jpg" alt=""></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 碎碎念 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[书单 2018]]></title>
       <url>/2017/11/14/books/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -256,6 +307,23 @@
             <category> 书单 </category>
             
             <category> 2018 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tidy up the code ...]]></title>
+      <url>/2017/11/14/tidyup/</url>
+      <content type="html"><![CDATA[<p>学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：<a href="https://github.com/kikitaMoon/ArcGIS-Python" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python</a></p>
+<p>开始从来不知道自己会在编程的道路上越走越远，积极用脑、专注做事可能是推迟进入油腻中年的最好途径。 这一年生命中多了一个人，生活有了很多变化，纵然精力旺盛的我也开始觉得分身乏力，感谢宝宝的乖巧才让我有了很多的时间做“贤妻良母”之外的事情。希望我的宝宝长大后，可以看到妈妈的文字，互相感恩乐观前行。</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_python-toolbox.jpg" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 碎碎念 </category>
             
         </categories>
         
@@ -1601,9 +1669,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>举个例子，在Python命令行中，我们求一下 Unicode字符串的长度就可以真相大白。</p>
 <p><img src="http://img.blog.csdn.net/20151217134014885" alt=""></p>
 <p><br></p>
-<h2 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a><em>解决方法</em></h2><h3 id="Perfect-Solution："><a href="#Perfect-Solution：" class="headerlink" title="Perfect Solution："></a><em>Perfect Solution</em>：</h3><p>使用地理数据库，放弃shapefile，避免各种截断问题，这也是存储地理数据的康庄大道。</p>
+<h2 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a><em>解决方法</em></h2><h3 id="Perfect-Solution"><a href="#Perfect-Solution" class="headerlink" title="Perfect Solution"></a><em>Perfect Solution</em></h3><p>使用地理数据库，放弃shapefile，避免各种截断问题，这也是存储地理数据的康庄大道。</p>
 <p>但是，shapefile的拥趸说“我的需求是恢复以前存储4个汉字的shapefile，我不想用地理数据库，我希望得到老版本的shapefile的结果，我不在乎shapefile的编码类型是什么 ……bla bla……”好吧，方法还是有的。</p>
-<h3 id="Workaround："><a href="#Workaround：" class="headerlink" title="Workaround："></a><em>Workaround</em>：</h3><blockquote>
+<h3 id="Workaround"><a href="#Workaround" class="headerlink" title="Workaround"></a><em>Workaround</em></h3><blockquote>
 <p>这里还有个注意事项：<br>如果你用的刚好是 <strong>10.2.1</strong> 和<strong>10.2.2</strong> 这两个版本，那么要打补丁后以下设置才生效。以前写过另外一篇，详情点 <strong><a href="http://blog.csdn.net/kikitamoon/article/details/19116415" target="_blank" rel="noopener">这里</a></strong>。<br>如果你用的是 <strong>10.3.x</strong> ，那么直接向下进行。</p>
 </blockquote>
 <ol>
@@ -1622,7 +1690,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <h1 id="我如何检测当前shapefile使用了什么编码类型？"><a href="#我如何检测当前shapefile使用了什么编码类型？" class="headerlink" title="我如何检测当前shapefile使用了什么编码类型？"></a><strong>我如何检测当前shapefile使用了什么编码类型？</strong></h1><p><br></p>
 <p>shapfile本身是个开放格式，当然我们有很多种途径查看shapefile的内部，读者中不乏代码大牛，只要了解数据规范应该方法多多。</p>
 <p>我这里就分享一种通过 python 查看编码类型的简单的方法，使用python中的 <strong>struct模块</strong> 可以处理二进制数据，从而探测下 shapefile 的子文件 dbf 的头文件中的 LDID 信息是什么。</p>
-<h2 id="python代码示例："><a href="#python代码示例：" class="headerlink" title="python代码示例："></a>python代码示例：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">'kikita'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line">dbf = <span class="string">u'D:\ExportShapefiles\中文字段.dbf'</span></span><br><span class="line">dat = open(dbf, <span class="string">'rb'</span>).read(<span class="number">30</span>)[<span class="number">29</span>:]</span><br><span class="line">id = struct.unpack(<span class="string">'B'</span>, dat)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">print(id, hex(id))</span><br></pre></td></tr></table></figure>
+<h2 id="python代码示例"><a href="#python代码示例" class="headerlink" title="python代码示例"></a>python代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8 -*-</span></span><br><span class="line">__author__ = <span class="string">'kikita'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line">dbf = <span class="string">u'D:\ExportShapefiles\中文字段.dbf'</span></span><br><span class="line">dat = open(dbf, <span class="string">'rb'</span>).read(<span class="number">30</span>)[<span class="number">29</span>:]</span><br><span class="line">id = struct.unpack(<span class="string">'B'</span>, dat)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">print(id, hex(id))</span><br></pre></td></tr></table></figure>
 <p>例如，得到这样的打印结果：   <strong><code>(77, &#39;0x4d&#39;)</code></strong>  通过这样的 ID 到 <a href="http://shapelib.maptools.org/codepage.html" target="_blank" rel="noopener">编码表</a> 中查到就是 CodelPage 936。</p>
 <p><img src="http://img.blog.csdn.net/20151217163622723" alt=""></p>
 <p>当然如果有你更好的方法，博主求分享，可以直接在评论区里贴出来，共同讨论。</p>
@@ -1913,9 +1981,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Web </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> Web </tag>
             
             <tag> Map Story </tag>
             
@@ -2586,9 +2654,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> ArcGIS Pro </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> ArcGIS Pro </tag>
             
         </tags>
         
@@ -2636,9 +2704,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> ArcGIS Pro </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> ArcGIS Pro </tag>
             
         </tags>
         
@@ -7391,6 +7459,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -7443,51 +7556,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://my.csdn.net/uploads/201208/25/1345904145_6043.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
