@@ -3,10 +3,9 @@
   
     
     <entry>
-      <title><![CDATA[主题备忘录]]></title>
+      <title><![CDATA[网站主题更换备忘录]]></title>
       <url>/2018/02/26/sitebuilding/</url>
-      <content type="html"><![CDATA[<p><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener"><strong>Maupassant 主题</strong></a></p>
-<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p>安装主题和渲染器：</p>
+      <content type="html"><![CDATA[<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p>安装主题和渲染器：<br><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener"><strong>Maupassant 主题</strong></a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-pug --save</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-sass --save</span></span><br></pre></td></tr></table></figure>
 <p>编辑Hexo目录下的 <code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>。</p>
 <h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>默认配置:</p>
