@@ -3,6 +3,52 @@
   
     
     <entry>
+      <title><![CDATA[OSM在ArcGIS产品线中的使用小结]]></title>
+      <url>/2018/03/15/osm2ce/</url>
+      <content type="html"><![CDATA[<p>说到免费开放的数据，自然会想到 Open Street Map，这里分享下在 ArcGIS 产品线中osm数据的使用实践。</p>
+<blockquote>
+<p>环境：ArcGIS Desktop 10.6， Esri CityEngine 2017.1</p>
+</blockquote>
+<h3 id="在ArcMap中使用osm数据"><a href="#在ArcMap中使用osm数据" class="headerlink" title="在ArcMap中使用osm数据"></a><strong>在ArcMap中使用osm数据</strong></h3><p>一般情况下，我们可以在 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a> 官网可以通过指定范围直接下载osm格式数据，然后在 ArcMap中直接读取。如下，以Esri中国所在的金泰大厦为中心的数据：</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE2.png" alt="ArcMap直读OSM"></p>
+<p>osm数据是基于xml的数据格式，ArcMap不能直接编辑。如果希望导入地理数据库中编辑，可以利用插件，这是Esri额外提供的一个桌面端的免费开源的osm插件，<a href="https://www.arcgis.com/home/item.html?id=0c4b24608fc94542ba5d1130c0606802" target="_blank" rel="noopener">ArcGIS Editor for OSM 10.6.x Desktop</a>。 通过这个插件可以下载、更新OSM数据有关这个插件的源码、文档，可以在<a href="https://github.com/Esri/arcgis-osm-editor" target="_blank" rel="noopener">Github</a>上获得。</p>
+<blockquote>
+<p>OSM is an XML-based format used to describe vector data in a map. It defines three basic data types—nodes, ways, and closed ways—which are used to describe all the other elements: </p>
+<ul>
+<li>Nodes—Points between which segments are drawn. </li>
+<li>Ways—Ordered list of nodes, displayed as connected by line segments in the editor. </li>
+<li>Closed Ways—Ways that go in a complete loop. They are used to describe areas such as parks, lakes, or islands.</li>
+</ul>
+</blockquote>
+<p>以前10.3年代的时候，整理过一次简单的说明，点<a href="http://kikitamap.com/2015/04/01/ArcGISEditorforOSM103xDesktop/" target="_blank" rel="noopener">这里</a>直达。通过测试，相同的网络环境下，官网下载osm数据，之后再使用 Load OSM File 导入GDB，效率明显优于直接使用 Download OSM Data导入GDB。</p>
+<h3 id="在CityEngine中使用osm数据"><a href="#在CityEngine中使用osm数据" class="headerlink" title="在CityEngine中使用osm数据"></a><strong>在CityEngine中使用osm数据</strong></h3><p>如果osm数据用于CityEngine，那么无需事先导入GDB，CityEngine可以直接解析osm并可分类导入数据，例如下图中导入highway，Building类：</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE4.png" alt="导入OSM至CityEngine场景"></p>
+<p>在CityEngine中导入osm时，可以勾选“Map OSM tags”，从而CityEngine会通过OSM street type来定义道路的宽度，并给与不同道路组成部分不同的起始规则，方便后续利用规则批量建模。如下，以金泰大厦以南的东直门大枢纽为例，复杂的交通仍然保持错落有致：</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE5.png" alt="OSM Highway"></p>
+<p>选中<code>Jintai_Streets</code> 这个图层，可以在Inspect窗口中看到图层的属性，其中即为默认情况下osm数据在CityEngine中的映射规则，可以根据需要修改：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//------------------------- </span></span><br><span class="line"><span class="comment">// Example OSM Tag Mapping</span></span><br><span class="line"></span><br><span class="line">streetscale = <span class="number">1</span>  <span class="comment">// street width scale factor</span></span><br><span class="line"></span><br><span class="line">width = getObjectAttr(<span class="string">"width"</span>, <span class="literal">false</span>)</span><br><span class="line">lanes = getObjectAttr(<span class="string">"lanes"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">attr streetWidth = <span class="comment">// street width dependeding on available attributes</span></span><br><span class="line">    <span class="keyword">case</span> width &gt; <span class="number">0</span> : width       * streetscale</span><br><span class="line">    <span class="keyword">case</span> lanes &gt; <span class="number">0</span> : lanes * <span class="number">3.5</span> * streetscale</span><br><span class="line">    <span class="keyword">else</span>           : streetWidthByClass * streetscale * oneway</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> = getObjectAttr(<span class="string">"highway"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">streetWidthByClass =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">8</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">7</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"motorway"</span>    : <span class="number">12</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"trunk"</span>       : <span class="number">11</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"road"</span>        : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">5</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"footway"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"cycleway"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"steps"</span>       : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">4</span></span><br><span class="line"></span><br><span class="line">oneway = <span class="comment">// oneway width correction</span></span><br><span class="line">    <span class="function"><span class="keyword">case</span> <span class="title">getObjectAttr</span>(<span class="params"><span class="string">"oneway"</span>, <span class="literal">false</span></span>) </span>== <span class="string">"yes"</span> : <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">else</span>                                  : <span class="number">1</span></span><br><span class="line"></span><br><span class="line">sidewalkscale = <span class="number">1</span> <span class="comment">// sidewalk width scale factor</span></span><br><span class="line"></span><br><span class="line">sidewalkWidth =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">0</span></span><br><span class="line"></span><br><span class="line">attr sidewalkWidthLeft = sidewalkWidth * sidewalkscale</span><br><span class="line">attr sidewalkWidthRight = sidewalkWidth * sidewalkscale</span><br></pre></td></tr></table></figure>
+<p>默认情况下，进入cityEngine中的道路数据，会使用Esri.lib库中的规则Street_Modern_Standard.cga，当然也可以自己来编写。</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE6.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geodata </tag>
+            
+            <tag> CityEngine </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CityEngine中的Terrain Map Layer]]></title>
       <url>/2018/03/13/CEMaplayer/</url>
       <content type="html"><![CDATA[<p>​    CityEngine 中的Map Layer可以参与到批量建模当中，根据角色的不同可以分为Terrain，Texture，Obstacle，Mapping，Function几个类型的图层。</p>
@@ -1039,9 +1085,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> ArcGIS Enterprise </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> ArcGIS Enterprise </tag>
             
         </tags>
         
@@ -1450,9 +1496,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Coordinate System </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> Coordinate System </tag>
             
         </tags>
         
@@ -6707,9 +6753,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> 3D </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> 3D </tag>
             
         </tags>
         
@@ -6992,9 +7038,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> 3D </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> 3D </tag>
             
         </tags>
         
@@ -7087,9 +7133,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> 3D </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> 3D </tag>
             
         </tags>
         
@@ -7460,51 +7506,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -7557,6 +7558,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://my.csdn.net/uploads/201208/25/1345904145_6043.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
