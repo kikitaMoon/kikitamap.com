@@ -3,6 +3,64 @@
   
     
     <entry>
+      <title><![CDATA[导入3D模型至CityEngine]]></title>
+      <url>/2018/03/21/importingmodels/</url>
+      <content type="html"><![CDATA[<p>我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。</p>
+<p>OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是由导入窗口中的 <code>Import as static model</code> 设置控制的。</p>
+<blockquote>
+<p><strong>Import as static model</strong></p>
+<p>When checked, the file will be imported ‘as is’ and will not be modifiable by cga rules.</p>
+<ul>
+<li>Shapes—Serve as a base for CGA generation. A typical example is footprint data.</li>
+<li>Static models—Can be scaled, rotated, and translated after import but cannot be processed further with CGA. </li>
+</ul>
+</blockquote>
+<p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p>
+<p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p>
+<p>在如下示例图中了解：</p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_importingModel1.png-kikitaMaps" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 3D </tag>
+            
+            <tag> CityEgnine </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《Scent of a Woman》]]></title>
+      <url>/2018/03/18/ScentofaWoman/</url>
+      <content type="html"><![CDATA[<p>这是一部老片。</p>
+<p>年少无知的时候，看到题目《闻香识女人》，暗自以为这是一部有关调情高手的电影，完全无感，从此错过。</p>
+<p>在没有很多电影可以走入内心的今天，翻看旧电影真的是种享受。竟然有几句台词可以让我记住和感动。</p>
+<blockquote>
+<p>Now I’ve come to the crossroad in my life. I always knew what the right path was without exception. I knew, but I never took it. You know why. It’s was too damn hard.</p>
+<p>But there is nothing like the sight of an amputated spirit. There is no prosthetic for that.</p>
+</blockquote>
+<p>我虽不是很相信人有灵魂，但我确信看到过人性的高贵。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 碎碎念 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[OSM在ArcGIS产品线中的使用小结]]></title>
       <url>/2018/03/15/osm2ce/</url>
       <content type="html"><![CDATA[<p>说到免费开放的数据，自然会想到 Open Street Map，这里分享下在 ArcGIS 产品线中osm数据的使用实践。</p>
@@ -10,7 +68,7 @@
 <p>环境：ArcGIS Desktop 10.6， Esri CityEngine 2017.1</p>
 </blockquote>
 <h3 id="在ArcMap中使用osm数据"><a href="#在ArcMap中使用osm数据" class="headerlink" title="在ArcMap中使用osm数据"></a><strong>在ArcMap中使用osm数据</strong></h3><p>一般情况下，我们可以在 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a> 官网可以通过指定范围直接下载osm格式数据，然后在 ArcMap中直接读取。如下，以Esri中国所在的金泰大厦为中心的数据：</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE2.png" alt="ArcMap直读OSM"></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE2.png-kikitaMaps" alt="ArcMap直读OSM"></p>
 <p>osm数据是基于xml的数据格式，ArcMap不能直接编辑。如果希望导入地理数据库中编辑，可以利用插件，这是Esri额外提供的一个桌面端的免费开源的osm插件，<a href="https://www.arcgis.com/home/item.html?id=0c4b24608fc94542ba5d1130c0606802" target="_blank" rel="noopener">ArcGIS Editor for OSM 10.6.x Desktop</a>。 通过这个插件可以下载、更新OSM数据有关这个插件的源码、文档，可以在<a href="https://github.com/Esri/arcgis-osm-editor" target="_blank" rel="noopener">Github</a>上获得。</p>
 <blockquote>
 <p>OSM is an XML-based format used to describe vector data in a map. It defines three basic data types—nodes, ways, and closed ways—which are used to describe all the other elements: </p>
@@ -22,13 +80,13 @@
 </blockquote>
 <p>以前10.3年代的时候，整理过一次简单的说明，点<a href="http://kikitamap.com/2015/04/01/ArcGISEditorforOSM103xDesktop/" target="_blank" rel="noopener">这里</a>直达。通过测试，相同的网络环境下，官网下载osm数据，之后再使用 Load OSM File 导入GDB，效率明显优于直接使用 Download OSM Data导入GDB。</p>
 <h3 id="在CityEngine中使用osm数据"><a href="#在CityEngine中使用osm数据" class="headerlink" title="在CityEngine中使用osm数据"></a><strong>在CityEngine中使用osm数据</strong></h3><p>如果osm数据用于CityEngine，那么无需事先导入GDB，CityEngine可以直接解析osm并可分类导入数据，例如下图中导入highway，Building类：</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE4.png" alt="导入OSM至CityEngine场景"></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE4.png-kikitaMaps" alt="导入OSM至CityEngine场景"></p>
 <p>在CityEngine中导入osm时，可以勾选“Map OSM tags”，从而CityEngine会通过OSM street type来定义道路的宽度，并给与不同道路组成部分不同的起始规则，方便后续利用规则批量建模。如下，以金泰大厦以南的东直门大枢纽为例，复杂的交通仍然保持错落有致：</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE5.png" alt="OSM Highway"></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE5.png-kikitaMaps" alt="OSM Highway"></p>
 <p>选中<code>Jintai_Streets</code> 这个图层，可以在Inspect窗口中看到图层的属性，其中即为默认情况下osm数据在CityEngine中的映射规则，可以根据需要修改：</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//------------------------- </span></span><br><span class="line"><span class="comment">// Example OSM Tag Mapping</span></span><br><span class="line"></span><br><span class="line">streetscale = <span class="number">1</span>  <span class="comment">// street width scale factor</span></span><br><span class="line"></span><br><span class="line">width = getObjectAttr(<span class="string">"width"</span>, <span class="literal">false</span>)</span><br><span class="line">lanes = getObjectAttr(<span class="string">"lanes"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">attr streetWidth = <span class="comment">// street width dependeding on available attributes</span></span><br><span class="line">    <span class="keyword">case</span> width &gt; <span class="number">0</span> : width       * streetscale</span><br><span class="line">    <span class="keyword">case</span> lanes &gt; <span class="number">0</span> : lanes * <span class="number">3.5</span> * streetscale</span><br><span class="line">    <span class="keyword">else</span>           : streetWidthByClass * streetscale * oneway</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> = getObjectAttr(<span class="string">"highway"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">streetWidthByClass =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">8</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">7</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"motorway"</span>    : <span class="number">12</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"trunk"</span>       : <span class="number">11</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"road"</span>        : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">5</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"footway"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"cycleway"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"steps"</span>       : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">4</span></span><br><span class="line"></span><br><span class="line">oneway = <span class="comment">// oneway width correction</span></span><br><span class="line">    <span class="function"><span class="keyword">case</span> <span class="title">getObjectAttr</span>(<span class="params"><span class="string">"oneway"</span>, <span class="literal">false</span></span>) </span>== <span class="string">"yes"</span> : <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">else</span>                                  : <span class="number">1</span></span><br><span class="line"></span><br><span class="line">sidewalkscale = <span class="number">1</span> <span class="comment">// sidewalk width scale factor</span></span><br><span class="line"></span><br><span class="line">sidewalkWidth =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">0</span></span><br><span class="line"></span><br><span class="line">attr sidewalkWidthLeft = sidewalkWidth * sidewalkscale</span><br><span class="line">attr sidewalkWidthRight = sidewalkWidth * sidewalkscale</span><br></pre></td></tr></table></figure>
 <p>默认情况下，进入cityEngine中的道路数据，会使用Esri.lib库中的规则Street_Modern_Standard.cga，当然也可以自己来编写。</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE6.png" alt=""></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE6.png-kikitaMaps" alt=""></p>
 ]]></content>
       
         <categories>
@@ -1085,9 +1143,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> ArcGIS Enterprise </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
@@ -6753,9 +6811,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> 3D </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
@@ -7038,9 +7096,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> 3D </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
@@ -7133,9 +7191,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> 3D </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
