@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>kikita &amp; Maps</title>
+  
+  <subtitle>For Tech and Fun</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.kikitamap.com/"/>
+  <updated>2018-03-21T07:09:18.780Z</updated>
+  <id>http://www.kikitamap.com/</id>
+  
+  <author>
+    <name>Xiaoyan Mu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>导入3D模型至CityEngine</title>
+    <link href="http://www.kikitamap.com/2018/03/21/importingmodels/"/>
+    <id>http://www.kikitamap.com/2018/03/21/importingmodels/</id>
+    <published>2018-03-21T03:06:12.000Z</published>
+    <updated>2018-03-21T07:09:18.780Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。</p><p>OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是由导入窗口中的 <code>Import as static model</code> 设置控制的。</p><blockquote><p><strong>Import as static model</strong></p><p>When checked, the file will be imported ‘as is’ and will not be modifiable by cga rules.</p><ul><li>Shapes—Serve as a base for CGA generation. A typical example is footprint data.</li><li>Static models—Can be scaled, rotated, and translated after import but cannot be processed further with CGA. </li></ul></blockquote><p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p><p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p><p>在如下示例图中了解：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_importingModel.png-kikitaMaps" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。&lt;/p&gt;
+&lt;p&gt;OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+    
+      <category term="CityEgnine" scheme="http://www.kikitamap.com/tags/CityEgnine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Scent of a Woman》</title>
+    <link href="http://www.kikitamap.com/2018/03/18/ScentofaWoman/"/>
+    <id>http://www.kikitamap.com/2018/03/18/ScentofaWoman/</id>
+    <published>2018-03-18T04:00:00.000Z</published>
+    <updated>2018-03-21T07:30:13.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一部老片。</p><p>年少无知的时候，看到题目《闻香识女人》，暗自以为这是一部有关调情高手的电影，完全无感，从此错过。</p><p>在没有很多电影可以走入内心的今天，翻看旧电影真的是种享受。竟然有几句台词可以让我记住和感动。</p><blockquote><hr><p>Now I’ve come to the crossroad in my life. I always knew what the right path was.  Without exception.  I knew, but I never took it. You know why. It’s was too damn hard.</p><hr><p>But there is nothing like the sight of an amputated spirit. There is no prosthetic for that.</p><hr></blockquote><p>我虽不是很相信人有灵魂，但我确信看到过人性的高贵。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_ScentofaWoman_1.jpg-kikitaMaps" alt=""></p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_ScentofaWoman2.jpg-kikitaMaps" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是一部老片。&lt;/p&gt;
+&lt;p&gt;年少无知的时候，看到题目《闻香识女人》，暗自以为这是一部有关调情高手的电影，完全无感，从此错过。&lt;/p&gt;
+&lt;p&gt;在没有很多电影可以走入内心的今天，翻看旧电影真的是种享受。竟然有几句台词可以让我记住和感动。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h
+      
+    
+    </summary>
+    
+      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OSM在ArcGIS产品线中的使用小结</title>
+    <link href="http://www.kikitamap.com/2018/03/15/osm2ce/"/>
+    <id>http://www.kikitamap.com/2018/03/15/osm2ce/</id>
+    <published>2018-03-15T06:56:00.000Z</published>
+    <updated>2018-03-21T06:19:32.110Z</updated>
+    
+    <content type="html"><![CDATA[<p>说到免费开放的数据，自然会想到 Open Street Map，这里分享下在 ArcGIS 产品线中osm数据的使用实践。</p><blockquote><p>环境：ArcGIS Desktop 10.6， Esri CityEngine 2017.1</p></blockquote><h3 id="在ArcMap中使用osm数据"><a href="#在ArcMap中使用osm数据" class="headerlink" title="在ArcMap中使用osm数据"></a><strong>在ArcMap中使用osm数据</strong></h3><p>一般情况下，我们可以在 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a> 官网可以通过指定范围直接下载osm格式数据，然后在 ArcMap中直接读取。如下，以Esri中国所在的金泰大厦为中心的数据：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE2.png-kikitaMaps" alt="ArcMap直读OSM"></p><p>osm数据是基于xml的数据格式，ArcMap不能直接编辑。如果希望导入地理数据库中编辑，可以利用插件，这是Esri额外提供的一个桌面端的免费开源的osm插件，<a href="https://www.arcgis.com/home/item.html?id=0c4b24608fc94542ba5d1130c0606802" target="_blank" rel="noopener">ArcGIS Editor for OSM 10.6.x Desktop</a>。 通过这个插件可以下载、更新OSM数据有关这个插件的源码、文档，可以在<a href="https://github.com/Esri/arcgis-osm-editor" target="_blank" rel="noopener">Github</a>上获得。</p><blockquote><p>OSM is an XML-based format used to describe vector data in a map. It defines three basic data types—nodes, ways, and closed ways—which are used to describe all the other elements: </p><ul><li>Nodes—Points between which segments are drawn. </li><li>Ways—Ordered list of nodes, displayed as connected by line segments in the editor. </li><li>Closed Ways—Ways that go in a complete loop. They are used to describe areas such as parks, lakes, or islands.</li></ul></blockquote><p>以前10.3年代的时候，整理过一次简单的说明，点<a href="http://kikitamap.com/2015/04/01/ArcGISEditorforOSM103xDesktop/" target="_blank" rel="noopener">这里</a>直达。通过测试，相同的网络环境下，官网下载osm数据，之后再使用 Load OSM File 导入GDB，效率明显优于直接使用 Download OSM Data导入GDB。</p><h3 id="在CityEngine中使用osm数据"><a href="#在CityEngine中使用osm数据" class="headerlink" title="在CityEngine中使用osm数据"></a><strong>在CityEngine中使用osm数据</strong></h3><p>如果osm数据用于CityEngine，那么无需事先导入GDB，CityEngine可以直接解析osm并可分类导入数据，例如下图中导入highway，Building类：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE4.png-kikitaMaps" alt="导入OSM至CityEngine场景"></p><p>在CityEngine中导入osm时，可以勾选“Map OSM tags”，从而CityEngine会通过OSM street type来定义道路的宽度，并给与不同道路组成部分不同的起始规则，方便后续利用规则批量建模。如下，以金泰大厦以南的东直门大枢纽为例，复杂的交通仍然保持错落有致：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE5.png-kikitaMaps" alt="OSM Highway"></p><p>选中<code>Jintai_Streets</code> 这个图层，可以在Inspect窗口中看到图层的属性，其中即为默认情况下osm数据在CityEngine中的映射规则，可以根据需要修改：</p><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//------------------------- </span></span><br><span class="line"><span class="comment">// Example OSM Tag Mapping</span></span><br><span class="line"></span><br><span class="line">streetscale = <span class="number">1</span>  <span class="comment">// street width scale factor</span></span><br><span class="line"></span><br><span class="line">width = getObjectAttr(<span class="string">"width"</span>, <span class="literal">false</span>)</span><br><span class="line">lanes = getObjectAttr(<span class="string">"lanes"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">attr streetWidth = <span class="comment">// street width dependeding on available attributes</span></span><br><span class="line">    <span class="keyword">case</span> width &gt; <span class="number">0</span> : width       * streetscale</span><br><span class="line">    <span class="keyword">case</span> lanes &gt; <span class="number">0</span> : lanes * <span class="number">3.5</span> * streetscale</span><br><span class="line">    <span class="keyword">else</span>           : streetWidthByClass * streetscale * oneway</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> = getObjectAttr(<span class="string">"highway"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">streetWidthByClass =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">8</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">7</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"motorway"</span>    : <span class="number">12</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"trunk"</span>       : <span class="number">11</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"road"</span>        : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">5</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"footway"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"cycleway"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"steps"</span>       : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">4</span></span><br><span class="line"></span><br><span class="line">oneway = <span class="comment">// oneway width correction</span></span><br><span class="line">    <span class="function"><span class="keyword">case</span> <span class="title">getObjectAttr</span>(<span class="params"><span class="string">"oneway"</span>, <span class="literal">false</span></span>) </span>== <span class="string">"yes"</span> : <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">else</span>                                  : <span class="number">1</span></span><br><span class="line"></span><br><span class="line">sidewalkscale = <span class="number">1</span> <span class="comment">// sidewalk width scale factor</span></span><br><span class="line"></span><br><span class="line">sidewalkWidth =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">0</span></span><br><span class="line"></span><br><span class="line">attr sidewalkWidthLeft = sidewalkWidth * sidewalkscale</span><br><span class="line">attr sidewalkWidthRight = sidewalkWidth * sidewalkscale</span><br></pre></td></tr></table></figure><p>默认情况下，进入cityEngine中的道路数据，会使用Esri.lib库中的规则Street_Modern_Standard.cga，当然也可以自己来编写。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_OSM2CE6.png-kikitaMaps" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;说到免费开放的数据，自然会想到 Open Street Map，这里分享下在 ArcGIS 产品线中osm数据的使用实践。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;环境：ArcGIS Desktop 10.6， Esri CityEngine 2017.1&lt;/p&gt;
+&lt;/bl
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Geodata" scheme="http://www.kikitamap.com/tags/Geodata/"/>
+    
+      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CityEngine中的Terrain Map Layer</title>
+    <link href="http://www.kikitamap.com/2018/03/13/CEMaplayer/"/>
+    <id>http://www.kikitamap.com/2018/03/13/CEMaplayer/</id>
+    <published>2018-03-13T04:40:14.000Z</published>
+    <updated>2018-03-15T02:36:11.320Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    CityEngine 中的Map Layer可以参与到批量建模当中，根据角色的不同可以分为Terrain，Texture，Obstacle，Mapping，Function几个类型的图层。</p><p><strong>Terrain Map Layer</strong> </p><p>​    顾名思义，用于表示场景的地表结构和底图图层，这个图层可以由一个DEM和一个影像共同构成。 这类图层在创建的时候，可以设置影像取值的通道、高程的拉伸范围、影像的尺寸、锚点位置、偏移量等参数。</p><p>​    在图层创建之后，我们可以看到属性窗口中，有这样一段代码表述了上面的一些设置：</p><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attr elevation = map_01(<span class="name">brightness</span>, <span class="number">0.0</span>, <span class="number">150.0</span>) + elevationDelta</span><br></pre></td></tr></table></figure><p>这时，有个疑问，<code>elevationDelta</code> 是什么？如何体现出来的？带着这个疑问我们来看看CE对于场景高程的作用机制。</p><p>导入CE场景中的道路线数据一般被识别为Graph Segment，静态模型一般为Static Shape，这两种类型数据可以通过 Align graph to terrain，Align shapes to terrain 来向地形数据对齐。在实际应用中，很多建筑物或道路的底面是个平面，需要将地形整平到与模型底面完美贴合，这时再使用工具 Align terrain to shape 来解决这个问题。</p><p>这时保存场景，在CE的工程目录的data文件夹下，就会出现一个场景同名的文件夹，并在其下自动生成一个16bit的栅格数据，储存地形变化量，这个栅格数据即为 elevationDelta。当预览数据时，从渲染方案上可以得到直观印象，灰色为无变化，黑色为减低，白色为增加。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​    CityEngine 中的Map Layer可以参与到批量建模当中，根据角色的不同可以分为Terrain，Texture，Obstacle，Mapping，Function几个类型的图层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Terrain Map Layer&lt;/str
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网站主题更换备忘录</title>
+    <link href="http://www.kikitamap.com/2018/02/26/sitebuilding/"/>
+    <id>http://www.kikitamap.com/2018/02/26/sitebuilding/</id>
+    <published>2018-02-26T03:06:22.000Z</published>
+    <updated>2018-03-05T02:17:31.487Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener"><strong>Maupassant 主题</strong></a><br>安装主题和渲染器：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-pug --save</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-sass --save</span></span><br></pre></td></tr></table></figure></p><p>编辑Hexo目录下的 <code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>。</p><h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>默认配置:</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">_config.yml_config.ymlfancybox:</span> <span class="literal">true</span> <span class="comment">## If you want to use fancybox please set the value to true.</span></span><br><span class="line"><span class="attr">disqus:</span> <span class="comment">## Your disqus_shortname, e.g. username</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Gitment comment system please set the value to true.</span></span><br><span class="line"><span class="attr">  owner:</span> <span class="comment">## Your GitHub ID, e.g. username</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="comment">## The repository to store your comments, make sure you're the repo's owner, e.g. imsun.github.io</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="comment">## GitHub client ID, e.g. 75752dafe7907a897619</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="comment">## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50</span></span><br><span class="line"><span class="attr">uyan:</span> <span class="comment">## Your uyan_id. e.g. 1234567</span></span><br><span class="line"><span class="attr">livere:</span> <span class="comment">## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz</span></span><br><span class="line"><span class="attr">changyan:</span> <span class="comment">## Your changyan appid, e.g. cyrALsXc8</span></span><br><span class="line"><span class="attr">changyan_conf:</span> <span class="comment">## Your changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b</span></span><br><span class="line"><span class="attr">valine:</span> <span class="comment">## https://valine.js.org</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Valine comment system, please set the value to true.</span></span><br><span class="line"><span class="attr">  appid:</span>  <span class="comment">## Your LeanCloud application App ID, e.g. pRBBL2JR4N7kLEGojrF0MsSs-gzGzoHsz</span></span><br><span class="line"><span class="attr">  appkey:</span>  <span class="comment">## Your LeanCloud application App Key, e.g. tjczHpDfhjYDSYddzymYK1JJ</span></span><br><span class="line"><span class="attr">  notify:</span> <span class="literal">false</span> <span class="comment">## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置</span></span><br><span class="line"><span class="attr">  verify:</span> <span class="literal">false</span> <span class="comment">## Validation code.</span></span><br><span class="line"><span class="attr">  placeholder:</span> <span class="string">Just</span> <span class="string">so</span> <span class="string">so</span> <span class="comment">## Comment box placeholders.</span></span><br><span class="line"><span class="attr">  avatar:</span> <span class="string">'mm'</span> <span class="comment">## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine</span></span><br><span class="line"><span class="attr">  pageSize:</span> <span class="number">10</span> <span class="comment">## Number of comments per page.</span></span><br><span class="line"><span class="attr">  guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment">## Attributes of reviewers.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">google_search:</span> <span class="literal">true</span> <span class="comment">## Use Google search, true/false.</span></span><br><span class="line"><span class="attr">baidu_search:</span> <span class="literal">false</span> <span class="comment">## Use Baidu search, true/false.</span></span><br><span class="line"><span class="attr">swiftype:</span> <span class="comment">## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT</span></span><br><span class="line"><span class="attr">tinysou:</span> <span class="comment">## Your tinysou_key, e.g. 4ac092ad8d749fdc6293</span></span><br><span class="line"><span class="attr">self_search:</span> <span class="literal">false</span> <span class="comment">## Use a jQuery-based local search engine, true/false.</span></span><br><span class="line"><span class="attr">google_analytics:</span> <span class="comment">## Your Google Analytics tracking id, e.g. UA-42425684-2</span></span><br><span class="line"><span class="attr">baidu_analytics:</span> <span class="comment">## Your Baidu Analytics tracking id, e.g. 8006843039519956000</span></span><br><span class="line"><span class="attr">show_category_count:</span> <span class="literal">false</span> <span class="comment">## If you want to show the count of categories in the sidebar widget please set the value to true.</span></span><br><span class="line"><span class="attr">toc_number:</span> <span class="literal">true</span> <span class="comment">## If you want to add list number to toc please set the value to true.</span></span><br><span class="line"><span class="attr">shareto:</span> <span class="literal">false</span> <span class="comment">## If you want to use the share button please set the value to true, you must have hexo-helper-qrcode installed.</span></span><br><span class="line"><span class="attr">busuanzi:</span> <span class="literal">false</span> <span class="comment">## If you want to use Busuanzi page views please set the value to true.</span></span><br><span class="line"><span class="attr">widgets_on_small_screens:</span> <span class="literal">false</span> <span class="comment">## Set to true to enable widgets on small screens.</span></span><br><span class="line"><span class="attr">canvas_nest:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use dynamic background please set the value to true, you can also fill the following parameters to customize the dynamic effect, or just leave them blank to keep the default effect.</span></span><br><span class="line"><span class="attr">  color:</span> <span class="comment">## RGB value of the color, e.g. "100,99,98"</span></span><br><span class="line"><span class="attr">  opacity:</span> <span class="comment">## Transparency of lines, e.g. "0.7"</span></span><br><span class="line"><span class="attr">  zIndex:</span> <span class="comment">## The z-index property of the background, e.g. "-1"</span></span><br><span class="line"><span class="attr">  count:</span> <span class="comment">## Quantity of lines, e.g. "150"</span></span><br><span class="line"><span class="attr">donate:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to show the donate button after each post, please set the value to true and fill the following items according to your need. You can also enable donate button in a page by adding a "donate: true" item to the front-matter.</span></span><br><span class="line"><span class="attr">  github:</span> <span class="comment">## GitHub URL, e.g. https://github.com/Kaiyuan/donate-page</span></span><br><span class="line"><span class="attr">  alipay_qr:</span> <span class="comment">## Path of Alipay QRcode image, e.g. /img/AliPayQR.png</span></span><br><span class="line"><span class="attr">  wechat_qr:</span> <span class="comment">## Path of Wechat QRcode image, e.g. /img/WeChatQR.png</span></span><br><span class="line"><span class="attr">  btc_qr:</span> <span class="comment">## Path of Bitcoin QRcode image, e.g. /img/BTCQR.png</span></span><br><span class="line"><span class="attr">  btc_key:</span> <span class="comment">## Bitcoin key, e.g. 1KuK5eK2BLsqpsFVXXSBG5wbSAwZVadt6L</span></span><br><span class="line"><span class="attr">  paypal_url:</span> <span class="comment">## Paypal URL, e.g. https://paypal.me/tufu9441</span></span><br><span class="line"></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">home</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-home</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">archive</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">archives/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-archive</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">about</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">about/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-user</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">rss</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-rss</span></span><br><span class="line"></span><br><span class="line"><span class="attr">widgets:</span> <span class="comment">## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">search</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">category</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">tag</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_comments</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">links</span></span><br><span class="line"></span><br><span class="line"><span class="attr">links:</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name1</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example1.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name2</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example2.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name3</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example3.com/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">timeline:</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/06/12-Start</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/11/29-XXX</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2015</span><span class="string">/02/18-DDD</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">    word:</span> <span class="string">More</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Static files</span></span><br><span class="line"><span class="attr">js:</span> <span class="string">js</span></span><br><span class="line"><span class="attr">css:</span> <span class="string">css</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Theme version</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">0.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure><ul><li>fancybox - 是否启用<a href="http://fancyapps.com/fancybox/" target="_blank" rel="noopener">Fancybox</a>图片灯箱效果</li><li>disqus - <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus评论</a> shortname</li><li>gitment - <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment评论</a>相关参数</li><li>uyan - <a href="http://www.uyan.cc/" target="_blank" rel="noopener">友言评论</a> id</li><li>livere - <a href="https://livere.com/" target="_blank" rel="noopener">来必力评论</a> data-uid</li><li>changyan - <a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">畅言评论</a> appid</li><li>valine - <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine评论</a>相关参数</li><li>google_search - 默认使用Google搜索引擎</li><li>baidu_search - 若想使用百度搜索，将其设定为<code>true</code>。</li><li>swiftype - <a href="https://swiftype.com/" target="_blank" rel="noopener">Swiftype</a> 站内搜索key</li><li>tinysou - <a href="http://tinysou.com/" target="_blank" rel="noopener">微搜索</a> key</li><li>self_search - 基于jQuery的<a href="http://hahack.com/codes/local-search-engine-for-hexo" target="_blank" rel="noopener">本地搜索引擎</a>，需要安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a>插件使用。</li><li>google_analytics - <a href="https://www.google.com/analytics/" target="_blank" rel="noopener">Google Analytics</a> 跟踪ID</li><li>baidu_analytics - <a href="http://tongji.baidu.com/" target="_blank" rel="noopener">百度统计</a> 跟踪ID</li><li>show_category_count - 是否显示侧边栏分类数目</li><li>toc_number - 是否显示文章中目录列表自动编号</li><li>shareto - 是否使用分享按鈕，需要安装<a href="https://github.com/yscoder/hexo-helper-qrcode" target="_blank" rel="noopener">hexo-helper-qrcode</a>插件使用</li><li>busuanzi - 是否使用<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>页面访问计数</li><li>widgets_on_small_screens - 是否在移动设备屏幕底部显示侧边栏</li><li><a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="noopener">canvas_nest</a> - 是否使用canvas动态背景</li><li>donate - 是否启用捐赠按钮</li><li>menu - 自定义页面及菜单，依照已有格式填写。填写后请在<code>source</code>目录下建立相应名称的文件夹，并包含<code>index.md</code>文件，以正确显示页面。导航菜单中集成了<a href="http://fontawesome.io/" target="_blank" rel="noopener">FontAwesome</a>图标字体，可以在<a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">这里</a>选择新的图标，并按照相关说明使用。</li><li>widgets - 选择和排列希望使用的侧边栏小工具。</li><li>links - 友情链接，请依照格式填写。</li><li>timeline - 网站历史时间线，在页面<code>front-matter</code>中设置<code>layout: timeline</code>可显示。</li><li>Static files - 静态文件存储路径，方便设置CDN缓存。</li><li>Theme version - 主题版本，便于静态文件更新后刷新CDN缓存。</li></ul><h2 id="主题特性"><a href="#主题特性" class="headerlink" title="主题特性"></a>主题特性</h2><h3 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h3><p>若要设置网站Favicon，可以将 <strong>favicon.ico</strong> 放在Hexo根目录的<code>source</code>文件夹下，建议的大小：32px*32px。</p><p>若要为网站添加苹果设备图标，请将命名为 <strong>apple-touch-icon.png</strong> 的图片放在同样的位置，建议的大小：114px*114px。</p><h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>首页默认显示文章摘要而非全文，可以在文章的<code>front-matter</code>中填写一项<code>description:</code>来设置你想显示的摘要，或者直接在文章内容中插入<code>&lt;!--more--&gt;</code>以隐藏后面的内容。<br>若两者都未设置，则自动截取文章第一段作为摘要。</p><h3 id="添加页面"><a href="#添加页面" class="headerlink" title="添加页面"></a>添加页面</h3><p>在<code>source</code>目录下建立相应名称的文件夹，然后在文件夹中建立<code>index.md</code>文件，并在<code>index.md</code>的<code>front-matter</code>中设置layout为<code>layout: page</code>。若需要单栏页面，就将layout设置为 <code>layout: single-column</code>。</p><h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p>在文章的<code>front-matter</code>中添加<code>toc: true</code>即可让该篇文章显示目录。</p><h3 id="文章评论"><a href="#文章评论" class="headerlink" title="文章评论"></a>文章评论</h3><p>文章和页面的评论功能可以通过在<code>front-matter</code>中设置<code>comments: true</code>或<code>comments: false</code>来进行开启或关闭（默认开启）。</p><h3 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h3><p>要启用代码高亮，请在Hexo目录的<code>_config.yml</code>中将<code>highlight</code>选项按照如下设置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure><h3 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h3><p>要启用数学公式支持，请在Hexo目录的<code>_config.yml</code>中添加：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>并在相应文章的<code>front-matter</code>中添加<code>mathjax: true</code>，例如：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Test</span> <span class="string">Math</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2016</span><span class="bullet">-04</span><span class="bullet">-05</span> <span class="number">14</span><span class="string">:16:00</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">math</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure><p>数学公式的默认定界符是<code>$$...$$</code>和<code>\\[...\\]</code>（对于块级公式），以及<code>$...$</code>和<code>\\(...\\)</code>（对于行内公式）。</p><p>但是，如果你的文章内容中经常出现美元符号“<code>$</code>”, 或者说你想将“<code>$</code>”用作美元符号而非行内公式的定界符，请在Hexo目录的<code>_config.yml</code>中添加：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax2:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>而不是<code>mathjax: true</code>。 相应地，在需要使用数学公式的文章的<code>front-matter</code>中也添加<code>mathjax2: true</code>。</p><p><a href="http://zhongpu.info/2016/05/06/Mathjax%20and%20Hexo/" target="_blank" rel="noopener">示例</a>。</p><p><a href="https://www.haomwei.com/images/maupassant.jpg" target="_blank" rel="noopener"><img src="https://www.haomwei.com/images/maupassant.jpg" alt="主题效果"></a>主题效果</p><p>转自：<a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">屠城: 大道至简——Hexo简洁主题推荐</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;主题安装&quot;&gt;&lt;a href=&quot;#主题安装&quot; class=&quot;headerlink&quot; title=&quot;主题安装&quot;&gt;&lt;/a&gt;主题安装&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tufu9441/maupassant-hexo&quot; target=&quot;
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解析xml修改切片原点绕开工具的坑</title>
+    <link href="http://www.kikitamap.com/2018/02/05/AlterXMLScheme/"/>
+    <id>http://www.kikitamap.com/2018/02/05/AlterXMLScheme/</id>
+    <published>2018-02-05T09:00:14.000Z</published>
+    <updated>2018-02-08T01:54:29.933Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们可以通过工具 Generate Map Server Cache Tiling Scheme 来生成自定义的切片方案，无论是ArcMap还是ArcGIS Pro ，无论是栅格切片还是矢量切片，都屡试不爽。</p><p>前段时间，为了方便 ArcGIS Pro 的自动化工作，我尝试用python调用这个功能，然而后面在使用其生成的切片方案（.xml）文件时，会发现切片原点总是默认值，例如地理坐标系统下是“-400,400”。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TileOrigin</span> <span class="attr">xsi:type</span>=<span class="string">"typens:PointN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">X</span>&gt;</span>-400<span class="tag">&lt;/<span class="name">X</span>&gt;</span><span class="tag">&lt;<span class="name">Y</span>&gt;</span>400<span class="tag">&lt;/<span class="name">Y</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TileOrigin</span>&gt;</span></span><br></pre></td></tr></table></figure><p><code>arcpy.GenerateMapServerCacheTilingScheme_server (in_map, tile_origin, output_tiling_scheme, num_of_scales, scales, dots_per_inch, tile_size)</code> 中，tile_origin这个参数标识为point对象，可是无论如何传参都无效。</p><p>这样会导致切片创建以及更新的一系列问题，在当时也是排查了很久才定位到这个问题。我的是测试环境是 ArcGIS Pro 2.0.x。值得欣慰的是，这个问题在 ArcMap的arcpy中没有问题，可以正确识别参数。</p><p>经过与esri美国工程师的沟通确认，此问题为arcpy for ArcGIS Pro的bug，暂时没有官方解决方法。</p><ul><li><em>BUG-000110503     : Changing the tile origin parameter when using     arcpy.server.GenerateMapServerCacheTilingScheme does not actually change   the tile origin</em></li></ul><p><strong>绕行办法：</strong></p><p>既然xml已经生成了，只有切片原点信息是错误，那就自己来解析xml修改对应参数即可。在自己的脚本中额外增加一个解析xml的逻辑吧，跳过这个坑。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.dom.minidom <span class="keyword">as</span> DOM</span><br><span class="line"><span class="comment"># Modify Scheme File to Avoid the tile_Origin Specification Bug of the Pro Tool</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modifyTilingSchemeFile</span><span class="params">(tileScheme,x_origin,y_origin)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        doc = DOM.parse(tileScheme)</span><br><span class="line">        tileOriginX = doc.getElementsByTagName(<span class="string">'X'</span>)</span><br><span class="line">        tileOriginY = doc.getElementsByTagName(<span class="string">'Y'</span>)</span><br><span class="line">        tileOriginX[<span class="number">0</span>].firstChild.data = x_origin</span><br><span class="line">        tileOriginY[<span class="number">0</span>].firstChild.data = y_origin</span><br><span class="line">        f = open(tileScheme, <span class="string">'w+'</span>)</span><br><span class="line">        doc.writexml(f)</span><br><span class="line">        f.close()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        arcpy.AddMessage(<span class="string">"tile scheme XML file does not exist."</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们可以通过工具 Generate Map Server Cache Tiling Scheme 来生成自定义的切片方案，无论是ArcMap还是ArcGIS Pro ，无论是栅格切片还是矢量切片，都屡试不爽。&lt;/p&gt;
+&lt;p&gt;前段时间，为了方便 ArcGIS Pro 的自动化
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《面向ArcGIS的Python脚本编程》读后</title>
+    <link href="http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/"/>
+    <id>http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/</id>
+    <published>2018-01-11T04:57:19.000Z</published>
+    <updated>2018-02-07T10:03:13.623Z</updated>
+    
+    <content type="html"><![CDATA[<p>​        这篇是读书笔记。同事手里有本《面向ArcGIS的Python脚本编程》，系统的介绍了如何结合ArcGIS使用python。最近拿来阅读，觉得受益颇多。最早期我是通过python自身的学习资源、书籍、ArcGIS帮助文档入门的，知识体系虽然建立起来了，但是很多细节没有考虑到，对照书中的内容温故知新、查漏补缺。</p><h2 id="arcpy与AO"><a href="#arcpy与AO" class="headerlink" title="arcpy与AO"></a>arcpy与AO</h2><p>​        书的开篇就介绍了脚本语言和程序语言的区别。我将其引申到日常工作中用户会经常问到的，“为什么AO可以实现的东西，arcpy却不能？”“为什么arcpy的功能这么‘粗粒度’？” </p><p>​         AO中包含了ArcGIS用到的所有编程对象，包含了数以千计的不同对象，因此程序员可以精细控制软件的外观和运行机制。Python作为一种非常平易近人的语言，既是脚本语言又是程序语言，在ArcGIS平台中，python更多充当的是脚本语言的角色，例如：访问ArcGIS现有的功能，组合各种现有功能来扩展ArcGIS的功能，更可以作为一种“粘合剂”将更多的功能整合进来。用书中的话讲，脚本语言就是在“控制其他应用程序以实现任务自动化”。arcpy是ArcGIS提供的python站点包，用于访问ArcGIS 的地理处理功能，定位正在于此。</p><h2 id="arcpy与model-builder"><a href="#arcpy与model-builder" class="headerlink" title="arcpy与model builder"></a><strong>arcpy</strong>与<strong>model builder</strong></h2><p>​          model builder（简称MB吧）是ArcGIS Desktop中我认为最可爱的功能没有之一，它采用了编程的思想却免去了书写代码，是给非程序员实践创造的启航之地。日常工作中，很多逻辑简单、功能清晰的任务都可以使用MB实现。以前写过一篇，<a href="http://kikitamap.com/2015/12/06/IterationinArcGISforDesktop/" target="_blank" rel="noopener">《如何在ArcGIS for Desktop中实现批量任务》</a>，具体不再展开。你可能由这些疑问，“MB也能完成批量任务，我何时应该考虑使用python？”  当然这里回答的是“不得不”的问题，如果你本来就是编程高手，从一开始就会觉得MB限制了你的想象力，如下回答可能不需要考虑。 </p><p>​          MB的局限性有什么？或者说相比之下，python能更多实现什么？</p><ul><li>python可以实现更高级的编程逻辑。例如嵌套循环是MB的软肋，一遇到多重遍历之类的任务就只能呵呵了。</li><li>python可以实现更底层的处理任务。例如我们可以使用Cursor，遍历表并对其增删改等等。</li><li>python可以集成第三方的资源。例如R语言等第三方类库来处理数据执行任务。</li><li>python可以不在ArcGIS软件内部执行任务，只需要安装并授权ArcGIS软件，然后通过独立脚本的形式运行。既然可以独立运行，就可以定义系统任务定时执行。</li></ul><h2 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h2><h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><p>​        这本书中也提到了命名规范的内容，这是我在初期没有考虑到的问题。随着时间的推移和协同工作的需要，渐渐发现这是个非常重要的内容，大型的科技公司会更重视这个方面。编程和写文章一样，仅仅懂得一种语言的语法、词汇是不足够的，更重要的是如何将文章写的清晰优雅，对应到代码中就是简洁高效。python的官方命名规范：<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">Style Guide for Python Code</a>，它是PEPs（Python Enhancement Proposals）中的一部分。</p><p>​        变量名及脚本文件名：</p><ul><li>变量名以字母开头，不能使用特殊字符开头</li><li>全部使用小写字母</li><li>必要的时候使用下划线，增加代码可读性</li><li>使用描述性变量，避免使用俚语或缩写</li><li>变量名尽量简短</li></ul><p>​        缩进：</p><ul><li>建议使用四个空格表示缩进</li><li>不要同时使用tab和空格进行缩进</li></ul><p>​        注释：</p><ul><li>建议每个功能块都有相关注释</li><li>每个脚本工具或函数文件前需要有个头文件，应该包含脚本文件名、功能介绍、运行要求、作者、开发时间等信息。</li></ul><h3 id="从脚本外部输入参数"><a href="#从脚本外部输入参数" class="headerlink" title="从脚本外部输入参数"></a>从脚本外部输入参数</h3><p>​        使用系统参数 sys.agv 。系统参数sys.argv[0]存储的是脚本自身的地址，因此额外的系统参数是从1开始。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This is content of testInputPara.py.</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">x = int(sys.argv[<span class="number">1</span>])</span><br><span class="line">y = int(sys.argv[<span class="number">2</span>])</span><br><span class="line">print(x*y)</span><br></pre></td></tr></table></figure><p>​        在命令行中执行：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\ForTempTest&gt;python testInputPara<span class="selector-class">.py</span> <span class="number">2</span> <span class="number">8</span></span><br><span class="line"><span class="number">16</span></span><br></pre></td></tr></table></figure><p>​        在交互式python编译器中使用 input()，可以接收用户输入。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = input(<span class="string">""</span>)</span><br><span class="line">bingo</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(x)</span><br><span class="line">bingo</span><br></pre></td></tr></table></figure><p>​        ArcGIS 中通过创建脚本工具，与GP框架结合的调用方法，是更适合ArcGIS用户的方法。以前写过 《在ArcGIS中创建Python工具<a href="http://kikitamap.com/2015/08/31/CreatePythonTool1/" target="_blank" rel="noopener"><strong>（一）</strong></a>、<a href="http://kikitamap.com/2015/09/02/CreatePythonTool2/" target="_blank" rel="noopener"><strong>（二）</strong></a>、<a href="http://kikitamap.com/2015/09/10/CreatePythonTool3/" target="_blank" rel="noopener"><strong>（三）</strong></a>》几篇，点击链接可以近一步了解脚本工具。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​        这篇是读书笔记。同事手里有本《面向ArcGIS的Python脚本编程》，系统的介绍了如何结合ArcGIS使用python。最近拿来阅读，觉得受益颇多。最早期我是通过python自身的学习资源、书籍、ArcGIS帮助文档入门的，知识体系虽然建立起来了，但是很
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过arcpy自动发布服务</title>
+    <link href="http://www.kikitamap.com/2017/12/19/AutoPublishingService/"/>
+    <id>http://www.kikitamap.com/2017/12/19/AutoPublishingService/</id>
+    <published>2017-12-19T04:12:44.000Z</published>
+    <updated>2018-02-09T01:53:50.579Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><em>示例</em></strong></p><p><strong>地图服务</strong></p><p>发布单个地图服务：<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/MapServciePY27/PublishingSingleMapService.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/MapServciePY27/PublishingSingleMapService.py</a></p><p>批量发布地图服务：<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/MapServciePY27/BatchPublishingMapService.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/MapServciePY27/BatchPublishingMapService.py</a></p><p><strong>要素服务</strong></p><p>批量发布要素服务：<br>Hosted Feature Service<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/FeatureServicePY27/PublishingHostedFeatureService.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/FeatureServicePY27/PublishingHostedFeatureService.py</a></p><p>ArcGIS Server Feature Service<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/FeatureServicePY27/PublishingServerFeatureService.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/AutomaticallyPublishingServices/FeatureServicePY27/PublishingServerFeatureService.py</a></p><p><strong>影像服务</strong></p><p><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/TechConferences/2016-DeveloperTechConference-Demo/4-PublishImageService.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/TechConferences/2016-DeveloperTechConference-Demo/4-PublishImageService.py</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;&lt;em&gt;示例&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;地图服务&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;发布单个地图服务：&lt;br&gt;&lt;a href=&quot;https://github.com/kikitaMoon/ArcGIS-Python/blob/m
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Add LiveRe Comments</title>
+    <link href="http://www.kikitamap.com/2017/12/13/AddLiveRe/"/>
+    <id>http://www.kikitamap.com/2017/12/13/AddLiveRe/</id>
+    <published>2017-12-13T01:58:58.000Z</published>
+    <updated>2018-01-03T03:10:49.818Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://livere.com/img/icon/main/img_header_livereman.png" alt=""></p><p>自从多说挂了之后，网站的评论系统一直缺席中，今天自己部署个<a href="https://livere.com/" target="_blank" rel="noopener">LiveRe</a>吧，现在用的hueman主题，就以此主题为例，自己动手丰衣足食了。</p><ol><li>在主题的配置文件中增加一项，livere<br><code>...\themes\hueman\_config.yml</code></li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">comment</span>:</span><br><span class="line">    livere: your <span class="keyword">data</span> <span class="keyword">id</span></span><br></pre></td></tr></table></figure><p>2.在<code>...\themes\hueman\layout\comment</code>增加<code>livere.ejs</code>评论模块代码</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- LiveRe City install code --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"lv-container"</span> <span class="attr">data-id</span>=<span class="string">"city"</span> <span class="attr">data-uid</span>=<span class="string">"********"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">   (<span class="function"><span class="keyword">function</span><span class="params">(d, s)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">       <span class="keyword">var</span> j, e = d.getElementsByTagName(s)[<span class="number">0</span>];</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">       <span class="keyword">if</span> (<span class="keyword">typeof</span> LivereTower === <span class="string">'function'</span>) &#123; <span class="keyword">return</span>; &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">       j = d.createElement(s);</span></span><br><span class="line"><span class="actionscript">       j.src = <span class="string">'https://cdn-city.livere.com/js/embed.dist.js'</span>;</span></span><br><span class="line"><span class="actionscript">       j.async = <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">       e.parentNode.insertBefore(j, e);</span></span><br><span class="line"><span class="javascript">   &#125;)(<span class="built_in">document</span>, <span class="string">'script'</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span>Please activate JavaScript for write a comment in LiveRe<span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- completed City install code --&gt;</span></span><br></pre></td></tr></table></figure><p>3.相关文件增加判断</p><p><code>...\themes\hueman\layout\comment\index.ejs</code></p><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.comment.livere) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">       <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'comment/livere'</span>) </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure><p><code>...\themes\hueman\layout\comment\scripts.ejs</code></p><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.comment.livere) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'comment/livere'</span>, &#123; <span class="symbol">script:</span> <span class="literal">true</span> &#125;) </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure><blockquote><p>可是现在有个奇怪的问题，为什么评论框会出现两次？ 求高手解救！</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://livere.com/img/icon/main/img_header_livereman.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;自从多说挂了之后，网站的评论系统一直缺席中，今天自己部署个&lt;a href=&quot;https://livere.
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何部署通过Portal管理的ArcGIS Pro Named User许可？</title>
+    <link href="http://www.kikitamap.com/2017/11/29/ProNamedUserforPortalUse/"/>
+    <id>http://www.kikitamap.com/2017/11/29/ProNamedUserforPortalUse/</id>
+    <published>2017-11-29T03:50:45.000Z</published>
+    <updated>2017-12-22T06:45:24.771Z</updated>
+    
+    <content type="html"><![CDATA[<p>在开始如下部署之前，注意下版本对应的问题：</p><p>ArcGIS Pro 1.4 – ArcGIS License Manager 10.5<br>ArcGIS Pro 2.0 – ArcGIS License Manager 10.5.1。</p><p><strong><em>如下是我开始发布在ArcGIS知乎中的手册的一部分：</em></strong></p><p>如果您购买并已经部署了 Portal for ArcGIS，搭建了您的组织门户， 并且您希望在内网环境中通过 Named User 方式使用 ArcGIS Pro，那么您可以选择通过Portal for ArcGIS为组织成员配置Named User许可的方式。</p><p>##1 为组织配置 ArcGIS Pro 许可</p><p><strong>1)</strong> 首先您需要确定哪个组织门户将用于管理ArcGIS Pro的许可（这个指定的组织门户称为“许可门户”）， 尤其当您的组织有多个门户的时候，请确保您指定的门户是您想要用来管理许可的那个门户。此种许可模式，需要安装ArcGIS License Server Administrator 程序。</p><p><strong>2)</strong> 完成安装后，打开 ArcGIS License Server Administrator，并单击“计算机 ID…” 按钮。</p><p><img src="http://images.esrichina.com.cn/article/20170310/dbb2b70dea49a6649e5fed410bf1dc28.png" alt=""></p><p><strong>3)</strong> 复制并保存计算机标识符对话框中的 MAC 地址 </p><ul><li>例如，005056a700c7（您需要向 My Esri 提供此信息）。 如果该对话框中存在两个 MAC 地址，则只复制其中之一。</li></ul><p><img src="http://images.esrichina.com.cn/article/20170310/0f5f97c5f0d6bebb6ced505533453c09.png" alt=""></p><p>4) 请记录上一步中您的Mac地址，并且提供您以下信息之一（用户ID、合同编号、用户单位全称），致电易智瑞(中国)信息技术有限公司合同部，为您生成可用于配置许可门户的文件（*.lic）。<br>联系电话： 010-5673228，拨0，转合同部。</p><p>5) 当您收到合同部发送的文件 (*.lic)之后， 将其保存到前面安装了 ArcGIS License Server Administrator 的计算机可访问的目录中。</p><p>6) 打开 ArcGIS License Server Administrator 并启动许可服务（如果未运行）。 单击“授权”选项卡，选择“版本”下拉对话框中的“命名用户/Named User”并单击“立即授权”按钮。</p><p><img src="http://images.esrichina.com.cn/article/20170310/67fcfb6b847f3e84ce58d847e50735f9.png" alt=""></p><p>7) 选择“我已收到来自 Esri 的授权文件，现在准备完成授权过程。”，然后浏览至许可 (.lic) 文件, 单击“打开”。</p><p>8) 单击“下一步”。随即显示一个对话框，表明已应用Named User许可。单击“确定”。对话框可能会显示几秒钟，这表示正在重新读取许可。</p><p>9) 单击“可用性”选项卡，并从右上角下拉对话框中选择“命名用户/Named User”。确认显示了预期授权。列出的总数将是Named User实际数量的3倍，这是因为每个Named User 最多允许同时在3个设备上运行 ArcGIS Pro 。</p><p>10) 生成门户配置文件。单击“授权”选项卡，然后单击“生成…”，并将门户配置文件 (.json) 保存到对 Portal for ArcGIS 可见的位置。</p><p><img src="http://images.esrichina.com.cn/article/20170310/8b3564c329df10a6b1f3b1fbb5ffb00d.png" alt=""></p><p>随即会显示一个对话框，表明已在您指定的位置生成了文件。单击“确定”并关闭 ArcGIS License Server Administrator。</p><p>11) 打开Web浏览器, 并以组织中默认管理员角色成员的身份登录到 ArcGIS Portal Directory。URL 地址格式为: <a href="https://portal.domain.com:7443/arcgis/portaladmin" target="_blank" rel="noopener">https://portal.domain.com:7443/arcgis/portaladmin</a>  您登录的门户将成为组织的许可门户。</p><p>12) 单击“系统” &gt; “许可” &gt; “导入授权”。</p><p><img src="http://images.esrichina.com.cn/article/20170310/99df556ff3f049041cfda22f60eb70e2.png" alt=""></p><p>13) 单击“浏览”并选择先前生成的门户配置文件 (.json)。确保应用程序下拉菜单被设为 ArcGIS Pro。</p><p><img src="http://images.esrichina.com.cn/article/20170310/280e7ef674045acae19126fbc2f7bc3f.png" alt=""></p><p>14）单击“导入”，您的组织现在已配置了 ArcGIS Pro 许可。</p><p>##2 组织管理员配置ArcGIS Pro许可</p><p>本节的配置方法与 ArcGIS Online 组织管理员配置 ArcGIS Pro 许可的方法相似。<br>注意：<br>从 ArcGIS 10.5 版本之后，您只能为达到成员资格级别 2 级的门户成员配置 ArcGIS Pro 许可。​</p><p>##3 登录并使用ArcGIS Pro</p><p>1) 启动 ArcGIS Pro。<br>如果 ArcGIS Pro 已打开，请登出，关闭程序，然后重新启动。只能在首次启动 ArcGIS Pro 时连接至许可门户。</p><p>2) 在 ArcGIS Pro的启动界面中，点击“About ArcGIS Pro”。</p><p><img src="http://images.esrichina.com.cn/article/20170310/bbea712ccfa54d51dc456edb0218fa87.png" alt=""></p><p>3) 在“Licensing”页面中，点击 “Configure your licensing options”。</p><p><img src="http://images.esrichina.com.cn/article/20170310/30bf8e51c3905c389cb36c6e2c93e7e0.png" alt=""></p><p>4) 输入许可门户的 URL，如<a href="https://webadaptor.domain.com/arcgis。" target="_blank" rel="noopener">https://webadaptor.domain.com/arcgis。</a></p><p><img src="http://images.esrichina.com.cn/article/20170310/1b4d6d77d4d9a10691794c2d24c5ddb7.png" alt=""></p><p>5) 单击“OK”。稍后，在登录页面中输入账号密码登录并使用ArcGIS Pro。</p><p><br></p><p>原文地址：<a href="http://zhihu.esrichina.com.cn/article/471" target="_blank" rel="noopener">http://zhihu.esrichina.com.cn/article/471</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在开始如下部署之前，注意下版本对应的问题：&lt;/p&gt;
+&lt;p&gt;ArcGIS Pro 1.4 – ArcGIS License Manager 10.5&lt;br&gt;ArcGIS Pro 2.0 – ArcGIS License Manager 10.5.1。&lt;/p&gt;
+&lt;p&gt;&lt;stro
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+    
+      <category term="License" scheme="http://www.kikitamap.com/tags/License/"/>
+    
+      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tidy up the code ...</title>
+    <link href="http://www.kikitamap.com/2017/11/14/tidyup/"/>
+    <id>http://www.kikitamap.com/2017/11/14/tidyup/</id>
+    <published>2017-11-14T02:07:18.000Z</published>
+    <updated>2017-12-08T06:47:59.344Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：<a href="https://github.com/kikitaMoon/ArcGIS-Python" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python</a></p><p>开始从来不知道自己会在编程的道路上越走越远，积极用脑、专注做事可能是推迟进入油腻中年的最好途径。 这一年生命中多了一个人，生活有了很多变化，纵然精力旺盛的我也开始觉得分身乏力，感谢宝宝的乖巧才让我有了很多的时间做“贤妻良母”之外的事情。希望我的宝宝长大后，可以看到妈妈的文字，互相感恩乐观前行。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_python-toolbox.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：&lt;a href=&quot;https://github.com/kikitaMoon/ArcGIS-Python&quot; targ
+      
+    
+    </summary>
+    
+      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ArcGIS Enterprise Administration 10.5 Certification</title>
+    <link href="http://www.kikitamap.com/2017/11/01/AGSEntAdminCA/"/>
+    <id>http://www.kikitamap.com/2017/11/01/AGSEntAdminCA/</id>
+    <published>2017-11-01T05:36:16.000Z</published>
+    <updated>2017-12-22T06:44:18.163Z</updated>
+    
+    <content type="html"><![CDATA[<p>The Enterprise Administration Associate exam tests the candidate’s experience operating and supporting enterprise solutions. Qualified candidates should be proficient in best practices, and able to apply configuration changes to meet production needs, to perform continuous monitoring and maintenance, to troubleshoot common Esri technology issues, and to communicate software and support needs. Candidates should have 2-4 years of experience operating and supporting enterprise solutions and 18-24 months working with Esri’s ArcGIS technology.</p><h2 id="Qualifications"><a href="#Qualifications" class="headerlink" title="Qualifications"></a>Qualifications</h2><p><strong>A qualified candidate should be able to perform the following tasks:</strong></p><ul><li>Install, configure, and upgrade a base ArcGIS Enterprise deployment</li><li>Understand and implement the Esri licensing model</li><li>Publish and administer services, using different ArcGIS Enterprise deployment models (on- premises, hybrid, and cloud)</li><li>Deploy, publish, and administer GIS services and resources available through ArcGIS Online or ArcGIS Enterprise</li><li>Diagnose and improve the performance of services from ArcGIS Online and ArcGIS Enterprise</li><li>Manage cached resources and services</li><li>Perform ArcGIS Enterprise system administration workflows.</li><li>Configure security for ArcGIS Enterprise</li><li>Register external data sources with ArcGIS Enterprise</li><li>Monitor system health, conduct performance tuning, and identify bottlenecks across an ArcGIS Enterprise deployment</li></ul><p><strong>A qualified candidate should be familiar with the following tools:</strong></p><ul><li>Operating systems, web servers, storage devices, file storage systems, databases, authentication, network and security concepts</li><li>System monitoring tools</li><li>Ready-to-use apps, the ArcGIS web APIs, and app templates</li><li>ArcGIS Enterprise Cloud Builder</li></ul><p><strong>A qualified candidate should NOT be expected to perform the following tasks:</strong></p><ul><li>Apply high availability deployment patterns of ArcGIS Enterprise</li><li>System design &amp; integration</li><li>Geodatabase administration and tuning</li><li>Application development</li><li>ArcGIS Desktop analysis or data management</li><li>Security audits and vulnerability assessments</li></ul><h2 id="Skill-Measured"><a href="#Skill-Measured" class="headerlink" title="Skill Measured"></a>Skill Measured</h2><p>The following list will familiarize candidates with the exam sections to help guide exam preparation. The relative weight of each section is provided to illustrate the approximate size of each section. Candidates should review this list and assess their knowledge of each skill. Specific preparation resources are available to assist with refreshing in areas where any knowledge gaps are found.</p><p><strong>Implement and Deploy a Solution — 15%</strong></p><ul><li>Given a set of requirements, determine the appropriate ArcGIS Enterprise licensing role</li><li>Given a set of requirements, apply procedural concepts to configure security for an ArcGIS Enterprise deployment</li><li>Given a set of requirements, determine the appropriate ArcGIS Enterprise component(s)</li><li>Identify considerations for installing components of an ArcGIS Enterprise deployment</li></ul><p><strong>Maintain and Support a Solution — 30%</strong></p><ul><li>Apply procedural concepts to manage updates to services</li><li>Apply procedural concepts to manage updates to system</li><li>Apply procedural concepts to manage updates to apps</li><li>Identify steps to backup and restore an ArcGIS Enterprise deployment</li><li>Identify tools and workflows to administer ArcGIS Enterprise</li></ul><p><strong>Troubleshoot Problems with ArcGIS Enterprise — 30%</strong></p><ul><li>Interpret ArcGIS Enterprise log messages</li><li>Troubleshoot causes of performance issues in an ArcGIS Enterprise deployment</li><li>Troubleshoot errors with the ArcGIS Enterprise system</li><li>Troubleshoot errors with sharing workflows in an ArcGIS Enterprise deployment</li><li>Identify functional components of ArcGIS Enterprise</li></ul><p><strong>Prepare and Publish Services — 24%</strong></p><ul><li>Given a set of requirements, identify which service type is required</li><li>Determine the requirements for sharing a given service type</li><li>Identify which workflow is required to share a given service type</li><li>Apply procedural concepts to configure service capabilities and properties to meet user requirements</li></ul><h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><p>A qualified candidate should be familiar with the following software:</p><ul><li>ArcGIS Desktop 10.5</li><li>ArcGIS Enterprise 10.5</li></ul><h2 id="Exam-Details"><a href="#Exam-Details" class="headerlink" title="Exam Details"></a>Exam Details</h2><p>Number of questions: 80<br>Certification code: EEAA105<br>Exam duration:  2 Hours<br>Exam type: Multiple choice, multiple select<br>Published date: June 2017<br>Exam state: Available to public</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;The Enterprise Administration Associate exam tests the candidate’s experience operating and supporting enterprise solutions. Qualified ca
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+    
+      <category term="Certification" scheme="http://www.kikitamap.com/tags/Certification/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ArcGIS Desktop Professional 10.5 Certification</title>
+    <link href="http://www.kikitamap.com/2017/10/26/AGSDeskProCA/"/>
+    <id>http://www.kikitamap.com/2017/10/26/AGSDeskProCA/</id>
+    <published>2017-10-26T01:41:48.000Z</published>
+    <updated>2017-12-22T06:44:52.837Z</updated>
+    
+    <content type="html"><![CDATA[<p>The ArcGIS Desktop Professional exam tests the candidate’s experience applying ArcGIS concepts and processes to workflows. Qualified candidates should demonstrate proficiency when applying advanced GIS concepts and knowledge to establish workflows, processes, troubleshooting non-routine issues, and skilled at defining and successfully completing complex GIS projects. Qualified candidates should have five years of applied experience, and should be proficient in best practices and uses of Esri’s ArcGIS technologies.</p><h2 id="Qualifications"><a href="#Qualifications" class="headerlink" title="Qualifications"></a>Qualifications</h2><p><strong>A qualified candidate should be able to perform the following tasks:</strong></p><ul><li>Apply and interpret fundamental spatial statistics and visualization techniques</li><li>Build a reference data set and an address locator</li><li>Build a transportation network and apply solvers</li><li>Implement and apply Python scripting</li><li>Perform advanced vector and raster analysis</li><li>Perform fundamentals of geodatabase design and operate within a multi-user geodatabase</li><li>Perform surface modeling and analysis</li><li>Utilize advanced modeling techniques</li><li>Identify and resolve common workflows</li><li>Author a mosaic dataset</li><li>Demonstrate proficiency in ArcGIS Desktop user interface and environment configuration</li><li>Determine and define an appropriate coordinate system</li><li>Manipulate data with Spatial Analyst, 3D Analyst, and Network Analyst extensions</li><li>Author and publish to a web GIS portal</li><li>Implement and apply web content or services to perform analyses</li><li>Configure web app templates and Web AppBuilder widgets</li></ul><p><strong>A qualified candidate should be familiar with the following tools:</strong></p><ul><li>ArcGIS Desktop (ArcCatalog, ArcMap and ArcGIS Pro)</li><li>ArcGIS Online</li><li>ArcGIS Enterprise</li><li>ArcGIS Network Analyst</li><li>ArcGIS Spatial Analyst</li><li>ArcGIS 3D Analyst</li><li>Python</li></ul><p><strong>A qualified candidate should NOT be expected to perform the following tasks:</strong></p><ul><li>Deliver production quality cartographic output with specific industry solutions</li><li>Administer a multi-user geodatabase</li><li>Develop or administer websites</li><li>Develop tools or apps using any SDK or API</li><li>Network or systems administration</li><li>Administer an ArcGIS Online organization</li></ul><h2 id="Skill-Measured"><a href="#Skill-Measured" class="headerlink" title="Skill Measured"></a>Skill Measured</h2><p>The following list will familiarize candidates with the exam sections to help guide exam preparation. The relative weight of each section is provided to illustrate the approximate size of each section. Candidates should review this list and assess their knowledge of each skill. Specific preparation resources are available to assist with refreshing in areas where any knowledge gaps are found.</p><p><strong>Data Storage — 21%</strong></p><ul><li>Given requirements for a specific project, determine how to design a geodatabase</li><li>Select appropriate data formats for an intended use</li><li>Given a task, determine the data, settings, and parameters for creating a complex data set</li><li>Given a task, determine the data, settings, and parameters for creating an address locator</li><li>Given a scenario, determine how to synchronize replicated data</li></ul><p><strong>Managing Data — 26%</strong></p><ul><li>Given a scenario, convert and aggregate data to an appropriate format</li><li>Given a task, determine the necessary schema changes so that the data can support a particular operation</li><li>Given datasets that do not align, determine the best workflow to resolve the issue</li><li>Given a project, determine how to manage coordinate systems</li><li>Given a scenario, determine the method to create a surface dataset</li><li>Given a scenario, determine how to automate data management</li></ul><p><strong>Visualizing and Sharing Data — 21%</strong></p><ul><li>Given a scenario, use advanced cartographic techniques to visualize content across the ArcGIS platform</li><li>Given a scenario, determine how to optimize rendering of maps across the platform</li><li>Given a scenario, determine how to create and render scenes</li><li>Identify procedures to create and publish layers, maps, and apps for a given task</li><li>Given a scenario, determine the most effective process for sharing content</li><li>Given a scenario, determine how to automate visualization and sharing using ArcPy in ArcGIS Desktop</li></ul><p><strong>Analysis and Geoprocessing — 31%</strong></p><ul><li>Determine how to create and edit a Python script to automate a simple repetitive process in an ArcGIS workflow</li><li>Determine how to create and edit a model in ModelBuilder to automate a complex workflow in ArcGIS for a given task</li><li>Given a failed workflow, determine the cause of the failure</li><li>Given user requirements, determine an appropriate method for sharing a geoprocessing model, script, package, toolbox, etc.</li><li>Determine how to customize the user interface to perform a task</li><li>Determine how to author tasks in ArcGIS Pro</li><li>Given a scenario that requires an analysis, determine the workflow, data, tools, settings, and parameters to perform the analysis</li></ul><h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><p>A qualified candidate should be familiar with following software:</p><ul><li>ArcGIS Desktop (ArcCatalog 10.5, ArcMap 10.5 and ArcGIS Pro 1.4)</li><li>ArcGIS Spatial Analyst extension</li><li>ArcGIS Network Analyst extension</li><li>ArcGIS 3D Analyst extension</li><li>ArcGIS Online</li><li>ArcGIS Enterprise 10.5</li><li>Python 2.7 and 3.5</li></ul><h2 id="Exam-Details"><a href="#Exam-Details" class="headerlink" title="Exam Details"></a>Exam Details</h2><p>Number of questions: 80<br>Certification code: EADP105<br>Exam duration: 2 Hours<br>Exam type: Multiple choice, multiple select<br>Published date: June 2017<br>Exam state: Available to public</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;The ArcGIS Desktop Professional exam tests the candidate’s experience applying ArcGIS concepts and processes to workflows. Qualified cand
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+    
+      <category term="Certification" scheme="http://www.kikitamap.com/tags/Certification/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小结空间插值分析</title>
+    <link href="http://www.kikitamap.com/2017/10/15/SpatialInteroplation/"/>
+    <id>http://www.kikitamap.com/2017/10/15/SpatialInteroplation/</id>
+    <published>2017-10-15T06:10:44.000Z</published>
+    <updated>2017-10-16T06:58:07.580Z</updated>
+    
+    <content type="html"><![CDATA[<p>空间插值分析的基本原则是“<a href="https://en.wikipedia.org/wiki/Tobler%27s_first_law_of_geography" target="_blank" rel="noopener">地理学第一定律</a>”，即“Everything is related to everything else, but near things are more related than distant things”，这是Waldo Tobler提出的。 例如，如果你所在的位置正在下雨，那么很有可能离你100米的位置也在下雨，而20公里以外的地方下雨就不一定了，或者说可能性就低了很多。 大多数插值方法遵循了这样的准则。</p><p>插值方法大致可以分为，<strong>确定性插值方法/Deterministic interpolation methods</strong>和随机性插值方法： 确定性插值方法使用了<a href="https://en.wikipedia.org/wiki/Deterministic_algorithm" target="_blank" rel="noopener">确定性算法</a>，即，给予特定的输入数据我们会得到相同的结果； 而<strong>随机性插值方法</strong>是基于统计学的，通常用于更高级的表面预测建模，这种建模方法不仅可以预测表面的数值，也可能会带来误差或者不确定性，一些常见的地统计插值方法就属于这个范畴。</p><p>从参与计算预测值的采样点的范围来看，确定性插值方法可以分为<strong>全局/Globe</strong>和<strong>局部/Local</strong>两种。 全局插值方法在计算预测值时使用了整个数据集，而局部插值方法是通过特定的领域来计算预测值。</p><p>从预测表面是否穿过已知采样点来看，确定性插值还可以分为<strong>精确/exact</strong>和<strong>非精确/inexact</strong>两种。 如果插值算法预测的采样点位置的数值与采样点自身的数据一致，那么就是精确插值；否则为非精确插值。</p><ul><li>精确插值：   反距离权重法/IDW，径向基函数法/radial basis functions，样条函数法/Spline</li><li>非精确插值： 全局或局部多项式法/global and local polynomial</li></ul><p><strong>IDW 插值方法</strong></p><p>IDW是一种非常实用又很好理解的插值方法，适用于大多数情况。但是有关这个算法还有些注意事项：IDW并没有考虑数据的趋势，例如，如果数据在不同的方向上有不同的变化，那么这会被IDW方法忽略，IDW得到的是各个方向均一的预测插值；IDW插值仅在采样点的最大值和最小值之间进行预测插值，如果你是高程表面建模，那么山峰和河谷很有可能被抹平了。</p><p>IDW插值时，可以设置power参数来控制周围采样点对插值影响的显著性。 power值越大，较远的点对预测插值的影响就会越弱，也就是说，远处的采样点对预测值的影响随着power的增大而削减越快。power可以是任意正数，但是通常取值范围是0.5-3，默认为2。</p><p>有关IDW还有个常见小问题。既然IDW是精确插值，那为什么有时候看采样点所在像元的预测值与采样点值还是稍有差异？这是因为采样点并没有恰好落在像元的正中心。</p><p><strong>样条函数插值方法/Spline Method</strong></p><p>样条函数相比IDW更灵活，我们可以想象一下通过一张橡皮膜穿过所有已知采样点来预测表面。 样条函数法不像IDW，它可以是预测值高于或低于已知采样点的最大值或最小值。 然而，如果相聚非常近的采样点的值变化非常剧烈，样条函数就会出现异常，因为样条函数的算法中是基于坡度（单位距离的值变化量）来计算预测值的。 也就是说，例如，如果你的数据中如果含有悬崖，断层线，最好还是用IDW吧。</p><p>样条函数有两种类型： regularized 和 tension。 使用相同的采样点，tension spline比 regularized spline得到的预测表面更扁平，也就是使得预测值更接近采样值。 或者说tension spline更僵硬，而regularized spline 更有弹性，这个描述看起来更生动。</p><p>另外一个可以进一步控制预测表面的形态的参数是权重/weight。对于regularized spline，权重越高表面越平滑，常用的典型参数有0, 0.001、 0.01、 0.1、 0.5，默认是0.1；对于tension spline，权重越高表面约粗糙，常用的典型参数有0、 1、 5、10。</p><p><strong>地形转拓扑/Topo to Raster</strong></p><p>这是一种水文校正的插值方法，可以综合点线面输入数据，充当不同的角色或类别进行表面建模。 </p><blockquote><p>从帮助中摘过来的描述：</p></blockquote><p>共有九种数据类型可作为地形类的输入：</p><ul><li>PointElevation 表示表面高程的点要素类，field 用于存储点的高程。</li><li>Contour 表示高程等值线的线要素类， field 用于存储等值线的高程。</li><li>Stream 河流位置的线要素类。所有弧线必须定向为指向下游。要素类中应该仅包含单条弧线组成的河流。</li><li>Sink 表示已知地形凹陷的点要素类。</li><li>Boundary 边界是包含表示输出栅格外边界的单个面的要素类。在输出栅格中，位于此边界以外的像元将为 NoData。此选项可用于在创建最终输出栅格之前沿海岸线裁剪出水域。 </li><li>Lake 指定湖泊位置的面要素类。湖面内的所有输出栅格像元均将指定为使用沿湖岸线所有像元高程值中最小的那个高程值。</li><li>Cliff 悬崖的线要素类。必须对悬崖线要素进行定向以使线的左侧位于悬崖的低侧，线的右侧位于悬崖的高侧。</li><li>Exclusion 其中的输入数据应被忽略的区域的面要素类。这些面允许从插值过程中移除高程数据。通常将其用于移除与堤壁和桥相关联的高程数据。这样就可以内插带有连续地形结构的基础山谷。</li><li>Coast 包含沿海地区轮廓的面要素类。位于这些面之外的最终输出栅格中的像元会被设置为小于用户所指定的最小高度限制的值。<br>PointElevation、Contour 和 Sink 要素输入类型均可指定包含 z 值的字段。但对于 Boundary、Lake、Cliff、Coast、Exclusion 或 Stream 输入类型则不存在 Field 选项。</li></ul><p>容差 1 和容差 2 设置的典型值为：</p><ul><li>对于比例为 1:100,000 的点数据，请分别使用 5.0 和 200.0。</li><li>对于比例高达 1:500,000 的较不密集的点数据，请分别使用 10.0 和 400.0。</li><li>对于等值线间距为 10 的等值线数据，请分别使用 5.0 和 100.0。<br>容差 2 应至少比容差 1 大 6 倍。</li></ul><p>插值方法其实还有很多，今天就针对Esri Training的课程整理这些吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;空间插值分析的基本原则是“&lt;a href=&quot;https://en.wikipedia.org/wiki/Tobler%27s_first_law_of_geography&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;地理学第一定律&lt;/a&gt;”，即“Ever
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+    
+      <category term="Spatial Analyst" scheme="http://www.kikitamap.com/tags/Spatial-Analyst/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何创建ArcMap的启动日志？</title>
+    <link href="http://www.kikitamap.com/2017/08/14/ArcMapStartupLog/"/>
+    <id>http://www.kikitamap.com/2017/08/14/ArcMapStartupLog/</id>
+    <published>2017-08-14T06:41:36.000Z</published>
+    <updated>2017-08-14T07:31:33.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>ArcMap 启动时崩溃，想看看究竟发生了什么，ArcMap卡在哪一步失败了？</p><p>那么 “cmd” 打开命令行，跳转到 ArcGIS Desktop 安装目录，然后使用 <code>arcmap.exe /log</code> 来启动 ArcMap同时创建日志。</p><p>日志默认创建在 arcmap.exe 的相同目录，命令行直接打开日志 <code>notepad arcmap.log</code></p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ArcMapStartupLog.png-kikitaMaps" alt=""></p><p>日志样例：</p><p>Initializing license…done<br>Parsed command line<br>Creating App…<br>done<br>Processing shell command…<br>Creating New Document…<br>Opening normal template…done…<br>Loading printer information…done…<br>New VBA project…done…<br>Add first mapDone creating New Document<br>done<br>Loading extensions…done<br>Startup complete<br>Done processing shell command<br>Calling ApcSethWnd()…done</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ArcMap 启动时崩溃，想看看究竟发生了什么，ArcMap卡在哪一步失败了？&lt;/p&gt;
+&lt;p&gt;那么 “cmd” 打开命令行，跳转到 ArcGIS Desktop 安装目录，然后使用 &lt;code&gt;arcmap.exe /log&lt;/code&gt; 来启动 ArcMap同时创建日志。
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Performance" scheme="http://www.kikitamap.com/tags/Performance/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回归后的新起点</title>
+    <link href="http://www.kikitamap.com/2017/08/01/AnotherBeginning/"/>
+    <id>http://www.kikitamap.com/2017/08/01/AnotherBeginning/</id>
+    <published>2017-08-01T01:55:02.000Z</published>
+    <updated>2017-08-01T04:54:00.693Z</updated>
+    
+    <content type="html"><![CDATA[<p>离开kikitamap.com有点久，这期间完成了人生的一件大事，如今已经返回工作，又开始了探索技术的无尽模式。 发现育儿并不比ArcGIS更简单，哈，现在需要学习的东西真的是成倍的增长，无论我是愚公还是天神，“两座大山”摆在面前，都得需要翻越或者搬起。</p><p>人生很奇妙，有的成长几乎是一瞬间完成的，就如孩子的微笑、抬头、翻身，忽然有一天就给你带来惊喜；与孩子一同成长，我也变得愈加淡定从容，愈加理解人生真正所求，愈加懂得取悦自己。 记得有朋友问过我，为啥不弄个公众号，现在不流行博客。 公众号当下很好，但它在于广而告之，推广是核心，可是这不是我想要的；我喜欢有个属于自己的角落随意写点东西，研究点有意思的事情，而不被它所牵制，更多的是留给自己与真正需要和关心的人。</p><p>“活到老，学到老。” —— 一句老气的至理名言。 学习是条渴望尽头却没有尽头的不归路，但是也不要轻易的“回头是岸”，或是吭哧吭哧地“苦作舟”，自己寻点乐子吧。 </p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_Cute.jpg-kikitaMaps" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;离开kikitamap.com有点久，这期间完成了人生的一件大事，如今已经返回工作，又开始了探索技术的无尽模式。 发现育儿并不比ArcGIS更简单，哈，现在需要学习的东西真的是成倍的增长，无论我是愚公还是天神，“两座大山”摆在面前，都得需要翻越或者搬起。&lt;/p&gt;
+&lt;p&gt;人生
+      
+    
+    </summary>
+    
+      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VS部署应用程序失败&#39;找不到SignTool.exe&#39;</title>
+    <link href="http://www.kikitamap.com/2017/02/07/VSpublishFailure/"/>
+    <id>http://www.kikitamap.com/2017/02/07/VSpublishFailure/</id>
+    <published>2017-02-07T01:08:44.000Z</published>
+    <updated>2017-02-07T02:07:45.738Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用 Visual Studio 2015 部署应用的时候遇到一个问题，在进行publish之后又提示错误：“An error occurred while signing: SignTool.exe not found.”。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_VSpublishFailure_Error.jpg-kikitaMaps" alt=""></p><p>查了下官方的技术文档，解决方法如下：</p><p>先确认下自己的机器是否安装了 signtool.exe, 如果安装了则位于：</p><pre><code>`%programfiles(x86)%\Microsoft SDKs\Windows\v7.0A\Bin   for x64 system``%programfiles%\Microsoft SDKs\Windows\v7.0A\Bin        for x86 system`</code></pre><p>signtool.exe 是 Windows平台SDK的一部分，如果在上面的路径中没有发现这个文件，那就需要安装下。 <a href="https://msdn.microsoft.com/en-us/library/8s9b9yaz.aspx" target="_blank" rel="noopener">signtool.exe 是什么？</a></p><p>方法很简单，重新执行VS的安装程序，选择Custom模式，补充安装 <code>ClickOnce Publishing Tools</code> 。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_VSpublishFailure_Setup.png-kikitaMaps" alt=""></p><p>安装完成后，问题解决。</p><p><br></p><p>技术文档详情，点<a href="https://blogs.msdn.microsoft.com/vsnetsetup/2013/11/18/an-error-occurred-while-signing-signtool-exe-not-found/" target="_blank" rel="noopener">这里</a>。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在使用 Visual Studio 2015 部署应用的时候遇到一个问题，在进行publish之后又提示错误：“An error occurred while signing: SignTool.exe not found.”。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Visual Studio" scheme="http://www.kikitamap.com/tags/Visual-Studio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生成线要素分段缓冲区</title>
+    <link href="http://www.kikitamap.com/2017/01/23/CreateSplittedBuffer/"/>
+    <id>http://www.kikitamap.com/2017/01/23/CreateSplittedBuffer/</id>
+    <published>2017-01-23T07:43:20.000Z</published>
+    <updated>2017-12-04T01:54:00.104Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间做了个小工具，可以生成线要素的分段缓冲区，补充 ArcGIS 现有缓冲区工具的不足，用来辅助实现更多的功能。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferTool.png-kikitaMaps" alt=""></p><p>工具基于 arcpy、maths、os 几个模块实习，arcpy 中并没有提供现成的计算切线方向的函数或接口，我就尝试通过点处微小偏移量的三角定理计算方法构造切线，然后进行角度换算实现垂线的构造，最后再用垂线去切割缓冲区条带。</p><p><br></p><p>链接中可以下载 ArcGIS Desktop 或者 ArcGIS Pro 的工具箱版本（ 开发版本：Desktop 10.5，Pro 1.3，其他版本需要自己测试下 ）：</p><p><a href="https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer</a><br>(更新20171204：改SplittedBuffer为BambooBuffer，好像更形象一点)</p><p>以在 ArcGIS Pro 中添加和使用为例：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferUI.png-kikitaMaps" alt=""></p><p><br></p><p>工具源码参考：<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py</a></p><p><br></p><p>基于工具的应用实例：</p><p>1  统计公路各分段的拥堵情况</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_Road.png-kikitaMaps" alt="enter image description here"></p><p>2  河道分段水位模拟</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_River.png-kikitaMaps" alt="enter image description here"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前段时间做了个小工具，可以生成线要素的分段缓冲区，补充 ArcGIS 现有缓冲区工具的不足，用来辅助实现更多的功能。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferTool
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ArcGIS Python API 功能一瞥</title>
+    <link href="http://www.kikitamap.com/2017/01/22/PythonAPIFunction1/"/>
+    <id>http://www.kikitamap.com/2017/01/22/PythonAPIFunction1/</id>
+    <published>2017-01-22T10:55:38.000Z</published>
+    <updated>2017-12-22T06:49:19.610Z</updated>
+    
+    <content type="html"><![CDATA[<p>继上一篇<a href="http://kikitamap.com/2016/10/17/UsingArcGISPythonAPI/" target="_blank" rel="noopener">部署 ArcGIS Python API</a> 之后，再来试试 Python API 的渲染和分析的功能。 通过这两个功能来摸索下 ArcGIS Python API 的使用方法。</p><h1 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h1><p><strong>1  导入gis模块，创建GIS对象</strong></p><p>在 ArcGIS Python API 中 gis 是个核心模块，提供了对组织内成员、群组、内容的创建、读取、更新和删除等功能，你的组织既可以是托管在ArcGIS Online中，也可以是自己部署的门户（Portal for ArcGIS），或者更准确的说，在10.5版本应该称为 ArcGIS Enterprise.</p><p>GIS对象是gis模块最重要的对象，我们可以理解为，GIS对象是通过ArcGIS Python API编写脚本的入口。 </p><p>下面以我的 ArcGIS Enterprise 测试环境为例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> arcgis.gis <span class="keyword">import</span> GIS</span><br><span class="line"></span><br><span class="line"><span class="comment"># Demo</span></span><br><span class="line"><span class="comment"># class arcgis.gis.GIS(url=None, username=None, password=None,  key_file=None, cert_file=None, verify_cert=True, set_active=True)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#          #Portal URL                         #UserName     #Passward</span></span><br><span class="line">gis = GIS(<span class="string">"https://kikita.mycloud.com/arcgis"</span>,<span class="string">"portaladmin"</span>,<span class="string">"mypasswd"</span>, verify_cert=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure><p><strong>2  获取感兴趣的内容</strong></p><p>通过 gis.content.search() 方法可以在组织中查找所需内容。例如我查找命名包含 “China_Railways” 的要素服务。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Search My Portal</span></span><br><span class="line">search_result = gis.content.search(<span class="string">'title: China_Railways'</span>, item_type=<span class="string">'Feature Layer'</span>)</span><br><span class="line">search_result</span><br></pre></td></tr></table></figure><p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&lt;Item title:&quot;China_Railways&quot; type:Feature Service owner:portaladmin&gt;,</span><br><span class="line"> &lt;Item title:&quot;China_Railways___county_pt_Density&quot; type:Feature Service owner:portaladmin&gt;]</span><br></pre></td></tr></table></figure></p><p><strong>3  使用地图微件</strong></p><p>GIS对象中包含一个地图微件，可以用来渲染（可视化）组织中的内容，比如要素服务。我们还可以通过关键字来确定地图的显示位置，和指定地图的幅面尺寸等。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Create a map widget</span></span><br><span class="line">mymap = gis.map(<span class="string">'China'</span>)</span><br><span class="line">mymap.height = <span class="string">'500px'</span></span><br><span class="line">mymap</span><br></pre></td></tr></table></figure><p><strong>4 添加图层并渲染</strong></p><p>例如使用热度图/Heatmap 渲染器</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Add layer using heatmap renderer</span></span><br><span class="line">featureitem = search_result[<span class="number">0</span>]</span><br><span class="line">mymap.add_layer(featureitem.layers[<span class="number">0</span>], &#123;<span class="string">"renderer"</span>:<span class="string">"HeatmapRenderer"</span>, <span class="string">"opacity"</span>:<span class="number">0.7</span>&#125;)</span><br></pre></td></tr></table></figure><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_PythonAPI_MapWidget.gif-kikitaMaps" alt=""></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>假设需求是实现采样点插值，数据来源是桌面产品自带的ArcGIS Tutorial中的数据（Geostatistical Analyst\ca_ozone.gdb\O3_Sep06_3pm）。</p><p>除了通过搜索的方法，如果知道 itemid ，也能直接获得到内容，可以使用方法 gis.content.get()</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> arcgis <span class="keyword">import</span> gis</span><br><span class="line">gis = gis.GIS(<span class="string">"https://kikita.mycloud.com/arcgis"</span>,<span class="string">"portaladmin"</span>,<span class="string">"Super123"</span>, verify_cert=<span class="keyword">False</span>)</span><br><span class="line">search_result = gis.content.get(<span class="string">'15b012af7f15484293517c844d2d65ab'</span>)</span><br><span class="line">search_result</span><br></pre></td></tr></table></figure><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_PythonAPI_GetItem.png-kikitaMaps" alt=""></p><p>还是使用地图微件，用来显示下数据和分析结果。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mymap = gis.map(<span class="string">'California'</span>)</span><br><span class="line">mymap.height = <span class="string">'500px'</span></span><br><span class="line">mymap</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">O3layer = search_result.layers[<span class="number">0</span>]</span><br><span class="line">mymap.add_layer(O3layer)</span><br></pre></td></tr></table></figure><p>Portal 中提供了一系列的“工具”，可以辅助我们实现分析的需求，包括 标准的分析工具、矢量大数据分析GeoAnalytics Tools、栅格数据分析等，一系列分析功能都可以通过 ArcGIS Python API 调用。  这里就以 interpolate points 为例。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> arcgis.features.analyze_patterns <span class="keyword">import</span> interpolate_points</span><br><span class="line">Interpolate = interpolate_points(O3layer, field=<span class="string">'ozone'</span>, output_name=<span class="string">'O3layerInterpolated2'</span>)</span><br><span class="line">mymap.add_layer(Interpolate)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;继上一篇&lt;a href=&quot;http://kikitamap.com/2016/10/17/UsingArcGISPythonAPI/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;部署 ArcGIS Python API&lt;/a&gt; 之后，再来试试 Pytho
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+    
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>孩童般</title>
+    <link href="http://www.kikitamap.com/2017/01/13/Childlike/"/>
+    <id>http://www.kikitamap.com/2017/01/13/Childlike/</id>
+    <published>2017-01-13T10:01:40.000Z</published>
+    <updated>2017-01-23T09:18:08.877Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>摄于 2016-6-20，Disneyland, 香港</p></blockquote><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_IMG_5792.JPG-kikitaMaps" alt=""></p><p>越长大越复杂，不提醒自己，常常就忘记了快乐<br>有时，我们需要像孩童般，简单直接开放地面对生活<br>2017，继续努力吧 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;摄于 2016-6-20，Disneyland, 香港&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xs3vz.com1.z0.glb.clouddn.com/XJL_IMG_5792.JPG-kikitaMaps
+      
+    
+    </summary>
+    
+      <category term="相机里" scheme="http://www.kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/"/>
+    
+    
+  </entry>
+  
+</feed>
