@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[CityEngine中纹理贴图之道(二)]]></title>
+      <url>/2018/03/30/textureinCE2/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 3D </tag>
+            
+            <tag> CityEngine </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CityEngine中纹理贴图之道(一)]]></title>
       <url>/2018/03/22/textureinCE/</url>
       <content type="html"><![CDATA[<p>​        </p>
@@ -46,8 +68,8 @@
 </tbody>
 </table>
 <p><strong>下面我通过几个实例来说明下它们的用途：</strong></p>
-<p>​        基于共同的基础脚本向下进行，这里不在解释，相信你一看即懂。</p>
 <p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_1.png-kikitaMaps" alt=""></p>
+<p>​        基于共同的基础脚本向下进行，这里不再解释，相信你一看即懂。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * File:    MyTestforBaseTexure.cga</span></span><br><span class="line"><span class="comment"> * Created: 21 Mar 2018 08:26:37 GMT</span></span><br><span class="line"><span class="comment"> * Author:  Xiaoyan Mu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">version <span class="string">"2017.1"</span></span><br><span class="line">attr height = <span class="number">6</span></span><br><span class="line">wall_tex        = <span class="string">"facades/textures/brickwall.jpg"</span></span><br><span class="line">dirt_tex        = <span class="string">"facades/textures/dirtmap.15.tif"</span></span><br><span class="line">graffiti_tex    = <span class="string">"facades/kiktia/Graffiti.jpg"</span></span><br><span class="line">Lot --&gt; extrude(height) Building</span><br><span class="line">Building --&gt; comp(f) &#123;<span class="attr">side</span> : Sidefacade&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="material-colormap"><a href="#material-colormap" class="headerlink" title="material.colormap"></a>material.colormap</h2><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_2.png-kikitaMaps" alt=""></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">	setupProjection(<span class="number">0</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">	texture(wall_tex)  # set(material.colormap,wall_tex)</span><br><span class="line">	projectUV(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
@@ -62,13 +84,12 @@
 <h2 id="material-bumpmap"><a href="#material-bumpmap" class="headerlink" title="material.bumpmap"></a>material.bumpmap</h2><p>​    <code>material.bumpmap</code> 可以实现贴图的浮雕效果。</p>
 <p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_3.png-kikitaMaps" alt=""></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">	setupProjection(<span class="number">1</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">	set(material.bumpmap,wall_tex)  </span><br><span class="line">	projectUV(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>##material.dirtmap</p>
-<p>​        如果想使这面墙更逼真，来点“做旧”的感觉，可以使用 <code>material.dirtmap</code> 通道来增加图片镶嵌的效果。</p>
+<h2 id="material-dirtmap"><a href="#material-dirtmap" class="headerlink" title="material.dirtmap"></a>material.dirtmap</h2><p>​        如果想使这面墙更逼真，来点“做旧”的感觉，可以使用 <code>material.dirtmap</code> 通道来增加图片镶嵌的效果。</p>
 <p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_4.png-kikitaMaps" alt=""></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">	setupProjection(<span class="number">0</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">	texture(wall_tex)</span><br><span class="line">	projectUV(<span class="number">0</span>) </span><br><span class="line">    # Add dirtmap channel</span><br><span class="line">    setupProjection(<span class="number">2</span>, scope.xy, scope.sx, scope.sy)</span><br><span class="line">	set(material.dirtmap, dirt_tex)</span><br><span class="line">	projectUV(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <p>​        相同的方法来做一面涂鸦墙也可以哦。（涂鸦图片来自网络，侵删）</p>
 <p>​        将dirtmap换张图，  <code>set(material.dirtmap, graffiti_tex)</code></p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_5.png" alt=""></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_ceTexturing_5.png-kikitaMaps" alt=""></p>
 <p>先到这里，下篇继续……</p>
 <p>## </p>
 ]]></content>
@@ -1647,9 +1668,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Coordinate System </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
