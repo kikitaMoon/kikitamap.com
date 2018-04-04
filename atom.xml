@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kikitamap.com/"/>
-  <updated>2018-04-03T06:24:25.638Z</updated>
+  <updated>2018-04-04T09:48:01.528Z</updated>
   <id>http://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Parthenon Temple</title>
+    <link href="http://www.kikitamap.com/2018/04/04/Parthenon/"/>
+    <id>http://www.kikitamap.com/2018/04/04/Parthenon/</id>
+    <published>2018-04-04T04:00:00.000Z</published>
+    <updated>2018-04-04T09:48:01.528Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>摄于 2014-5-9, Acropolis, Athens, Greece</p></blockquote><p>CityEngine的教程中刚好有个Parthenon Temple 的 Demo</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_ParthenonModel.png" alt=""></p><p>不禁会想起在雅典卫城里它的断壁残垣，晒晒我们的合影</p><p>不知道几年过去，修复工作又向前推进了多少</p><p>那些带有编号的石头是不是已经归位了呢</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_Athens.jpg" alt=""></p><p>整个卫城中我最喜欢的是上图中最后一张的“厄瑞克忒翁神庙”，据说用于供奉雅典娜、波塞冬和英雄厄瑞克忒翁。</p><p>神庙一侧的女神柱像精致优美，即使经过了这么多的时光，都可以感受到雕刻师的精湛技艺。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_IMG_3545.JPG" alt="厄瑞克忒翁神庙"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;摄于 2014-5-9, Acropolis, Athens, Greece&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CityEngine的教程中刚好有个Parthenon Temple 的 Demo&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:
+      
+    
+    </summary>
+    
+      <category term="相机里" scheme="http://www.kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>CityEngine中纹理贴图之道(二)</title>
@@ -520,36 +547,6 @@
     
     
       <category term="Visual Studio" scheme="http://www.kikitamap.com/tags/Visual-Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生成线要素分段缓冲区</title>
-    <link href="http://www.kikitamap.com/2017/01/23/CreateSplittedBuffer/"/>
-    <id>http://www.kikitamap.com/2017/01/23/CreateSplittedBuffer/</id>
-    <published>2017-01-23T07:43:20.000Z</published>
-    <updated>2017-12-04T01:54:00.104Z</updated>
-    
-    <content type="html"><![CDATA[<p>前段时间做了个小工具，可以生成线要素的分段缓冲区，补充 ArcGIS 现有缓冲区工具的不足，用来辅助实现更多的功能。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferTool.png-kikitaMaps" alt=""></p><p>工具基于 arcpy、maths、os 几个模块实习，arcpy 中并没有提供现成的计算切线方向的函数或接口，我就尝试通过点处微小偏移量的三角定理计算方法构造切线，然后进行角度换算实现垂线的构造，最后再用垂线去切割缓冲区条带。</p><p><br></p><p>链接中可以下载 ArcGIS Desktop 或者 ArcGIS Pro 的工具箱版本（ 开发版本：Desktop 10.5，Pro 1.3，其他版本需要自己测试下 ）：</p><p><a href="https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer</a><br>(更新20171204：改SplittedBuffer为BambooBuffer，好像更形象一点)</p><p>以在 ArcGIS Pro 中添加和使用为例：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferUI.png-kikitaMaps" alt=""></p><p><br></p><p>工具源码参考：<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py</a></p><p><br></p><p>基于工具的应用实例：</p><p>1  统计公路各分段的拥堵情况</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_Road.png-kikitaMaps" alt="enter image description here"></p><p>2  河道分段水位模拟</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_River.png-kikitaMaps" alt="enter image description here"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;前段时间做了个小工具，可以生成线要素的分段缓冲区，补充 ArcGIS 现有缓冲区工具的不足，用来辅助实现更多的功能。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferTool
-      
-    
-    </summary>
-    
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
-    
-    
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
-    
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
-    
-      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
     
   </entry>
   
