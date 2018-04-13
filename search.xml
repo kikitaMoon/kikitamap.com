@@ -1744,9 +1744,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Coordinate System </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
