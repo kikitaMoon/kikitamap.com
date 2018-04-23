@@ -38,9 +38,9 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
-    
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
     
       <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
     
@@ -134,7 +134,7 @@
     <link href="http://www.kikitamap.com/2018/03/21/importingmodels/"/>
     <id>http://www.kikitamap.com/2018/03/21/importingmodels/</id>
     <published>2018-03-21T03:06:12.000Z</published>
-    <updated>2018-03-21T07:09:18.780Z</updated>
+    <updated>2018-04-23T01:16:11.438Z</updated>
     
     <content type="html"><![CDATA[<p>我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。</p><p>OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是由导入窗口中的 <code>Import as static model</code> 设置控制的。</p><blockquote><p><strong>Import as static model</strong></p><p>When checked, the file will be imported ‘as is’ and will not be modifiable by cga rules.</p><ul><li>Shapes—Serve as a base for CGA generation. A typical example is footprint data.</li><li>Static models—Can be scaled, rotated, and translated after import but cannot be processed further with CGA. </li></ul></blockquote><p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p><p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p><p>在如下示例图中了解：</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_importingModel.png-kikitaMaps" alt=""></p>]]></content>
     
@@ -153,7 +153,7 @@
     
       <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEgnine" scheme="http://www.kikitamap.com/tags/CityEgnine/"/>
+      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
@@ -283,9 +283,9 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
-    
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
   </entry>
   
@@ -337,9 +337,9 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
-    
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
     
   </entry>
   
