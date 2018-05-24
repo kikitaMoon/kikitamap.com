@@ -545,9 +545,48 @@
     <entry>
       <title><![CDATA[如何部署通过Portal管理的ArcGIS Pro Named User许可？]]></title>
       <url>/2017/11/29/ProNamedUserforPortalUse/</url>
-      <content type="html"><![CDATA[<p>在开始如下部署之前，注意下版本对应的问题：</p>
-<p>ArcGIS Pro 1.4 – ArcGIS License Manager 10.5<br>ArcGIS Pro 2.0 – ArcGIS License Manager 10.5.1。</p>
-<p><strong><em>如下是我开始发布在ArcGIS知乎中的手册的一部分：</em></strong></p>
+      <content type="html"><![CDATA[<p>在开始如下部署之前，一定要注意下<strong>版本对应</strong>的情况，否则会部署失败：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Portal 10.6</td>
+<td>Portal 10.5.1</td>
+<td>Portal 10.5</td>
+<td>Portal10.4.1</td>
+</tr>
+<tr>
+<td>Pro 2.1</td>
+<td>LM 10.6</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>Pro 2.0</td>
+<td>LM 10.6</td>
+<td>LM 10.5.1、10.6</td>
+<td>LM 10.5.1、10.6</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>Pro 1.4</td>
+<td>LM 10.6</td>
+<td>LM 10.5.1、10.6</td>
+<td>LM 10.5、10.5.1、10.6</td>
+<td>LM 10.4.1</td>
+</tr>
+</tbody>
+</table>
 <p>如果您购买并已经部署了 Portal for ArcGIS，搭建了您的组织门户， 并且您希望在内网环境中通过 Named User 方式使用 ArcGIS Pro，那么您可以选择通过Portal for ArcGIS为组织成员配置Named User许可的方式。</p>
 <p>##1 为组织配置 ArcGIS Pro 许可</p>
 <p><strong>1)</strong> 首先您需要确定哪个组织门户将用于管理ArcGIS Pro的许可（这个指定的组织门户称为“许可门户”）， 尤其当您的组织有多个门户的时候，请确保您指定的门户是您想要用来管理许可的那个门户。此种许可模式，需要安装ArcGIS License Server Administrator 程序。</p>
@@ -585,8 +624,6 @@
 <p>4) 输入许可门户的 URL，如<a href="https://webadaptor.domain.com/arcgis。" target="_blank" rel="noopener">https://webadaptor.domain.com/arcgis。</a></p>
 <p><img src="http://images.esrichina.com.cn/article/20170310/1b4d6d77d4d9a10691794c2d24c5ddb7.png" alt=""></p>
 <p>5) 单击“OK”。稍后，在登录页面中输入账号密码登录并使用ArcGIS Pro。</p>
-<p><br></p>
-<p>原文地址：<a href="http://zhihu.esrichina.com.cn/article/471" target="_blank" rel="noopener">http://zhihu.esrichina.com.cn/article/471</a></p>
 ]]></content>
       
         <categories>
