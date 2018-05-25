@@ -366,8 +366,7 @@
 <p><em>LM : License Manager,  Portal: Portal for ArcGIS;   Pro: ArcGIS Pro</em> </p>
 <p><br></p>
 <p>如果您购买并已经部署了 Portal for ArcGIS，搭建了您的组织门户， 并且您希望在内网环境中通过 Named User 方式使用 ArcGIS Pro，那么您可以选择通过Portal for ArcGIS为组织成员配置Named User许可的方式。</p>
-<p>##1 为组织配置 ArcGIS Pro 许可</p>
-<p><strong>1)</strong> 首先您需要确定哪个组织门户将用于管理ArcGIS Pro的许可（这个指定的组织门户称为“许可门户”）， 尤其当您的组织有多个门户的时候，请确保您指定的门户是您想要用来管理许可的那个门户。此种许可模式，需要安装ArcGIS License Server Administrator 程序。</p>
+<h2 id="1-为组织配置-ArcGIS-Pro-许可"><a href="#1-为组织配置-ArcGIS-Pro-许可" class="headerlink" title="1 为组织配置 ArcGIS Pro 许可"></a>1 为组织配置 ArcGIS Pro 许可</h2><p><strong>1)</strong> 首先您需要确定哪个组织门户将用于管理ArcGIS Pro的许可（这个指定的组织门户称为“许可门户”）， 尤其当您的组织有多个门户的时候，请确保您指定的门户是您想要用来管理许可的那个门户。此种许可模式，需要安装ArcGIS License Server Administrator 程序。</p>
 <p><strong>2)</strong> 完成安装后，打开 ArcGIS License Server Administrator，并单击“计算机 ID…” 按钮。</p>
 <p><img src="http://images.esrichina.com.cn/article/20170310/dbb2b70dea49a6649e5fed410bf1dc28.png" alt=""></p>
 <p><strong>3)</strong> 复制并保存计算机标识符对话框中的 MAC 地址 </p>
@@ -391,10 +390,8 @@
 <p>13) 单击“浏览”并选择先前生成的门户配置文件 (.json)。确保应用程序下拉菜单被设为 ArcGIS Pro。</p>
 <p><img src="http://images.esrichina.com.cn/article/20170310/280e7ef674045acae19126fbc2f7bc3f.png" alt=""></p>
 <p>14）单击“导入”，您的组织现在已配置了 ArcGIS Pro 许可。</p>
-<p>##2 组织管理员配置ArcGIS Pro许可</p>
-<p>本节的配置方法与 ArcGIS Online 组织管理员配置 ArcGIS Pro 许可的方法相似。<br>注意：<br>从 ArcGIS 10.5 版本之后，您只能为达到成员资格级别 2 级的门户成员配置 ArcGIS Pro 许可。​</p>
-<p>##3 登录并使用ArcGIS Pro</p>
-<p>1) 启动 ArcGIS Pro。<br>如果 ArcGIS Pro 已打开，请登出，关闭程序，然后重新启动。只能在首次启动 ArcGIS Pro 时连接至许可门户。</p>
+<h2 id="2-组织管理员配置ArcGIS-Pro许可"><a href="#2-组织管理员配置ArcGIS-Pro许可" class="headerlink" title="2 组织管理员配置ArcGIS Pro许可"></a>2 组织管理员配置ArcGIS Pro许可</h2><p>本节的配置方法与 ArcGIS Online 组织管理员配置 ArcGIS Pro 许可的方法相似。<br>注意：<br>从 ArcGIS 10.5 版本之后，您只能为达到成员资格级别 2 级的门户成员配置 ArcGIS Pro 许可。</p>
+<h2 id="3-登录并使用ArcGIS-Pro"><a href="#3-登录并使用ArcGIS-Pro" class="headerlink" title="3 登录并使用ArcGIS Pro"></a>3 登录并使用ArcGIS Pro</h2><p>1) 启动 ArcGIS Pro。<br>如果 ArcGIS Pro 已打开，请登出，关闭程序，然后重新启动。只能在首次启动 ArcGIS Pro 时连接至许可门户。</p>
 <p>2) 在 ArcGIS Pro的启动界面中，点击“About ArcGIS Pro”。</p>
 <p><img src="http://images.esrichina.com.cn/article/20170310/bbea712ccfa54d51dc456edb0218fa87.png" alt=""></p>
 <p>3) 在“Licensing”页面中，点击 “Configure your licensing options”。</p>
