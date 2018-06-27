@@ -2204,8 +2204,8 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>本文仅适用于客户端 ArcGIS Administrator 访问 ArcGIS License Manager <strong>正式版</strong>许可的问题的诊断，目前适用于 ArcGIS for Desktop 10.x、ArcGIS Engine 10.x、CityEngine 201x 版本的浮动许可诊断问题。博主说，你可能很难找到第二篇与ArcGIS Desktop 正版授权有关的博客了…… <strong>单机版和破解版请绕行。</strong>  </p>
 </blockquote>
 <p><br></p>
-<h1 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h1><p>ArcGIS License Manager <strong>已经授权完毕且成功</strong>，可用性（Availability）栏目中总计（Total）和可用（Available）的数目正常，服务器状态也运行正常。</p>
-<p><img src="http://img.blog.csdn.net/20151116115601903" alt=""></p>
+<h2 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h2><p>ArcGIS License Manager <strong>已经授权完毕且成功</strong>，可用性（Availability）栏目中总计（Total）和可用（Available）的数目正常，服务器状态也运行正常。</p>
+<p><img src="http://kikitamap.com/images/blogImg/CanNotConnectAGSLM_LM.png" alt=""></p>
 <blockquote>
 <p>图中的过期栏目中的日期可忽略，内部工作使用的正式许可是限定有效日期的。如果你使用的是购买得到的正式版许可，这里会显示 永久（Permanent），也就是许可是永久有效的。</p>
 </blockquote>
@@ -2213,7 +2213,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>然而，在通过局域网访问许可服务器的其它机器上的 ArcGIS Administrator 中，连接许可服务器失败。</p>
 <p>常见错误提示： <strong>“机器名或者IP”does not have a valid Licesne Manager. Please enter a valid License Manager Server.</strong></p>
 <p><br></p>
-<h1 id="诊断思路"><a href="#诊断思路" class="headerlink" title="诊断思路"></a>诊断思路</h1><p>我们可以结合一些初级的网络知识，按照如下思路测试，大多数情况下，你不需要依次全做完，就发现问题已经解决或至少找到了问题的原因。</p>
+<h2 id="诊断思路"><a href="#诊断思路" class="headerlink" title="诊断思路"></a>诊断思路</h2><p>我们可以结合一些初级的网络知识，按照如下思路测试，大多数情况下，你不需要依次全做完，就发现问题已经解决或至少找到了问题的原因。</p>
 <p><br></p>
 <p><strong>1. 从许可服务器本机入手</strong></p>
 <p>如果情况允许，最好在许可服务器本机也安装 ArcGIS Desktop 程序，然后使用 ArcGIS Administrator 连接本机许可服务器，各次分别填写 localhost，本机IP，本机机器名，检查是否有问题。一般如果本机连接不上，就不要期待其它机器可以正常连接了。</p>
@@ -2237,14 +2237,14 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>在”<a href="http://desktop.arcgis.com/zh-cn/desktop/latest/get-started/license-manager-guide/configure-the-arcgis-license-manager-to-work-through-a-firewall.htm" target="_blank" rel="noopener"><strong>许可服务管理器指南</strong></a>“中提到，”<strong>默认情况下，将 lmgrd 后台程序设为端口 27000</strong>“。那么，连不上许可服务器是因为端口被锁定了吗？ 有可能，动手查查才放心。</p>
 <p>听说，netstat是控制台命令,是一个监控TCP/IP网络的非常有用的工具。那么动手吧。</p>
 <p>以管理员的身份运行命令窗口，并输入命令：<strong><code>netstat -abn</code></strong> </p>
-<p><img src="http://img.blog.csdn.net/20151116192648563" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CanNotConnectAGSLM_cmd.png" alt=""></p>
 <p>如果找到 27000 和 lmgrd.exe 这个进程 ，并且状态 Established，可以认为端口正常。</p>
-<p><img src="http://img.blog.csdn.net/20151116193145451" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CanNotConnectAGSLM_lmgrd.png" alt=""></p>
 <p><br></p>
 <p>27000-27009是ArcGIS License Manger 的默认端口段，是相对不拥挤的段。但是，如果发现这个端口被其他程序占用了，那么就要修改ArcGIS许可服务器或者其它程序的端口了。在这里我就只能说说 ArcGIS 许可服务器的端口的修改方法了。</p>
 <blockquote>
-<p><strong>如何修改 ArcGIS 许可服务的端口？</strong><br>在 ArcGIS license manager 的安装目录下，bin目录下，找到 service.txt，打开如下样子：<br><img src="http://img.blog.csdn.net/20151116194427255" alt=""></p>
-<p>修改这个配置文件，例如：在 SERVER 行的结尾处，您可选择直接在 ANY 后面指定端口号。在 VENDOR 行上，添加 PORT=####，其中 #### 是指定的特定端口号，用来将供应商后台程序锁定到特定端口，例如 1234。<br><img src="http://img.blog.csdn.net/20151116194749476" alt=""></p>
+<p><strong>如何修改 ArcGIS 许可服务的端口？</strong><br>在 ArcGIS license manager 的安装目录下，bin目录下，找到 service.txt，打开如下样子：<br><img src="http://kikitamap.com/images/blogImg/CanNotConnectAGSLM_service.png" alt=""></p>
+<p>修改这个配置文件，例如：在 SERVER 行的结尾处，您可选择直接在 ANY 后面指定端口号。在 VENDOR 行上，添加 PORT=####，其中 #### 是指定的特定端口号，用来将供应商后台程序锁定到特定端口，例如 1234。<br><img src="http://kikitamap.com/images/blogImg/CanNotConnectAGSLM_newPort.png" alt=""></p>
 <p>这样我们可以在客户端使用例如 <strong>27004@许可服务器IP或机器名</strong> 的方式访问许可。</p>
 </blockquote>
 <p><br></p>
@@ -2397,7 +2397,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>上面效果在ArcMap中完全可以手工运行几个工具实现，但是过程稍微繁琐，那么需求来了，如何做个自定的一键生成羽化边界的小工具？</p>
 <p><br></p>
 <p><br></p>
-<h1 id="1-准备Python脚本文件"><a href="#1-准备Python脚本文件" class="headerlink" title="1 准备Python脚本文件"></a>1 准备Python脚本文件</h1><p>第一步，先写好脚本工具的核心 —— python脚本文件。</p>
+<h2 id="1-准备Python脚本文件"><a href="#1-准备Python脚本文件" class="headerlink" title="1 准备Python脚本文件"></a>1 准备Python脚本文件</h2><p>第一步，先写好脚本工具的核心 —— python脚本文件。</p>
 <p><br></p>
 <blockquote>
 <p>脚本中我希望根据指定环间距自动生成一个9环的缓冲面，然后添加一个字段，用于存储给各个缓冲面的透明度百分比。</p>
@@ -2409,7 +2409,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">__author__ = <span class="string">'kikita'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># FileName: EasyFeathering.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="comment"># arcpy.env.workspace = "D:\something\Data.gdb"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Script Tool Parameters</span></span><br><span class="line">InputFeature = <span class="string">"InterestArea"</span></span><br><span class="line">OutputFeature = <span class="string">"OutFeathering"</span></span><br><span class="line">SingleRingWidth = <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Some Predefined Parameters</span></span><br><span class="line">distances = []</span><br><span class="line">level = <span class="number">9</span></span><br><span class="line">bufferUnit = <span class="string">"meters"</span></span><br><span class="line">NewField = <span class="string">"Percent"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># My Easy Feathering function</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(level):</span><br><span class="line">    distances.append(SingleRingWidth*(i+<span class="number">1</span>))</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span>  str(distances)</span><br><span class="line"><span class="keyword">print</span>  <span class="string">"Distance Complete!"</span></span><br><span class="line"></span><br><span class="line">arcpy.MultipleRingBuffer_analysis(InputFeature, OutputFeature, distances, bufferUnit, <span class="string">""</span>, <span class="string">"ALL"</span>,<span class="string">"OUTSIDE_ONLY"</span>)</span><br><span class="line"><span class="keyword">print</span>  <span class="string">"Success to execute Multi Ring Buffer."</span></span><br><span class="line"></span><br><span class="line">arcpy.AddField_management(OutputFeature,NewField,<span class="string">"double"</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Success to add Transparency Percent Field."</span></span><br><span class="line"></span><br><span class="line">arcpy.CalculateField_management(OutputFeature, NewField, <span class="string">"!OBJECTID! *10"</span>, <span class="string">"PYTHON"</span>, <span class="string">""</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Success to Calculate Transparency Percent Field."</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
 <p><br></p>
-<h1 id="2-脚本工具参数配置"><a href="#2-脚本工具参数配置" class="headerlink" title="2 脚本工具参数配置"></a>2 脚本工具参数配置</h1><p>有了py文件之后，如何把它塞进工具箱里呢？</p>
+<h2 id="2-脚本工具参数配置"><a href="#2-脚本工具参数配置" class="headerlink" title="2 脚本工具参数配置"></a>2 脚本工具参数配置</h2><p>有了py文件之后，如何把它塞进工具箱里呢？</p>
 <p>在ArcMap的Catalog窗口中，找一个自己喜欢的任意文件夹，新建一个Toolbox，然后右键  Add –&gt; Script，进入向导，这些操作如果不了解，可以点 <a href="http://desktop.arcgis.com/zh-cn/desktop/latest/analyze/creating-tools/adding-a-script-tool.htm" target="_blank" rel="noopener"><strong>这里</strong></a> 查查帮助，照着做即可，不赘述。</p>
 <p><img src="http://img.blog.csdn.net/20150902133957962" alt=""></p>
 <p>这里我主要说说参数传递。</p>
@@ -2435,7 +2435,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><img src="http://img.blog.csdn.net/20150902103827046" alt=""></p>
 <p><br></p>
 <p><br></p>
-<h1 id="3-消息"><a href="#3-消息" class="headerlink" title="3 消息"></a>3 消息</h1><p>工具和用户之间的所有沟通均通过消息来实现。接着上一步提出的问题，如何在工具进度窗口中传递消息给用户？</p>
+<h2 id="3-消息"><a href="#3-消息" class="headerlink" title="3 消息"></a>3 消息</h2><p>工具和用户之间的所有沟通均通过消息来实现。接着上一步提出的问题，如何在工具进度窗口中传递消息给用户？</p>
 <p>虽然在开始调试脚本的时候，如开头代码所示，我加了些 Print 语句，方便我了解自己的脚本独立执行时的状态，但是如果运行脚本工具，这些print语句是看不到的。可以使用 ArcPy中提供的有关消息的函数，<code>AddMessage</code>、<code>AddWarning</code>、<code>AddError</code>等向工具进度条界面发送消息。这里我做了个简单的步骤的消息性提示，以及，如果结果没有记录输出，会提示警告。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">__author__ = <span class="string">'kikita'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># FileName: EasyFeathering.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"></span><br><span class="line"><span class="comment">#arcpy.env.workspace = "D:\IncidentSupport2015\something\Data.gdb"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the input values from tool UI</span></span><br><span class="line">InputFeature = arcpy.GetParameterAsText(<span class="number">0</span>)</span><br><span class="line">SingleRingWidth = arcpy.GetParameterAsText(<span class="number">1</span>)</span><br><span class="line">OutputFeature = arcpy.GetParameterAsText(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Some Predefined Parameters</span></span><br><span class="line">distances = []</span><br><span class="line">level = <span class="number">9</span></span><br><span class="line">bufferUnit = <span class="string">"meters"</span></span><br><span class="line">NewField = <span class="string">"Percent"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># My Easy Feathering function</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(level):</span><br><span class="line">    distances.append(int(SingleRingWidth)*(i+<span class="number">1</span>))</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line">arcpy.AddMessage(<span class="string">"Step1 Distance list Complete!"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">arcpy.MultipleRingBuffer_analysis(InputFeature, OutputFeature, distances, bufferUnit, <span class="string">""</span>, <span class="string">"ALL"</span>,<span class="string">"OUTSIDE_ONLY"</span>)</span><br><span class="line">arcpy.AddMessage(<span class="string">"Step2 Success to execute Multi Ring Buffer."</span>)</span><br><span class="line"></span><br><span class="line">arcpy.AddField_management(OutputFeature,NewField,<span class="string">"double"</span>)</span><br><span class="line">arcpy.AddMessage(<span class="string">"Step3 Success to add Transparency Percent Field."</span>)</span><br><span class="line"></span><br><span class="line">arcpy.CalculateField_management(OutputFeature, NewField, <span class="string">"!OBJECTID! *10"</span>, <span class="string">"PYTHON"</span>, <span class="string">""</span>)</span><br><span class="line"></span><br><span class="line">InputFeatureCount = int(arcpy.GetCount_management(OutputFeature).getOutput(<span class="number">0</span>))</span><br><span class="line"><span class="keyword">if</span> InputFeatureCount == <span class="number">0</span>:</span><br><span class="line">    arcpy.AddWarning(<span class="string">"&#123;0&#125; has no features."</span>.format(OutputFeature))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    arcpy.AddMessage(<span class="string">"Step4 Success to Calculate Transparency Percent Field."</span>)</span><br></pre></td></tr></table></figure>
 <p><br></p>
@@ -2444,7 +2444,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>到这里，工具的功能部分就完成了。</p>
 <p><br></p>
 <p><br></p>
-<h1 id="4-显示结果图层"><a href="#4-显示结果图层" class="headerlink" title="4 显示结果图层"></a>4 显示结果图层</h1><p> 我进一步希望脚本工具运行之后，自动显示在当前的地图文档中，从而避免重复设置透明度的操作。</p>
+<h2 id="4-显示结果图层"><a href="#4-显示结果图层" class="headerlink" title="4 显示结果图层"></a>4 显示结果图层</h2><p> 我进一步希望脚本工具运行之后，自动显示在当前的地图文档中，从而避免重复设置透明度的操作。</p>
 <p><br></p>
 <ol>
 <li>为输出参数配置模板图层。</li>
@@ -2458,7 +2458,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><img src="http://img.blog.csdn.net/20150902133211213" alt=""></p>
 <p><br></p>
 <p><br></p>
-<h1 id="5-配置路径"><a href="#5-配置路径" class="headerlink" title="5 配置路径"></a>5 配置路径</h1><p>如果是在本机使用脚本工具，一般我们会使用绝对路径，但是如果希望分享自己的工具给别人，就要考虑路径问题，也就是新用户运行脚本工具时，相关的脚本文件和其他用到的资源能否访问到。我的工具按照如下的结构组织：</p>
+<h2 id="5-配置路径"><a href="#5-配置路径" class="headerlink" title="5 配置路径"></a>5 配置路径</h2><p>如果是在本机使用脚本工具，一般我们会使用绝对路径，但是如果希望分享自己的工具给别人，就要考虑路径问题，也就是新用户运行脚本工具时，相关的脚本文件和其他用到的资源能否访问到。我的工具按照如下的结构组织：</p>
 <p><img src="http://img.blog.csdn.net/20150902221643912" alt=""></p>
 <p><br></p>
 <p>在脚本工具的属性中，可以配置存储相对路径引用 py 文件：</p>
@@ -2471,13 +2471,11 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>OK，路径的问题就解决了。</p>
 <p><br></p>
 <p><br></p>
-<h1 id="6-帮助文档"><a href="#6-帮助文档" class="headerlink" title="6 帮助文档"></a>6 帮助文档</h1><p>还可以进一步为工具添加帮助文档，让更多的人了解如何使用这个工具。</p>
+<h2 id="6-帮助文档"><a href="#6-帮助文档" class="headerlink" title="6 帮助文档"></a>6 帮助文档</h2><p>还可以进一步为工具添加帮助文档，让更多的人了解如何使用这个工具。</p>
 <p>在ArcCatalog 或者ArcMap的Catalog 中，在脚本工具上右键，点击 Item Description 菜单，点击 Edit 就可以对工具的帮助文档进行编辑。</p>
 <p><img src="http://img.blog.csdn.net/20150902141327675" alt=""></p>
 <p>这样当别人打开你的工具时，就看到帮助喽。</p>
 <p><img src="http://img.blog.csdn.net/20150902141411941" alt=""></p>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p>好啦，关于ArcGIS 中使用脚本工具的过程就说到这里。</p>
 ]]></content>
@@ -2506,9 +2504,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><br></p>
 <p>在 ArcGIS 中我们可以通过两种方式来创建python工具：</p>
 <p>一种是在标准工具箱下创建 <strong>脚本工具</strong>:</p>
-<p><img src="http://img.blog.csdn.net/20150831100431910" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreatePythonTool1_ScriptTool.png" alt=""></p>
 <p>一种是创建 <strong>脚本工具箱</strong>：</p>
-<p><img src="http://img.blog.csdn.net/20150831100528674" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreatePythonTool1_PythonToolbox.png" alt=""></p>
 <p><br></p>
 <p>到这里，可能你会有和我一样的疑问，二者有什么<strong>区别</strong>？</p>
 <p>第一种 <strong>脚本工具</strong> 需要我们首先在 ArcGIS 环境中创建一个工具箱，然后添加 Python脚本文件（*.py），并通过向导来精确配置参数。这种工具很适合脚本工具的初学者，通过前面说的三步就可以搭建出一个自定义工具。但是这种模式也有一些缺点，工具箱和源脚本是分离的，我们很难集中的去管理和维护它们。</p>
@@ -2516,7 +2514,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>Python 工具箱是在 ArcGIS 10.1 之后的版本出现的。如果你熟悉 Python，就可以充分利用所掌握的 Python 技能来创建 Python 工具箱。</p>
 <p><br></p>
 <p>下面是一些更加具体的对比列表：</p>
-<p><img src="http://img.my.csdn.net/uploads/201603/04/1457090137_6426.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreatePythonTool1_Compare.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -2589,19 +2587,19 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <title><![CDATA[凹凸有致的地图——浮雕风]]></title>
       <url>/2015/08/07/ChoroplethHillshade/</url>
       <content type="html"><![CDATA[<p>想要下面这样一副地图，怎么做？</p>
-<p><img src="http://img.blog.csdn.net/20150807135152365" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ChoroplethHillshade_Done.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h1><p>准备包含一个数值属性字段的面数据，比如包含人口信息的欧洲大陆数据，使用分级色带渲染。</p>
-<p><img src="http://img.blog.csdn.net/20150807135833315" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ChoroplethHillshade_ColorRamp.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h1><p>使用 Choropleth Hillshade 工具制造“浮雕”栅格。感谢作者jwasil的分享，这个工具可以在Github上自取：<a href="https://github.com/jwasil/choropleth-hillshade" target="_blank" rel="noopener"><strong>点这里</strong></a>。</p>
-<p><img src="http://img.blog.csdn.net/20150807140326067" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ChoroplethHillshade_Tool.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h1><p>给矢量面图层设置30%的透明，完成。</p>
-<p><img src="http://img.blog.csdn.net/20150807140846239" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ChoroplethHillshade_Transparency.png" alt=""></p>
 <p><br><br><br></p>
 <p><a href="http://www.esri.com/products/maps-we-love/usa-population-change" target="_blank" rel="noopener">Maps we love</a> 中也有一个web map，就是使用这个工具做的，<a href="http://nation.maps.arcgis.com/apps/SimpleViewer/index.html?appid=a6cb3e1caa7549418b1a5945bcb36717" target="_blank" rel="noopener">来看看</a>。</p>
 ]]></content>
@@ -2614,6 +2612,8 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         
         <tags>
+            
+            <tag> Python </tag>
             
             <tag> Mapping </tag>
             
