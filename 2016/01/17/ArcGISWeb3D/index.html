@@ -28,7 +28,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 </ul>
 <p><br></p>
 <p><br></p>
-<h1 id="不可不知的先决条件"><a href="#不可不知的先决条件" class="headerlink" title="不可不知的先决条件"></a>不可不知的先决条件</h1><p><strong>1</strong>.  首先确保自己的环境满足系统要求，这是非常重要的、不可忽略的条件之一，详情参考如下文档：</p>
+<h2 id="不可不知的先决条件"><a href="#不可不知的先决条件" class="headerlink" title="不可不知的先决条件"></a>不可不知的先决条件</h2><p><strong>1</strong>.  首先确保自己的环境满足系统要求，这是非常重要的、不可忽略的条件之一，详情参考如下文档：</p>
 <p>  <strong>ArcGIS for Server 系统要求</strong><br>  <a href="http://server.arcgis.com/zh-cn/server/latest/install/windows/arcgis-for-server-system-requirements.htm" target="_blank" rel="noopener">http://server.arcgis.com/zh-cn/server/latest/install/windows/arcgis-for-server-system-requirements.htm</a></p>
 <p>   <strong>ArcGIS Pro 系统要求</strong><br>   <a href="http://pro.arcgis.com/zh-cn/pro-app/get-started/arcgis-pro-system-requirements.htm" target="_blank" rel="noopener">http://pro.arcgis.com/zh-cn/pro-app/get-started/arcgis-pro-system-requirements.htm</a></p>
 <p><br></p>
@@ -37,49 +37,49 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <p><strong>3</strong>. 从 <strong>ArcGIS for Server 10.3.1</strong> 版本才开始了Scene Service 的支持。也就是，略早的 10.3 版本也是不可以的哦。为了发布3D数据（Multipatch）和2D数据作为门户中的托管场景图层，<strong>必要的安装组件有 Portal for ArcGIS，ArcGIS Data Store</strong> 。 其中，ArcGIS Data Store 用于存储 Scene Service 中所使用的场景图层切片缓存。</p>
 <p><br></p>
 <p><strong>4</strong> 将 ArcGIS Server 与门户联合；并且将 ArcGIS Server 指定为门户的托管服务器。</p>
-<p><img src="http://img.blog.csdn.net/20160116212543218" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Portal.png" alt=""></p>
 <p><strong>具体如何配置？</strong> 参考帮助文档，这里不赘述，虽然略有繁琐但有章可依：</p>
 <p><strong>联合 ArcGIS Server 站点与门户</strong><br><a href="http://server.arcgis.com/zh-cn/server/latest/administer/windows/federate-an-arcgis-server-site-with-your-portal.htm" target="_blank" rel="noopener">http://server.arcgis.com/zh-cn/server/latest/administer/windows/federate-an-arcgis-server-site-with-your-portal.htm</a></p>
 <p><strong>配置托管服务器</strong><br><a href="http://server.arcgis.com/zh-cn/server/latest/administer/windows/configure-hosting-server-for-portal.htm" target="_blank" rel="noopener">http://server.arcgis.com/zh-cn/server/latest/administer/windows/configure-hosting-server-for-portal.htm</a></p>
 <p><br></p>
 <p><br></p>
-<h1 id="创建和发布Scene-Service-的过程"><a href="#创建和发布Scene-Service-的过程" class="headerlink" title="创建和发布Scene Service 的过程"></a>创建和发布Scene Service 的过程</h1><p><br></p>
+<h2 id="创建和发布Scene-Service-的过程"><a href="#创建和发布Scene-Service-的过程" class="headerlink" title="创建和发布Scene Service 的过程"></a>创建和发布Scene Service 的过程</h2><p><br></p>
 <p><strong>1. 打开 ArcGIS Pro ，创建场景，加入场景数据。其中建筑物模型为 File Geodatabase 中的 Multipatch Feature Class。</strong></p>
-<p>   <img src="http://img.blog.csdn.net/20160117094645043" alt=""></p>
+<p>   <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Pro.png" alt=""></p>
 <p><br></p>
 <p><strong>2. 确保连接并激活 Portal，且自己的账户有创建内容、发布托管要素和发布托管场景的权限。</strong></p>
-<pre><code>&gt; 这里需要说明下，目前，只用 Portal for ArcGIS 才支持发布 Multipatch 数据源的 Scene Service。 ArcGIS Online 暂不支持。如果大家的 ArcGIS Pro 是60天试用版本的许可，默认激活的门户是ArcGIS Online，需要添加并切换到一个可用的Portal。
-</code></pre><p>   <img src="http://img.blog.csdn.net/20160117095515339" alt=""></p>
+<p>这里需要说明下，目前，只用 Portal for ArcGIS 才支持发布 Multipatch 数据源的 Scene Service。 ArcGIS Online 暂不支持。如果大家的 ArcGIS Pro 是60天试用版本的许可，默认激活的门户是ArcGIS Online，需要添加并切换到一个可用的Portal。</p>
+<p>   <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_ActivePortal.png" alt=""></p>
 <p><br></p>
 <p><strong>3. 确保ArcGIS Pro 中场景的打开方式是 Global View。如果是 Local View ，也可以切换。</strong></p>
-<p>   <img src="http://img.blog.csdn.net/20160117102209200" alt=""></p>
+<p>   <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Global.png" alt=""></p>
 <p><br></p>
 <p><strong>4. 分享场景，分析服务，确保没有 Error，如果有，需要事先修复。</strong></p>
-<p>  <img src="http://img.blog.csdn.net/20160117102833162" alt=""></p>
+<p>  <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Analysis.png" alt=""></p>
 <p><br></p>
 <p><strong>5. 等待完成，确保Job目录中所有任务全部成功完成。</strong></p>
-<p>  <img src="http://img.blog.csdn.net/20160117103404271" alt=""></p>
+<p>  <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Job.png" alt=""></p>
 <p>  根据数据量的不同，带宽的不同，硬件配置的不同，整个发布服务的过程时间长短不一。</p>
 <p>  我的这个测试中共89个精细程度不一的建筑物模型，发布全过程大约耗时1分钟，供参考。</p>
-<p>  <img src="http://img.blog.csdn.net/20160117104133951" alt=""></p>
+<p>  <img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Finish.png" alt=""></p>
 <p><br></p>
 <p><br></p>
-<h1 id="Web-前端访问服务"><a href="#Web-前端访问服务" class="headerlink" title="Web 前端访问服务"></a>Web 前端访问服务</h1><p>ArcGIS Scene Viewer 需要支持 WebGL 的桌面 Web 浏览器，WebGL 是用于渲染 3D 图形的 web 技术标准。 </p>
+<h2 id="Web-前端访问服务"><a href="#Web-前端访问服务" class="headerlink" title="Web 前端访问服务"></a>Web 前端访问服务</h2><p>ArcGIS Scene Viewer 需要支持 WebGL 的桌面 Web 浏览器，WebGL 是用于渲染 3D 图形的 web 技术标准。 </p>
 <p>点 <strong><a href="get.webgl.org">这里</a></strong> 测试浏览器是否启用了 WebGL，请打开 get.webgl.org； 要解决与 WebGL 相关的问题，请访问 WebGL <a href="http://get.webgl.org/troubleshooting/" target="_blank" rel="noopener"><strong>疑难解答</strong></a>。</p>
 <p>ArcGIS Scene Viewer 支持这些 web 浏览器：<strong>Chrome，Firefox，Internet Explorer 11，Safari</strong>。我这里使用的是 Chrome 是 Version 47.0.2526.111 m (64-bit)。</p>
 <p><br></p>
 <p>好像还不错哦</p>
-<p><img src="http://img.blog.csdn.net/20160117105659303" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_web.png" alt=""></p>
 <p>表示树木的 Feature Layer 可以在 Web 端修改渲染</p>
-<p><img src="http://img.blog.csdn.net/20160117105852973" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_webTree.png" alt=""></p>
 <p>再凑近看看细节</p>
-<p><img src="http://img.blog.csdn.net/20160117105734693" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Detail.png" alt=""></p>
 <p>再换换底图，做几个Slide</p>
-<p><img src="http://img.blog.csdn.net/20160117110003999" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISWeb3D_Basemap.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <p>刚好这个周末比较清闲，可以用比较连续的时间做了测试，效果还算令人满意，后面我会再做些大数据量的测试，有空再更新。</p>
-</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2016/01/17/ArcGISWeb3D/" data-id="cjie7ur71000j7cosuus9z2yn" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aQW7DMAwEwPz/0ynQU4EA7i7lFI00OhlO7HByICiRj0e8nt/r5/X1ndenXr+Zv+e2hYGB8bGM5+XKQ0/ekP96HhsGBsY5jFmSneW9JGfmsWFgYGBcXyeFYFtuYmBgYKwzVsL6RwkXAwPjAxmzLWiyEW3Bb9+LY2BgfCBj1hj4m+u39zcwMDD+PeNZrraFOSv+6qgwMDC2ZqwcdbWlZF4stn8EBgbGaYzZ+MV1kdd+2iZlDAyMvRkrB/crpOvfrf8+DAyMrRn5kf3KN9v6baXlgIGBsTcj33a24bbvaQ/jMDAwTmDc1Ri4Tr4rzcuoFYGBgbEpI09nSYmWB5en7GiTjIGBcQxjNvSQNxLqlmRedGJgYBzAaIu/vATMt7WzZI2BgXEOY+VwLQ9upQ3wS2wYGBjHMGZptH22TbXFzAgGBsbWjFkbIEnWs6O6dkQMAwNjb8Y7xrySt7XtzyL1Y2BgbMrIhyfaoNcTcbHBxsDA2JQxK/JWxrxmReEvz2JgYBzDyI/p83GutpRsi1EMDIwTGLMg7toA39V4wMDA2JvxLNdd5V1+JzqYw8DA2JoxS4jrh2ttuHVpiIGBsR1jZeRiloKTO/nWGgMD4xzGrA2Q7yVXknUxbIGBgXE8Y7YpXX/bzQkXAwPjAEZS5M1GLtpRDwwMjNMY+Sa2Tant8EQ+9oGBgXEOY6UxMAt6pQmRvwcDA2MLxhc7R2WrVSu8RAAAAABJRU5ErkJggg==">Share</a><div class="tags"><a href="/tags/3D/">3D</a><a href="/tags/Web/">Web</a><a href="/tags/ArcGIS-Pro/">ArcGIS Pro</a><a href="/tags/ArcGIS-Enterprise/">ArcGIS Enterprise</a></div><div class="post-nav"><a class="pre" href="/2016/02/02/RasterNodata/">为影像数据去除无效值</a><a class="next" href="/2015/12/21/TroubleshootingShapefile/">Troubleshooting：Shapefile 乱码与字符截断问题</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2016/01/17/ArcGISWeb3D/" data-id="cjiwp6wid00003sosk9l1b8dd" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aQW7DMAwEwPz/0ynQU4EA7i7lFI00OhlO7HByICiRj0e8nt/r5/X1ndenXr+Zv+e2hYGB8bGM5+XKQ0/ekP96HhsGBsY5jFmSneW9JGfmsWFgYGBcXyeFYFtuYmBgYKwzVsL6RwkXAwPjAxmzLWiyEW3Bb9+LY2BgfCBj1hj4m+u39zcwMDD+PeNZrraFOSv+6qgwMDC2ZqwcdbWlZF4stn8EBgbGaYzZ+MV1kdd+2iZlDAyMvRkrB/crpOvfrf8+DAyMrRn5kf3KN9v6baXlgIGBsTcj33a24bbvaQ/jMDAwTmDc1Ri4Tr4rzcuoFYGBgbEpI09nSYmWB5en7GiTjIGBcQxjNvSQNxLqlmRedGJgYBzAaIu/vATMt7WzZI2BgXEOY+VwLQ9upQ3wS2wYGBjHMGZptH22TbXFzAgGBsbWjFkbIEnWs6O6dkQMAwNjb8Y7xrySt7XtzyL1Y2BgbMrIhyfaoNcTcbHBxsDA2JQxK/JWxrxmReEvz2JgYBzDyI/p83GutpRsi1EMDIwTGLMg7toA39V4wMDA2JvxLNdd5V1+JzqYw8DA2JoxS4jrh2ttuHVpiIGBsR1jZeRiloKTO/nWGgMD4xzGrA2Q7yVXknUxbIGBgXE8Y7YpXX/bzQkXAwPjAEZS5M1GLtpRDwwMjNMY+Sa2Tant8EQ+9oGBgXEOY6UxMAt6pQmRvwcDA2MLxhc7R2WrVSu8RAAAAABJRU5ErkJggg==">Share</a><div class="tags"><a href="/tags/3D/">3D</a><a href="/tags/Web/">Web</a><a href="/tags/ArcGIS-Pro/">ArcGIS Pro</a><a href="/tags/ArcGIS-Enterprise/">ArcGIS Enterprise</a></div><div class="post-nav"><a class="pre" href="/2016/02/02/RasterNodata/">为影像数据去除无效值</a><a class="next" href="/2015/12/21/TroubleshootingShapefile/">Troubleshooting：Shapefile 乱码与字符截断问题</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
    var j, e = d.getElementsByTagName(s)[0];
    if (typeof LivereTower === 'function') { return; }
    j = d.createElement(s);
