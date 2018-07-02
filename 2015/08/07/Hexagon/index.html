@@ -3,11 +3,11 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">蜂巢网格</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">蜂巢网格</h1><div class="post-meta">Aug 7, 2015<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p>比起死板硬朗的矩形渔网，六边形的蜂巢网格越来越受欢迎。推荐个小工具，实现下面的效果：</p>
-<p><img src="http://img.blog.csdn.net/20150807164009193" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Done.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h1><p>准备自己的兴趣区域和需要统计的要素。例如，下面的美国国境面（浅灰色），机场点数据。</p>
-<p><img src="http://img.blog.csdn.net/20150807164525139" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Airports.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h1><p>ArcGIS Online上有 GISers 分享的生产六边形格网的工具：</p>
@@ -15,23 +15,23 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <p>Python版本的 <a href="http://arcscripts.esri.com/details.asp?dbid=15839" target="_blank" rel="noopener"><strong>Create Hexagons</strong></a></p>
 <p><br></p>
 <p>我就以第一个工具为例，运行状态打开：</p>
-<p><img src="http://img.blog.csdn.net/20150807172208754" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Tool.png" alt=""></p>
 <p>如果有关心工具内部的同学，编辑状态下看看工具：</p>
-<p><img src="http://img.blog.csdn.net/20150807172315733" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Model.png" alt=""></p>
 <p>运行之后，得到布满兴趣区域的蜂巢格网：</p>
-<p><img src="http://img.blog.csdn.net/20150807172531006" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Grid.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h1><p>统计每个六边形内有多少座机场（多少个点），统计是ArcMap的强项。这里我就使用 Spatial Join 工具实现，其中我只保留有连接要素的目标要素，也就是仅保留有机场点的六边形。</p>
-<p><img src="http://img.blog.csdn.net/20150807175144270" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Join.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h1><p>上一步自动统计得到六边形包含的机场的数目 Join_Count 字段，那我们就根据它渲染起来。</p>
-<p><img src="http://img.blog.csdn.net/20150807175954125" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Hexagon_Result.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <p>再放个ArcGIS Online 的web map，作者也是用到了六边形网格，<a href="http://www.arcgis.com/apps/StorytellingTextLegend/index.html?appid=0d41baefd133497db0a10018af579b5a" target="_blank" rel="noopener">来看看</a>。</p>
-</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2015/08/07/Hexagon/" data-id="cjie7ur79000x7cosapyk4grg" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3azY6DMAxF4b7/S1NpVrMhnGtDJZyTFWqHko+Fxz/5fPA6/hb/m/X1/7X+/OYlQ4aM1zKO5TpjnH1ytpX15jjvlCpDhowNGDyAkldA8On1xZ5lyJAhA2yXrDQ0y5AhQ0Yt4PIik2xRhgwZMjijH1J5UUpK2QdrcRkyZLyQkYbOX14/ON+QIUPGSxhHadXK3dpoAe1HhgwZoxnrYpIHX5IIpkcr0rRShgwZsxmkgExLzbSdV0sQLypyGTJkjGDwjfIjF3eNCngyKkOGjN0Y/SMUnQI1Df0yZMjYgUF67LUR5r2Dh/i5MmTIGMSotb34g++qsy9CsAwZMkYz0kMP/KdJashLWfSyZMiQMZSRFrFpi40nmrWXWKzFZciQ8SoGT9pqDTKe2PFk8fTlypAhYygjbfeTFhg62dFIGS/+b8iQIWMog482eRrXOUYWH+OQIUPGaEanrUZ+oT8AKE5BZciQMYjBbyBhMW3Y8VcQNNpkyJAxjlFrb9VCMG/9P5IyypAh4+WMTl7JE7tOYw7xZMiQsQEjbdZ3Ej50IDX9XIYMGaMZteZ+muoVw2h6lwwZMsYxjnDxAMqHl53jrTJkyNiB0Z8SkpZ9+jA+EpAhQ8Y+jLta/2lo7gfcYI4hQ4aMEYzaEYpaCO4c+IircBkyZGzP4K00XtCmRz1kyJAhoza27N+bjhlkyJCxA6NWWNa+rRWuceYoQ4aMQYz+YGC9rdrgk49CZciQMZrxBS9QiYfJ1EdRAAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Python/">Python</a><a href="/tags/Mapping/">Mapping</a></div><div class="post-nav"><a class="pre" href="/2015/08/31/CreatePythonTool1/">在ArcGIS中创建Python工具（一）</a><a class="next" href="/2015/08/07/ChoroplethHillshade/">凹凸有致的地图——浮雕风</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2015/08/07/Hexagon/" data-id="cjj3qg4fu0001jgosspgpd7hw" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3azY6DMAxF4b7/S1NpVrMhnGtDJZyTFWqHko+Fxz/5fPA6/hb/m/X1/7X+/OYlQ4aM1zKO5TpjnH1ytpX15jjvlCpDhowNGDyAkldA8On1xZ5lyJAhA2yXrDQ0y5AhQ0Yt4PIik2xRhgwZMjijH1J5UUpK2QdrcRkyZLyQkYbOX14/ON+QIUPGSxhHadXK3dpoAe1HhgwZoxnrYpIHX5IIpkcr0rRShgwZsxmkgExLzbSdV0sQLypyGTJkjGDwjfIjF3eNCngyKkOGjN0Y/SMUnQI1Df0yZMjYgUF67LUR5r2Dh/i5MmTIGMSotb34g++qsy9CsAwZMkYz0kMP/KdJashLWfSyZMiQMZSRFrFpi40nmrWXWKzFZciQ8SoGT9pqDTKe2PFk8fTlypAhYygjbfeTFhg62dFIGS/+b8iQIWMog482eRrXOUYWH+OQIUPGaEanrUZ+oT8AKE5BZciQMYjBbyBhMW3Y8VcQNNpkyJAxjlFrb9VCMG/9P5IyypAh4+WMTl7JE7tOYw7xZMiQsQEjbdZ3Ej50IDX9XIYMGaMZteZ+muoVw2h6lwwZMsYxjnDxAMqHl53jrTJkyNiB0Z8SkpZ9+jA+EpAhQ8Y+jLta/2lo7gfcYI4hQ4aMEYzaEYpaCO4c+IircBkyZGzP4K00XtCmRz1kyJAhoza27N+bjhlkyJCxA6NWWNa+rRWuceYoQ4aMQYz+YGC9rdrgk49CZciQMZrxBS9QiYfJ1EdRAAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Python/">Python</a><a href="/tags/Mapping/">Mapping</a></div><div class="post-nav"><a class="pre" href="/2015/08/31/CreatePythonTool1/">在ArcGIS中创建Python工具（一）</a><a class="next" href="/2015/08/07/ChoroplethHillshade/">凹凸有致的地图——浮雕风</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
    var j, e = d.getElementsByTagName(s)[0];
    if (typeof LivereTower === 'function') { return; }
    j = d.createElement(s);

@@ -2,38 +2,38 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">如何在ArcGIS for Desktop中实现批量任务</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">如何在ArcGIS for Desktop中实现批量任务</h1><div class="post-meta">Dec 6, 2015<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p><strong>ModelBuilder</strong> 是 ArcGIS for Desktop 产品中最可爱的功能之一，它可以尽可能免代码地将我们从重复劳动中解放出来。使用 ModelBuilder 的过程常常被比喻为“搭积木”，我们只需要拿着 ArcGIS for Desktop 中为我们提供的“积木”去搭建满足于自己的特定工作流模型。</p>
+ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">如何在ArcGIS for Desktop中实现批量任务</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">如何在ArcGIS for Desktop中实现批量任务</h1><div class="post-meta">Dec 6, 2015<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-明确需求"><span class="toc-number">1.</span> <span class="toc-text">1 明确需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-构建工作流"><span class="toc-number">2.</span> <span class="toc-text">2 构建工作流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">3.</span> <span class="toc-text">3 使用迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-复用工具"><span class="toc-number">4.</span> <span class="toc-text">4 复用工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-注意事项"><span class="toc-number">5.</span> <span class="toc-text">5  注意事项</span></a></li></ol></div></div><div class="post-content"><p><strong>ModelBuilder</strong> 是 ArcGIS for Desktop 产品中最可爱的功能之一，它可以尽可能免代码地将我们从重复劳动中解放出来。使用 ModelBuilder 的过程常常被比喻为“搭积木”，我们只需要拿着 ArcGIS for Desktop 中为我们提供的“积木”去搭建满足于自己的特定工作流模型。</p>
 <p>再打个比方，我们要实现的某个功能比作是自己做面包。首先要准备食材，例如面粉、牛奶、鸡蛋、黄油、糖、盐、酵母，类比为 <strong>地理数据</strong>； 食材齐备了，就可以顺序开始和面、发酵、烘焙，这些工作由特定的器具承担，例如各种烘焙工具、烤箱，就好比ArcGIS提供的 <strong>工具</strong>，例如 ArcToolbox中的工具们； 面包制作过程中可以根据自己口味，规定发酵时间、控制糖和盐的多少等，这就类比为工具的自定义 <strong>参数</strong> 。</p>
 <p>如果自己享受整个烘焙的过程，不厌其烦地面面俱到，那大可维持现状；可是如果你觉得做面包是个体力活，你只是想吃到自家面包，而希望把做面包的过程“外包”出去，那么面包机的市场就来了。这篇blog就和大家说说如何制作“面包机”。</p>
 <p><br></p>
-<h1 id="1-明确需求"><a href="#1-明确需求" class="headerlink" title="1 明确需求"></a>1 明确需求</h1><p>我们从一个简单常见的实例开始……</p>
+<h2 id="1-明确需求"><a href="#1-明确需求" class="headerlink" title="1 明确需求"></a>1 明确需求</h2><p>我们从一个简单常见的实例开始……</p>
 <p><strong>需求</strong>：现有一些表示各种研究对象的地理数据，小明希望把所有研究数据变换到需要的坐标系统，并且全部裁剪至研究范围。</p>
 <p>如果只有一份数据，小明会不假思索的找到 ArcToolbox中的 Project和Clip工具，顺序执行即可解决问题；如果是3+份数据，小明可能会想，该做个工具了。</p>
 <p><br></p>
-<h1 id="2-构建工作流"><a href="#2-构建工作流" class="headerlink" title="2 构建工作流"></a>2 构建工作流</h1><p>从【地理处理】菜单，打开 <img src="http://img.blog.csdn.net/20151206201029370" alt=""> ModelBuilder，依次拖拽和连接 Project 和 Clip 两个工具。Project 工具的输出作为 Clip 工具的输入。</p>
-<p><img src="http://img.blog.csdn.net/20151206202354653" alt=""></p>
+<h2 id="2-构建工作流"><a href="#2-构建工作流" class="headerlink" title="2 构建工作流"></a>2 构建工作流</h2><p>从【地理处理】菜单，打开  ModelBuilder 窗口，依次拖拽和连接 Project 和 Clip 两个工具。Project 工具的输出作为 Clip 工具的输入。</p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_Grey.png" alt=""></p>
 <p>双击工具可以打开工具继续填补工具需要的参数，直至Model因参数完全而变成彩色。</p>
-<p><img src="http://img.blog.csdn.net/20151206202406505" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_Color.png" alt=""></p>
 <p><br></p>
-<h1 id="3-使用迭代器"><a href="#3-使用迭代器" class="headerlink" title="3 使用迭代器"></a>3 使用迭代器</h1><p>前一步的工具已经满足一次任务的需要了，接着就是解决批量处理的问题。ModelBuilder提供了一些额外的自带工具来满足我们的一些高级需求，其中一类就是 <strong>迭代器</strong>，它用来实现循环。</p>
+<h2 id="3-使用迭代器"><a href="#3-使用迭代器" class="headerlink" title="3 使用迭代器"></a>3 使用迭代器</h2><p>前一步的工具已经满足一次任务的需要了，接着就是解决批量处理的问题。ModelBuilder提供了一些额外的自带工具来满足我们的一些高级需求，其中一类就是 <strong>迭代器</strong>，它用来实现循环。</p>
 <p>在这个例子中，需要遍历的对象是表示各种研究对象的要素类，因此选择 迭代要素类 / Iterate Feature Classes。当然也可以根据自己的实际需求选择其他迭代器。</p>
-<p><img src="http://img.blog.csdn.net/20151206204459671" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_Iterator.png" alt=""></p>
 <p>接下来就是把迭代器与工具串联起来。首先，双击迭代器的六边形为迭代器设置工作空间，即地理数据库/GDB，或者文件夹目录（例如shapefile所在的目录）。这样，迭代器会在指定的工作空间遍历要素类。删除现有Project工具的输入数据，将迭代器的输出数据连接到Project工具。</p>
-<p><img src="http://img.blog.csdn.net/20151206213643912" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20151206214814035" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_Iterator2.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_inlineVar.png" alt=""></p>
 <p>工具基本准备完毕，但是还差了重要的一步。目前，最后的输出数据是常量，也就是说，即使前面的工具执行了N次，那结果都将被同名覆盖。那么，<strong>行内变量</strong> 就显出用武之地了。</p>
 <p>迭代器每次遍历到一个要素类，会返回一个 Name，内容是当前要素类的名称，这个Name就是行内变量。引用的方法就是使用百分号括起来，即 <strong><code>%Name%</code></strong> 。</p>
 <p>输出数据设置示例：</p>
-<p><img src="http://img.blog.csdn.net/20151206215517277" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_inlineVar2.png" alt=""></p>
 <p>至此我们就完成了一次批量任务。</p>
 <p><br></p>
-<h1 id="4-复用工具"><a href="#4-复用工具" class="headerlink" title="4 复用工具"></a>4 复用工具</h1><p>如果我们以后想按照这个相同的需求处理数据，完全可以将其做成模型工具。将输入数据和输出数据设置为模型变量，我们就可以在“运行”状态下使用。</p>
+<h2 id="4-复用工具"><a href="#4-复用工具" class="headerlink" title="4 复用工具"></a>4 复用工具</h2><p>如果我们以后想按照这个相同的需求处理数据，完全可以将其做成模型工具。将输入数据和输出数据设置为模型变量，我们就可以在“运行”状态下使用。</p>
 <p>设置方法，在需要作为参数方便后续修改的项目上右键，勾选 “模型参数”即可，然后项目的头上顶了个“<strong>P</strong>”，(￣▽￣)”。</p>
-<p><img src="http://img.blog.csdn.net/20151206220311046" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_Para.png" alt=""></p>
 <p>将模型保存至工具箱后，双击运行工具。现在就可以把它当成“面包机”，放入食材，等面包即可。</p>
-<p><img src="http://img.blog.csdn.net/20151206220703424" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/IterationinArcGISforDesktop_FinalTool.png" alt=""></p>
 <p><br></p>
-<h1 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5  注意事项"></a>5  注意事项</h1><p>下面是些有用的提示，FYI：</p>
+<h2 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5  注意事项"></a>5  注意事项</h2><p>下面是些有用的提示，FYI：</p>
 <ul>
 <li><p>每个模型仅可使用<strong>唯一</strong>一个迭代器。如果模型中已经存在一个迭代器，那么用于添加迭代器的菜单就不可用了。这是限制之一。</p>
 </li>
@@ -42,7 +42,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <li><p>尽管Model可以嵌套调用，但是迭代器的<strong>嵌套循环</strong>逻辑不佳，不建议使用。如果需要实现嵌套循环，强烈建议使用python脚本。例如，实现遍历工作空间内每个要素类中的每个要素（记录）这样的需求，可以使用 ArcPy中的函数 <strong><code>ListFeatureClasses</code></strong> 和 <strong><code>SearchCursor</code></strong>来实现。</p>
 </li>
 </ul>
-</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2015/12/06/IterationinArcGISforDesktop/" data-id="cjie7ur7f001c7cosv11fmd91" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW7CQAwF0N7/0lTqrqJJv+0xsHhZoRDAb5BmLNtfX/H1+LmeX1/deX736pnH09X7ldGFh4eH1wr96kqCSO5UA73/niRmPDw8vG1echgkm/s9abJA999/eR8PDw/vrbzJ5p5v9L3lw8PDw/tkXh5WL8ReQQQPDw/v9bx8E88/2yslVJf1WK0FDw8PL+ZNNuV3vX5Rfw8PDw+vta1fbbhJkyzZsvMyRzlaPDw8vAVedewpH5mat74mkTSnuvDw8PCKvPwDk0GBSUk3f/6PgwEPDw/vKK+a5lY39ITXW9bqEYWHh4d3ipe3narvFjbrFuz+Ph4eHt42b970yrfvXjn42CmHh4eHN+BNBqGSlLpXROg9c9nfw8PDw1vgJWlxEmKSmvdGCvJxKzw8PLxt3qn21TyI/HVyp5DF4+Hh4RV588GmXret2gDLF+7X83h4eHgLvLzmmdyvHhuP+Kom3Hh4eHh7vFOl217zrNrQysvEeHh4eNu8U039ast/MqYQtdzw8PDwFnh5WL0SQJ6C56l2nvTj4eHhbfPyNLdalh3VSOJ4Lv8ePDw8vDVerxk2SZer31xdAjw8PLx38apF2KRwkLzbG+rCw8PDez2vWpKYtMoKBYXJ4YSHh4e3wMu3+F6rrPcrZ8cL8PDw8E7x8qGryQjUvKBQLSXj4eHhvYZX3bJ7oU8KGfkhgYeHh7fHuw+3miJPSg+9QYQ81cbDw8M7xXsUr6QdVd3E75+8b5X9s7h4eHh4C7xq4ttLiOclhiRxr7bu8PDw8Ca85DCYNMaSJasuUP7NeHh4eHu8/OerB0Y1xN7gV/NMw8PDw1vmVYu5eWG3HHRQvMDDw8P7NF4vuKTc0ByxuloyPDw8vDVetflULRlsfDYqguDh4eEt8CYNsFPljOox0Ozj4eHh4U1536xFVLlFBO8tAAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Geoprocessing/">Geoprocessing</a></div><div class="post-nav"><a class="pre" href="/2015/12/21/TroubleshootingShapefile/">Troubleshooting：Shapefile 乱码与字符截断问题</a><a class="next" href="/2015/11/27/CanNotConnectAGSLM/">“连不上ArcGIS License Manager” 的一点常用诊断方法</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2015/12/06/IterationinArcGISforDesktop/" data-id="cjj3qg4g20008jgosnosyt4ds" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW7CQAwF0N7/0lTqrqJJv+0xsHhZoRDAb5BmLNtfX/H1+LmeX1/deX736pnH09X7ldGFh4eH1wr96kqCSO5UA73/niRmPDw8vG1echgkm/s9abJA999/eR8PDw/vrbzJ5p5v9L3lw8PDw/tkXh5WL8ReQQQPDw/v9bx8E88/2yslVJf1WK0FDw8PL+ZNNuV3vX5Rfw8PDw+vta1fbbhJkyzZsvMyRzlaPDw8vAVedewpH5mat74mkTSnuvDw8PCKvPwDk0GBSUk3f/6PgwEPDw/vKK+a5lY39ITXW9bqEYWHh4d3ipe3narvFjbrFuz+Ph4eHt42b970yrfvXjn42CmHh4eHN+BNBqGSlLpXROg9c9nfw8PDw1vgJWlxEmKSmvdGCvJxKzw8PLxt3qn21TyI/HVyp5DF4+Hh4RV588GmXret2gDLF+7X83h4eHgLvLzmmdyvHhuP+Kom3Hh4eHh7vFOl217zrNrQysvEeHh4eNu8U039ast/MqYQtdzw8PDwFnh5WL0SQJ6C56l2nvTj4eHhbfPyNLdalh3VSOJ4Lv8ePDw8vDVerxk2SZer31xdAjw8PLx38apF2KRwkLzbG+rCw8PDez2vWpKYtMoKBYXJ4YSHh4e3wMu3+F6rrPcrZ8cL8PDw8E7x8qGryQjUvKBQLSXj4eHhvYZX3bJ7oU8KGfkhgYeHh7fHuw+3miJPSg+9QYQ81cbDw8M7xXsUr6QdVd3E75+8b5X9s7h4eHh4C7xq4ttLiOclhiRxr7bu8PDw8Ca85DCYNMaSJasuUP7NeHh4eHu8/OerB0Y1xN7gV/NMw8PDw1vmVYu5eWG3HHRQvMDDw8P7NF4vuKTc0ByxuloyPDw8vDVetflULRlsfDYqguDh4eEt8CYNsFPljOox0Ozj4eHh4U1536xFVLlFBO8tAAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Geoprocessing/">Geoprocessing</a></div><div class="post-nav"><a class="pre" href="/2015/12/21/TroubleshootingShapefile/">Troubleshooting：Shapefile 乱码与字符截断问题</a><a class="next" href="/2015/11/27/CanNotConnectAGSLM/">“连不上ArcGIS License Manager” 的一点常用诊断方法</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
    var j, e = d.getElementsByTagName(s)[0];
    if (typeof LivereTower === 'function') { return; }
    j = d.createElement(s);
