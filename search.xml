@@ -4574,7 +4574,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <title><![CDATA[镶嵌数据集工具小结（四）镶嵌数据集的属性]]></title>
       <url>/2014/10/29/MDProperties/</url>
       <content type="html"><![CDATA[<p><strong>设置镶嵌数据集属性工具</strong></p>
-<p><img src="http://img.blog.csdn.net/20141027161618093?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties3_Toolset.png" alt=""></p>
 <p>我们可在镶嵌数据集属性窗口看到 General，Default，Key MetaData 三个选项卡。</p>
 <ul>
 <li><p>General 中包含了类似单个栅格数据集的属性信息，例如像元大小、像元类型、位深、范围等等信息，详情可以戳 <a href="http://resources.arcgis.com/zh-cn/help/main/10.2/index.html#//009t00000018000000" target="_blank" rel="noopener"><strong>这里</strong></a>，不再赘述；</p>
@@ -4584,17 +4584,17 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <li><p>如果为镶嵌数据集定义了产品定义，则 Key Metadata 将来自产品定义，Key Metadata 包含了用于渲染和一些处理过程的波段和波长信息。</p>
 </li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20141027153224478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Defaults.png" alt=""></p>
 <p>★ 需要注意的是，如果我们在图层列表中去修改镶嵌数据集的默认属性，这种修改不会存储到镶嵌数据集内部，因此当移除图层，这些设置就失效了。图层上的修改，一般用于临时查看修改效果，或者多个用户访问镶嵌数据集，并且希望自己的修改不影响到其他人。</p>
 <p>而我们在Catalog中，镶嵌数据集的属性中设置的属性是存储在镶嵌数据集中。 需要了解Default 选显卡中各个属性项的作用和对镶嵌数据集的影响，非常详细的说明就戳<strong> <a href="http://resources.arcgis.com/zh-cn/help/main/10.2/#/na/009t00000038000000/" target="_blank" rel="noopener">这里</a></strong>，注意其中部分参数仅适用于镶嵌数据集作为 Image Service 发布和访问的情形。</p>
 <p>在工具箱中提供了一个可以设置这些属性的工具  Set Mosaic Dataset Properties 关于这个工具，我就结合镶嵌数据集属性来说明各个参数的作用和适用情况。由于这是一个很多很多参数的工具，这一篇先说说影像属性部分的参数吧。</p>
-<p><img src="http://img.blog.csdn.net/20141029145413027?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_ImageProperties.png" alt=""></p>
 <p><strong>影像属性</strong></p>
 <p><strong><em>Maximum Size Of Requests</em></strong>：</p>
-<p><img src="http://img.blog.csdn.net/20141028141823777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_MaxRequest.png" alt=""></p>
 <p>控制每次生成镶嵌影像时的最大行数和列数。仅当将镶嵌数据集作为影像服务而发布和访问时，此属性才适用。</p>
 <p><strong><em>Allowed Compression Methods</em></strong>：</p>
-<p><img src="http://img.blog.csdn.net/20141028141917878?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Compression.png" alt=""></p>
 <p>定义将镶嵌影像从服务器传输到客户端时所使用的压缩方法。如果通过 LAN 访问影像服务，即使数据量很大也不会引发问题。但通过速度较慢的 Internet 连接访问时，最好在传输前对影像进行压缩。压缩会减小传输影像的大小，但服务器需要先对数据进行压缩，因而增添了额外负荷。如下是几种压缩方法的整理：</p>
 <ul>
 <li><strong>None</strong> —— 不压缩影像，这可以提供最高质量的影像，但是在网络中需要传输的数据量最大。</li>
@@ -4603,7 +4603,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <li><strong>LERC</strong> —— 一种高效的有损压缩方法，推荐用于具有较大像素深度的数据（如浮点型、32 位、16 位或 12 位数据）。选择此方法时，需要指定代表每个像素所适用的最大错误值的质量值。该值以镶嵌数据集的单位指定。例如，如果误差为 10 厘米而镶嵌数据集的单位为米，则输入 0.1。对于浮点型数据，LERC 比 LZ77 的压缩效果好 5 到 10 倍，压缩速度快 5 到 10 倍；对于整型数据，LERC 的压缩效果和压缩速度更优于 LZ77。使用整型数据并且指定的错误限制为 0.99 或更低时，LERC 相当于无损压缩。</li>
 </ul>
 <p><strong><em>Default Resampling Method：</em></strong></p>
-<p><img src="http://img.blog.csdn.net/20141028143111501?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Resampling.png" alt=""></p>
 <ul>
 <li><strong>NEAREST</strong> —— 使用最邻近采样法可获得较精确的辐射度值。这种方法通常速度较快，但会导致要素的边呈锯齿状。</li>
 <li><strong>BILINEAR</strong> —— 双线性插值法可提供较平滑的影像，但会导致某些影像被滤除掉。对于连续栅格数据，建议使用双线性插值法。</li>
@@ -4619,7 +4619,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><strong><em>Color Correction：</em></strong></p>
 <p>设置是否启用为镶嵌数据集设置的色彩校正</p>
 <p><strong><em>Allowed Mensuration Capabilities：</em></strong></p>
-<p><img src="http://img.blog.csdn.net/20141028163714082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Mensuration.png" alt=""></p>
 <ul>
 <li><strong>None</strong>  — 不使用任何测量功能；</li>
 <li><strong>Basic</strong> — 允许计算距离、点、质心和面积；</li>
@@ -4629,10 +4629,10 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <li><strong>3D</strong> — DEM 可用时，可进行 3D 测量。</li>
 </ul>
 <p>具体对应的测量工具，我们可以在 Image Analysis 窗口中使用。</p>
-<p><img src="http://img.blog.csdn.net/20141029111447680?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_ImageAnalysis.png" alt=""></p>
 <p>有关影像测量这一块将来如果有时间会单独整理一下，这里不再插入了，不然篇幅过长了。_</p>
 <p><strong>Data Source Type：</strong></p>
-<p><img src="http://img.blog.csdn.net/20141029113540082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_DataSource.png" alt=""></p>
 <ul>
 <li>Generic - 通用类型，镶嵌数据集没有指定的数据类型。</li>
 <li>Thematic - 镶嵌数据集为专题型，专题数据具有离散值。</li>
@@ -7792,51 +7792,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -7889,6 +7844,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://my.csdn.net/uploads/201208/25/1345904145_6043.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>

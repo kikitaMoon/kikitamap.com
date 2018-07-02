@@ -2,8 +2,8 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">镶嵌数据集工具小结（四）镶嵌数据集的属性</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">镶嵌数据集工具小结（四）镶嵌数据集的属性</h1><div class="post-meta">Oct 29, 2014<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p><strong>设置镶嵌数据集属性工具</strong></p>
-<p><img src="http://img.blog.csdn.net/20141027161618093?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">镶嵌数据集工具小结（四）镶嵌数据集的属性</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">镶嵌数据集工具小结（四）镶嵌数据集的属性</h1><div class="post-meta">Oct 29, 2014<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">Contents</div></div></div><div class="post-content"><p><strong>设置镶嵌数据集属性工具</strong></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties3_Toolset.png" alt=""></p>
 <p>我们可在镶嵌数据集属性窗口看到 General，Default，Key MetaData 三个选项卡。</p>
 <ul>
 <li><p>General 中包含了类似单个栅格数据集的属性信息，例如像元大小、像元类型、位深、范围等等信息，详情可以戳 <a href="http://resources.arcgis.com/zh-cn/help/main/10.2/index.html#//009t00000018000000" target="_blank" rel="noopener"><strong>这里</strong></a>，不再赘述；</p>
@@ -13,17 +13,17 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <li><p>如果为镶嵌数据集定义了产品定义，则 Key Metadata 将来自产品定义，Key Metadata 包含了用于渲染和一些处理过程的波段和波长信息。</p>
 </li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20141027153224478?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Defaults.png" alt=""></p>
 <p>★ 需要注意的是，如果我们在图层列表中去修改镶嵌数据集的默认属性，这种修改不会存储到镶嵌数据集内部，因此当移除图层，这些设置就失效了。图层上的修改，一般用于临时查看修改效果，或者多个用户访问镶嵌数据集，并且希望自己的修改不影响到其他人。</p>
 <p>而我们在Catalog中，镶嵌数据集的属性中设置的属性是存储在镶嵌数据集中。 需要了解Default 选显卡中各个属性项的作用和对镶嵌数据集的影响，非常详细的说明就戳<strong> <a href="http://resources.arcgis.com/zh-cn/help/main/10.2/#/na/009t00000038000000/" target="_blank" rel="noopener">这里</a></strong>，注意其中部分参数仅适用于镶嵌数据集作为 Image Service 发布和访问的情形。</p>
 <p>在工具箱中提供了一个可以设置这些属性的工具  Set Mosaic Dataset Properties 关于这个工具，我就结合镶嵌数据集属性来说明各个参数的作用和适用情况。由于这是一个很多很多参数的工具，这一篇先说说影像属性部分的参数吧。</p>
-<p><img src="http://img.blog.csdn.net/20141029145413027?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_ImageProperties.png" alt=""></p>
 <p><strong>影像属性</strong></p>
 <p><strong><em>Maximum Size Of Requests</em></strong>：</p>
-<p><img src="http://img.blog.csdn.net/20141028141823777?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_MaxRequest.png" alt=""></p>
 <p>控制每次生成镶嵌影像时的最大行数和列数。仅当将镶嵌数据集作为影像服务而发布和访问时，此属性才适用。</p>
 <p><strong><em>Allowed Compression Methods</em></strong>：</p>
-<p><img src="http://img.blog.csdn.net/20141028141917878?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Compression.png" alt=""></p>
 <p>定义将镶嵌影像从服务器传输到客户端时所使用的压缩方法。如果通过 LAN 访问影像服务，即使数据量很大也不会引发问题。但通过速度较慢的 Internet 连接访问时，最好在传输前对影像进行压缩。压缩会减小传输影像的大小，但服务器需要先对数据进行压缩，因而增添了额外负荷。如下是几种压缩方法的整理：</p>
 <ul>
 <li><strong>None</strong> —— 不压缩影像，这可以提供最高质量的影像，但是在网络中需要传输的数据量最大。</li>
@@ -32,7 +32,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <li><strong>LERC</strong> —— 一种高效的有损压缩方法，推荐用于具有较大像素深度的数据（如浮点型、32 位、16 位或 12 位数据）。选择此方法时，需要指定代表每个像素所适用的最大错误值的质量值。该值以镶嵌数据集的单位指定。例如，如果误差为 10 厘米而镶嵌数据集的单位为米，则输入 0.1。对于浮点型数据，LERC 比 LZ77 的压缩效果好 5 到 10 倍，压缩速度快 5 到 10 倍；对于整型数据，LERC 的压缩效果和压缩速度更优于 LZ77。使用整型数据并且指定的错误限制为 0.99 或更低时，LERC 相当于无损压缩。</li>
 </ul>
 <p><strong><em>Default Resampling Method：</em></strong></p>
-<p><img src="http://img.blog.csdn.net/20141028143111501?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Resampling.png" alt=""></p>
 <ul>
 <li><strong>NEAREST</strong> —— 使用最邻近采样法可获得较精确的辐射度值。这种方法通常速度较快，但会导致要素的边呈锯齿状。</li>
 <li><strong>BILINEAR</strong> —— 双线性插值法可提供较平滑的影像，但会导致某些影像被滤除掉。对于连续栅格数据，建议使用双线性插值法。</li>
@@ -48,7 +48,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <p><strong><em>Color Correction：</em></strong></p>
 <p>设置是否启用为镶嵌数据集设置的色彩校正</p>
 <p><strong><em>Allowed Mensuration Capabilities：</em></strong></p>
-<p><img src="http://img.blog.csdn.net/20141028163714082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_Mensuration.png" alt=""></p>
 <ul>
 <li><strong>None</strong>  — 不使用任何测量功能；</li>
 <li><strong>Basic</strong> — 允许计算距离、点、质心和面积；</li>
@@ -58,10 +58,10 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <li><strong>3D</strong> — DEM 可用时，可进行 3D 测量。</li>
 </ul>
 <p>具体对应的测量工具，我们可以在 Image Analysis 窗口中使用。</p>
-<p><img src="http://img.blog.csdn.net/20141029111447680?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_ImageAnalysis.png" alt=""></p>
 <p>有关影像测量这一块将来如果有时间会单独整理一下，这里不再插入了，不然篇幅过长了。_</p>
 <p><strong>Data Source Type：</strong></p>
-<p><img src="http://img.blog.csdn.net/20141029113540082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDProperties_DataSource.png" alt=""></p>
 <ul>
 <li>Generic - 通用类型，镶嵌数据集没有指定的数据类型。</li>
 <li>Thematic - 镶嵌数据集为专题型，专题数据具有离散值。</li>
@@ -69,7 +69,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <li>Evelation -镶嵌数据集包含高程数据。</li>
 </ul>
 <p>琳琅满目的影像属性参数就说到这里，下一篇接着说设置镶嵌数据集属性中的镶嵌属性参数。</p>
-</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2014/10/29/MDProperties/" data-id="cjie7ur9a00507cosevajp4q6" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aO3LDMAwFwNz/0spMqhSR/ADInohcVp6YtrUsEOLz9RWv42flf//97u89x8k623/zwsDAeCzjuFxnexLe9WPl33/9bBgYGPsw8p9JAmsSjvMAHQV6DAwMjMuvnofX/LcwMDAwEkaeoCZhNN+JgYGBcVcQTPD5p96Si2NgYDyQUW0MfPL1G/sbGBgYD2EcxZU3CfKweIwXBgbG2oxJe7IaKPNiXLV5gIGBsTYjaT1O0ss8ia0e6On/DQwMjOUYvQDau/bln+1dTDEwMNZm3PsVyShGHribLQEMDIyFGNGV66aBiUkof3GUGBgY2zB6Jf6cnTdH84PAwMDYgdEr7lfbBr1BiuoRYGBg7MCopqy9IFuFJSkxBgbG2oxJ4SwPu0mwzpsTf7yLgYGxNCMfoeg9Yi+I5z0NDAyM3Rh58vnJon95ZgQDA2NRRjJy0Su39QbFqqMYGBgYOzCSh662HsvzaPPWAgYGxtKMSauyOlhW3TM5aAwMjDUY80B5V7CuluowMDD2ZFQTzry437sUFgp/GBgYSzPyotjophkU46rBvXAqGBgYD2ccxdVLdKvjFHlbonDDxcDAeCxjcmmbjFP0Xs+vnhgYGM9l9IJgr0x2jazux8DA2I3Ra2T2inSTDPvFzAgGBsb2jGpSmjQyq0NgL66GGBgYGMXiV95CyNmn+zEwMDZg9JLYebG+GprfUm7DwMD494xe6tjrPFQbDM2BMAwMjHUY33nsHfMdE7n9AAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Raster/">Raster</a><a href="/tags/Geodata/">Geodata</a></div><div class="post-nav"><a class="pre" href="/2014/11/10/MDProperties2/">镶嵌数据集工具小结（五）镶嵌数据集的属性 Ⅱ</a><a class="next" href="/2014/10/28/MDOverviews/">镶嵌数据集工具小结（三）概视图/Overviews</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2014/10/29/MDProperties/" data-id="cjj43oltb0000icosyme5osq7" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aO3LDMAwFwNz/0spMqhSR/ADInohcVp6YtrUsEOLz9RWv42flf//97u89x8k623/zwsDAeCzjuFxnexLe9WPl33/9bBgYGPsw8p9JAmsSjvMAHQV6DAwMjMuvnofX/LcwMDAwEkaeoCZhNN+JgYGBcVcQTPD5p96Si2NgYDyQUW0MfPL1G/sbGBgYD2EcxZU3CfKweIwXBgbG2oxJe7IaKPNiXLV5gIGBsTYjaT1O0ss8ia0e6On/DQwMjOUYvQDau/bln+1dTDEwMNZm3PsVyShGHribLQEMDIyFGNGV66aBiUkof3GUGBgY2zB6Jf6cnTdH84PAwMDYgdEr7lfbBr1BiuoRYGBg7MCopqy9IFuFJSkxBgbG2oxJ4SwPu0mwzpsTf7yLgYGxNCMfoeg9Yi+I5z0NDAyM3Rh58vnJon95ZgQDA2NRRjJy0Su39QbFqqMYGBgYOzCSh662HsvzaPPWAgYGxtKMSauyOlhW3TM5aAwMjDUY80B5V7CuluowMDD2ZFQTzry437sUFgp/GBgYSzPyotjophkU46rBvXAqGBgYD2ccxdVLdKvjFHlbonDDxcDAeCxjcmmbjFP0Xs+vnhgYGM9l9IJgr0x2jazux8DA2I3Ra2T2inSTDPvFzAgGBsb2jGpSmjQyq0NgL66GGBgYGMXiV95CyNmn+zEwMDZg9JLYebG+GprfUm7DwMD494xe6tjrPFQbDM2BMAwMjHUY33nsHfMdE7n9AAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Raster/">Raster</a><a href="/tags/Geodata/">Geodata</a></div><div class="post-nav"><a class="pre" href="/2014/11/10/MDProperties2/">镶嵌数据集工具小结（五）镶嵌数据集的属性 Ⅱ</a><a class="next" href="/2014/10/28/MDOverviews/">镶嵌数据集工具小结（三）概视图/Overviews</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
    var j, e = d.getElementsByTagName(s)[0];
    if (typeof LivereTower === 'function') { return; }
    j = d.createElement(s);
