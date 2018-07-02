@@ -1875,7 +1875,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <url>/2016/01/17/ArcGISWeb3D/</url>
       <content type="html"><![CDATA[<p>ArcGIS 产品家族的 Web 3D 功能众多用户期待已久，从 ArcGIS 10.3.1 版本开始，Esri 放了个大招，千呼万唤始出来的 Web 3D 功能，终于不再犹抱琵琶半遮面了。 那到底如何将创建和发布3D场景呢？ 下面就把今天的测试过程记录下。</p>
 <p><br></p>
-<h1 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h1><p><strong>硬件</strong></p>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><p><strong>硬件</strong></p>
 <ul>
 <li>处理器：Intel Core i7 4710MQ @ 2.50GHz</li>
 <li>内存：16G</li>
@@ -3328,17 +3328,17 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><br><br><br></p>
 <p>下载之后，有32位和64位两个安装包，如果你安装了Desktop的64位后台GP补丁，就把64位的插件程序也安装上。</p>
 <p>ArcToolbox中多了好多工具……</p>
-<p><img src="http://img.blog.csdn.net/20150401115843672" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISEditorforOSM103xDesktop_Toolset.png" alt=""></p>
 <p><br><br><br></p>
 <p>这里我就推荐两个最常用的工具。<br><br><br><br></p>
 <p><strong>Download OSM Data</strong></p>
 <p>下载的范围，可以通过手工填写坐标指定，也可以根据ArcMap现有的图层范围进行指定，这个方便又好用。</p>
-<p><img src="http://img.blog.csdn.net/20150401142437646" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20150401140857073" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISEditorforOSM103xDesktop_Extent.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISEditorforOSM103xDesktop_Download.png" alt=""></p>
 <p><br><br><br></p>
 <p><strong>Load OSM Data</strong></p>
 <p>如果你已经从 OpenStreetMap 下载了 *.osm 数据文件，那就用这个工具导入 GDB 即可。简单到没什么可说的，请看图。</p>
-<p><img src="http://img.blog.csdn.net/20150401142938102" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISEditorforOSM103xDesktop_Load.png" alt=""></p>
 <p><br><br><br></p>
 <p>有个关键问题，注意：</p>
 <blockquote>
@@ -3699,9 +3699,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <content type="html"><![CDATA[<p><em>Updated: 2017-10-11</em><br><em>修改了文中表意含糊的语句，增加了更多解释性描述。</em></p>
 <p><br></p>
 <p>这一篇具体看分析模式工具集中的具体工具，整理这一篇的目的，不是要读者了解每个工具的背后使用了多么高级的算法，运用了多么庞大的公式，而是一起了解这些工具究竟可以为我们研究什么样的空间数据分布模式，当需要探索数据的空间性质时，知道应该如何去应用这些分析工具。</p>
-<p><img src="http://img.blog.csdn.net/20150303103705851" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_Toolset.png" alt=""></p>
 <p><br></p>
-<h1 id="Average-Nearest-Neighbor"><a href="#Average-Nearest-Neighbor" class="headerlink" title="Average Nearest Neighbor"></a>Average Nearest Neighbor</h1><p>平均最近邻工具，计算每个要素中心与其最邻近要素中心的距离，然后求取所有最近邻距离的平均值，然后用这个观测平均值与随机分布的期望平均值进行比较，从而可以反应数据的空间分布是聚合的还是分散的。 </p>
+<h2 id="Average-Nearest-Neighbor"><a href="#Average-Nearest-Neighbor" class="headerlink" title="Average Nearest Neighbor"></a>Average Nearest Neighbor</h2><p>平均最近邻工具，计算每个要素中心与其最邻近要素中心的距离，然后求取所有最近邻距离的平均值，然后用这个观测平均值与随机分布的期望平均值进行比较，从而可以反应数据的空间分布是聚合的还是分散的。 </p>
 <p>Average Nearest Neighbor 工具将返回五个值：</p>
 <ul>
 <li>观测的平均距离 / Observed Mean Distance</li>
@@ -3711,9 +3711,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <li>p值 / p-value</li>
 </ul>
 <p>其中，最近邻指数是观测平均值与期望平均值的比率，最近邻如果最近邻比率小于1，则表现的模式为聚类。如果指数大于1，则表现的模式趋向于扩散。</p>
-<p><img src="http://img.blog.csdn.net/20150303152059424" alt="最近邻比率"></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_AverageNearest.png" alt="最近邻比率"></p>
 <p>在HTML报告文件中可以更显见的了解数据的趋势：</p>
-<p><img src="http://img.blog.csdn.net/20150303163930384" alt="报告"></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_AverageNearestSummary.png" alt="报告"></p>
 <blockquote>
 <p>可能的应用：</p>
 <ul>
@@ -3723,7 +3723,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </ul>
 </blockquote>
 <p><br></p>
-<h1 id="Spatial-Autocorrelation"><a href="#Spatial-Autocorrelation" class="headerlink" title="Spatial Autocorrelation"></a>Spatial Autocorrelation</h1><p>空间自相关 (Global Moran’s I) 工具同时根据要素位置和要素的属性值来度量空间自相关。在给定一组要素及相关属性的情况下，评估所表达的模式是聚类模式、离散模式还是随机模式。</p>
+<h2 id="Spatial-Autocorrelation"><a href="#Spatial-Autocorrelation" class="headerlink" title="Spatial Autocorrelation"></a>Spatial Autocorrelation</h2><p>空间自相关 (Global Moran’s I) 工具同时根据要素位置和要素的属性值来度量空间自相关。在给定一组要素及相关属性的情况下，评估所表达的模式是聚类模式、离散模式还是随机模式。</p>
 <p>此工具将返回五个值：</p>
 <ul>
 <li>Moran’s I指数 / Moran’s I Index</li>
@@ -3732,7 +3732,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <li>z得分 / z-score</li>
 <li>p值 / p-value</li>
 </ul>
-<p><img src="http://img.blog.csdn.net/20150304103916681" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_SpatialAutocorrelationReport.png" alt=""></p>
 <p><strong>Moran’s I 指数</strong>：</p>
 <p>Global Moran‘s I 工具计算所评估属性的<strong>均值/Mean</strong>和<strong>方差/Variance</strong>。然后，将每个要素值减去均值，从而得到与均值的<strong>偏差/Deviation</strong>。 将所有相邻要素（例如位于指定距离范围内的要素）的偏差值相乘，从而得到<strong>叉积/Cross Production</strong>。Global Moran’s I 统计量的分子是这些叉积的和。</p>
 <p>如果数据在空间上趋于聚类，则Moran’s I指数为正值；如果空间上高值排斥其他高值而分散存在，则Moran’s I 指数为负值；如果叉积的正负值趋于平衡，则指数趋于0。</p>
@@ -3750,20 +3750,20 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </ul>
 </blockquote>
 <p><br></p>
-<h1 id="Incremental-Spatial-Autocorrelation"><a href="#Incremental-Spatial-Autocorrelation" class="headerlink" title="Incremental Spatial Autocorrelation"></a>Incremental Spatial Autocorrelation</h1><p>增量自相关工具会去测量一系列的空间自相关，并且可以创建Z得分折线图。Z得分反映空间聚类的程度，峰值Z得分表示聚类最明显的距离。<br>这些峰值能做什么呢？我们可以将这些峰值作为其他工具（例如热点分析，将来会说到）的必要参数，例如距离范围，距离半径等等。</p>
-<p><img src="http://img.blog.csdn.net/20150304163215457" alt=""></p>
+<h2 id="Incremental-Spatial-Autocorrelation"><a href="#Incremental-Spatial-Autocorrelation" class="headerlink" title="Incremental Spatial Autocorrelation"></a>Incremental Spatial Autocorrelation</h2><p>增量自相关工具会去测量一系列的空间自相关，并且可以创建Z得分折线图。Z得分反映空间聚类的程度，峰值Z得分表示聚类最明显的距离。<br>这些峰值能做什么呢？我们可以将这些峰值作为其他工具（例如热点分析，将来会说到）的必要参数，例如距离范围，距离半径等等。</p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_Incremental.png" alt=""></p>
 <p>以下面的数据为例：</p>
 <p>我欲研究下面几个城市的人口分布情况：</p>
-<p><img src="http://img.blog.csdn.net/20150305091602522" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20150305091759165" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_SamplePoints.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_SamplePoint2.png" alt=""></p>
 <p><img src="http://img.blog.csdn.net/20150305091915238" alt=""></p>
 <p>第一个峰值位于大约 250000 处。当显示多个具有统计显著性的峰值时（例如，本示例数据中有两个峰值），聚类在这些距离处均很明显。选择与感兴趣的分析比例对应的峰值距离，我们通常选择第一个具有统计显著性的峰值。</p>
 <p><br></p>
-<h1 id="High-Low-Clustering-Getis-Ord-General-G"><a href="#High-Low-Clustering-Getis-Ord-General-G" class="headerlink" title="High/Low Clustering (Getis-Ord General G)"></a>High/Low Clustering (Getis-Ord General G)</h1><p>高/低聚类 (General G) 统计的零假设规定被研究的要素值不存在空间聚类。当返回的 p 值较小且在统计学上显著，则可以拒绝零假设。如果零假设被拒绝，则 z 得分的符号将变得十分重要。如果 z 得分值为正数，则观测的 General G 指数会比期望的 General G 指数要大一些，表明属性的高值将在研究区域中聚类。如果 z 得分值为负数，则观测的 General G 指数会比期望的 General G 指数要小一些，表明属性的低值将在研究区域中聚类。</p>
+<h2 id="High-Low-Clustering-Getis-Ord-General-G"><a href="#High-Low-Clustering-Getis-Ord-General-G" class="headerlink" title="High/Low Clustering (Getis-Ord General G)"></a>High/Low Clustering (Getis-Ord General G)</h2><p>高/低聚类 (General G) 统计的零假设规定被研究的要素值不存在空间聚类。当返回的 p 值较小且在统计学上显著，则可以拒绝零假设。如果零假设被拒绝，则 z 得分的符号将变得十分重要。如果 z 得分值为正数，则观测的 General G 指数会比期望的 General G 指数要大一些，表明属性的高值将在研究区域中聚类。如果 z 得分值为负数，则观测的 General G 指数会比期望的 General G 指数要小一些，表明属性的低值将在研究区域中聚类。</p>
 <p>当存在完全均匀分布的值并且要查找高值的异常空间峰值时，首选高/低聚类(Getis-Ord General G)工具。遗憾的是，高值和低值同时聚类时，它们倾向于彼此相互抵消。如果在高值和低值同时聚类时测量空间聚类，则使用空间自相关工具。</p>
-<p><img src="http://img.blog.csdn.net/20150305103225867" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_HighLow.png" alt=""></p>
 <p>“高/低聚类”工具可返回五个值：General G 观测值、General G 期望值、方差、z 得分以及 p 值。</p>
-<p><img src="http://img.blog.csdn.net/20150305103306773" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_HighLowReport.png" alt=""></p>
 <blockquote>
 <p>可能的应用：</p>
 <ul>
@@ -3773,9 +3773,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </ul>
 </blockquote>
 <p><br></p>
-<h1 id="Multi-Distance-Spatial-Cluster-Analysis-Ripley’s-K-Function"><a href="#Multi-Distance-Spatial-Cluster-Analysis-Ripley’s-K-Function" class="headerlink" title="Multi-Distance Spatial Cluster Analysis (Ripley’s K Function)"></a>Multi-Distance Spatial Cluster Analysis (Ripley’s K Function)</h1><p>基于 Ripley’s K 函数的多距离空间聚类分析工具是另外一种分析事件点数据的空间模式的方法。Ripley’s K 函数可表明要素质心的空间聚集或空间扩散在邻域大小发生变化时是如何变化的。</p>
+<h2 id="Multi-Distance-Spatial-Cluster-Analysis-Ripley’s-K-Function"><a href="#Multi-Distance-Spatial-Cluster-Analysis-Ripley’s-K-Function" class="headerlink" title="Multi-Distance Spatial Cluster Analysis (Ripley’s K Function)"></a>Multi-Distance Spatial Cluster Analysis (Ripley’s K Function)</h2><p>基于 Ripley’s K 函数的多距离空间聚类分析工具是另外一种分析事件点数据的空间模式的方法。Ripley’s K 函数可表明要素质心的空间聚集或空间扩散在邻域大小发生变化时是如何变化的。</p>
 <p>如果有兴趣研究要素的聚类/扩散如何相对于不同距离（不同的分析规模）进行变化，可以使用此工具。</p>
-<p><img src="http://img.blog.csdn.net/20150305105633321" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsB_MultiDistance.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -3799,30 +3799,30 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <title><![CDATA[空间统计（二）分析模式 A]]></title>
       <url>/2015/03/05/AnalysisPatternsA/</url>
       <content type="html"><![CDATA[<p>有时对于数据量较大的地理数据，我们希望通过一定的统计方法将空间模式量化，从而获知这些地理数据在空间上是聚合的、还是离散的、还是随机的等。</p>
-<p><img src="http://img.blog.csdn.net/20150303103705851" alt="分析模式工具集"></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsA_Toolset.png" alt="分析模式工具集"></p>
 <p>在了解如上工具之前，有一些空间统计学的基本知识还是要先搞明白，磨刀不误砍柴工，那就开始吧。</p>
 <p><br></p>
 <h1 id="零假设、P值、Z得分、置信度"><a href="#零假设、P值、Z得分、置信度" class="headerlink" title="零假设、P值、Z得分、置信度"></a>零假设、P值、Z得分、置信度</h1><p>分析模式工具集中的工具都采用“推论统计学”，先确定一个<strong>零假设</strong>，也就是假设要素或与要素相关的值都表现为空间随机模式—— <strong>Complete Spatial Randomness (CSR)</strong>；然后再计算一个 p值，用来表示零假设的正确概率。分析模式工具集中的工具都会返回 <strong>P值（P-Value）</strong>和 <strong>Z得分（Z-Score）</strong>，这是我们拒绝前面的零假设的依据，也就是我们观测的要素表现出显著性聚类或离散模式，而不是随机模式。</p>
 <p>什么是 P 值？ 什么是 Z 得分？</p>
 <p><strong>P值</strong> 就是概率值，它表示观测到的空间模式是由某随机过程创建而成的概率，或者我们简单的理解成是观测到的空间模式是随机空间模式的概率。P 值越小，也就是观测到的空间模式是随机空间模式的可能性越小，也就是我们越可以拒绝开始的零假设。</p>
 <p><strong>Z得分</strong> 表示标准差的倍数。例如，如果工具返回的 z 得分为 +2.5，我们就会说，结果是 2.5 倍标准差。如下所示，z 得分和 p 值都与标准正态分布相关联。</p>
-<p><img src="http://img.blog.csdn.net/20150302164658150" alt="正态分布"></p>
+<p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsA_Normal.png" alt="正态分布"></p>
 <p>z 得分和 p 值结果是统计显著性的量度，用来判断是否拒绝零假设。在正态分布的两端出现非常高（正值）或非常低（负值）的 z 得分，这些得分与非常小的 p 值关联。当运行要素模式分析工具得到很小的 p 值以及绝对值很大的 z 得分时，就表明观测到的空间模式不太可能反映零假设中假定的随机模式。</p>
 <p>那么，P值需要多小？或者说要小到什么程度，才能拒绝零假设呢？这时就需要我们自己主观选择一个 <strong>置信度（Confidence Level）</strong>，典型的置信度有 90%、95%、99%。其中显见，99%的置信度是最保守的。</p>
 <p><br></p>
 <h1 id="空间关系的概念化"><a href="#空间关系的概念化" class="headerlink" title="空间关系的概念化"></a>空间关系的概念化</h1><p>空间统计分析和传统（非空间）统计分析的一个重要区别是空间统计分析将空间关系整合到算法中。在我们执行各种各样的空间统计工具时，需要选择一项“空间关系概念化”，如何选择就主要取决于要测量的对象。如下是常见的选项：</p>
 <p><br></p>
-<h2 id="反距离、反距离平方（阻抗）"><a href="#反距离、反距离平方（阻抗）" class="headerlink" title="反距离、反距离平方（阻抗）"></a>反距离、反距离平方（阻抗）</h2><p> <img src="http://img.blog.csdn.net/20150304112823495" alt=""><br>使用“反距离”选项时，空间关系的概念模型是一种阻抗或距离衰减。距离越远，影响越小。<br>INVERSE_DISTANCE：表示与远处的要素相比，附近的邻近要素对目标要素的计算的影响要大一些；INVERSE_DISTANCE_SQUARED：与 INVERSE_DISTANCE 类似，但它的坡度更明显，因此影响下降得更快，并且只有目标要素的最近邻域会对要素的计算产生重大影响。</p>
+<h2 id="反距离、反距离平方（阻抗）"><a href="#反距离、反距离平方（阻抗）" class="headerlink" title="反距离、反距离平方（阻抗）"></a>反距离、反距离平方（阻抗）</h2><p> <img src="http://kikitamap.com/images/blogImg/AnalysisPatternsA_InverseDistance.png" alt=""><br>使用“反距离”选项时，空间关系的概念模型是一种阻抗或距离衰减。距离越远，影响越小。<br>INVERSE_DISTANCE：表示与远处的要素相比，附近的邻近要素对目标要素的计算的影响要大一些；INVERSE_DISTANCE_SQUARED：与 INVERSE_DISTANCE 类似，但它的坡度更明显，因此影响下降得更快，并且只有目标要素的最近邻域会对要素的计算产生重大影响。</p>
 <blockquote>
 <p>例如：反欧氏距离适用于对连续数据（如温度变化）进行建模。再比如测量某种种子植物的聚集程度，使用反距离可能最合适。</p>
 </blockquote>
 <p><br></p>
-<h2 id="距离范围（影响的范围）"><a href="#距离范围（影响的范围）" class="headerlink" title="距离范围（影响的范围）"></a>距离范围（影响的范围）</h2><p><img src="http://img.blog.csdn.net/20150304112818480" alt=""><br>FIXED_DISTANCE_BAND：将对邻近要素环境中的每个要素进行分析。在指定临界距离内的邻近要素将分配值为 1 的权重，并对目标要素的计算产生重大影响。在指定临界距离外的邻近要素将分配值为零的权重，并且不会对目标要素的计算产生任何影响。</p>
+<h2 id="距离范围（影响的范围）"><a href="#距离范围（影响的范围）" class="headerlink" title="距离范围（影响的范围）"></a>距离范围（影响的范围）</h2><p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsA_FixDistance.png" alt=""><br>FIXED_DISTANCE_BAND：将对邻近要素环境中的每个要素进行分析。在指定临界距离内的邻近要素将分配值为 1 的权重，并对目标要素的计算产生重大影响。在指定临界距离外的邻近要素将分配值为零的权重，并且不会对目标要素的计算产生任何影响。</p>
 <blockquote>
 <p>例如：要研究通勤模式并且已知平均上下班路程为 15 英里，则最好使用 15 英里的固定距离进行分析。</p>
 </blockquote>
 <p><br></p>
-<h2 id="无差别的区域"><a href="#无差别的区域" class="headerlink" title="无差别的区域"></a>无差别的区域</h2><p><img src="http://img.blog.csdn.net/20150304112854508" alt=""><br>ZONE_OF_INDIFFERENCE：将“反距离”模型和“固定距离范围”模型合并为一体，在目标要素的指定临界距离内的要素将分配值为 1 的权重，并且会影响目标要素的计算。一旦超出该临界距离，权重就会随距离的增加而减小。</p>
+<h2 id="无差别的区域"><a href="#无差别的区域" class="headerlink" title="无差别的区域"></a>无差别的区域</h2><p><img src="http://kikitamap.com/images/blogImg/AnalysisPatternsA_ZoneIndiff.png" alt=""><br>ZONE_OF_INDIFFERENCE：将“反距离”模型和“固定距离范围”模型合并为一体，在目标要素的指定临界距离内的要素将分配值为 1 的权重，并且会影响目标要素的计算。一旦超出该临界距离，权重就会随距离的增加而减小。</p>
 <blockquote>
 <p>举个常见的例子，工作日的午饭我们通常会在公司附近解决，选餐馆的时候，可能在500米以内哪家都行，超过500米就可能太过占用时间从而影响中午的休息、娱乐等等，当餐馆距离公司超过500米，随着距离的增加，权重就不断减小。</p>
 </blockquote>
@@ -4103,7 +4103,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[镶嵌数据集工具小结（十一）分析、修复、同步镶嵌数据集]]></title>
-      <url>/2014/12/09/AnalyzeRepairMosaicDataset/</url>
+      <url>/2014/12/09/MDAnalyzeRepairMD/</url>
       <content type="html"><![CDATA[<p>这是这个专题的最后一篇，将剩下的几个工具放在一起说一说。下面的这些工具在镶嵌数据集正常运行时常常会被忽略，但是一旦出现异常或者故障，这些工具就有了用武之地。 </p>
 <p><img src="http://7xospm.com1.z0.glb.clouddn.com/97a90632-548f-456f-a03d-87db163c5cab_20141208100341577.png" alt=""> </p>
 <p><br></p>
@@ -4160,7 +4160,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[镶嵌数据集工具小结（十）函数链]]></title>
-      <url>/2014/12/04/FunctionChain/</url>
+      <url>/2014/12/04/MDFunctionChain/</url>
       <content type="html"><![CDATA[<p><strong>镶嵌数据集中的函数</strong></p>
 <p>在下文中会提到的工具有这几个，先摆在这里，有个初步的记忆：</p>
 <p><img src="http://img.blog.csdn.net/20141203110222940" alt=""></p>
@@ -4662,42 +4662,42 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     <entry>
       <title><![CDATA[镶嵌数据集工具小结（三）概视图/Overviews]]></title>
       <url>/2014/10/28/MDOverviews/</url>
-      <content type="html"><![CDATA[<p><strong>定义/创建概视图类工具</strong></p>
-<p><img src="http://img.blog.csdn.net/20141020090126493" alt=""></p>
+      <content type="html"><![CDATA[<h2 id="了解概视图"><a href="#了解概视图" class="headerlink" title="了解概视图"></a>了解概视图</h2><p>定义/创建概视图类工具**</p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_Toolset.png" alt=""></p>
 <p>这一贴，接着说镶嵌数据集的概视图（Overview），如果你对栅格数据集的金字塔有所了解，那就能立即理解概视图的作用。概视图实际上是对镶嵌数据集显示上的”抽稀“，通过重采样生成多层低分辨率的栅格，用与不同比例尺下显示镶嵌数据集。无论是金字塔还是概视图，它们的目的都是为了提高栅格数据的显示速度和减少CPU的运算，从而提升体验。</p>
 <p>ArcGIS的帮助文档中有这样一幅图，可以很好的说明数据源、金字塔、概视图之间的关系：</p>
-<p><img src="http://img.blog.csdn.net/20141017162405453" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_Relations.png" alt=""></p>
 <p>如果不创建概视图，那么在显示镶嵌数据集的时候，ArcMap会以动态方式对整个数据集进行处理，这样可想而知，一个庞大的镶嵌数据集，会消耗大量系统资源，甚至可能使资源消耗殆尽。没有概视图，每缩放或者挪动镶嵌数据集，ArcMap都动态运算显示的区域，这是个效率很低的事情。有时有朋友遇到，加入的镶嵌数据集是漆黑一片，那么很可能是没有创建概视图。</p>
 <p>如果我们尚未对栅格数据构建金字塔和统计数据，可以使用工具 <strong>Build Pyramids And Statistics</strong> 对镶嵌数据集内的栅格数据批量创建金字塔和概视图，然后再创建概视图。栅格数据的金字塔会减少镶嵌数据集需要创建的概视图数据量。如果加入镶嵌数据集的栅格数据是下面的两种情形，推荐优先创建栅格金字塔再创建镶嵌数据集概视图：（1）可以接合没有重叠区的，也就是可以不受镶嵌方法影像的（2）参数和镶嵌方法不需要更改的，需要动态处理的栅格数据。</p>
 <p>用于生成概视图的工具有两种： Define Overviews 和 Build Overviews。</p>
 <p>除了上面的两个工具之外，我们在向镶嵌数据集中添加栅格数据时，也可以勾选创建概视图，这样会使用默认设置构建概视图。如果我们不需要对Footprint做修改的时候，可以在添加栅格数据时勾选这个选项直接创建概视图。</p>
 <p><br></p>
-<h1 id="Build-Overviews"><a href="#Build-Overviews" class="headerlink" title="Build Overviews"></a><strong>Build Overviews</strong></h1><p>这个工具可以定义缺失的概视图、更新及生成概视图。此工具支持镶嵌数据集的默认设置（也就是在Catalog中打开镶嵌数据集属性，在Default页签上的设置），但是在 ArcMap 中基于图层的设置对于这个工具是无效的。概视图的第一个级别在镶嵌数据集的全分辨率下创建，后续各个级别均在上一次生成的概视图级别基础上构建。工具中还有几个参数可以配置，用来满足不同构建概视图的需求。</p>
-<p><img src="http://img.blog.csdn.net/20141020115019475" alt=""></p>
+<h2 id="Build-Overviews"><a href="#Build-Overviews" class="headerlink" title="Build Overviews"></a><strong>Build Overviews</strong></h2><p>这个工具可以定义缺失的概视图、更新及生成概视图。此工具支持镶嵌数据集的默认设置（也就是在Catalog中打开镶嵌数据集属性，在Default页签上的设置），但是在 ArcMap 中基于图层的设置对于这个工具是无效的。概视图的第一个级别在镶嵌数据集的全分辨率下创建，后续各个级别均在上一次生成的概视图级别基础上构建。工具中还有几个参数可以配置，用来满足不同构建概视图的需求。</p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_OverviewOptions.png" alt=""></p>
 <p>工具默认会创建缺失的概视图，更新过期的概视图，如果有特别要求，可以按照下面的依据配置：</p>
 <p>-（1）如果我们向镶嵌数据集添加了新数据集，而没有定义新增的概视图时，需要勾选 Define Missing Overview Tiles。如果个别情况下，不希望为新增的数据定义和新建概视图，取消勾选这一项。<br>-（2）如果我们已经定义了概视图，但是尚未生成，则需要勾选 Generate Missing Overview Images Only。<br>-（3）如果基础栅格数据集发生更改或其属性进行过修改，会将概视图识别为过期的概视图（Stale Overview），最后一个选项就是来控制是否更新过期的概视图。例如，我们从当前数据集移除了一些栅格数据，或者修改了轮廓线，那么原来创建的概视图就标识为了过期的概视图，这时候如果需要更新，应该勾选这一项的。</p>
 <p><br></p>
-<h1 id="Define-Overviews"><a href="#Define-Overviews" class="headerlink" title="Define Overviews"></a><strong>Define Overviews</strong></h1><p>如果创建概视图的默认设置不能满足我们的需要，我们还可以使用 Define Overviews 预先自定义配置：</p>
+<h2 id="Define-Overviews"><a href="#Define-Overviews" class="headerlink" title="Define Overviews"></a><strong>Define Overviews</strong></h2><p>如果创建概视图的默认设置不能满足我们的需要，我们还可以使用 Define Overviews 预先自定义配置：</p>
 <p><strong>定义Overview的写入位置：</strong></p>
 <p>默认情况下，会在镶嵌数据集所处位置旁的文件夹中生成和存储概视图。此文件夹的名称与地理数据库的名称相同，具有 .overview 扩展名。</p>
-<p><img src="http://img.blog.csdn.net/20141023091446659?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_Path.png" alt=""></p>
 <p>如果镶嵌数据集创建于 ArcSDE 地理数据库，默认将在该地理数据库中创建概视图。</p>
 <p>以Oracle为例，有关镶嵌数据集的信息存储在<strong>GDB_ITEMS</strong> 和 <strong>GDB_ITEMTYPES</strong>系统表中。创建该镶嵌数据集的用户的方案中可能还存储着 12 个其他的表。其中 <strong>ART、BND、CAT</strong>和<strong>LOG</strong>这四个表在使用创建的镶嵌数据集时创建；其他表则在首次执行要用到对应表的操作时生成。</p>
 <p><strong><code>AMD_NAME_OVR</code></strong>，这张表默认用来存储概视图。默认情况下，为镶嵌数据集创建的金字塔栅格存储在此表中。如果使用“定义概视图”工具更改概视图的存储位置，将不会填充此表。而是将指向概视图位置的指针存储在<strong><span style="font-family:Courier New;"> AMD_&lt;NAME&gt;_CAT</span></strong> 表的 urihash 字段中。</p>
-<p><img src="http://img.blog.csdn.net/20141023101357812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_SDEtable.png" alt=""></p>
 <p><strong>定义Overview的边界范围：</strong></p>
-<p><img src="http://img.blog.csdn.net/20141023164621515?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_Extent.png" alt=""></p>
 <p>默认情况下，在镶嵌数据集边界内的区域创建金字塔。</p>
 <p>我们也可以根据一些特定的需要，来指定生成概视图的范围，范围可以来自栅格数据集的范围，矢量要素数据的外接矩形，或者手工指定四边的坐标范围。</p>
 <p><strong>定义Overview块参数：</strong></p>
-<p><img src="http://img.blog.csdn.net/20141024113829717?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_Block.png.png" alt=""></p>
 <p><strong>像元大小</strong>：默认情况下，工具会自动计算用于生成概视图的基础像素大小。我们也可以从某一特定分辨率开始创建概视图。例如，数据量巨大的高分辨率栅格数据添加到镶嵌数据集中，实际上仅需要分辨率一般的整体拼接效果，那调整至合适的像元大小即可。</p>
 <p><strong>等级数目：</strong>此参数决定生成的金字塔等级数。例如，3 表示将生成三个Overview 等级。如果值留空或为 -1，则系统会生成最佳数量的概视图。</p>
 <p><strong>行、列数：</strong>可以通过定义最佳的行数和列数的方式来限制概视图的物理尺寸。我们需要考虑到：值越大，文件（块）尺寸也就越大，Overview区域对应的任意栅格数据发生变化时需要重新生成Overview的可能性也越大。该数值还会影响栅格数据集创建的概视图的数目。如果是一个较大的数值，则将生成较小数量的概视图文件（块）；如果是一个较小的数值，则会生成较多的概视图文件（块）。</p>
 <p><strong>概视图采样系数：</strong>可以通过概视图采样系数来控制栅格数据集创建的概视图的数目。此系数可以确定后续概视图的大小。例如，如果第一个等级的像元大小为 x，概视图采样系数为 3，则下一等级的概视图像元大小将为 3x。也就是，系数越大，生成的概视图就越少，但同时，这会影响镶嵌图像的显示速度。通常，概视图等级越多，显示的速度就越快，因为这减少了重采样的次数。您还可以控制是否在概视图生成中考虑栅格的金字塔。可能使用您不喜欢的重采样方法生成了原始金字塔，也可能由于某种其他原因而不需要使用任何金字塔。您可以选中定义概视图工具对话框中的“强制概视图切片参数”选项，这样将忽略所有栅格金字塔，并从大于栅格基础像素大小的系数开始定义概视图。例如，如果系数为 3，而基础像素大小或栅格为 1 米，则将以 3 米开始生成概视图。此外，您的镶嵌数据集可能由数据源大量混合而成，并且由于某种原因，您需要使用最开始的金字塔的一部分，而不是全部。您可以定义概视图开始位置的像素大小。</p>
 <p><strong>强制概视图切片参数：</strong>这个参数用于控制在概视图生成中是否考虑栅格数据的金字塔。我们可能由于某种原因而不需要使用原始数据的金字塔，那么就勾选此选项，这样将忽略所有栅格金字塔，并从大于栅格基础像素大小的系数开始定义概视图。例如，如果镶嵌数据集系数为 3，而原始栅格数据的像素大小为 1 米，则将以 3 米的像元大小开始生成概视图。</p>
 <p>定义Overview图像参数：</p>
-<p><img src="http://img.blog.csdn.net/20141024101229228?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDOverviews_ImagePara.png" alt=""></p>
 <p>  我们可以根据数据的实际情况定义：重采样方法、压缩方法和压缩质量。例如，对于专题数据，一般可选择最邻近法；而对于航空摄影或卫星影像，一般可使用双线性插值法或三次卷积插值法。我们可以选择不进行压缩、进行无损压缩或进行可定义总体图像质量的压缩。不同的压缩方法会影响生成Overview的大小。例如，质量为 75 的 JPEG 压缩一般可提供最佳的数据质量及文件大小。</p>
 <p>定义镶嵌数据集的参数繁多，但是总结起来，都是对镶嵌数据集概视图大小和质量的控制，几个参数可以单独使用，也可以组合使用。</p>
 <p>如果平时遇到概视图相关的问题，还是一定要结合自己的数据对比这些参数，考虑是否有排除错误和优化性能的好方法。</p>
@@ -4728,15 +4728,15 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <content type="html"><![CDATA[<p>上一篇帖子说明了如何创建镶嵌数据集、添加栅格数据，以及相关的常用参数配置。</p>
 <p>下面再接着说如何根据自己的各种需要来修改镶嵌数据集，这一贴的主题主要是如何创建、修改镶嵌数据集的轮廓线和边界。</p>
 <p><strong>修改镶嵌数据轮廓线、边界类工具</strong></p>
-<p><img src="http://img.blog.csdn.net/20141017145207271" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_Toolset.png" alt=""></p>
 <p>当镶嵌数据集创建好之后，我们将其加入到 &nbsp;ArcMap 中后发现，镶嵌数据集是以类似图层组的形式加入的，包含了至少三个图层，分别为：<strong>Boundary</strong>、<strong>Footprint</strong> 和 <strong>Image</strong>。</p>
-<p><img src="http://img.blog.csdn.net/20141017145458637" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_toc.png" alt=""></p>
 <p>在使用开头列出的那些工具之前，我们需要对上图的几个图层有所了解，了解的过程中自然会发现这些工具的用武之地。</p>
 <p><strong>Image（影像）</strong></p>
 <p>影像图层用于控制镶嵌数据集的动态镶嵌影像的渲染。如果你在ArcMap中显示过单张影像，那会发现这个图层其实看起来和单张影像差别不大。也就是镶嵌数据集将散列在磁盘上的多张栅格数据，动态拼接成了一整张栅格。对影像图层属性做出的修改不会影响镶嵌数据集，仅影响镶嵌数据集在显示时的渲染方式。</p>
 <p><strong>Footprint（轮廓线）</strong></p>
 <p>轮廓线是按照镶嵌数据集的坐标系统创建的，有可能有原始栅格数据的坐标系不一致。还记得上一篇中提到过创建镶嵌数据集时指定的坐标系可以与原始栅格数据不同吗？轮廓线包含镶嵌数据集内每个栅格的轮廓，但是不一定是每个栅格数据集的范围，而应该是栅格数据集内有效栅格数据的范围。NoData 区域是轮廓线形状所排除内容的典型示例。</p>
-<p><img src="http://img.blog.csdn.net/20141016153532207?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_FootPrint.png" alt=""></p>
 <p>当然，我们也可以根据自己的需求，进一步定义和裁剪栅格数据。方法通常是三种：</p>
 <ul>
 <li><strong>1）自动计算方法：</strong></li>
@@ -4757,13 +4757,13 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>Boundary层，我们可以理解成镶嵌数据集所引用的所有栅格数据的外边界，实际它是一个储存在地理数据库（GDB）内部的面要素类。我们可以使用 <strong>Build Boundary</strong> 工具来创建这个层，也可以在一开始添加栅格工具中勾选&nbsp;Build Boundary 参数。</p>
 <p>那这个Boundary 层是基于什么计算得到的呢？ 本质上，是将许许多多的 Footprint 层进行融合得到的。 也就是我们可以理解成，Footprint是每个栅格数据的边界，而Boundary是全部栅格的Footprint融合之后的总外边界。边界用于确定镶嵌数据集的空间范围。</p>
 <p>如下图，说明 Footprint 与 Boundary：</p>
-<p><img src="http://img.blog.csdn.net/20141017112717132?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_Boundary.png" alt=""></p>
 <p>创建边界可以指定简化方法，可以是实际数据边界，也就是不进行简化（None），可以是凸多边形（Convex Hull），还可以是外接矩形（Envelope）。</p>
 <p>如下图一目了然：</p>
-<p><img src="http://img.blog.csdn.net/20141017135953912" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_boundaryType.png" alt=""></p>
 <p>如果镶嵌数据集中所包含的栅格数据超出了边界，那超出的数据在镶嵌图像中就不可见了。因此，我们可以通过修改边界来限制镶嵌数据集的可见内容。</p>
 <p>类似操作 Footprint，我们可以通过手工编辑，或者使用工具&nbsp;Import Mosaic Dataset Geometry 制作自定义边界。</p>
-<p><img src="http://img.blog.csdn.net/20141017135947171" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDFootprint_Demo.png" alt=""></p>
 <p>当然与&nbsp;Import Mosaic Dataset Geometry&nbsp;工具相应，我们还可以使用工具 <strong>Export Mosaic Dataset Geometry</strong>导出镶嵌数据集的轮廓线、边界等要素类。</p>
 <p>有关轮廓线、边界、镶嵌数据集图层就到这里了，对于初学者来说，上面这些足够用了。</p>
 <p>下一篇我会接着整理有关概视图创建等增强优化镶嵌数据集的工具。</p>
@@ -4792,7 +4792,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <content type="html"><![CDATA[<p>在 ArcGIS 中，镶嵌数据集是用来批量管理、动态镶嵌大量栅格数据的推荐数据模型，在工具箱中有一系列用于操作镶嵌数据集的工具。如果希望了解什么是镶嵌数据集，可以预先看&nbsp;<a href="http://resources.arcgis.com/zh-cn/help/main/10.2/#/na/009t00000037000000/" target="_blank" rel="noopener"><strong>帮助文档</strong></a>。平时接触到的问题可能散落在使用镶嵌数据集的各个环节，最近就以镶嵌数据集工具为索引，顺藤摸瓜。</p>
 <p>镶嵌数据集的工具箱位于： <em><strong>Data Management Tools\ Raster\ Mosaic dataset</strong></em> 目录下，其中绝大部分工具在镶嵌数据集的右键菜单中也可以调用，下面就分类整理小结一下。</p>
 <p><strong>创建/删除镶嵌数据集类工具</strong></p>
-<p><img src="http://img.blog.csdn.net/20141014112445382" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDCreateMD_Toolset.png" alt=""></p>
 <p>首先，我们可以使用 <strong><em>Create Mosaic Dataset</em></strong> 工具创建一个新的镶嵌数据集，这是所有与镶嵌数据集有关的操作的起点。</p>
 <p><br></p>
 <p><strong>也就是，先要做出一个空的盒子来容纳下面要加入的栅格数据。</strong></p>
@@ -4851,7 +4851,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </ul>
 <p>在地理数据库内外，均可创建&nbsp;Referenced Mosaic Dataset。而不像普通镶嵌数据集仅能在数据库中创建。</p>
 <p>在文件夹下而不是在地理数据库中创建，这种地理数据库的文件扩展名为 .amd，但是不会创建边界。加入ArcMap中，类似下面的样子：</p>
-<p><img src="http://img.blog.csdn.net/20141014173357140" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MDCreateMD_toc.png" alt=""></p>
 <p>另外，需要了解，我们无法对&nbsp;Referenced Mosaic Dataset&nbsp;构建概视图、计算像素大小范围、在栅格级别添加函数或添加新栅格数据。</p>
 <p>就到这里了，下一篇打算抽时间总结下镶嵌数据集的修改方面知识点。</p>
 ]]></content>
@@ -7792,6 +7792,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -7844,51 +7889,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://my.csdn.net/uploads/201208/25/1345904145_6043.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
