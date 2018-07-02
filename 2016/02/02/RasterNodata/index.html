@@ -18,7 +18,7 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body>
 <p>例如这个需求中仅需要一个简单表达式，使用到SetNull函数，如下所示：</p>
 <p><img src="http://kikitamap.com/images/blogImg/RasterNodata_Calculator.png" alt=""></p>
 <blockquote>
-<p> 其中，表达式是 <strong>SetNull(“RasterLayer”  ==  0 , “RasterLayer” )</strong></p>
+<p> 其中，表达式是 <strong><code>SetNull(&quot;RasterLayer&quot;  ==  0 , &quot;RasterLayer&quot; )</code></strong></p>
 </blockquote>
 <p>这样执行工具之后，所有的 0 值变成了 Nodata，彻底去了黑边。</p>
 <p><br></p>

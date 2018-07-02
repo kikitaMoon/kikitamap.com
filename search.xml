@@ -1807,7 +1807,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>例如这个需求中仅需要一个简单表达式，使用到SetNull函数，如下所示：</p>
 <p><img src="http://kikitamap.com/images/blogImg/RasterNodata_Calculator.png" alt=""></p>
 <blockquote>
-<p> 其中，表达式是 <strong>SetNull(“RasterLayer”  ==  0 , “RasterLayer” )</strong></p>
+<p> 其中，表达式是 <strong><code>SetNull(&quot;RasterLayer&quot;  ==  0 , &quot;RasterLayer&quot; )</code></strong></p>
 </blockquote>
 <p>这样执行工具之后，所有的 0 值变成了 Nodata，彻底去了黑边。</p>
 <p><br></p>
@@ -2186,11 +2186,11 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
       <url>/2015/09/30/TriptoGreece/</url>
       <content type="html"><![CDATA[<p>Esri 的 <strong><a href="http://storymaps.arcgis.com/zh-cn/" target="_blank" rel="noopener">地图故事</a></strong> 很有意思，用句官媒的广告 “每个人都有要讲述的故事，利用地图的强大功能来讲述您的故事” ……</p>
 <p>国庆假期将至，放点有趣的东西。如果喜欢分享，又想记录自己的过往，动手试试不错哦。</p>
-<p><br><br><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_TripToGreece.png-kikitaMaps" alt=""></p>
+<p><br><br><img src="http://kikitamap.com/images/blogImg/TriptoGreece_Overview.png" alt=""></p>
 <p><br></p>
 <p><strong>如何制作故事地图 ?</strong>    我把链接搬运过来，<a href="http://storymaps.arcgis.com/zh-cn/how-to/" target="_blank" rel="noopener"><strong>点吧</strong></a></p>
 <p>地图故事中有好多应用程序模板可选，即使不懂技术也能hold住，只需要选个要讲的“<strong>故事类型</strong>”。</p>
-<p><img src="http://img.blog.csdn.net/20150930101800409" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/TriptoGreece_StoryMap.png" alt=""></p>
 <p><br></p>
 <p>比如选择 <strong>Story Map Tour</strong>，这也有<strong><a href="http://storymaps.arcgis.com/zh-cn/app-list/map-tour/tutorial/" target="_blank" rel="noopener">攻略</a></strong>，点这里。其实不看攻略也没关系。</p>
 <p>在 <strong>Story Map Tour Builder</strong>  中可以选择上传自己的照片，ArcGIS Online 会自动管理。如果照片是带有GPS信息的 Geo-tagged 照片，那太好了，上传之后就自动定位了。</p>
@@ -2206,10 +2206,10 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>上面的与技术好像都不沾边，下面的可能沾点边……</p>
 <p><br></p>
 <p>打开ArcGIS Online 上<strong>我的组织</strong>，查看<strong>我的内容</strong>，我们看到这个地图故事的应用一共有这样几个内容：</p>
-<p><img src="http://img.blog.csdn.net/20150930134505825" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/TriptoGreece_MyContent.png" alt=""></p>
 <p><br></p>
 <p>照片对应的点信息是通过 Feature Layer 维护的，所以在一开的时候选择上传照片时，要给 Feature Service 起个名字。</p>
-<p><img src="http://img.blog.csdn.net/20150930134722481" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/TriptoGreece_FeatureService.png" alt=""></p>
 ]]></content>
       
         <categories>
