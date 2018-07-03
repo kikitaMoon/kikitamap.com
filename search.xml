@@ -2633,38 +2633,38 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[发布和安装python自定义模块]]></title>
-      <url>/2015/07/09/New-folder-2016-03-07-SetupPythonModule/</url>
+      <url>/2015/07/09/SetupPythonModule/</url>
       <content type="html"><![CDATA[<p>这一篇说下如何发布和安装python自定义模块，版本：Python 2.7 。</p>
 <p><br></p>
 <h1 id="1-创建setup-py"><a href="#1-创建setup-py" class="headerlink" title="1.创建setup.py"></a>1.创建setup.py</h1><p>现在如果已经写好一个python文件，为了尽量简明，创建一个新的文件夹，把自己py文件放进去。接着在这个文件夹中创建一个名为 setup.py 的文件，用来表示模块的元数据，文件的内容类似下面这个样子。除了手工创建，有很多python编辑器也可以更简便的来创建这个文件，例如 pycharm。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">'nesterprint'</span>,</span><br><span class="line">    version=<span class="string">'1.0.0'</span>,</span><br><span class="line">    packages=[<span class="string">''</span>],</span><br><span class="line">    url=<span class="string">'http://blog.csdn.net/kikitaMoon'</span>,</span><br><span class="line">    license=<span class="string">''</span>,</span><br><span class="line">    author=<span class="string">'kikita'</span>,</span><br><span class="line">    author_email=<span class="string">'kikitamoopn@gmail.com'</span>,</span><br><span class="line">    description=<span class="string">'My Test'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h1 id="2-打包发布"><a href="#2-打包发布" class="headerlink" title="2. 打包发布"></a>2. 打包发布</h1><p>使用Window自带的命令窗口，转到上一步创建的文件夹目录，输入命令，<strong>python setup.py sdist</strong>：</p>
-<p><img src="http://img.blog.csdn.net/20150709110253363" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_setup.png" alt=""></p>
 <p>通过上面的状态信息知道，产生了下面的结果：</p>
-<p><img src="http://img.blog.csdn.net/20150709110634336" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Folder.png" alt=""></p>
 <p><br></p>
 <h1 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h1><p>在命令窗口输入命令： <strong>python setup.py install</strong></p>
-<p><img src="http://img.blog.csdn.net/20150709111352788" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Install.png" alt=""></p>
 <p>安装命令也会产生额外的目录，build/lib 。</p>
-<p><img src="http://img.blog.csdn.net/20150709111855388" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Folder2.png" alt=""></p>
 <p><br></p>
 <h1 id="4-导入模块"><a href="#4-导入模块" class="headerlink" title="4. 导入模块"></a>4. 导入模块</h1><p>import nesterprint ，导入这个自定模块，开始使用其中的myprint函数吧。</p>
-<p><img src="http://img.blog.csdn.net/20150709112732680" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Import.png" alt=""></p>
 <blockquote>
 <p>PS:这一篇重在发布安装模块的流程，模块内部脚本没提及，在前一篇的最后Demo中有写，可以参考，但是这真的不是重点。</p>
 </blockquote>
 <p><br></p>
 <h1 id="5-升级模块"><a href="#5-升级模块" class="headerlink" title="5. 升级模块"></a>5. 升级模块</h1><p>如果我们想升级模块，可以不？ 可以！</p>
 <p>更新了nesterprint.py 中的一些代码，改进了功能后，来升级下模块。到 setup.py 文件中修改下版本信息，我就叫他2.0.0 。</p>
-<p><img src="http://img.blog.csdn.net/20150709113804070" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Update.png" alt=""></p>
 <p>用 2， 3 两步一样的方法发布安装就好了。</p>
-<p><img src="http://img.blog.csdn.net/20150709114154886" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Install2.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <p>试验一下：</p>
 <p>nesterprint 的功能已经升级到 2.0 版本了。</p>
-<p><img src="http://img.blog.csdn.net/20150709114539197" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/SetupPythonModule_Update2.png" alt=""></p>
 <blockquote>
 <p>what’s new？ 增加了根据列表的深度自动缩进的功能。 </p>
 </blockquote>
@@ -3006,34 +3006,34 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[为Runner做一张有质感的图]]></title>
-      <url>/2015/06/05/New-folder-2016-03-07-RunnerRoutes/</url>
+      <url>/2015/06/05/RunnerRoutes/</url>
       <content type="html"><![CDATA[<p>如今，通过 GPS 我们可以轻松采集到自己的足迹，Runner们用各种手机App记录跑步路线也再平常不过。如果我们有大量的足迹信息，也可以试试 ArcGIS Pro 的渲染能力，来看看自己的 Favourite 线路如何分布。</p>
 <p><br></p>
 <p>我在 ArcGIS Online 上 down 到了某位 Runner 的足迹信息，当然大家也可以用自己的，gpx，txt，kml 等常见的 GPS Tracklog 文件都是可以直接导入成为 ArcGIS 支持的格式。根据文件格式的不同，你可能会需要 GPX to Feature ， Add XY Event layer， KML to Layer ，Points to Line 等这些工具的辅助，得到路线数据，表示路线的线数据当然越多越好。</p>
 <p><br></p>
 <p>ArcGIS Pro 的符号化中增加了符号的透明效果，这一点完胜 ArcMap 的渲染效果。你想问ArcMap什么效果？如下，好像有点惨不忍睹：</p>
-<p><img src="http://img.blog.csdn.net/20150605104227988" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_ArcMap.png" alt=""></p>
 <p><br></p>
 <p>由于ArcGIS Pro 中的新增的符号透明不是图层的整体透明，而是每个Feature的符号透明，就会产生色彩叠加的效果。直观上说，就是符号叠加越密集的位置，色彩会越深，给人以渐变色彩的热力图的感受。</p>
 <p><br></p>
 <p>#<strong>怎么做？</strong></p>
 <p><br></p>
 <p>##<strong>1.</strong><br>加入数据，GPS路线数据和深灰色主题的底图服务。</p>
-<p><img src="http://img.blog.csdn.net/20150605095942898" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_Basemap.png" alt=""></p>
 <p><br></p>
 <p>##<strong>2.</strong> </p>
 <p>选个喜欢的颜色，并进入 more。</p>
-<p><img src="http://img.blog.csdn.net/20150605100740196" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_Symbol.png" alt=""></p>
 <p><br></p>
 <p>##<strong>3.</strong> </p>
 <p>设置个透明百分比。</p>
-<p><img src="http://img.blog.csdn.net/20150605094759196" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_Transparent.png" alt=""></p>
 <p><br></p>
 <p>##<strong>4.</strong> </p>
 <p>Done !</p>
-<p><img src="http://img.blog.csdn.net/20150605093131933" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_Done.png" alt=""></p>
 <p><br><br>无需任何高级的分析，所见即所得。相比周围，明显这条路是这位 Runner 最经常挥洒汗水的一条……</p>
-<p><img src="http://img.blog.csdn.net/20150605105103092" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RunnerRoutes_Favorite.png" alt=""></p>
 <p><br></p>
 ]]></content>
       
@@ -3056,7 +3056,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[Web Mercator 公开的小秘密]]></title>
-      <url>/2015/05/29/New-folder-2016-03-07-SecretofWebMercator/</url>
+      <url>/2015/05/29/SecretofWebMercator/</url>
       <content type="html"><![CDATA[<p>网上已经有好多作者都不吝笔墨，写了好多有关 Web Mercator这个坐标系的前世今生。多搜罗多摄入，我们会得到很多有用的信息。今天讨论到 3758，3857，102100，900913…… 这些ID又一石激起千层浪，看来整理总结下还是有点必要。</p>
 <p><br></p>
 <h1 id="Web-Mercator-如何定义？"><a href="#Web-Mercator-如何定义？" class="headerlink" title="Web Mercator 如何定义？"></a>Web Mercator 如何定义？</h1><p><br></p>
@@ -3074,14 +3074,14 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>Angular Unit: Degree (0.0174532925199433)<br>Prime Meridian: Greenwich (0.0)<br>Datum: D_WGS_1984<br>  Spheroid: WGS_1984<br>    Semimajor Axis: 6378137.0<br>    Semiminor Axis: 6356752.314245179<br>    Inverse Flattening: 298.257223563</p>
 </blockquote>
 <p>通过参数描述，我们知道 WGS 1984 是一个长半轴(a)为6378137，短半轴（b）为6356752.314245179 的椭球体，扁率(f)为298.257223563，f=(a-b)/a 。</p>
-<p><img src="http://img.blog.csdn.net/20150528211737974" alt="这里写图片描述"></p>
+<p><img src="http://kikitamap.com/images/blogImg/SecretofWebMercator_Speriod.png" alt=""></p>
 <p><br></p>
 <h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p><strong>Web Mercator 坐标系使用的投影方法不是严格意义的墨卡托投影，而是一个被 EPSG（European Petroleum Survey Group）称为</strong>伪墨卡托<strong>的投影方法，这个伪墨卡托投影方法的大名是 Popular Visualization Pseudo Mercator，PVPM。</strong> 看起来就觉得这个投影方法不是很严谨的样子，大众化的？受欢迎的？可视化伪墨卡托投影……</p>
 <p>因为这个坐标系统是 Google Map 最先使用的，或者更确切地说，是Google 最先发明的。在投影过程中，将表示地球的参考椭球体近似的作为正球体处理（正球体半径 R = 椭球体半长轴 a）。这也是为什么在 ArcGIS 中我们经常看到这个坐标系叫 <strong>WGS 1984 Web Mercator (Auxiliary Sphere)</strong>。Auxiliary Sphere 就是在告知你，这个坐标在投影过程中，将椭球体近似为正球体做投影变换，虽然基准面是WGS 1984 椭球面。</p>
-<p><img src="http://img.blog.csdn.net/20150528211907842" alt="这里写图片描述"></p>
+<p><img src="http://kikitamap.com/images/blogImg/SecretofWebMercator_Geodesic.png" alt=""></p>
 <p>后来，Web Mercator 在 Web 地图领域被广泛使用，这个坐标系就名声大噪。尽管这个坐标系由于精度问题一度不被GIS专业人士接受，但最终 EPSG 还是给了 WKID:3857。</p>
 <p>下面放一张在 EPSG 官网上找到的3857坐标的具体参数介绍，供参考：</p>
-<p><img src="http://img.blog.csdn.net/20150528180842720" alt="这里写图片描述"></p>
+<p><img src="http://kikitamap.com/images/blogImg/SecretofWebMercator_Name.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="Web-Mercator-的阴暗面"><a href="#Web-Mercator-的阴暗面" class="headerlink" title="Web Mercator 的阴暗面"></a>Web Mercator 的阴暗面</h1><p><br></p>
@@ -3090,7 +3090,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>拒绝给这个坐标系分配 坐标系ID 的原话是这样的：</p>
 <p><strong>“</strong> The projected coordinate reference system originally lacked an official spatial reference identifier (SRID), and the Geodesy subcommittee of the OGP’s Geomatics committee (also known as EPSG) refused to provide it with one, declaring “We have reviewed the coordinate reference system used by Microsoft, Google, etc. and believe that it is technically flawed. We will not devalue the EPSG dataset by including such inappropriate geodesy and cartography.”  <strong>”</strong></p>
 <p>这不是EPSG 冷酷无情无理取闹，从技术角度看是有原因的。简而言之，主要原因在于基准面被篡改后，本来是等角投影的Mercator坐标变换算法，不再等角了，而是近似等角，也就是出现角度变形。这种变形势必影响了坐标的精度，如下是某位GIS专家给出的概要说明（闪亮的最后一条）：</p>
-<p><img src="http://img.blog.csdn.net/20150528231421817" alt="这里写图片描述"></p>
+<p><img src="http://kikitamap.com/images/blogImg/SecretofWebMercator_darkside.png" alt=""></p>
 <p>如果你想进一步关心细节，想知道这位专家对 Web Mercator 的 dark side 的深入见解，点<a href="http://hydrometronics.com/downloads/Web%20Mercator%20-%20Non-Conformal,%20Non-Mercator%20%28notes%29.pdf" target="_blank" rel="noopener">这里</a>看看。</p>
 <p><br></p>
 <p><br></p>
@@ -3105,7 +3105,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><strong>ESRI:102113</strong>   Esri内部使用ID，与 EPSG:3785 相应。已被弃用。</p>
 <p><strong>ESRI:102100</strong>   Esri内部使用ID，与 EPSG:3857 相应。</p>
 <p>因此，细心地话，会发现在 ArcGIS Server 的REST 服务页面中，Web Mercator 的空间参考会记做： <strong>102100(3857)</strong></p>
-<p><img src="http://img.blog.csdn.net/20150528234841686" alt="这里写图片描述"></p>
+<p><img src="http://kikitamap.com/images/blogImg/SecretofWebMercator_3857.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <p><br></p>
@@ -3373,7 +3373,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[空间统计（五）诊断回归分析结果]]></title>
-      <url>/2015/03/31/New-folder-2016-03-07-RegressionAnalysisResult/</url>
+      <url>/2015/03/31/RegressionAnalysisResult/</url>
       <content type="html"><![CDATA[<p>为了理解、解释、预测某个问题，我们会进行回归分析。上一篇中提到了回归模型中的因变量和解释变量的概念，用一组解释变量来建模解释因变量，但事实上，选择一组优质的解释变量并不是那么容易。通常我们会根据一些常识、理论基础、某些研究、专家的意见、参考文献等等选择一组解释变量，来进行解释变量的筛选。在ArcGIS Desktop中，当我们使用 普通最小二乘法（OLS）执行回归分析的时候，工具会进行诊断测试，提供一个汇总报告，帮助我们诊断回归分析的质量。这篇文章咱们就围绕这个话题展开——回归分析的结果诊断。</p>
 <p><br></p>
 <p><br></p>
@@ -3383,14 +3383,14 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </blockquote>
 <p><br></p>
 <p><br></p>
-<h2 id="Check-1-解释变量与因变量具有预期的关系否？"><a href="#Check-1-解释变量与因变量具有预期的关系否？" class="headerlink" title="Check #1  解释变量与因变量具有预期的关系否？"></a>Check #1  解释变量与因变量具有预期的关系否？</h2><p><img src="http://img.blog.csdn.net/20150323175322940" alt=""></p>
+<h2 id="Check-1-解释变量与因变量具有预期的关系否？"><a href="#Check-1-解释变量与因变量具有预期的关系否？" class="headerlink" title="Check #1  解释变量与因变量具有预期的关系否？"></a>Check #1  解释变量与因变量具有预期的关系否？</h2><p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check1.png" alt=""></p>
 <p>每个解释变量都会有一个系数，系数具有+/-号，来表示解释变量与因变量的关系。从工具的得到的报告中，我们看到的系数的正负，每个解释变量应该是我们期望的关系。如果有非常不符合逻辑的系数，我们就应该考虑剔除它了。</p>
 <p>当然，有时也可能得到与常识不同的结论。举个例子，假如我们在研究森林火灾，我们通常认为降雨充沛的区域火灾的发生率会相对较低，也就是所谓的负相关，但是，这片森林火灾频发的原因可能是闪电雷击，这样降雨量这个解释变量可能就不是常识中的负相关的关系了。</p>
 <p>因此，我们除了验证解释变量的系数与先验知识是否相符外，还有继续结合其他项检查继续诊断，从而得出更可靠的结论。</p>
 <p><br></p>
 <p><br></p>
 <h2 id="Check-2-解释变量对模型有帮助否？"><a href="#Check-2-解释变量对模型有帮助否？" class="headerlink" title="Check #2  解释变量对模型有帮助否？"></a>Check #2  解释变量对模型有帮助否？</h2><p>解释变量对模型有无帮助说的就是解释变量是否有显著性，同样我们可以从 OLS 工具的汇总报表中得出些结论。</p>
-<p><img src="http://img.blog.csdn.net/20150324110059319" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check2.png" alt=""></p>
 <p>那如何了解这些解释变量是否有<strong>显著性</strong>呢？</p>
 <p>OLS 工具除了对模型中的每个解释变量计算一个系数外，还执行统计检验以确定这些解释变量是否对模型有所帮助。</p>
 <p>如果解释变量的系数为零（或非常接近零），我们认为这个解释变量对模型没有帮助，统计检验就用来计算系数为零的概率。如果统计检验返回一个小概率值（p 值），则表示系数为零的概率很小。如果概率小于 0.05，OLS 汇总报告上 <strong>概率（Probability）</strong> 旁边的一个 <strong>星号（*）</strong> 表示相关解释变量对模型非常重要。换句话说，其系数在 95% 置信度上具有统计显著性。</p>
@@ -3399,36 +3399,36 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><br></p>
 <p><br></p>
 <h2 id="Check-3-残差是否有空间聚类？"><a href="#Check-3-残差是否有空间聚类？" class="headerlink" title="Check #3  残差是否有空间聚类？"></a>Check #3  残差是否有空间聚类？</h2><p>残差在空间上应该是随机分布的，而不应该出现聚类。这项检查我们可以使用 <strong>空间自相关工具（Spatial Autocorrelation Tool）</strong>工具进行检查。</p>
-<p><img src="http://img.blog.csdn.net/20150324160750631" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check3.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h2 id="Check-4-模型是否出现了倾向性？"><a href="#Check-4-模型是否出现了倾向性？" class="headerlink" title="Check #4  模型是否出现了倾向性？"></a>Check #4  模型是否出现了倾向性？</h2><p>我们以前听过政治老师说过，不要戴着“有色眼镜”看人！也可能是历史老师？这不重要。。同样，回归分析模型中，也不要带有“成见”，不能具有倾向性，否则，这不是个客观合理的模型。</p>
 <p>我们都知道正态分布是个极好的分布模式，如果我们正确的构建了回归分析模型，那么模型的残差会符合完美的正态分布，其图形为钟形曲线。</p>
 <p>当模型出现偏差时，可能我们看到的图形也是诡异的，这样我们就无法完全信任所预测的结果。</p>
-<p><img src="http://img.blog.csdn.net/20150324160920331" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check4.png" alt=""></p>
 <p><br></p>
 <p><strong>如何检验呢？</strong></p>
 <p>在 OLS 汇总报告中，有一个具有统计显著性的 Jarque-Bera 诊断表示模型是否出现偏差。如下图中是没有偏差的模型，如果有偏差，在篮框中会出现星号。</p>
-<p><img src="http://img.blog.csdn.net/20150324161534962" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check4JBS.png" alt=""></p>
 <p>因此，判断自己的模型没有偏差的最直观的方法就是：<strong>Jarque-Bera 诊断中没有星号</strong>。</p>
 <p><br></p>
 <p><strong>解决偏差！</strong></p>
 <p>为了解决模型偏差，最好为所有模型变量创建一个<strong>散点图矩阵</strong>。因变量和一个解释变量之间存在非线性关系，这是出现模型偏差的常见原因。这些在散点图矩阵中看起来像一条曲线。</p>
-<p><img src="http://img.blog.csdn.net/20150324165706840" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check4Scatter.png" alt=""></p>
 <p>OLS 是一种线性回归方法，假设您正在建模的关系是线性关系。如果不是，可尝试变换您的变量，以查看这样做是否可创建出线性更明显的关系。常见变换包括对数变换和指数变换。</p>
-<p><img src="http://img.blog.csdn.net/20150324161833190" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check4Transform.png" alt=""></p>
 <p>另外，散点矩阵图还可以显示出数据异常值。要了解一个异常值是否正在影响您的模型，请尝试在含有和不含有异常值的情况下分别运行 OLS，从而了解异常值对模型性能的更改程度，以及移除异常值是否会校正模型偏差。</p>
-<p><img src="http://img.blog.csdn.net/20150324170036731" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check4Outlier.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h2 id="Check-5-解释变量中存在冗余吗？"><a href="#Check-5-解释变量中存在冗余吗？" class="headerlink" title="Check #5  解释变量中存在冗余吗？"></a>Check #5  解释变量中存在冗余吗？</h2><p>在我们建模的过程中，应尽量去选择表示各个不同方面的解释变量，也就是尽量避免传达相同或相似信息的解释变量。要清楚，引入了冗余变量的模型是不足以信任的。</p>
 <p>那么问题来了，<strong>如何判断是否存在冗余解释变量？</strong></p>
 <p>OLS工具会为每个变量计算膨胀因子（Variance Inflation Factor，VIF），VIF 值是对变量冗余度的一种度量，可辅助决定在不削弱模型解释能力的情况下可从中移除哪些变量。根据经验，<strong>VIF 值超过 <em>7.5</em> 就有问题</strong>。如果有两个或更多解释变量的 VIF 值超过了 7.5，应该一次移除其中一个变量并重新运行 OLS，直到冗余消失。记住，不要全部移除掉哦！</p>
-<p><img src="http://img.blog.csdn.net/20150331115555192" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check5.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h2 id="Check-6-评估模型的性能"><a href="#Check-6-评估模型的性能" class="headerlink" title="Check #6  评估模型的性能"></a>Check #6  评估模型的性能</h2><p>最后需要做的是，评估模型的性能。 <strong>矫正R<sup>2</sup>值</strong> 是评估解释变量对因变量建模的重要度量。</p>
-<p><img src="http://img.blog.csdn.net/20150331135007332" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysisResult_Check6.png" alt=""></p>
 <p>这项检查应该放到<strong>最后</strong>。一旦我们通过了前面的所有检验，接下来就可以进行评估矫正R<sup>2</sup>值。</p>
 <p>R<sup>2</sup>值的范围介于 0 和 1 之间，以百分比形式表示。假设正在为犯罪率建模，并找到一个通过之前所有五项检查的模型，其校正 R<sup>2</sup> 值为 0.65。这样就可以了解到模型中的解释变量说明犯罪率是 65%（更技术一些来说就是，模型解释了犯罪率因变量中 65% 的变化量）。在有些科学领域，能够解释复杂现象的 23% 就会让人兴奋不已。在其他领域，一个R<sup>2</sup>值可能需要更靠近 80% 或 90% 才能引起别人的注意。不管采用哪一种方式，校正 R2 值都会帮我们判断自己模型的性能。</p>
 <p>另一项辅助评估模型性能的重要诊断是修正的 Akaike 信息准则 /Akaike’s information criterion (AICc)。AICc 值是用于比较多个模型的一项有用度量。例如，可能希望尝试用几组不同的解释变量为学生的分数建模。在一个模型中仅使用人口统计变量，而在另一个模型选择有关学校和教室的变量，如每位学生的支出和师生比。只要所有进行比较的模型的因变量（在本示例中为学生测试分数）相同，我们就可以使用来自每个模型的 AICc 值确定哪一个的表现更好。<strong>模型的 AICc 值越小，越适合观测的数据。</strong></p>
@@ -3455,7 +3455,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[空间统计（四）回归分析探索]]></title>
-      <url>/2015/03/20/New-folder-2016-03-07-RegressionAnalysis/</url>
+      <url>/2015/03/20/RegressionAnalysis/</url>
       <content type="html"><![CDATA[<p>在上一篇文章中，我提到的这些工具都是用于研究数据有什么样的空间模式，哪里聚类？哪里是热点？哪里有冷点？哪里有异常值？等等，总之研究的是“生米煮成熟饭”的结果状态。</p>
 <p>而“空间关系建模”工具箱中的工具，更倾向于研究 Why？ 例如，为什么会出现这种情况？ 或者说什么导致了这种情况。这时我们就可以使用工具进行回归分析，如：普通最小二成法（OLS） 和 地理加权回归（GWR）。</p>
 <p><br><br><br></p>
@@ -3478,27 +3478,27 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>总之，通过回归分析，我们可以对空间关系进行建模、检查和探究；回归分析还可帮助我们解释所观测到的空间模式背后的诸多因素。</p>
 <p>在所有的回归方法中，OLS 最为著名。而且，它也是所有空间回归分析的正确起点。它可以尝试了解或预测（早逝/降雨）的变量或过程提供一个全局模型；而且，它可创建一个回归方程来表示该过程。地理加权回归 (GWR) 是若干空间回归方法中的一种，被越来越多地用于地理及其他学科。通过对数据集中的各要素拟合回归方程，GWR 为您要尝试了解/预测的变量或过程提供了一个局部模型。若使用得当，这些方法可提供强大且可靠的统计数据，以对线性关系进行检查和估计。</p>
 <p>例如如下是两个变量之间存在正、负关系以及无关系的情况：</p>
-<p><img src="http://img.blog.csdn.net/20150320115908163" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Relations.png" alt=""></p>
 <p><br><br><br><br><br><br><br></p>
 <p>通过上文，我们有了对回归分析的基本的印象，下面我们就来深入进去，看看 <strong>回归分析是如何实现的</strong>？</p>
 <p>回归分析是一个复杂的过程。在这个过程中，我们利用一个或多个解释变量对因变量进行最佳预测。说到底就是一个包含因变量、解释变量、系数、残差的数学公式，像下面的样子。</p>
 <p><img src="http://img.blog.csdn.net/20150320143734273" alt=""></p>
 <p><br><br><br></p>
 <p><strong>什么是因变量？</strong></p>
-<p><img src="http://img.blog.csdn.net/20150320151517203" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Dependent.png" alt=""></p>
 <p>等式的左边是 <strong>因变量（Dependent Variable）</strong> ，记为 <strong>Y</strong>，表示我们要研究或者预测的对象。通常我们会先给定一些已知的 Y 值，用于构建回归方程，这些已知的 Y 值称为 <strong>观测值</strong>。</p>
 <p><br><br><br></p>
 <p><strong>什么是解释变量？</strong></p>
-<p><img src="http://img.blog.csdn.net/20150320152450059" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Explanatory.png" alt=""></p>
 <p>等式的右边的 X ，称为 <strong>自变量</strong> 或 <strong>解释变量（Explanatory Variables）</strong>。因变量是解释变量的函数。到这里，可能有的同学就晕了。<br>同样，举个栗子。我们想研究人们肥胖的诸多原因，想找到肥胖与收入、健康食品摄入、教育水平等等因素是否有关联。在这个例子中，肥胖就是因变量（Y），收入、健康食品摄入、教育水平等这些因素即为解释变量（X）。</p>
 <p><br><br><br></p>
 <p><strong>还有重要的回归系数呢！</strong></p>
-<p><img src="http://img.blog.csdn.net/20150320154347675" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Coefficient.png" alt=""></p>
 <p>在方程中，我们还发现有些 β 值，称为 <strong>回归系数（Coefficient）</strong> 。表示解释变量与因变量之间的关系强度和类型，每个解释变量都有一个对应的回归系数。当关系为正时，关联系数的符号也为正。当关系为负时，关联系数的符号也为负。如果关系很强，则系数也相对较大。如果关系较弱，则关联系数接近于零。</p>
-<p>其中，<img src="http://img.blog.csdn.net/20150320154518935" alt=""> 为回归<strong>截距</strong>。 它表示所有自变量（解释变量）均为零时因变量的预期值。</p>
+<p>其中，<img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Intercept.png" alt=""> 为回归<strong>截距</strong>(Intercept)。 它表示所有自变量（解释变量）均为零时因变量的预期值。</p>
 <p><br><br><br></p>
 <p><strong>绝对不能忘记的残差！</strong></p>
-<p><img src="http://img.blog.csdn.net/20150320154803016" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RegressionAnalysis_Residual.png" alt=""></p>
 <p> ε称为 <strong>残差（Residual）</strong>或 <strong>随机误差项</strong>，是因变量不能解释的部分。回归工具可以构造出能够对那些已知的 y 值作出最佳预测的方程。不过，预测值很少会和观测值完全匹配。y 的观测值与预测值之差称为残差。回归方程中的残差可用于确定模型的拟合程度。残差较大表明模型拟合效果较差。</p>
 <p><br><br><br><br><br><br><br></p>
 <p>回归模型的构建是一个迭代过程，在该过程中，需要找出有效的自变量来了解因变量，且需要运行回归工具来确定哪些变量为有效的预测因子，然后需要反复执行变量移除和/或添加操作，直到找出最佳的回归模型。<br>虽然构建模型的过程通常是探索性的，但它绝不是“盲目的搜查”。我们应通过了解相关理论、请教该领域内的专家并凭借一些常识性信息来确定可能的解释变量。在分析之前，我们应该清楚每个可能的解释变量和因变量之间的关系并能够对其正确与否作出判断，而且，对于这些关系不匹配的模型，我们应该表示质疑。</p>
@@ -4910,7 +4910,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ArcGIS 系统要求知多少]]></title>
-      <url>/2014/09/24/New-folder-2016-03-09-ArcGISSystemRequirment/</url>
+      <url>/2014/09/24/ArcGISSystemRequirment/</url>
       <content type="html"><![CDATA[<p>安装 ArcGIS 软件之前，一定要注意自己的操作系统，硬件（包括型号和驱动），甚至一些软件的版本是否能满足系统要求。只有出现在各个版本的列表中的操作系统和其他软硬件版本才算是真正的支持。否则可能会出现诸如不稳定，崩溃等等各种异常现象。</p>
 <p>时常会被问到：“ArcGIS 9.3还能安装在 Windows XP SP1 中吗？ArcGIS 10.0能安装在 windows 8 中吗？”答案都是不能。但是前者安装时系统会主动报错，不支持安装，后者貌似没有任何提示，也安装上了。用户就会问，你不是说安装不上米？</p>
 <p>“能不能安装”在官方和“民间”，是两个完全不同层面的问题。为什么这么说呢？我们一起脑补下。从个人学习角度，只要安装成功，没有收到致命报错，似乎就是支持安装；但是，从官方角度，我们可以理解成，这个操作系统的发布和ArcGIS某个版本软件开发测试不是同期的，例如10.0早在2010年就发布了，而win8在2013年才发布，没有经过严格测试证明可以全面支持的，不能称为支持。因此如果强行安装了，出于个人研究探索并无大碍，但只能后果自负了。</p>
@@ -4927,10 +4927,10 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><br></p>
 <p><br></p>
 <p>ArcGIS 9.2 甚至更早的版本就不说了，太久远了，现在的操作系统没有几个能支持的了，如果还在使用这8年前的版本，算了，丢了吧，反正你不爱ArcGIS。</p>
-<p>以前整理过各个版本的补丁下载链接，<a href="http://blog.csdn.net/kikitamoon/article/details/8989539" target="_blank" rel="noopener"><strong>点击</strong></a> 跳转另一篇博客。</p>
+<p>以前整理过各个版本的补丁下载链接，<a href="http://kikitamap.com/2013/05/29/AllPackages/" target="_blank" rel="noopener"><strong>点击</strong></a> 跳转另一篇博客。</p>
 <p>另外，从10.2版本之后，不再提供像上面链接中一样的单独的补丁下载，而是做成完整的安装包，例如，截至到这篇博客的时间，最新的版本 10.2.1，10.2.2 这些版本既是如此。这样就可以在空白机器上直接安装最新版本，而不需要像以前一样，先安装旧版本再打补丁，避免重复劳动多次；对于已经安装10.1，10.2的机器，可以直接覆盖安装 10.2.1等新版本，也节省了卸载的时间。</p>
 <p>产品的生命周期最可以说明问题，有图有真相：</p>
-<p><img src="http://img.blog.csdn.net/20140924102033625?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISSystemRequirment.jpg" alt=""></p>
 ]]></content>
       
         <categories>
@@ -4950,29 +4950,29 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ArcGIS中的影像分类]]></title>
-      <url>/2014/09/18/New-folder-2016-03-09-ArcGISImageClassification/</url>
+      <url>/2014/09/18/ArcGISImageClassification/</url>
       <content type="html"><![CDATA[<p>影像分类的目的就为了将图像中的像元划分成不同的类别，过程就是根据像元在不同波段的波普亮度、空间结构特征或者其他信息，按照某种规则或算法实现分类。遥感图像分类处理就是是为了提取遥感图像中的目标信息，遥感图像分类主要用于地物类别的区分。</p>
 <p>影像分类分为监督分类和非监督分类，很多遥感书籍中都有这两种分类方法的比较。这里我结合ArcGIS软件简单整理一下：</p>
 <p><br></p>
 <h1 id="监督分类"><a href="#监督分类" class="headerlink" title="监督分类"></a><strong>监督分类</strong></h1><p>监督分类是使用被确认类别的样本像元去识别其他未知类别像元的过程。其中这些已被确认类别的像元就是训练样本。也就是说，在监督分类中，必须事先提取出代表总体特征的训练数据以及事先知道影像中有几种类别。这样就可以学习这些样本类别的先验知识，然后对整体数据进行分类。</p>
 <p>在 ArcGIS 中，首先使用 Image Classification 工具条中的训练样本管理器，创建训练样本。</p>
-<p><img src="http://img.blog.csdn.net/20140916211347046" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140916212249515" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Training.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Samples.png" alt=""></p>
 <p>在创建样本之后，我们可以评估训练样本，使用直方图、散点图、统计数据。</p>
 <p><strong>（1）直方图</strong></p>
 <p>打开直方图，每个波段对应一个直方图。不同类的直方图不应重叠。如果发生重叠，则需要删除或合并其中一些类。</p>
 <p>直方图按钮仅用于整型影像，不适用于浮点型。</p>
-<p><img src="http://img.blog.csdn.net/20140916214402053" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Histogram.png" alt=""></p>
 <p><strong>（2）散点图</strong></p>
 <p>散点图是参加分类的影像数据的波段的两两组合，如果有N个波段，就有1 + 2 + … + (N – 1) 个散点图。</p>
 <p>对于所有波段组合，散点图和统计数据不应彼此重叠。</p>
-<p><img src="http://img.blog.csdn.net/20140916215409425" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Scatterplots.png" alt=""></p>
 <p><strong>（3）统计数据</strong></p>
 <p>统计数据包括最小值、最大值、平均值、标准差和协方差矩阵。</p>
-<p><img src="http://img.blog.csdn.net/20140916215620231" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Statistics.png" alt=""></p>
 <p>创建训练样本后，可以使用交互式监督分类工具，探索性的直接查看分类结果。这个工具不需要事先创建特征文件，工具后台使用的是最大似然法分类方法。</p>
-<p><img src="http://img.blog.csdn.net/20140916211656031" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140916212048316" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_interactive.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/ArcGISImageClassification_Result.png" alt=""></p>
 <p>在ArcGIS 中，监督分类的主要GP工具是&nbsp;<strong>最大似然法分类工具（Maximum Likelihood Classification）</strong>。</p>
 <p>（1）需要使用&nbsp;<strong>特征文件（Signature File）</strong>，既可以是通过训练样本制作的，也可以是ISO聚类工具求取，*.gsg文件。</p>
 <p>（2）可以根据需要设置&nbsp;<strong>剔除分数（Reject Fraction&nbsp;）</strong>，例如0.01。这样表示，正确分类的几率不到 1% 的像元就会成为 NoData。</p>
@@ -5005,35 +5005,35 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ArcGIS 构建3D动画方法]]></title>
-      <url>/2014/09/16/New-folder-2016-03-09-Building3DAnimation/</url>
+      <url>/2014/09/16/Building3DAnimation/</url>
       <content type="html"><![CDATA[<h2 id="Ⅰ-以动画表现视图（View）"><a href="#Ⅰ-以动画表现视图（View）" class="headerlink" title="Ⅰ 以动画表现视图（View）"></a><strong>Ⅰ 以动画表现视图（View）</strong></h2><p><strong>1 捕获透视图（Capturing perspective views）</strong></p>
 <p>使用“动画”工具条中的“捕获视图”工具 捕获视图 可以捕获照相机视图，这些视图作为关键帧，保存在某个照相机轨迹或地图视图轨迹中。</p>
 <p>生成的轨迹将成为关键帧之间的连续插值，从而创建平滑的动画。</p>
-<p><img src="http://img.blog.csdn.net/20140915114952093?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Toolbar.png" alt=""></p>
 <p><br></p>
 <p><strong>2 录制导航（Recording Navigation）</strong></p>
 <p>简单录制功能是通过使用与动画控制对话框中的视频播放器类似的控件来实现的。单击录制按钮录制导航。</p>
-<p><img src="http://img.blog.csdn.net/20140915150738233" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Navi.jpg" alt=""></p>
 <p>录制导航时，可使用 ArcScene 或 ArcGlobe 中的飞行工具飞行 来创建照相机轨迹。</p>
-<p><img src="http://img.blog.csdn.net/20140915154715022" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Fly.jpg" alt=""></p>
 <p><br></p>
 <p><strong>3 创建关键帧（Creat KeyFrames）</strong></p>
 <p>这种方法与捕获透视图相似，可以为当前视图进行快照，作为一个关键帧，可以插入到已有的轨迹中。</p>
-<p><img src="http://img.blog.csdn.net/20140915163702334" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_KeyFrame.jpg" alt=""></p>
 <p>在创建动画关键帧对话框上，使用相同的属性（如相同的照相机位置）创建多个关键帧，然后在动画管理器的“关键帧”选项卡上修改关键帧属性，细化动画创建。</p>
 <p>如下例子，中通过创建两个相同的关键帧，控制照相机在某处的停留时间。</p>
-<p><img src="http://img.blog.csdn.net/20140915165444265" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_keyframeDemo.jpg" alt=""></p>
 <p><br></p>
 <p><strong>4 使用书签创建动画（Using Bookmark）</strong></p>
 <p>将已经创建的书签作为关键帧也是个很好的方法，如果地图或者场景中以前做过书签，并且想把他们利用起来连贯的展现出来，就可以使用这种方法。</p>
-<p><img src="http://img.blog.csdn.net/20140915171129415" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_bookmark.jpg" alt=""></p>
 <p><br></p>
 <p><strong>5 沿路径移动照相机或视图（Moving the Camera or View along a Path）</strong></p>
 <p>我们还可以根据路径创建照相机轨迹或地图视图轨迹。所选线要素或图形可以用来定义路径，这样就将照相机的移动轨迹就约束在这个路径上。</p>
 <p>例如下图所示：</p>
-<p><img src="http://img.blog.csdn.net/20140915174342992" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140915174826062" alt=""></p>
-<p><span style="font-family: 'Microsoft YaHei';">照相机的方向可由观察点和目标点这两个 3D 点定义。使用“根据路径设置照相机飞行路线”对话框上的“路径目标”选项可修改照相机的移动方式。有三个选项可用于沿路径移动照相机：</span></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_SelectedPath.jpg" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Flyby.jpg" alt=""></p>
+<p>照相机的方向可由观察点和目标点这两个 3D 点定义。使用“根据路径设置照相机飞行路线”对话框上的“路径目标”选项可修改照相机的移动方式。有三个选项可用于沿路径移动照相机：</p>
 <p>（1）沿飞行路径同时移动观察点和目标。</p>
 <p>（2）保持当前目标沿路径移动观察点。</p>
 <p>（3）保持当前观察点沿路径移动目标。</p>
@@ -5043,29 +5043,29 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>（1）图层透明度动画</p>
 <p>使某些图层变得透明，以便其他图层能够随着动画的发展而可见；</p>
 <p>方法：在创建关键帧的时候，设置图层的透明度百分比。</p>
-<p><img src="http://img.blog.csdn.net/20140916104353906" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140916104654513" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_3DEffect.jpg" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Transparent.jpg" alt=""></p>
 <p>（2）图层可见性动画</p>
 <p>关闭图层使之不可见。例如在某个时间，指定图层不需要显示；操作类似上面的，只不过截取关键帧的时候，打开/关闭图层即可，不赘述。</p>
 <p>（3）<strong>ArcScene</strong> 中沿路径移动某个图层（例如汽车）</p>
-<p><img src="http://img.blog.csdn.net/20140916112832171" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_AlongLine.png" alt=""></p>
 <p>（4）图层组动画</p>
 <p>使用现有图层组，按照顺序播放一系列的图层，这个动画效果也比较常用，如果一个组中是相关的主题的一系列数据，通过播放，可以看到图层之间的演进关系。</p>
-<p><img src="http://img.blog.csdn.net/20140916141808812" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_GroupLayer.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h2 id="Ⅲ-以动画表现场景属性（ArcScene）"><a href="#Ⅲ-以动画表现场景属性（ArcScene）" class="headerlink" title="Ⅲ 以动画表现场景属性（ArcScene）"></a><strong>Ⅲ 以动画表现场景属性（ArcScene）</strong></h2><p>这种动画类型是仅用于 ArcScene 的场景属性配置的。最常用的就是一天从日出到日落不同太阳位置的场景效果的连续播放。</p>
 <p>我们要做的仅仅是在每个太阳位置时间点创建关键帧。</p>
-<p><img src="http://img.blog.csdn.net/20140916150957404" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Scene.png" alt=""></p>
 <p>场景属性设置：</p>
-<p><img src="http://img.blog.csdn.net/20140916151259409?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140916151845168?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140916151652734?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_SunPosition.jpg" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_dark.jpg" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_bright.jpg" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h2 id="Ⅳ-以动画表现时态数据"><a href="#Ⅳ-以动画表现时态数据" class="headerlink" title="Ⅳ 以动画表现时态数据"></a><strong>Ⅳ 以动画表现时态数据</strong></h2><p>如果数据是含有时间字段的，我们还可以进行按照时间序列的播放时态数据的动画。</p>
 <p>首先在图层属性中时间选项卡 <strong>激活时态</strong>。 然后创建时间动画。</p>
-<p><img src="http://img.blog.csdn.net/20140916152749859" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/Building3DAnimation_Time.png" alt=""></p>
 <p>关于最后一个时间动画不想说很多，ArcGIS 有个关于时态的扩展模块，Tracking Analyst，这个扩展对于时态数据有更多的控制。</p>
 <p>配置出的时间图层有更好的展现力，因此，这里就不再多说时间动画了。</p>
 ]]></content>
@@ -5253,18 +5253,18 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[栅格数据中的 Zone 与 Region]]></title>
-      <url>/2014/09/01/New-folder-2016-03-09-RasterZoneRegion/</url>
+      <url>/2014/09/01/RasterZoneRegion/</url>
       <content type="html"><![CDATA[<p>Zone 与 Region 在字面上都是区域的意思，但是在做分析与统计的时候二者却是有区别的。</p>
 <p><strong>什么是Zone？</strong></p>
 <p>简而言之，具有相同值的像元就属于一个Zone。也就是，Zone由栅格中所有具有相同值的像元组成，分区可以由相邻像元和/或不相连像元组成。如下图一目了然：</p>
-<p><img src="http://img.blog.csdn.net/20140901161928822" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RasterZoneRegion_Zone.gif" alt=""></p>
 <p><strong>什么是Region？</strong></p>
 <p>一个Zone内的每组相连像元都可视为一个Region。ArcGIS 中提供了从 Zone 获得 Region 的工具 Group Region。</p>
-<p><img src="http://img.blog.csdn.net/20140901162814668" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140901165652590" alt="">&nbsp;&nbsp;<img src="http://img.blog.csdn.net/20140901165743384" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RasterZoneRegion_Region.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RasterZoneRegion_GroupRegion.png" alt=""></p>
 <p><strong>工具的工作顺序：</strong> 扫描的第一个区域接收值 1，第二个区域接收值 2，依此类推，直到所有区域都已赋值。扫描将按从左至右、从上至下的顺序进行。赋给输出区域的值，取决于系统在扫描过程中是在什么时候遇到它们的。</p>
 <p><strong>与原始Zone的关系：</strong> 默认，生成的数据的属性表中会有 LINK 字段，记录Region从Zone的来源：</p>
-<p><img src="http://img.blog.csdn.net/20140901163437009" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/RasterZoneRegion_table.tiff" alt=""></p>
 ]]></content>
       
         <categories>
@@ -5284,7 +5284,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ArcGlobe 缓存管理]]></title>
-      <url>/2014/08/05/New-folder-2016-03-09-ArcGlobeCacheManagement/</url>
+      <url>/2014/08/05/ArcGlobeCacheManagement/</url>
       <content type="html"><![CDATA[<p><span style="font-family:Microsoft YaHei; font-size:14px">ArcGlobe拥有缓存机制，因此可以应对大量3D数据的可视化，下面就总结下有关缓存的知识点。</span></p>
 <p><span style="font-family:Microsoft YaHei; font-size:14px"></span></p>
 <p></p>
