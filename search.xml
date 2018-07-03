@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[在 CityEngine 中使用 Python]]></title>
-      <url>/2018/04/10/New-folder-2018-04-10-pythonInCE/</url>
+      <url>/2018/04/10/pythonInCE/</url>
       <content type="html"><![CDATA[<p>​        CityEngine的同义词几乎就是“规则建模”，规则指的是CGA脚本。说到脚本，很多用户又会联想到 Python， 衍生出来的问题就是，“CityEngine中是用python脚本建模吗？”  答案是No。</p>
 <p>​         CityEngine中确实也引入了python，只不过使用python的姿势不是建模，而是自动化。通过python脚本，可以增强CityEngine的建模功能，自动化驱动脚本建模工作流，提高建模效率。我们既可以在控制台交互式执行python命令，也可以在python editor 中书写python执行文件，甚至可以将一些自定义功能扩展到CityEngine中。如下是CityEngine官方教程中的几个示例代码：</p>
 <h2 id="Example-1-选择部分对象"><a href="#Example-1-选择部分对象" class="headerlink" title="Example 1  选择部分对象"></a>Example 1  选择部分对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Created on 2018-4-9</span></span><br><span class="line"><span class="string">@author: kikita</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">from</span> scripting <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># get a CityEngine instance</span></span><br><span class="line">ce = CE()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectByAttribute</span><span class="params">(attr, value)</span>:</span></span><br><span class="line">    objects = ce.getObjectsFrom(ce.scene)</span><br><span class="line">    selection = []</span><br><span class="line">    <span class="keyword">for</span> o <span class="keyword">in</span> objects:</span><br><span class="line">        attrvalue = ce.getAttribute(o, attr)</span><br><span class="line">        <span class="keyword">if</span> attrvalue  ==  value:</span><br><span class="line">            selection.append(o)     </span><br><span class="line">    ce.setSelection(selection)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    selectByAttribute(<span class="string">"connectionStart"</span>,<span class="string">"JUNCTION"</span>)</span><br></pre></td></tr></table></figure>
@@ -38,12 +38,12 @@
     
     <entry>
       <title><![CDATA[Parthenon Temple]]></title>
-      <url>/2018/04/04/New-folder-2018-04-04-Parthenon/</url>
+      <url>/2018/04/04/Parthenon/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>摄于 2014-5-9, Acropolis, Athens, Greece</p>
 </blockquote>
 <p>CityEngine的教程中刚好有个Parthenon Temple 的 Demo</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_ParthenonModel.png-kiktiaMaps" alt=""></p>
+<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_ParthenonModel.png-kikitaMaps" alt=""></p>
 <p>不禁会想起在雅典卫城里它的断壁残垣，晒晒我们的合影</p>
 <p>不知道几年过去，修复工作又向前推进了多少</p>
 <p>那些带有编号的石头是不是已经归位了呢</p>
@@ -59,6 +59,14 @@
             
         </categories>
         
+        
+        <tags>
+            
+            <tag> 3D </tag>
+            
+            <tag> CityEngine </tag>
+            
+        </tags>
         
     </entry>
     
@@ -2788,7 +2796,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ArcGIS地图设计性能优化]]></title>
-      <url>/2015/06/26/New-folder-2016-03-07-MapDesignPerformance/</url>
+      <url>/2015/06/26/MapDesignPerformance/</url>
       <content type="html"><![CDATA[<p>制作一幅较高性能的地图检查如下方面是否注意到了 ？</p>
 <p><br></p>
 <p><br></p>
@@ -2865,7 +2873,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[在Linux上安装ArcGIS许可管理器备忘录]]></title>
-      <url>/2015/06/10/New-folder-2016-03-07-DeployAGSLMonLinux/</url>
+      <url>/2015/06/10/DeployAGSLMonLinux/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>这篇文章中使用的环境信息：</p>
 <p>Red Hat Enterprise Linux Server release 6.4<br>Red Hat Enterprise Linux Server release 5.8<br>ArcGIS License Manager 10.2.2<br>Xmanager 5</p>
@@ -2874,28 +2882,28 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <h4 id="★-安装之前一定要了解系统要求，这一步很重要，这里不啰嗦，详情点-这里-http-resources-arcgis-com-en-help-system-requirements-10-2-ArcGIS-10-2-for-Desktop-015100000002000000-。"><a href="#★-安装之前一定要了解系统要求，这一步很重要，这里不啰嗦，详情点-这里-http-resources-arcgis-com-en-help-system-requirements-10-2-ArcGIS-10-2-for-Desktop-015100000002000000-。" class="headerlink" title="★ 安装之前一定要了解系统要求，这一步很重要，这里不啰嗦，详情点 [这里](http://resources.arcgis.com/en/help/system-requirements/10.2/#/ArcGIS_10_2_for_Desktop/015100000002000000/)。"></a><strong>★ 安装之前一定要了解系统要求，这一步很重要，这里不啰嗦，详情点 [这里</strong>](<a href="http://resources.arcgis.com/en/help/system-requirements/10.2/#/ArcGIS_10_2_for_Desktop/015100000002000000/)。" target="_blank" rel="noopener">http://resources.arcgis.com/en/help/system-requirements/10.2/#/ArcGIS_10_2_for_Desktop/015100000002000000/)。</a></h4><p><br></p>
 <h1 id="1-准备安装文件"><a href="#1-准备安装文件" class="headerlink" title="1. 准备安装文件"></a>1. 准备安装文件</h1><p>我的Linux服务器是虚拟机，没有光驱，选择ftp上传安装文件。一般在各种linux的发行版中，默认带有的ftp软件是vsftp。</p>
 <p>检查vsftpd软件是否安装， <strong># rpm -qa|grep vsftp</strong><br>启动 vsftp 服务，<strong># service vsftpd start</strong></p>
-<p><img src="http://img.blog.csdn.net/20150609112137795" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_vsftp.png" alt=""></p>
 <p>使用ftp客户端上传 ArcGIS License Manager （LM）安装包。如果上传的 iso 镜像文件之后使用 mount 命令挂载，其实也可以仅将光盘中 LicenseManager 目录下的 linux 文件夹上传，此文件夹为 LM 的Linux安装包。</p>
 <p>包含如下几个文件（夹）：</p>
-<p><img src="http://img.blog.csdn.net/20150609133902347" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_Setup.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="2-创建账户"><a href="#2-创建账户" class="headerlink" title="2. 创建账户"></a>2. 创建账户</h1><p>ArcGIS License Manager 不允许 root 账户安装，因此要创建一个其它账户，例如：arcgis</p>
-<p><img src="http://img.blog.csdn.net/20150609135308102" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_CreateArcGIS.png" alt=""></p>
 <blockquote>
 <p>PS : 如果使用 root 账户直接安装，则会遇到错误提示：</p>
-<p><img src="http://img.blog.csdn.net/20150609134235240" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_RootError.png" alt=""></p>
 </blockquote>
 <p><br></p>
 <p><br></p>
 <h1 id="3-创建-Trusted-Storage目录并赋权"><a href="#3-创建-Trusted-Storage目录并赋权" class="headerlink" title="3. 创建 Trusted Storage目录并赋权"></a>3. 创建 Trusted Storage目录并赋权</h1><p>在安装 ArcGIS License Manager 之前，需要手动创建用于存储许可 Trusted Storage File (TSF) 的目录，具体目录为：“/usr/local/share/macrovision/storage” </p>
 <p>创建目录：</p>
-<p><img src="http://img.blog.csdn.net/20150609143802102" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_mkdir.png" alt=""></p>
 <p>为目录赋权：</p>
-<p><img src="http://img.blog.csdn.net/20150609143826797" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_chmod.png" alt=""></p>
 <blockquote>
 <p>如果不创建这个目录而直接安装 LM 程序，就会遇到 Fatal Error 提示：</p>
-<p><img src="http://img.blog.csdn.net/20150609150050870" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_GrantError.png" alt=""></p>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -2905,14 +2913,14 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>设置DISPLAY环境变量 :<br>例如： <strong>$ export DISPLAY=<em>192.168.100.115</em>:0.0</strong></p>
 <p>运行 Setup 文件开始安装，建议使用精细模式（Verbose Mode），这样如果安装失败，我们可以通过运行过程中的消息判断问题的所在。例如，没有创建必要的目录，没有安装必要地包，没有足够的权限，等等问题。</p>
 <p><strong>$ ./Setup -v</strong></p>
-<p><img src="http://img.blog.csdn.net/20150610101655247" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_Setup.png" alt=""></p>
 <p>稍等片刻，即弹出界面：</p>
-<p><img src="http://img.blog.csdn.net/20150610101939297" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_GraphicWindows.png" alt=""></p>
 <p>后面按照向导，下一步即可，此处省略100字……</p>
 <p><br></p>
 <h2 id="Option-2-静默安装"><a href="#Option-2-静默安装" class="headerlink" title="Option 2 静默安装"></a><strong>Option 2 静默安装</strong></h2><p>如果选择静默安装也可以，例如：</p>
 <p><strong>$ ./Setup -m silent -v -l Yes</strong></p>
-<p><img src="http://img.blog.csdn.net/20150609152846016" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_Silence.png" alt=""></p>
 <blockquote>
 <p><strong>如果需要了解安装ArcGIS 许可管理器的选项：</strong></p>
 <p>-m  silent/gui  静默安装/图形界面<br>-v   精细模式<br>-h   帮助<br>-e   示例<br>静默安装专用选项：<br>-l    Yes/No 是否同意许可条款<br>-d   安装目录</p>
@@ -2922,9 +2930,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <h1 id="5-授权许可"><a href="#5-授权许可" class="headerlink" title="5. 授权许可"></a>5. 授权许可</h1><p>LM安装完成之后，需要进行许可的授权，事先将自己的许可文件 *.prvs 上传到Linux主机中。</p>
 <p><br></p>
 <p>仍然建议GUI mode 授权，运行LM安装目录中的 SoftwareAuthorizationLS 程序：</p>
-<p><img src="http://img.blog.csdn.net/20150610104255198" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_Authorization.png" alt=""></p>
 <p>稍后弹出界面：</p>
-<p><img src="http://img.blog.csdn.net/20150610110055851" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DeployAGSLMonLinux_Authorization2.png" alt=""></p>
 <p>后面按照向导，下一步即可，可以参考windows的授权手册，此处省略100字……</p>
 <p><br></p>
 <p>运行 LSAdmin 程序可以打开 License Manger ，查看和管理许可。</p>
@@ -2958,24 +2966,25 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[羽化效果的HeatMap]]></title>
-      <url>/2015/06/09/New-folder-2016-03-07-FeatureHeatMap/</url>
+      <url>/2015/06/09/FeatureHeatMap/</url>
       <content type="html"><![CDATA[<p>用采样点制作热力图是个非常常见的需求。热力图可以给地图的阅读者直观的信息，下面就看看如何在 ArcGIS Pro 中做一个漂亮的HeatMap。</p>
+<p><em>PS: 这是通过点密度插值生成的栅格的静态表达方式，区别于 ArcGIS Pro 自带的动态HeatMap的渲染器哦。</em></p>
 <p><br></p>
 <h1 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h1><p>准备好采样点数据，当然是量大更优。我这里用了全球地震点数据，大约有 21W+ 的数据量。像这一类的数据可以从一些提供公开数据的网站获取，例如 <a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php" target="_blank" rel="noopener">USGS</a> 。</p>
-<p><img src="http://img.blog.csdn.net/20150608105255424" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/FeatureHeatMap_Points.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h1><p>使用 ArcGIS 中的密度分析工具可以从点数据直接生成密度栅格，工具位于 ArcToolbox —— Spatial Analyst —— Density 工具集下。这里我采用了 Kernel Density 。</p>
-<p><img src="http://img.blog.csdn.net/20150608141704212" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/FeatureHeatMap_Density.png" alt=""></p>
 <p><br></p>
 <p><br></p>
 <h1 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h1><p>制作一个自己喜欢的热力色带，最边缘的颜色使用透明色，这样就有“羽化”的效果。</p>
-<p><img src="http://img.blog.csdn.net/20150608142932524" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/FeatureHeatMap_ColorRamp.png" alt=""></p>
 <p>应用色带之后：</p>
-<p><img src="http://img.blog.csdn.net/20150608143314185" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/FeatureHeatMap_ColorRampresult.png" alt=""></p>
 <p><br></p>
 <p>如有需要，可以进一步为图层设置透明：</p>
-<p><img src="http://img.blog.csdn.net/20150609110455795" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/FeatureHeatMap_Transparent.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -3128,29 +3137,29 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[Linux下安装绿色版Oracle客户端备忘录]]></title>
-      <url>/2015/05/26/New-folder-2016-03-07-LinuxOracleClient/</url>
+      <url>/2015/05/26/LinuxOracleClient/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>环境及版本信息：<br>远程服务器- Redhat 6.4；Oracle 11g x64； ArcGIS Server 10.2；<br>本地机器- Windows 8.1</p>
 </blockquote>
 <p><br><br>开始安装 12c 和 11g 的客户端，总是不满足系统需求，各种提示缺包，所以还是使用绿色版省心点。<br><br></p>
 <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>将Oracle绿色版客户端安装文件上传到 Linux 服务器（oracle-instantclient11.2-basic-11.2.0.1.0-1.x86_64.zip） ，并解压到自己指定的目录，如 Client。</p>
-<p><img src="http://img.blog.csdn.net/20150525154820077" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_unzip.png" alt=""></p>
 <p><br></p>
 <h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>由于安装Oracle客户端的目的是为了 ArcGIS Server 能够访问数据库服务器，所以对Client目录赋予 ArcGIS Server 账户（<strong>arcgis</strong>）的755权限。</p>
-<p><img src="http://img.blog.csdn.net/20150525155959691" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_Grant.png" alt=""></p>
 <p><br></p>
 <h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>修改环境变量，使得ArcGIS Server 能够使用这个客户端。</p>
 <p>环境变量文件位于ArcGIS Server 安装目录中 usr文件夹下的 init_user_param.sh 。</p>
-<p><img src="http://img.blog.csdn.net/20150525175240628" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_Env.png" alt=""></p>
 <p><br></p>
 <p>编辑init_user_param.sh，将Oracle客户端所在的目录配置到对应的环境变量中，保存退出。PS，不要忘记删除前面的<strong>＃</strong>……　默认所有的变量信息是被注释掉的。</p>
-<p><img src="http://img.blog.csdn.net/20150525175903506" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_Edit.png" alt=""></p>
 <p><br></p>
 <h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1><p>重启 ArcGIS Server 服务。</p>
-<p><img src="http://img.blog.csdn.net/20150525180528976" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_Restart.png" alt=""></p>
 <p><br></p>
 <h1 id="5"><a href="#5" class="headerlink" title="5"></a>5</h1><p>然后到 ArcGIS Server Manger中或者 ArcGIS Desktop 的 Server Connection中去注册数据库试试。</p>
-<p><img src="http://img.blog.csdn.net/20150526123818581" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxOracleClient_Datastore.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -3172,10 +3181,10 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[解决Linux系统中缺少Xvfb包的问题]]></title>
-      <url>/2015/05/08/New-folder-2016-03-07-LackofPackonLinux/</url>
+      <url>/2015/05/08/LackofPackonLinux/</url>
       <content type="html"><![CDATA[<p>上一篇文中写了在 Linux上安装 ArcGIS Server前的准备工作，最后一步是环境检测，只有所有项都通过才可以安装 ArcGIS Server。</p>
 <p>不幸的是，第一次其实没有通过环境监测，提示系统中缺少了Xvfb包，具体的检测结果如下：</p>
-<p><img src="http://img.blog.csdn.net/20150508210646386" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LackofPackonLinux_Xvfb.png" alt=""></p>
 <p>检测报告中提示了解决方法，参考技术文章 <a href="http://support.esri.com/en/knowledgebase/techarticles/detail/40860" target="_blank" rel="noopener">40860</a>：</p>
 <p>但是这篇文章只告诉我们缺包了，需要安装一个Xvfb包，没有说明包的获取与安装过程等，下面我就bala一下喽。</p>
 <p><br><br><br></p>
@@ -3183,15 +3192,15 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <blockquote>
 <p><strong>wget <a href="http://vault.centos.org/6.2/os/x86_64/Packages/xorg-x11-server-Xvfb-1.10.4-6.el6.x86_64.rpm" target="_blank" rel="noopener">http://vault.centos.org/6.2/os/x86_64/Packages/xorg-x11-server-Xvfb-1.10.4-6.el6.x86_64.rpm</a></strong></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20150508210738597" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LackofPackonLinux_Download.png" alt=""></p>
 <p><br><br><br></p>
 <h1 id="2-运行安装Xvfb包"><a href="#2-运行安装Xvfb包" class="headerlink" title="2 .  运行安装Xvfb包"></a>2 .  运行安装Xvfb包</h1><blockquote>
 <p><strong>yum localinstall xorg-x11-server-Xvfb-1.10.4-6.el6.x86_64.rpm</strong></p>
 </blockquote>
-<p><img src="http://img.blog.csdn.net/20150508211626954" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LackofPackonLinux_Install.png" alt=""></p>
 <p><br><br><br></p>
 <h1 id="3-执行环境检测"><a href="#3-执行环境检测" class="headerlink" title="3 . 执行环境检测"></a>3 . 执行环境检测</h1><p>所有检测通过即可安装 ArcGIS Server 程序：</p>
-<p><img src="http://img.blog.csdn.net/20150508174345432" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LackofPackonLinux_Done.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -3213,46 +3222,46 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[Linux 下安装 ArcGIS Server 前的准备工作备忘录]]></title>
-      <url>/2015/05/08/New-folder-2016-03-07-LinuxArcGISServerDeployment/</url>
+      <url>/2015/05/08/LinuxArcGISServerDeployment/</url>
       <content type="html"><![CDATA[<blockquote>
 <p><strong>安装环境： ArcGIS for Server Linux 10.2.2 ， Redhat 6</strong></p>
 </blockquote>
 <p>因为是在网络虚拟机中安装部署，首先需要一个远程Linux的客户端，这里使用 putty，可以在官方的 <a href="http://www.putty.org/" target="_blank" rel="noopener">www.putty.org</a> 下载，但是貌似网站被墙了，我也放了一份在<a href="http://download.csdn.net/detail/kikitamoon/8675531" target="_blank" rel="noopener">我的资源</a>中。</p>
 <p><strong>1） 运行 putty.exe ,登陆linux服务器</strong>：</p>
-<p><img src="http://img.blog.csdn.net/20150508115206894" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_Putty.png" alt=""></p>
 <p><strong>2） 输入用户名密码，登入服务器：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508115217999" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_Login.png" alt=""></p>
 <p><strong>3） 查询主机的 IP 地址：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508115648332" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_IP.png" alt=""></p>
 <p><strong>4） 查询 hostname：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508134333079" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_hostname.png" alt=""></p>
 <p><strong>5） 编辑hosts文件，映射IP地址和主机名：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508134841008" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_Mapping.png" alt=""></p>
 <p><strong>6） 创建 ArcGIS Server 账户：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508135007495" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_CreatAcount.png" alt=""></p>
 <blockquote>
 <p>备注：<br>/etc/group 中存储了用户组信息，格式如下：<br>用户组名:组密码:GID:组内帐号（多个帐号用逗号分隔）<br>/etc/passwd 中存储了用户账户信息，格式如下：<br>用户名:密码:UID:GID:用户信息:HOME目录路径:用户shell<br>其中UID为0则是用户root，1～499为系统用户，500以上为普通用户</p>
 </blockquote>
 <p><strong>7） 为ArcGIS Server 账户设置密码：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508135449733" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_Password.png" alt=""></p>
 <p><strong>8）在home目录下创建ArcGISServer目录，授权 ArcGIS Server账户对文件夹的权限：</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508145916462" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_chmod.png" alt=""></p>
 <p><strong>9）文件句柄和进程的硬限制要求</strong></p>
 <p>要增加软限制和硬限制，需要使用超级用户访问权限编辑 /etc/security/limits.conf 文件。例如，添加以下四行：</p>
-<p><img src="http://img.blog.csdn.net/20150508151219321" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_Limits.png" alt=""></p>
 <p><strong>10） 将安装程序上传到Linux主机</strong></p>
 <p>Linux主机是个网络虚拟机，也没有光驱，就用上传安装包（iso镜像）的方式安装了。一般在各种linux的发行版中，默认带有的ftp软件是vsftp。</p>
 <p>检查vsftpd软件是否安装， # <strong>rpm -qa|grep vsftp</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508140953677" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_vsftp.png" alt=""></p>
 <p>启动 vsftp 服务，# <strong>service vsftpd start</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508140842226" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_ServiceStart.png" alt=""></p>
 <p>其它命令：<br>      停止ftp：service vsftpd stop<br>      重启ftp：service vsftpd restart</p>
 <p>软后用ftp客户端连接服务器即可，这里我用了以前一直用的 FileZilla.</p>
-<p><img src="http://img.blog.csdn.net/20150508145639903" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_FileZilla.png" alt=""></p>
 <p><strong>11） 挂载 ISO映像</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508153633696" alt=""><br>PS：第一次mount没写完整的路径信息，文件没找到，请忽略，看最后一行。</p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_mount.png" alt=""><br>PS：第一次mount没写完整的路径信息，文件没找到，请忽略，看最后一行。</p>
 <p><strong>12）执行安装前的环境检测</strong></p>
-<p><img src="http://img.blog.csdn.net/20150508165045601" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/LinuxArcGISServerDeployment_check.png" alt=""></p>
 <p>各项检测通过，可以安装 ArcGIS Server 了。</p>
 ]]></content>
       
@@ -3277,7 +3286,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[ASCII 栅格的显示]]></title>
-      <url>/2015/04/21/New-folder-2016-03-07-MappingASCIIRaster/</url>
+      <url>/2015/04/21/MappingASCIIRaster/</url>
       <content type="html"><![CDATA[<p>今天刚好有人问到一个有关 ASCII 栅格数据的问题，这里梳理下，用最简单的方式极速理解。</p>
 <p><br></p>
 <blockquote>
@@ -3287,17 +3296,17 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p><br></p>
 <p><br></p>
 <p>一般在 ASCII 栅格的文件头中我们会看到这几行：</p>
-<p><img src="http://img.blog.csdn.net/20150421172716734" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingASCIIRaster_TXT.png" alt=""></p>
 <p><strong>ncols</strong>  和 <strong>nrows</strong>   表示这份数据的行列数，这份数据是10×10。</p>
 <p><strong>xllcorner</strong> 和 <strong>yllcorner</strong> 表示的就是栅格的左下角（low left）角点的坐标。</p>
 <p><strong>cellsize</strong> 也就是像元大小，表示每个正方形单元的尺寸。</p>
 <p>通过这几个值不就确定了栅格数据的范围了吗？嗯，确定了。</p>
 <p><br></p>
 <p>看图说话：</p>
-<p><img src="http://img.blog.csdn.net/20150421175341113" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingASCIIRaster_Demo.png" alt=""></p>
 <p><br></p>
 <p>文本文件下面的值就对应到每个格子里的像元值：</p>
-<p><img src="http://img.blog.csdn.net/20150421182308665" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingASCIIRaster_Value.png" alt=""></p>
 <p><br><br><br><br>我想你不会再有any疑问了……</p>
 ]]></content>
       
@@ -3514,18 +3523,18 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[空间统计（三）聚类分布制图]]></title>
-      <url>/2015/03/17/New-folder-2016-03-07-MappingCluster/</url>
-      <content type="html"><![CDATA[<p><img src="http://img.blog.csdn.net/20150310092354733" alt=""></p>
+      <url>/2015/03/17/MappingCluster/</url>
+      <content type="html"><![CDATA[<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_Toolset.png" alt=""></p>
 <p>这组工具中包含众所周知的热点分析工具，通过这个工具我们能捕获到大量数据中的热点和冷点，对我们分析问题有很大的帮助。例如，在犯罪分析中，我们可以研究哪些位置犯罪频繁并且聚集，对增设警力有重要的辅助作用。工具集中的其他工具也有类似的作用，都是通过执行聚类分析来识别具有统计显著性的热点、冷点和空间异常值的位置。</p>
 <p>依照惯例，我们还是 one by one 来看。</p>
 <h1 id="Similarity-Search"><a href="#Similarity-Search" class="headerlink" title="Similarity Search"></a><strong>Similarity Search</strong></h1><p>相似搜索工具，顾名思义，工具根据要素属性确定哪些候选要素与输入要素最相似或者最不相似。</p>
 <p>举个栗子：</p>
 <p>我希望找到与圣地亚哥5岁以下儿童、未成年人、65岁以上老年人人数分布相似的城市：</p>
-<p><img src="http://img.blog.csdn.net/20150310134422512" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_SanDiego.png" alt=""></p>
 <p>工具中我做如下配置：</p>
-<p><img src="http://img.blog.csdn.net/20150310134433137" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_Env.png" alt=""></p>
 <p>结果在这里，其中 Similarly Rank 为 1 的即为三个年龄属性最相似的城市 Orange：</p>
-<p><img src="http://img.blog.csdn.net/20150310141939515" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_SimilarCity.png" alt=""></p>
 <p>匹配方法参数中提供了3种算法，分别为：属性值、等级属性值或属性剖面（余弦相似性）。</p>
 <blockquote>
 <p><strong>可能的应用</strong>：</p>
@@ -3539,7 +3548,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </blockquote>
 <p><br></p>
 <h1 id="Grouping-Analysis"><a href="#Grouping-Analysis" class="headerlink" title="Grouping Analysis"></a><strong>Grouping Analysis</strong></h1><p>我们在学习研究事物时，有事需要对事物进行归类从而帮助理解与分析。在ArcGIS 中，分析分组分析工具就是来进行这个逻辑分类过程，它会执行一个分类过程来查找数据中存在的自然聚类。要素相似性是基于您为分析字段参数指定的一组特性，同时还可以包括空间属性或空间-时间属性。</p>
-<p><img src="http://img.blog.csdn.net/20150311115908546" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_GroupAnalysis.png" alt=""></p>
 <p>在这个工具中有个重要的参数—— Spatial Constrains，用于设置分组过程是否受某种空间关系约束，具体可选的方法如下：</p>
 <ul>
 <li>CONTIGUITY_EDGES_ONLY — 共享一条边的相连的面才属于同一个组。</li>
@@ -3561,7 +3570,7 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </blockquote>
 <p><br></p>
 <h1 id="Hot-Spot-Analysis-Getis-Ord-Gi"><a href="#Hot-Spot-Analysis-Getis-Ord-Gi" class="headerlink" title="Hot Spot Analysis (Getis-Ord Gi*)"></a><strong>Hot Spot Analysis (Getis-Ord Gi*)</strong></h1><p>热点分析工具是个 Most Popular 工具，经常会被用到，通过此工具，我们可以来识别有统计显著性的热点和冷点。例如，警察局会调查哪个区域是刑事案件的高发区？这就是一个典型的热点分析例子。如下图，黑点表示报警位置，其中属性表中包含一个报案次数的字段，得到了犯罪热点。从而警察局可以考虑在热点位置增设警力。</p>
-<p><img src="http://img.blog.csdn.net/20150311165240181" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_HotPots.png" alt=""></p>
 <p>此工具的工作方式为：查看邻近要素环境中的每一个要素。因此，仅仅一个孤立的高值不会构成热点，说白了就是，单个要素以及它的邻居都是高值才算是热点。在热点分析工具中，z 得分和 p 值都是统计显著性的度量，用于逐要素地判断是否拒绝零假设。置信区间（Gi_Bin字段） +3 到 -3 中的要素反映置信度为 99% 的统计显著性，置信区间 +2 到 -2 中的要素反映置信度为 95% 的统计显著性，置信区间 +1 到 -1 中的要素反映置信度为 90% 的统计显著性；而置信区间 0 中要素的聚类则没有统计学意义。</p>
 <p>如果要素的 z 得分高且 p 值小，则表示有一个高值的空间聚类。如果 z 得分低并为负数且 p 值小，则表示有一个低值的空间聚类。z 得分越高（或越低），聚类程度就越大。如果 z 得分接近于零，则表示不存在明显的空间聚类。</p>
 <p><strong>关于此工具的建议：</strong></p>
@@ -3588,19 +3597,19 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>当我们的数据不具有这样的采样值，并且我们希望研究的是点的计数，也就是研究：哪里存在很多点？哪里存在很少点？这时，选择一种<strong>聚合方案</strong>就变得重要了。</p>
 <p>工具中提供了三种聚合方案：</p>
 <p>1） COUNT_INCIDENTS_WITHIN_FISHNET_POLYGONS：采用渔网聚合，渔网的网格大小由工具根据点的距离关系决定。</p>
-<p><img src="http://img.blog.csdn.net/20150313171653681" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_Fishnet.png" alt=""></p>
 <p>2） COUNT_INCIDENTS_WITHIN_AGGREGATION_POLYGONS：提供聚合面以覆盖事件聚合面参数中的事件点数据。计算每个面内的事件数。例如：计算加州每个城市的消防站的聚集情况。</p>
-<p><img src="http://img.blog.csdn.net/20150316173629491" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_PolygonAggr.png" alt=""></p>
 <p>3）SNAP_NEARBY_INCIDENTS_TO_CREATE_WEIGHTED_POINTS：邻近事件将聚合在一起，从而创建单个加权点。各点的权重值是该位置的聚合事件数。</p>
-<p><img src="http://img.blog.csdn.net/20150316174429992" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_Points.png" alt=""></p>
 <p>无论是哪种方法，在工具的日志中会提供一个研究这些数据聚类的最优的距离，类似：</p>
-<p><img src="http://img.blog.csdn.net/20150317085500140" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_Log.png" alt=""></p>
 <p><br></p>
 <h1 id="Cluster-and-Outlier-Analysis-Anselin-Local-Moran’s-I"><a href="#Cluster-and-Outlier-Analysis-Anselin-Local-Moran’s-I" class="headerlink" title="Cluster and Outlier Analysis (Anselin Local Moran’s I)"></a>Cluster and Outlier Analysis (Anselin Local Moran’s I)</h1><p>给定一组加权要素，使用 Anselin Local Moran’s I 统计量来识别具有统计显著性的热点、冷点和空间异常值。</p>
 <p>热点分析(Getis-Ord Gi<em>) 工具也是查找热点和冷点位置的有效工具。但是，<em>*只有</em></em>聚类和异常值分析(Anselin Local Moran’s I) 工具可以识别具有统计学上的显著性的空间异常值（高值由低值围绕或低值由高围绕的值）。</p>
 <p>输出要素类中包含：<strong>Local Moran’s I 指数、z 得分、p 值、聚类/异常值类型 (COType)</strong>。</p>
 <p>如果要素的 z 得分是一个较高的正值，则表示周围的要素拥有相似值（高值或低值）。输出要素类中的 COType 字段会将具有统计显著性的高值聚类表示为 HH，将具有统计显著性的低值聚类表示为 LL。<br>如果要素的 z 得分是一个较低的负值（如，小于 -3.96），则表示有一个具有统计显著性的空间数据异常值。输出要素类中的 COType 字段将指明要素是否是高值要素而四周围绕的是低值要素 (HL)，或者要素是否是低值要素而四周围绕的是高值要素 (LH)。如下图可以帮助理解：</p>
-<p><img src="http://img.blog.csdn.net/20150317154149893" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MappingCluster_HHLL.png" alt=""></p>
 <p>COType 字段将始终指明置信度为 95% 的统计显著性聚类和异常值。只有统计显著性要素在 COType 字段中具有值。</p>
 <blockquote>
 <p><strong>可能的应用</strong><br>聚类和异常值分析(Anselin Local Moran’s I) 工具可识别高值密度、低值密度和空间异常值。还可帮助您解决如下问题：</p>
@@ -4055,32 +4064,33 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[我们可能会遇到的距离量算方法]]></title>
-      <url>/2014/12/25/New-folder-2016-03-07-MeasureDistances/</url>
+      <url>/2014/12/25/MeasureDistances/</url>
       <content type="html"><![CDATA[<p>在看空间统计相关的文档资料的时候，看到了几个有关距离丈量方法的术语词汇，诸如：欧式距离、曼哈顿距离、切比雪夫距离…… 老外习惯于使用名字来命名算法，可是对于门外汉们，是一种困惑，今天就整理下，一起温故知新。 </p>
 <p><br></p>
-<h1 id="1-欧式距离（Euclidean-Distance）"><a href="#1-欧式距离（Euclidean-Distance）" class="headerlink" title="1. 欧式距离（Euclidean Distance）"></a><strong>1. 欧式距离（Euclidean Distance）</strong></h1><p>欧式距离是我们在直角坐标系中最常用的距离量算方法，例如小时候学的“两点之间的最短距离是连接两点的直线距离。”这就是典型的欧式距离量算方法。 </p>
+<h2 id="1-欧式距离（Euclidean-Distance）"><a href="#1-欧式距离（Euclidean-Distance）" class="headerlink" title="1. 欧式距离（Euclidean Distance）"></a><strong>1. 欧式距离（Euclidean Distance）</strong></h2><p>欧式距离是我们在直角坐标系中最常用的距离量算方法，例如小时候学的“两点之间的最短距离是连接两点的直线距离。”这就是典型的欧式距离量算方法。 </p>
 <p>通常这这个距离的获取是基于我们熟悉的“勾股定理”，解算三角形斜边得到的。 </p>
-<p><img src="http://7xospm.com1.z0.glb.clouddn.com/903d44fd-0d16-4834-9165-2dbfa5068af1_20141224105628950.png" alt=""> </p>
-<p><img src="http://7xospm.com1.z0.glb.clouddn.com/507d3266-3fb1-45a8-9b01-31ed04a03c5f_20141224111231097.png" alt=""> </p>
-<p>_看看维基百科：<a href="http://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Euclidean_distance</a>_ </p>
+<p><img src="http://kikitamap.com/images/blogImg/MeasureDistances_EucDis.png" alt=""> </p>
+<p><img src="http://kikitamap.com/images/blogImg/MeasureDistances_EucDis2.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MeasureDistances_Formula.png" alt=""> </p>
+<p>看看维基百科：<a href="http://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Euclidean_distance</a></p>
 <p><br></p>
-<h1 id="2-曼哈顿距离（Manhattan-Distance）"><a href="#2-曼哈顿距离（Manhattan-Distance）" class="headerlink" title="2. 曼哈顿距离（Manhattan Distance）"></a><strong>2. 曼哈顿距离（Manhattan Distance）</strong></h1><p>曼哈顿距离是与欧式距离不同的一种丈量方法，两点之间的距离不再是直线距离，而是投影到坐标轴的长度之和。 </p>
-<pre><code>![](http://7xospm.com1.z0.glb.clouddn.com/1e2f0997-552d-4f94-9fb6-7b075615a9b2_20141225151215828.png) 
+<h2 id="2-曼哈顿距离（Manhattan-Distance）"><a href="#2-曼哈顿距离（Manhattan-Distance）" class="headerlink" title="2. 曼哈顿距离（Manhattan Distance）"></a><strong>2. 曼哈顿距离（Manhattan Distance）</strong></h2><p>曼哈顿距离是与欧式距离不同的一种丈量方法，两点之间的距离不再是直线距离，而是投影到坐标轴的长度之和。 </p>
+<pre><code>![](http://kikitamap.com/images/blogImg/MeasureDistances_Manhattan.png) 
 </code></pre><p>还是看图吧，图比文字更显见。 </p>
-<pre><code>![](http://7xospm.com1.z0.glb.clouddn.com/1d6a5b0d-e8e1-4916-8cb3-20817b85e24f_20141224135416343.png) 
+<pre><code>![](http://kikitamap.com/images/blogImg/MeasureDistances_Manhattan2.png) 
 </code></pre><p>图中绿色的线为欧式距离的丈量长度，红色的线即为曼哈顿距离长度，蓝色和黄色的线是这两点间曼哈顿距离的等价长度。 </p>
 <p>想想我们下象棋的时候，车炮兵之类的，是不是要走曼哈顿距离？ </p>
 <p>如果不会下象棋，没关系，看下面的例子： </p>
-<p><img src="http://7xospm.com1.z0.glb.clouddn.com/5a932b6c-0b91-4e0d-b7b2-3901a42f7fb4_20141224140558562.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/MeasureDistances_ManhattanMap.png" alt=""></p>
 <p>   在美国道路会像这样是很多的规则的网格状，从A到B通常无法去沿直线行走，而是会避开建筑物，走几个街区到达。    </p>
 <p>图中蓝色的线即为曼哈顿距离的典型应用场景。 </p>
 <p>_看看维基百科：<a href="http://en.wikipedia.org/wiki/Taxicab_geometry" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Taxicab_geometry</a>_ </p>
 <p><br></p>
-<h1 id="3-切比雪夫距离（Chebyshev-distance）"><a href="#3-切比雪夫距离（Chebyshev-distance）" class="headerlink" title="3. 切比雪夫距离（Chebyshev distance）"></a><strong>3. 切比雪夫距离（Chebyshev distance）</strong></h1><p>数学上，切比雪夫距离是将2个点之间的距离定义为其各坐标数值差的最大值。 </p>
-<pre><code>![](http://7xospm.com1.z0.glb.clouddn.com/5b836ab3-8f5d-4028-8f9b-7a05f6f60ea0_20141225150924640.png) 
+<h2 id="3-切比雪夫距离（Chebyshev-distance）"><a href="#3-切比雪夫距离（Chebyshev-distance）" class="headerlink" title="3. 切比雪夫距离（Chebyshev distance）"></a><strong>3. 切比雪夫距离（Chebyshev distance）</strong></h2><p>数学上，切比雪夫距离是将2个点之间的距离定义为其各坐标数值差的最大值。 </p>
+<pre><code>![](http://kikitamap.com/images/blogImg/MeasureDistances_Chebyshev.png) 
 </code></pre><p>网上搜索，好多有关这个距离的解释，大多都是采用国际象棋中的王的走步来作为例子，王可以前后左右走，还可以斜前斜后走，一共8个方向可以认为距离均等。 </p>
 <p>也就是在下面3&amp;times;3邻域内，中心网格的中心点到8个邻域网格中心点的距离相等。 </p>
-<pre><code>![](http://7xospm.com1.z0.glb.clouddn.com/dc5d6004-2e66-40ca-838d-abe5136637a7_20141225150721218.png) 
+<pre><code>![](http://kikitamap.com/images/blogImg/MeasureDistances_Chebyshev2.png) 
 </code></pre><p>_看看维基百科：<a href="http://en.wikipedia.org/wiki/Chebyshev_distance" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Chebyshev_distance</a>_    </p>
 ]]></content>
       
@@ -5052,60 +5062,59 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[深入路径距离分析（三）]]></title>
-      <url>/2014/09/15/New-folder-2016-03-09-DiveinPathDistanceAnalyst3/</url>
+      <url>/2014/09/15/DiveinPathDistanceAnalyst3/</url>
       <content type="html"><![CDATA[<p>路径分析不仅可以考虑到水平方向的影响因子，而且可以考虑到垂直方向的影响因子，例如前面开车的例子中，水平方向的影响因子是风向，垂直方向的影响因子就是路面的起伏状况。</p>
 <p><strong>垂直系数</strong></p>
 <p>垂直系数越大，移动的难度也就越大。确定从一个像元行进到另一个像元时遇到的垂直系数（VF）与确定水平系数（HF）相似。这里需要引入一个概念，垂直相对移动角度（VRMA），垂直相对移动角度（VRMA）是“起始”像元与“目标”像元形成的斜率的角度，斜率=垂直增量/水平增量。VRMA 以度为单位进行指定。VRMA 的值范围为 -90 到 +90 度。</p>
 <p>路径距离分析工具中，提供了几种算法，<strong>BINARY、LINEAR、SYM_LINEAR、INVERSE_LINEAR、SYM_INVERSE_LINEAR、COS、SEC、COS_SEC、SEC_COS、TABLE</strong>：</p>
-<p><img src="http://img.blog.csdn.net/20140913235422125" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_VerticalFactor.png" alt=""></p>
 <p><br></p>
 <p><strong>（1）Binary——二元垂直系数</strong></p>
 <p>当 VRMA 大于切削角下限且小于切削角上限时，在两个像元之间移动的 VF 设置为与零系数相关联的值。如果 VRMA 大于切削角上限或者小于<span style="font-family: 'Microsoft YaHei';font-size:14px;">切削角下限</span>，则 VF 设置为无穷大。工具默认的切削角为正负30度。</p>
-<p><img src="http://img.blog.csdn.net/20140914003649682" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914003509703" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Binary.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_BInary2.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（2）Linear——线性垂直系数</strong></p>
 <p>VF 由 VRMA-VF 坐标系中的一条直线确定。这条线在 y 轴上与零系数相关联的值处进行截取。线的斜率可以使用 SLOPE 属性进行指定。如果未确定斜率，则默认值为 1/90（指定为 0.01111）。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。</p>
-<p><img src="http://img.blog.csdn.net/20140914004337732" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914004212218" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Linear.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Linear2.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（3）Inverse Linear——逆线性垂直系数</strong></p>
 <p>这个与线性垂直系数类似，VF 由 VRMA-VF 坐标系中的一条直线的逆向值确定。这条线在 y 轴（表示 VF 系数）上与零系数相关联的值处进行截取。线的斜率可以确定（如果使用 SLOPE 修饰属性指定）。如果未确定斜率，则默认值为 -1/45（指定为 0.02222）。默认的切削角下限为 -45 度，而默认的切削角上限为 45 度。</p>
 <p><strong>注意：这个算法的图表，在ArcGIS的帮助中绘制错误了，画成了二次曲线的样子，如下是改正后正确图表。</strong>_</p>
-<p><img src="http://img.blog.csdn.net/20140914010130562" alt=""></p>
-<p><span style="font-family:Microsoft YaHei;font-size:14px;color:#3366ff;"><span style="font-family: 'Microsoft YaHei';font-size:14px;">_</span></span></p>
-<p><img src="http://img.blog.csdn.net/20140914005439828" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_InverseLinear.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_InverseLinear2.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（4）Symmetric Linear——对称线性垂直系数</strong></p>
 <p>SYM_LINEAR 由两个与 VRMA 相关的线性函数组成，这两个函数关于 VF (y) 轴对称。两条线都在与零系数相关联的 VF 值处截取 y 轴。使用 SLOPE 垂直系数修饰属性相对于正 VRMA 定义线的斜率，然后将针对负 VRMA 生成一个镜像。默认斜率为 1/90（指定为 0.01111）。默认的切削角下限为 -90，而默认的切削角上限为 90。</p>
-<p><img src="http://img.blog.csdn.net/20140914010301296" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914010524406" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SymmetricLinear.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SymmetricLinear.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（5）Symmetric Inverse Linear——对称线性垂直系数</strong></p>
 <p>顾名思义，SYM_INVERSE_LINEAR 与 SYM_LINEAR 垂直系数关键字正相反。它由两个与 VRMA 相关的线性函数组成，这两个函数关于 VF (y) 轴相对称。两条线都在 VF 值为 1 处截取 y 轴。使用 SLOPE 垂直系数修饰属性相对于与正 VRMA 定义线的斜率，然后将针对负 VRMA 生成一个镜像。默认斜率为 -1/45（指定为 .02222）。默认的切削角下限为 -45，而默认的切削角上限为 45。</p>
 <p><strong>注意：这个算法的图表，在ArcGIS的帮助中也绘制错误了，也画成了二次曲线的样子，如下是改正后正确图表。</strong></p>
-<p><img src="http://img.blog.csdn.net/20140914011146888" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914010919265" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SymInverseLinear.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SymInverseLinear.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（6）Cos——余弦垂直系数</strong></p>
 <p>VF 由 VRMA 的余弦函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 为 1.0。</p>
-<p><img src="http://img.blog.csdn.net/20140914011138140" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914011357725" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Cos.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Cos.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（7）Sec——正割垂直系数</strong></p>
 <p>VF 由 VRMA 的正割函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 SECPOWER 为 1.0。</p>
-<p><img src="http://img.blog.csdn.net/20140914011836435" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914011900038" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Sec.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_Sec2.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（8）Cos-Sec——余弦正割垂直系数</strong></p>
 <p>当 VRMA 度数为负值时，VF 由 VRMA 的余弦函数确定。如 VRMA 度数为正值，VF 则由 VRMA 的正割函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 和 SECPOWER 均为 1.0。</p>
-<p><img src="http://img.blog.csdn.net/20140914011816734" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914011929031" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_CosSec.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_CosSec2.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（9）Sec-Cos——正割余弦垂直系数</strong></p>
 <p>当 VRMA 度数为负值时，VF 由 VRMA 的正割函数确定。如 VRMA 度数为正值，VF 则由 VRMA 的余弦函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 和 SECPOWER 均为 1.0。</p>
-<p><img src="http://img.blog.csdn.net/20140914012144843" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140914012440290" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SecCos.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst3_SecCos.jpg" alt=""></p>
 <p><br></p>
 <p><strong>（10）Table——自定义表格垂直系数</strong></p>
 <p>与 HRMA 图一样，VRMA 图中的字符可由修饰属性进行进一步的控制，从而细化垂直系数。这个就不再赘述了。</p>
@@ -5129,43 +5138,45 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[深入路径距离分析（二）]]></title>
-      <url>/2014/09/15/New-folder-2016-03-09-DiveinPathDistanceAnalyst2/</url>
+      <url>/2014/09/15/DiveinPathDistanceAnalyst2/</url>
       <content type="html"><![CDATA[<p>接着上一篇文章，继续说说水平影响因子：</p>
+<p>​    </p>
 <h1 id="水平系数"><a href="#水平系数" class="headerlink" title="水平系数"></a><strong>水平系数</strong></h1><p>水平系数 (HF) 从像元移动时所遇到的水平阻力因素的角度出发，确定从一个像元移到另一个像元的成本，或者说是困难。</p>
-<p>在路径距离分析中，提供了确定水平方向成本的参数，如下图：</p>
-<p><img src="http://img.blog.csdn.net/20140913151312629" alt=""></p>
+<p>在路径距离分析中，提供了确定水平方向成本的参数，如下图：<br>​<br><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Horizontalfactor.jpg" alt=""></p>
 <p><strong>水平栅格</strong>中存储了各个像元位置指定的水平角度，例如在上面开车的例子中，指的就是风向。</p>
 <p>水平方向以度为单位进行定义，0 表示位于待处理像元的上方（或北方），值沿顺时针方向增加，形成一个圆并在 360 度时回到原始位置。</p>
-<p><img src="http://img.blog.csdn.net/20140913154632428" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Angle.gif" alt=""></p>
 <p>另外引入的一个概念是，水平相对移动角度 (HRMA)，这是水平角度和前进角度的夹角，对于上面的例子，就是汽车的行驶角度和风向的夹角。</p>
-<p><img src="http://img.blog.csdn.net/20140913142819971?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_HRMA.png" alt=""></p>
 <p>HRMA 值的范围介于 -180 到 180 度之间。但是，在水平系数图中，x 轴上的值介于 0 到 180 之间，也就是工具中使用的是HRMA的绝对值。确定了 HRMA 后，会使用一个图表来确定实际的水平系数。y 轴表示 HF，而 x 轴表示 HRMA。</p>
-<p><strong>水平系数关键字</strong>，允许我们通过选择工具中提供的适合的算法，工具中提供了：&nbsp;BINARY、FORWARD、LINEAR、INVERSE_LINEAR、TABLE 五种方法。</p>
+<p><strong>水平系数关键字</strong>，允许我们通过选择工具中提供的适合的算法，工具中提供了：&nbsp;BINARY、FORWARD、LINEAR、INVERSE_LINEAR、TABLE 五种方法。<br>​    </p>
 <p><strong>（1）Binary——二元水平系数：</strong></p>
 <p>当 HRMA 小于切削角时，通过像元部分的 HF 设置为与零系数（Zero Factor）相关联的值。如果 HRMA 大于切削角，则此部分的 HF 设置为无穷大。默认切削角（Cut Angle）为 45 度。默认零系数为 1.0。</p>
-<p><img src="http://img.blog.csdn.net/20140913144815510" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140913151436355" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Binary.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Binary2.jpg" alt=""></p>
 <p><strong>（2）Forward——前向水平系数：</strong></p>
 <p>如果某段行程的 HRMA 小于 45 度，则 HF 设置为与零系数（Zero Factor）相关联的值。当 HRMA 大于或等于 45 度且小于 90 度时，HF 设置为边值（Side Value）。如果未指定边值，则默认边值为 1。如果 HRMA 大于或等于 90 度，则 HF 设置为无穷大。默认零系数为0 .5。</p>
-<p><img src="http://img.blog.csdn.net/20140913150711021" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140913151906235" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Forward.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Forward2.jpg" alt=""><br>​    </p>
 <p><strong>（3）LINEAR——线性水平系数</strong></p>
 <p>HF 由 HRMA-HF 坐标系中的一条直线确定。这条线在 y 轴（表示 HF 系数）上与零系数（Zero Factor）相关联的值处进行截取。线的斜率（Slop）可以使用 SLOPE参数指定。如果未确定斜率，则默认值为 0.5/45 或 1/90（指定为 0.01111）。默认切削角为 181 度，这相当于无切削。默认零系数为 0.5。</p>
-<p><img src="http://img.blog.csdn.net/20140913152656186" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140913152840909" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Linear.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Linear2.jpg" alt=""></p>
+<p>​    </p>
 <p><strong>（4）INVERSE_LINEAR——逆线性水平系数</strong></p>
 <p>HF 由 HRMA-HF 坐标系中的一条直线的逆向值确定。这条线在 y 轴（表示 HF 系数）上与零系数相关联的值处进行截取。线的斜率可以使用 SLOPE 修饰属性进行指定。如果未确定斜率，则默认值为 -2/180 或 -1/90（指定为 0.01111）。默认切削角为 181 度，这相当于无切削。默认零系数为 2.0。</p>
-<p><img src="http://img.blog.csdn.net/20140913152843968" alt=""></p>
-<p><img src="http://img.blog.csdn.net/20140913153140699" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_InverseLinear.gif" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_InverseLinear2.jpg" alt=""></p>
 <p><strong>（5）Table——自定义表格</strong></p>
 <p>如果前面四种既定算法不能满足要求，我们还可以自定表格，方法就是，在任意文本编辑器中创建的 ASCII 文件来定义图表。</p>
 <p>该文件的每一行有两列值与之对应。第一列值用于识别 HRMA（以度为单位表示），第二列值为 HF。文件中的每行指定图表中的一个点。</p>
 <p>两个连续的点定义 HRMA-HF 坐标系中的一条线段。HRMA 角度必须按升序输入。对于所有小于第一个（最低）输入值或大于最后一个（最大）输入值的 HRMA 角度，其 HF 系数将设置为无穷大。</p>
 <p>在 ASCII 文件中，无穷大的 HF 表示为 -1。</p>
 <p>示例：</p>
-<p><img src="http://img.blog.csdn.net/20140913154155434" alt="">    </p>
-<p><img src="http://img.blog.csdn.net/20140913154450217" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Table.jpg" alt="">    </p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst2_Table2.jpg" alt=""></p>
 <p>有关水平影响因子的总结就到这里，下一篇继续整理和讲解垂直因子……</p>
+<p>​    </p>
 ]]></content>
       
         <categories>
@@ -5185,18 +5196,18 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     
     <entry>
       <title><![CDATA[深入路径距离分析（一）]]></title>
-      <url>/2014/09/15/New-folder-2016-03-09-DiveinPathDistanceAnalyst1/</url>
+      <url>/2014/09/15/DiveinPathDistanceAnalyst1/</url>
       <content type="html"><![CDATA[<p>写这篇之前，整理过空间分析中的距离分析工具箱，今天继续深入的说说路径距离分析。</p>
 <p>开始路径距离分析之前，先回忆下最基本的欧式距离分析和成本距离分析。欧氏距离分析遵循的就是我们小学都知道的“两点之间直线最短”的原则，两点之间的最短路径就是两点之间的线段的距离。但是实际情况并不是很完美，有时我们无法完全沿直线前往某个位置，例如遇到河流、陡坡、悬崖等障碍。这时，我们就应该考虑使用成本距离工具获得更现实的结果。</p>
 <p>如下图，举个简单的例子说明成本距离分析和欧式距离分析。按照欧式距离在问号位置求得的应该是绿色的路径，表示最近源，但是考虑到成本，黄色的曲线确是成本最低的最优路径。并且“曲线救国”比盲目直行，成本更低。</p>
-<p><img src="http://img.blog.csdn.net/20140913104319765?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst1_Path.png" alt=""></p>
 <p>回顾就到这里，继续看更加复杂的路径距离分析：</p>
 <p>路径距离工具与成本距离相似，两者都用于确定从源到栅格上各像元位置的最小累积行进成本。但是，路径距离不仅可计算成本表面的累积成本，而且可以考虑到从一个位置到另一个位置的总移动成本的水平和垂直因子补偿。这些工具生成的累积成本表面可用于扩散建模、流向运动和最低成本路径分析。路径距离工具既考虑水平和垂直成本要素，又考虑真实表面距离。</p>
 <p>举个简单的例子，了解路径距离分析，假设我们开车从位置A到位置B，路况复杂，还有点起风，这时风向和风速就成了水平影响因子，道路的起伏程度就行了垂直因子。如下图，说明这个问题：</p>
 <p>水平影响因子：</p>
-<p><img src="http://img.blog.csdn.net/20140913120432031?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst1_Horizontal.png" alt=""></p>
 <p>垂直影响因子：</p>
-<p><img src="http://img.blog.csdn.net/20140913120618050?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/DiveinPathDistanceAnalyst1_Vertical.png" alt=""></p>
 <p>理解了路径距离分析工具的用途，在下一篇文章中，我们一起来看看水平系数和垂直系数对路径距离的影响。</p>
 ]]></content>
       
@@ -7792,6 +7803,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/New-folder-2016-03-20-SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/New-folder-2016-03-20-SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -7844,51 +7900,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://my.csdn.net/uploads/201208/25/1345904145_6043.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/New-folder-2016-03-20-SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344762110_9428.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://my.csdn.net/uploads/201208/12/1344776559_5545.png" alt="">==&gt; <img src="http://my.csdn.net/uploads/201208/12/1344776580_2639.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
