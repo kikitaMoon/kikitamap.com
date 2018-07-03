@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="kikita's Blog"><title>shapefile与字符集编码设置 | kikita &amp; Maps</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">shapefile与字符集编码设置</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">shapefile与字符集编码设置</h1><div class="post-meta">Feb 13, 2014<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p>在 ArcGIS Desktop&nbsp;(ArcMap, ArcCatalog, and ArcToolbox)中，有编码页转换功能（CODE PAGE CONVERSION），可以读写多种字符编码的 shapefile 和 dBASE 表。 在系统注册表中，编码页转换功能（CODE PAGE CONVERSION）命名为 ‘dbfDefault’，可以修改这个值。 </p>
+<p>在&nbsp;ArcGIS 10.2.1 之前，可以直接按照 ‘dbfDefault’ 设置方法 到注册表中修改。 </p>
+<p>在&nbsp;ArcGIS Desktop 10.2.1 以及以后的版本，shapefile (.DBF) 的编码页的默认设置为&nbsp;UTF-8 (UNICODE) 。</p>
+<p><br></p>
+<hr>
+<p>更新内容（2014.8.1）</p>
+<p>ArcGIS Desktop 10.2.1 和 10.2.2 版本下需要修改编码行为，先打补丁，然后再按照 <strong>‘dbfDefault’ 设置方法</strong> 到注册表中修改。**</p>
+<p><strong>10.2.1</strong>：  <a href="http://support.esri.com/en/downloads/patches-servicepacks/view/productid/160/metaid/2090" target="_blank" rel="noopener">http://support.esri.com/en/downloads/patches-servicepacks/view/productid/160/metaid/2090</a> </p>
+<p><strong>10.2.2</strong>：  <a href="http://support.esri.com/en/downloads/patches-servicepacks/view/productid/67/metaid/2089" target="_blank" rel="noopener">http://support.esri.com/en/downloads/patches-servicepacks/view/productid/67/metaid/2089</a></p>
+<hr>
+<p><br></p>
+<h1 id="‘dbfDefault’-的作用"><a href="#‘dbfDefault’-的作用" class="headerlink" title="‘dbfDefault’ 的作用"></a>‘dbfDefault’ 的作用</h1><p>使用 ArcGIS for Desktop 打开 dBase 表文件时，程序先去读头文件中的 &nbsp;Language Driver ID (LDID) 或者是同名 *.CPG文件。前面二者都是用来在读文件之前，决定用什么编码类型来正确读出文件。如果有必要， ArcGIS for Desktop 会进行编码转换来显示字符串。</p>
+<p>如果文件缺失&nbsp;LDID 或者 &nbsp;.CPG 文件，编码就会被假定为 Windows (ANSI/Multi-byte)。也是因为这个原因，<span style="font-size:12px">如果文件是 OEM 编码的，并且没有写入 LDID 或者 .CPG，字符就会出现乱码。 也就说 ArcGIS 把 OEM 文件当成 ANSI 文件来处理了。</span></p>
+<p>多数情况下， shapefiles 和 dBASE 文件都会存储编码页信息。 但是有些程序的 OEM 文件没有包含编码页信息，例如 Microsoft Access 2000 and Excel 2000，所以这些文件读取时，就会乱码。为了避免这个问题，用户可以给没有编码页信息的文件设置<br><strong>dbfDefault</strong>。</p>
+<p><strong>写</strong></p>
+<p>在注册表中设置 ‘dbfDefault’ ，可以决定导出的 shapefile 和 dBASE 的编码类型。例如，把 ‘dbfDefault’ 设置为 OEM ，那么用 ArcMap, ArcCatalog, ArcToolbox 生成出来的 shapefile 和 dBASE 文件就是以 OEM编码的，设置成 ANSI ，那 shapefile 和 dBASE 文件就是 ANSI 编码的。 </p>
+<p><strong>读</strong></p>
+<p>读 shapefile 和 dBASE 文件的逻辑与写是相同的，如果缺失编码信息，ArcGIS 读取文件的编码类型由 <strong>dbfDefault</strong>决定。</p>
+<p><br></p>
+<h1 id="不适用’dbfDefault’-的情况"><a href="#不适用’dbfDefault’-的情况" class="headerlink" title="不适用’dbfDefault’ 的情况"></a>不适用’dbfDefault’ 的情况</h1><p>‘dbfDefault’ 这项设置仅对 ArcGIS Desktop 生效，对于一些很老版本的ArcGIS 产品不适用；仅对 shapefile 生效，Personal GDB等不生效。</p>
+<p><br></p>
+<p><strong>无视 ‘dbfDefault’ 设置的包括：</strong></p>
+<p><em>In ArcInfo Workstation:</em></p>
+<ul>
+<li><p>ARCSHAPE with &amp;CODEPAGE OEM creates a shapefile in OEM&nbsp;</p>
+</li>
+<li><p>ARCSHAPE with &amp;CODEPAGE ANSI creates a shapefile in ANSI&nbsp;</p>
+</li>
+<li><p>INFODBASE with &amp;CODEPAGE OEM creates a dBASE file in OEM&nbsp;</p>
+</li>
+<li><p>INFODBASE with &amp;CODEPAGE ANSI creates a dBASE file in ANSI&nbsp;</p>
+</li>
+</ul>
+<p><em>In ArcView 3.x,&nbsp;</em></p>
+<ul>
+<li>Shapefile and dBASE files are saved in the ANSI code page.&nbsp;</li>
+</ul>
+<p><em>In ArcGIS for Desktop (regardless of the dbfDefault setting),&nbsp;</em></p>
+<ul>
+<li><p>Personal geodatabases are saved in Unicode&nbsp;</p>
+</li>
+<li><p>Personal geodatabase tables are saved in Unicode&nbsp;</p>
+</li>
+<li><p>Coverages are saved in the ISO code page&nbsp;</p>
+</li>
+<li><p>INFO files are saved in the ISO code page&nbsp;</p>
+</li>
+<li><p>Interchange files are saved in the ANSI code page&nbsp;</p>
+</li>
+<li><p>Text files are saved in the ANSI code page</p>
+</li>
+</ul>
+<p><br></p>
+<h1 id="‘dbfDefault’-设置方法"><a href="#‘dbfDefault’-设置方法" class="headerlink" title="‘dbfDefault’ 设置方法"></a>‘dbfDefault’ 设置方法</h1><ol>
+<li><p>开始 – 运行，输入”Regedit“，打开&nbsp;<strong>注册表</strong>。</p>
+</li>
+<li><p>如是用的是 10.x 版本 ArcGIS Desktop，定位到 ‘<strong>My Computer\HKEY_CURRENT_USER\Software\ESRI\Desktop 10.x</strong>. 如果是9.3.1之前的版本，定位到 ‘My Computer\HKEY_CURRENT_USER\Software\ESRI’。 </p>
+</li>
+<li><p>创建项 <strong><code>Common</code></strong>， 接着在其下创建 <strong><code>CodePage</code></strong> 项， 添加 <strong><code>字符串</code></strong> ，名称： <strong><code>dbfDefault</code></strong> ，健值： <strong><code>oem</code>（或者<code>936</code>）</strong>。</p>
+</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20140213131243500?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva2lraXRhTW9vbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><br></p>
+<p>如下为支持的编码值：</p>
+<p><strong>OEM</strong> Code Page Values:</p>
+<p>OEM, 437, 708, 720, 737, 775, 850, 852, 855, 857, 860, 861, 862, 863, 864, 865, 866, 869, 932, 936, 950</p>
+<p><strong>ANSI</strong> Code Page Values:</p>
+<p>ANSI, 1250, 1251, 1252, 1253, 1254, 1255, 1256, 1257, 1258, Big5, SJIS&nbsp;</p>
+<p><strong>ISO</strong> Code Page Values:</p>
+<p>ISO, 88591, 88592, 88593, 88594, 88595, 88596, 88597, 88598, 88599, 885910, 885913, 885915, EUC</p>
+<p><strong>Unicode</strong> Values:</p>
+<p>UTF-8</p>
+<p><br></p>
+<p>现在，Shapefiles 可以以 UTF-8 存储，但是，只有在 ArcGIS Desktop 中才能被识别。</p>
+<p>相关技术文章：</p>
+<p><a href="http://support.esri.com/en/knowledgebase/techarticles/detail/21106" target="_blank" rel="noopener">http://support.esri.com/en/knowledgebase/techarticles/detail/21106</a></p>
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2014/02/13/New-folder-2016-03-12-shapefileCodePage/" data-id="cjj55yp3m0039u0osb4ax1dtq" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3a0YpiMRAE0Pn/n56FfVtErepORJZzn2QQzclAOlb3z0/8/P59Hv/y+Pf9Zz5+/v678PDw8M7yfl8+z5bybEGvX+eb9XoNyZrx8PDwbvPapSeA5OuTDZ1tNx4eHt438Gaw9jKNh4eH9z/xWmoeW7RXczw8PLxv4CVhxKwk5FFsHuNeyVrw8PDwYl7brPqG1xf7e3h4eHiLrnp+7Latr7zwbB48PDy8G7zZ+FR+iM+2LN+gqGDg4eHhHeXlx/GmEdW2wZI4OAo18PDw8C7w2sO3HZxqw9nNet6k1Hh4eHiHeHlbKz+4N1fhvDAMfyvg4eHhrXnJcTwbtDo11NUWmDfBBB4eHt5R3uxnf4LMtyMPGtprPR4eHt4pXvLWtni0cW1ScvJrfb0TeHh4eJNJgGLR+XBVG/4Ol56UKDw8PLyjvM1Y6qxUzAZbhzE0Hh4e3jVee43OI9rZSMH+Iv5PGIGHh4d3lHe20ZVflPctsaKQ4OHh4V3gzZBteyx5kiBj2NnDw8PDu8CbBal5Gcgv6/tx2Df/Qzw8PLwFr23Vr0LV0dbkjbQoa8HDw8M7xMvbWvsRgRacDwo8DXDx8PDwPs5rW1x5g2ozzhW16PDw8PCu8WYflLf222IzC3mLMAIPDw9vwWvfmrfEZkvflwo8PDy8z/Dysac2sGiX1a6kDS/w8PDwTvFmw1X7Yz2JKvJy9XQT8fDw8K7x9pjNcjfNsKgNhoeHh3eId+Mgzhc0+64iIsHDw8O7wMufJJBtxw7akGLWTsPDw8O7wdsUg3ZEIGmP5eUkWgMeHh7eNd7Zac88C5ldyovV4uHh4X0Brw1hk3g3CZHbCz0eHh7eN/Bmjf88C9m/Bw8PD++TvNni8nAhDyPy8YLoCo6Hh4d3gTdrgLXX7jx0aK/p+Ubg4eHhrXl/ABB7u2C8miUBAAAAAElFTkSuQmCC">Share</a><div class="tags"><a href="/tags/Geodata/">Geodata</a></div><div class="post-nav"><a class="pre" href="/2014/02/27/New-folder-2016-03-12-LimitsofShapefile/">Shapefile 的局限性</a><a class="next" href="/2014/02/11/New-folder-2016-03-12-3DVisibility/">3D分析之可见性分析工具</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+   var j, e = d.getElementsByTagName(s)[0];
+   if (typeof LivereTower === 'function') { return; }
+   j = d.createElement(s);
+   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+   j.async = true;
+   e.parentNode.insertBefore(j, e);
+})(document, 'script');
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/木工开物/">木工开物</a><span class="category-list-count">158</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/相机里/">相机里</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/碎碎念/">碎碎念</a><span class="category-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Map-Story/" style="font-size: 15px;">Map Story</a> <a href="/tags/Geoprocessing/" style="font-size: 15px;">Geoprocessing</a> <a href="/tags/Spatial-Statistics/" style="font-size: 15px;">Spatial Statistics</a> <a href="/tags/Raster/" style="font-size: 15px;">Raster</a> <a href="/tags/Geodata/" style="font-size: 15px;">Geodata</a> <a href="/tags/Coordinate-System/" style="font-size: 15px;">Coordinate System</a> <a href="/tags/Mapping/" style="font-size: 15px;">Mapping</a> <a href="/tags/3D/" style="font-size: 15px;">3D</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/ArcGIS-Pro/" style="font-size: 15px;">ArcGIS Pro</a> <a href="/tags/ArcGIS-Enterprise/" style="font-size: 15px;">ArcGIS Enterprise</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/License/" style="font-size: 15px;">License</a> <a href="/tags/Deployment/" style="font-size: 15px;">Deployment</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/CityEngine/" style="font-size: 15px;">CityEngine</a> <a href="/tags/ArcPad/" style="font-size: 15px;">ArcPad</a> <a href="/tags/Performance/" style="font-size: 15px;">Performance</a> <a href="/tags/CAD/" style="font-size: 15px;">CAD</a> <a href="/tags/Spatial-Analyst/" style="font-size: 15px;">Spatial Analyst</a> <a href="/tags/CGA/" style="font-size: 15px;">CGA</a> <a href="/tags/Visual-Studio/" style="font-size: 15px;">Visual Studio</a> <a href="/tags/Certification/" style="font-size: 15px;">Certification</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/New-folder-2018-04-10-pythonInCE/">在 CityEngine 中使用 Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/New-folder-2018-04-04-Parthenon/">Parthenon Temple</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/New-folder-2018-03-30-textureinCE2/">CityEngine中纹理贴图之道(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/New-folder-2018-03-22-textureinCE/">CityEngine中纹理贴图之道(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/21/New-folder-2018-03-21-importingmodels/">导入3D模型至CityEngine</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/New-folder-2018-03-18-ScentofaWoman/">《Scent of a Woman》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/New-folder-2018-03-15-osm2ce/">OSM在ArcGIS产品线中的使用小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/New-folder-2018-03-13-CEMaplayer/">CityEngine中的Terrain Map Layer</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/09/New-folder-2017-11-29-ProNamedUserforPortalUse/">如何部署通过Portal管理的ArcGIS Pro Named User许可？</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/New-folder-2018-02-26-sitebuilding/">网站主题更换备忘录</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://zhihu.esrichina.com.cn/" title="ArcGIS知乎" target="_blank">ArcGIS知乎</a><ul></ul><a href="http://blog.newnaw.com/" title="菩提老王的葡萄架子" target="_blank">菩提老王的葡萄架子</a><ul></ul><a href="http://oopsliu.com/" title="OopsLiu" target="_blank">OopsLiu</a><ul></ul><a href="https://makeling.github.io/" title="UBUNTU SPACE" target="_blank">UBUNTU SPACE</a><ul></ul><a href="http://blog.csdn.net/kikitamoon" title="慕名ArcGIS_CSDN" target="_blank">慕名ArcGIS_CSDN</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">kikita &amp; Maps.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

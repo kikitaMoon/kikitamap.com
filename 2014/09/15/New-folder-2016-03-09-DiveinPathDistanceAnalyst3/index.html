@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="kikita's Blog"><title>深入路径距离分析（三） | kikita &amp; Maps</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create','UA-74191197-1','auto');ga('send','pageview');</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入路径距离分析（三）</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">深入路径距离分析（三）</h1><div class="post-meta">Sep 15, 2014<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p>路径分析不仅可以考虑到水平方向的影响因子，而且可以考虑到垂直方向的影响因子，例如前面开车的例子中，水平方向的影响因子是风向，垂直方向的影响因子就是路面的起伏状况。</p>
+<p><strong>垂直系数</strong></p>
+<p>垂直系数越大，移动的难度也就越大。确定从一个像元行进到另一个像元时遇到的垂直系数（VF）与确定水平系数（HF）相似。这里需要引入一个概念，垂直相对移动角度（VRMA），垂直相对移动角度（VRMA）是“起始”像元与“目标”像元形成的斜率的角度，斜率=垂直增量/水平增量。VRMA 以度为单位进行指定。VRMA 的值范围为 -90 到 +90 度。</p>
+<p>路径距离分析工具中，提供了几种算法，<strong>BINARY、LINEAR、SYM_LINEAR、INVERSE_LINEAR、SYM_INVERSE_LINEAR、COS、SEC、COS_SEC、SEC_COS、TABLE</strong>：</p>
+<p><img src="http://img.blog.csdn.net/20140913235422125" alt=""></p>
+<p><br></p>
+<p><strong>（1）Binary——二元垂直系数</strong></p>
+<p>当 VRMA 大于切削角下限且小于切削角上限时，在两个像元之间移动的 VF 设置为与零系数相关联的值。如果 VRMA 大于切削角上限或者小于<span style="font-family: 'Microsoft YaHei';font-size:14px;">切削角下限</span>，则 VF 设置为无穷大。工具默认的切削角为正负30度。</p>
+<p><img src="http://img.blog.csdn.net/20140914003649682" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914003509703" alt=""></p>
+<p><br></p>
+<p><strong>（2）Linear——线性垂直系数</strong></p>
+<p>VF 由 VRMA-VF 坐标系中的一条直线确定。这条线在 y 轴上与零系数相关联的值处进行截取。线的斜率可以使用 SLOPE 属性进行指定。如果未确定斜率，则默认值为 1/90（指定为 0.01111）。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。</p>
+<p><img src="http://img.blog.csdn.net/20140914004337732" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914004212218" alt=""></p>
+<p><br></p>
+<p><strong>（3）Inverse Linear——逆线性垂直系数</strong></p>
+<p>这个与线性垂直系数类似，VF 由 VRMA-VF 坐标系中的一条直线的逆向值确定。这条线在 y 轴（表示 VF 系数）上与零系数相关联的值处进行截取。线的斜率可以确定（如果使用 SLOPE 修饰属性指定）。如果未确定斜率，则默认值为 -1/45（指定为 0.02222）。默认的切削角下限为 -45 度，而默认的切削角上限为 45 度。</p>
+<p><strong>注意：这个算法的图表，在ArcGIS的帮助中绘制错误了，画成了二次曲线的样子，如下是改正后正确图表。</strong>_</p>
+<p><img src="http://img.blog.csdn.net/20140914010130562" alt=""></p>
+<p><span style="font-family:Microsoft YaHei;font-size:14px;color:#3366ff;"><span style="font-family: 'Microsoft YaHei';font-size:14px;">_</span></span></p>
+<p><img src="http://img.blog.csdn.net/20140914005439828" alt=""></p>
+<p><br></p>
+<p><strong>（4）Symmetric Linear——对称线性垂直系数</strong></p>
+<p>SYM_LINEAR 由两个与 VRMA 相关的线性函数组成，这两个函数关于 VF (y) 轴对称。两条线都在与零系数相关联的 VF 值处截取 y 轴。使用 SLOPE 垂直系数修饰属性相对于正 VRMA 定义线的斜率，然后将针对负 VRMA 生成一个镜像。默认斜率为 1/90（指定为 0.01111）。默认的切削角下限为 -90，而默认的切削角上限为 90。</p>
+<p><img src="http://img.blog.csdn.net/20140914010301296" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914010524406" alt=""></p>
+<p><br></p>
+<p><strong>（5）Symmetric Inverse Linear——对称线性垂直系数</strong></p>
+<p>顾名思义，SYM_INVERSE_LINEAR 与 SYM_LINEAR 垂直系数关键字正相反。它由两个与 VRMA 相关的线性函数组成，这两个函数关于 VF (y) 轴相对称。两条线都在 VF 值为 1 处截取 y 轴。使用 SLOPE 垂直系数修饰属性相对于与正 VRMA 定义线的斜率，然后将针对负 VRMA 生成一个镜像。默认斜率为 -1/45（指定为 .02222）。默认的切削角下限为 -45，而默认的切削角上限为 45。</p>
+<p><strong>注意：这个算法的图表，在ArcGIS的帮助中也绘制错误了，也画成了二次曲线的样子，如下是改正后正确图表。</strong></p>
+<p><img src="http://img.blog.csdn.net/20140914011146888" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914010919265" alt=""></p>
+<p><br></p>
+<p><strong>（6）Cos——余弦垂直系数</strong></p>
+<p>VF 由 VRMA 的余弦函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 为 1.0。</p>
+<p><img src="http://img.blog.csdn.net/20140914011138140" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914011357725" alt=""></p>
+<p><br></p>
+<p><strong>（7）Sec——正割垂直系数</strong></p>
+<p>VF 由 VRMA 的正割函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 SECPOWER 为 1.0。</p>
+<p><img src="http://img.blog.csdn.net/20140914011836435" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914011900038" alt=""></p>
+<p><br></p>
+<p><strong>（8）Cos-Sec——余弦正割垂直系数</strong></p>
+<p>当 VRMA 度数为负值时，VF 由 VRMA 的余弦函数确定。如 VRMA 度数为正值，VF 则由 VRMA 的正割函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 和 SECPOWER 均为 1.0。</p>
+<p><img src="http://img.blog.csdn.net/20140914011816734" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914011929031" alt=""></p>
+<p><br></p>
+<p><strong>（9）Sec-Cos——正割余弦垂直系数</strong></p>
+<p>当 VRMA 度数为负值时，VF 由 VRMA 的正割函数确定。如 VRMA 度数为正值，VF 则由 VRMA 的余弦函数确定。默认的切削角下限为 -90 度，而默认的切削角上限为 90 度。默认的 COSPOWER 和 SECPOWER 均为 1.0。</p>
+<p><img src="http://img.blog.csdn.net/20140914012144843" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140914012440290" alt=""></p>
+<p><br></p>
+<p><strong>（10）Table——自定义表格垂直系数</strong></p>
+<p>与 HRMA 图一样，VRMA 图中的字符可由修饰属性进行进一步的控制，从而细化垂直系数。这个就不再赘述了。</p>
+<p>好了，到这里路径距离分析就说完了，也就是说，当需要计算最短路径的时候，需要考虑和前进方向有关的水平阻力因子和垂直阻力因子的时候，可以使用 ArcGIS 的路径距离分析工具，可以使用工具中的既定算法模型，通过配置参数达到目的，或者自定义表格自定义细化水平或垂直系数。</p>
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kikitamap.com/2014/09/15/New-folder-2016-03-09-DiveinPathDistanceAnalyst3/" data-id="cjj55yp2t0020u0osep7hm3we" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJUlEQVR42u3aQY6jQAwF0Nz/0pntjDSQb5tIxDxWEd1N8aoXjv3r9Yqv98H1909frevoOfkqk9WxsbGxd7Dfp9fRS5zfTxjJE5ItOFrlyIKNjY29lZ2Xlt4LVfHnv5OveHgfGxsb+8Hs6qufF5Lq7+RbgI2NjY2dlJP8c2/F3h1sbGzsZ7LnAcBVBWze/Fw8S8PGxsa+PXsex97n81fybWxsbOwbs9/Fqzro7z0tKV150frPX2FjY2MvYvfajASQP6fXeMzbJGxsbOyt7HmhygtSvrnVaCFqV7CxsbEfw+61BNXgNt+gXvErFzBsbGzsn2JX495k9HNe/K5dNyld2NjY2E9gJw/qXYVBT7yJSbEcpdnY2NjYP8WeF5h84bw4JaOuapCAjY2NvY9dfXRehPKXqAYSkzv/nFTCxsbGfgw7H/FX24le8DBpXZrJNjY2NvaN2Xl0mg/xeyOhySZWGyFsbGzsreykkEyO8nzvEE/SPn0YLWFjY2P/LPuqgDZpIfIt6LUr5aESNjY29gp2PuiptijVUVF16N97PjY2NvZWdvKFfhIJV8c9vRYlL37Y2NjYm9jVYHXSKvTG+vPG40PEi42Njb2CPSk2V21H71hPL6jGxsbG3seudi3VCCE56JOXvd6IChsbG/sJ7Pnxmrx56EXLScuRrIuNjY29j937op+3CnkhrAYPzXKLjY2NvYidj4Sq46RqoUpWrx7E+bA6NjY29iJ2fsimyugVqmq0nG8KNjY29lb2JNCtNg95bDBpV6K3wsbGxn4Ae1J+8og3KXi9gzvRUAkbGxt7EbvaHuStQjWEqIYT1VEXNjY29m52XnKuHT/lW9A7GISNjY39THY+eMoH95NGohcVHN7BxsbGXsF+F6/qRvS2Y741H94EGxsbexE7v6oFJh/699qVycZhY2Nj72NPxkl5fDs5ZDMZIR3+h7GxsbHXsXuFoRrNVsHJ+1TLMDY2Njb25IjPpLGpHiSKJmrY2NjYj2RPot9JA9OLlrGxsbGfw642GEk7kRehebT8xXgAGxsb+/bs6jgmPyKT/3SyerWYYWNjYy9i/wG+XPh0+HMnPQAAAABJRU5ErkJggg==">Share</a><div class="tags"><a href="/tags/Geoprocessing/">Geoprocessing</a></div><div class="post-nav"><a class="pre" href="/2014/09/16/New-folder-2016-03-09-Building3DAnimation/">ArcGIS 构建3D动画方法</a><a class="next" href="/2014/09/15/New-folder-2016-03-09-DiveinPathDistanceAnalyst2/">深入路径距离分析（二）</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zMjMyOC84ODg5"><script>(function(d, s) {
+   var j, e = d.getElementsByTagName(s)[0];
+   if (typeof LivereTower === 'function') { return; }
+   j = d.createElement(s);
+   j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+   j.async = true;
+   e.parentNode.insertBefore(j, e);
+})(document, 'script');
+</script></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/木工开物/">木工开物</a><span class="category-list-count">158</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/相机里/">相机里</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/碎碎念/">碎碎念</a><span class="category-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/Map-Story/" style="font-size: 15px;">Map Story</a> <a href="/tags/Geoprocessing/" style="font-size: 15px;">Geoprocessing</a> <a href="/tags/Spatial-Statistics/" style="font-size: 15px;">Spatial Statistics</a> <a href="/tags/Raster/" style="font-size: 15px;">Raster</a> <a href="/tags/Geodata/" style="font-size: 15px;">Geodata</a> <a href="/tags/Coordinate-System/" style="font-size: 15px;">Coordinate System</a> <a href="/tags/Mapping/" style="font-size: 15px;">Mapping</a> <a href="/tags/3D/" style="font-size: 15px;">3D</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/ArcGIS-Pro/" style="font-size: 15px;">ArcGIS Pro</a> <a href="/tags/ArcGIS-Enterprise/" style="font-size: 15px;">ArcGIS Enterprise</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/License/" style="font-size: 15px;">License</a> <a href="/tags/Deployment/" style="font-size: 15px;">Deployment</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/CityEngine/" style="font-size: 15px;">CityEngine</a> <a href="/tags/ArcPad/" style="font-size: 15px;">ArcPad</a> <a href="/tags/Performance/" style="font-size: 15px;">Performance</a> <a href="/tags/CAD/" style="font-size: 15px;">CAD</a> <a href="/tags/Spatial-Analyst/" style="font-size: 15px;">Spatial Analyst</a> <a href="/tags/CGA/" style="font-size: 15px;">CGA</a> <a href="/tags/Visual-Studio/" style="font-size: 15px;">Visual Studio</a> <a href="/tags/Certification/" style="font-size: 15px;">Certification</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/10/New-folder-2018-04-10-pythonInCE/">在 CityEngine 中使用 Python</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/New-folder-2018-04-04-Parthenon/">Parthenon Temple</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/New-folder-2018-03-30-textureinCE2/">CityEngine中纹理贴图之道(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/22/New-folder-2018-03-22-textureinCE/">CityEngine中纹理贴图之道(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/21/New-folder-2018-03-21-importingmodels/">导入3D模型至CityEngine</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/New-folder-2018-03-18-ScentofaWoman/">《Scent of a Woman》</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/New-folder-2018-03-15-osm2ce/">OSM在ArcGIS产品线中的使用小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/New-folder-2018-03-13-CEMaplayer/">CityEngine中的Terrain Map Layer</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/09/New-folder-2017-11-29-ProNamedUserforPortalUse/">如何部署通过Portal管理的ArcGIS Pro Named User许可？</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/New-folder-2018-02-26-sitebuilding/">网站主题更换备忘录</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://zhihu.esrichina.com.cn/" title="ArcGIS知乎" target="_blank">ArcGIS知乎</a><ul></ul><a href="http://blog.newnaw.com/" title="菩提老王的葡萄架子" target="_blank">菩提老王的葡萄架子</a><ul></ul><a href="http://oopsliu.com/" title="OopsLiu" target="_blank">OopsLiu</a><ul></ul><a href="https://makeling.github.io/" title="UBUNTU SPACE" target="_blank">UBUNTU SPACE</a><ul></ul><a href="http://blog.csdn.net/kikitamoon" title="慕名ArcGIS_CSDN" target="_blank">慕名ArcGIS_CSDN</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">kikita &amp; Maps.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
