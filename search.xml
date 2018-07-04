@@ -6638,12 +6638,13 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上就是一个大致的流程。</p>
 <p>如果还是习惯于老产品的用户，也仍然可以参阅已往老版本的资料，但是提醒 9.2 版本已经不支持在 Windows 7上安装了，意味着Windows也要降级。</p>
 <p>并且使用9.2及之前的版本，在 Esri 是得不到技术支持的。强烈建议迁移到新版本。</p>
-<p>ArcGIS for SketchUp 6 (beta) 安装指南：</p>
-<p><a href="http://download.csdn.net/detail/kikitamoon/5529723" target="_blank" rel="noopener">http://download.csdn.net/detail/kikitamoon/5529723</a></p>
-<p>工作流程：</p>
-<p><a href="http://download.csdn.net/detail/kikitamoon/5529733" target="_blank" rel="noopener">http://download.csdn.net/detail/kikitamoon/5529733</a></p>
-<p>官方说明：</p>
-<p><a href="http://sketchup.google.de/intl/en/download/plugins.html" target="_blank" rel="noopener">http://sketchup.google.de/intl/en/download/plugins.html</a></p>
+<ul>
+<li><a href="http:/kikitamap.com/attaches/SketchUpGIS_Workflow.pdf" target="_blank" rel="noopener">ArcGIS for SketchUp 6 (beta) 安装指南</a></li>
+<li><a href="http:/kikitamap.com/attaches/SketchUpPro6_GISPluginInstall.pdf" target="_blank" rel="noopener">工作流程</a></li>
+</ul>
+<ul>
+<li><a href="http://sketchup.google.de/intl/en/download/plugins.html" target="_blank" rel="noopener">官方说明</a></li>
+</ul>
 ]]></content>
       
         <categories>
@@ -9252,8 +9253,8 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 </ul>
 <p>注意，long integer 当精度超过 10 时，会自动转为 Double 型。</p>
 <p>相关资料：</p>
-<p>由于shape文件是公开数据格式，可以很好来作为交换格式，这里有个技术描述可供下载：</p>
-<p><a href="http://download.csdn.net/detail/kikitamoon/4049221" target="_blank" rel="noopener">shape文件技术描述</a></p>
+<p>由于shape文件是公开数据格式，可以很好来作为交换格式，这里是Esri官方技术描述：</p>
+<p><a href="https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf" target="_blank" rel="noopener">shape文件技术描述</a></p>
 ]]></content>
       
         <categories>
