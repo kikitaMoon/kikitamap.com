@@ -79,8 +79,8 @@
   
   <entry>
     <title>CityEngine中纹理贴图之道(二)</title>
-    <link href="http://www.kikitamap.com/2018/03/30/New-folder-2018-03-30-textureinCE2/"/>
-    <id>http://www.kikitamap.com/2018/03/30/New-folder-2018-03-30-textureinCE2/</id>
+    <link href="http://www.kikitamap.com/2018/03/30/textureinCE2/"/>
+    <id>http://www.kikitamap.com/2018/03/30/textureinCE2/</id>
     <published>2018-03-30T06:54:44.000Z</published>
     <updated>2018-04-03T06:24:25.638Z</updated>
     
@@ -107,8 +107,8 @@
   
   <entry>
     <title>CityEngine中纹理贴图之道(一)</title>
-    <link href="http://www.kikitamap.com/2018/03/22/New-folder-2018-03-22-textureinCE/"/>
-    <id>http://www.kikitamap.com/2018/03/22/New-folder-2018-03-22-textureinCE/</id>
+    <link href="http://www.kikitamap.com/2018/03/22/textureinCE/"/>
+    <id>http://www.kikitamap.com/2018/03/22/textureinCE/</id>
     <published>2018-03-22T09:39:33.000Z</published>
     <updated>2018-03-30T08:12:50.425Z</updated>
     
@@ -135,8 +135,8 @@
   
   <entry>
     <title>导入3D模型至CityEngine</title>
-    <link href="http://www.kikitamap.com/2018/03/21/New-folder-2018-03-21-importingmodels/"/>
-    <id>http://www.kikitamap.com/2018/03/21/New-folder-2018-03-21-importingmodels/</id>
+    <link href="http://www.kikitamap.com/2018/03/21/importingmodels/"/>
+    <id>http://www.kikitamap.com/2018/03/21/importingmodels/</id>
     <published>2018-03-21T03:06:12.000Z</published>
     <updated>2018-04-23T01:16:11.438Z</updated>
     
@@ -163,8 +163,8 @@
   
   <entry>
     <title>《Scent of a Woman》</title>
-    <link href="http://www.kikitamap.com/2018/03/18/New-folder-2018-03-18-ScentofaWoman/"/>
-    <id>http://www.kikitamap.com/2018/03/18/New-folder-2018-03-18-ScentofaWoman/</id>
+    <link href="http://www.kikitamap.com/2018/03/18/ScentofaWoman/"/>
+    <id>http://www.kikitamap.com/2018/03/18/ScentofaWoman/</id>
     <published>2018-03-18T04:00:00.000Z</published>
     <updated>2018-03-21T07:30:13.541Z</updated>
     
@@ -190,8 +190,8 @@
   
   <entry>
     <title>OSM在ArcGIS产品线中的使用小结</title>
-    <link href="http://www.kikitamap.com/2018/03/15/New-folder-2018-03-15-osm2ce/"/>
-    <id>http://www.kikitamap.com/2018/03/15/New-folder-2018-03-15-osm2ce/</id>
+    <link href="http://www.kikitamap.com/2018/03/15/osm2ce/"/>
+    <id>http://www.kikitamap.com/2018/03/15/osm2ce/</id>
     <published>2018-03-15T06:56:00.000Z</published>
     <updated>2018-03-21T06:19:32.110Z</updated>
     
@@ -220,8 +220,8 @@
   
   <entry>
     <title>CityEngine中的Terrain Map Layer</title>
-    <link href="http://www.kikitamap.com/2018/03/13/New-folder-2018-03-13-CEMaplayer/"/>
-    <id>http://www.kikitamap.com/2018/03/13/New-folder-2018-03-13-CEMaplayer/</id>
+    <link href="http://www.kikitamap.com/2018/03/13/CEMaplayer/"/>
+    <id>http://www.kikitamap.com/2018/03/13/CEMaplayer/</id>
     <published>2018-03-13T04:40:14.000Z</published>
     <updated>2018-03-15T02:36:11.320Z</updated>
     
@@ -244,8 +244,8 @@
   
   <entry>
     <title>如何部署通过Portal管理的ArcGIS Pro Named User许可？</title>
-    <link href="http://www.kikitamap.com/2018/03/09/New-folder-2017-11-29-ProNamedUserforPortalUse/"/>
-    <id>http://www.kikitamap.com/2018/03/09/New-folder-2017-11-29-ProNamedUserforPortalUse/</id>
+    <link href="http://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/"/>
+    <id>http://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/</id>
     <published>2018-03-09T03:50:45.000Z</published>
     <updated>2018-05-25T07:38:33.166Z</updated>
     
@@ -283,8 +283,8 @@
   
   <entry>
     <title>网站主题更换备忘录</title>
-    <link href="http://www.kikitamap.com/2018/02/26/New-folder-2018-02-26-sitebuilding/"/>
-    <id>http://www.kikitamap.com/2018/02/26/New-folder-2018-02-26-sitebuilding/</id>
+    <link href="http://www.kikitamap.com/2018/02/26/sitebuilding/"/>
+    <id>http://www.kikitamap.com/2018/02/26/sitebuilding/</id>
     <published>2018-02-26T03:06:22.000Z</published>
     <updated>2018-03-05T02:17:31.487Z</updated>
     
@@ -306,8 +306,8 @@
   
   <entry>
     <title>解析xml修改切片原点绕开工具的坑</title>
-    <link href="http://www.kikitamap.com/2018/02/05/New-folder-2018-02-05-AlterXMLScheme/"/>
-    <id>http://www.kikitamap.com/2018/02/05/New-folder-2018-02-05-AlterXMLScheme/</id>
+    <link href="http://www.kikitamap.com/2018/02/05/AlterXMLScheme/"/>
+    <id>http://www.kikitamap.com/2018/02/05/AlterXMLScheme/</id>
     <published>2018-02-05T09:00:14.000Z</published>
     <updated>2018-02-08T01:54:29.933Z</updated>
     
@@ -334,8 +334,8 @@
   
   <entry>
     <title>《面向ArcGIS的Python脚本编程》读后</title>
-    <link href="http://www.kikitamap.com/2018/01/11/New-folder-2018-01-11-ReadingPyScriptingforAGS/"/>
-    <id>http://www.kikitamap.com/2018/01/11/New-folder-2018-01-11-ReadingPyScriptingforAGS/</id>
+    <link href="http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/"/>
+    <id>http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/</id>
     <published>2018-01-11T04:57:19.000Z</published>
     <updated>2018-02-07T10:03:13.623Z</updated>
     
@@ -359,8 +359,8 @@
   
   <entry>
     <title>通过arcpy自动发布服务</title>
-    <link href="http://www.kikitamap.com/2017/12/19/New-folder-2017-12-19-AutoPublishingService/"/>
-    <id>http://www.kikitamap.com/2017/12/19/New-folder-2017-12-19-AutoPublishingService/</id>
+    <link href="http://www.kikitamap.com/2017/12/19/AutoPublishingService/"/>
+    <id>http://www.kikitamap.com/2017/12/19/AutoPublishingService/</id>
     <published>2017-12-19T04:12:44.000Z</published>
     <updated>2018-02-09T01:53:50.579Z</updated>
     
@@ -388,8 +388,8 @@
   
   <entry>
     <title>Add LiveRe Comments</title>
-    <link href="http://www.kikitamap.com/2017/12/13/New-folder-2017-12-13-AddLiveRe/"/>
-    <id>http://www.kikitamap.com/2017/12/13/New-folder-2017-12-13-AddLiveRe/</id>
+    <link href="http://www.kikitamap.com/2017/12/13/AddLiveRe/"/>
+    <id>http://www.kikitamap.com/2017/12/13/AddLiveRe/</id>
     <published>2017-12-13T01:58:58.000Z</published>
     <updated>2018-01-03T03:10:49.818Z</updated>
     
@@ -414,8 +414,8 @@
   
   <entry>
     <title>tidy up the code ...</title>
-    <link href="http://www.kikitamap.com/2017/11/14/New-folder-2017-11-14-tidyup/"/>
-    <id>http://www.kikitamap.com/2017/11/14/New-folder-2017-11-14-tidyup/</id>
+    <link href="http://www.kikitamap.com/2017/11/14/tidyup/"/>
+    <id>http://www.kikitamap.com/2017/11/14/tidyup/</id>
     <published>2017-11-14T02:07:18.000Z</published>
     <updated>2017-12-08T06:47:59.344Z</updated>
     
@@ -437,8 +437,8 @@
   
   <entry>
     <title>ArcGIS Enterprise Administration 10.5 Certification</title>
-    <link href="http://www.kikitamap.com/2017/11/01/New-folder-2017-11-01-AGSEntAdminCA/"/>
-    <id>http://www.kikitamap.com/2017/11/01/New-folder-2017-11-01-AGSEntAdminCA/</id>
+    <link href="http://www.kikitamap.com/2017/11/01/AGSEntAdminCA/"/>
+    <id>http://www.kikitamap.com/2017/11/01/AGSEntAdminCA/</id>
     <published>2017-11-01T05:36:16.000Z</published>
     <updated>2017-12-22T06:44:18.163Z</updated>
     
@@ -464,8 +464,8 @@
   
   <entry>
     <title>ArcGIS Desktop Professional 10.5 Certification</title>
-    <link href="http://www.kikitamap.com/2017/10/26/New-folder-2017-10-26-AGSDeskProCA/"/>
-    <id>http://www.kikitamap.com/2017/10/26/New-folder-2017-10-26-AGSDeskProCA/</id>
+    <link href="http://www.kikitamap.com/2017/10/26/AGSDeskProCA/"/>
+    <id>http://www.kikitamap.com/2017/10/26/AGSDeskProCA/</id>
     <published>2017-10-26T01:41:48.000Z</published>
     <updated>2017-12-22T06:44:52.837Z</updated>
     
@@ -491,8 +491,8 @@
   
   <entry>
     <title>小结空间插值分析</title>
-    <link href="http://www.kikitamap.com/2017/10/15/New-folder-2017-10-15-SpatialInteroplation/"/>
-    <id>http://www.kikitamap.com/2017/10/15/New-folder-2017-10-15-SpatialInteroplation/</id>
+    <link href="http://www.kikitamap.com/2017/10/15/SpatialInteroplation/"/>
+    <id>http://www.kikitamap.com/2017/10/15/SpatialInteroplation/</id>
     <published>2017-10-15T06:10:44.000Z</published>
     <updated>2017-10-16T06:58:07.580Z</updated>
     
@@ -518,8 +518,8 @@
   
   <entry>
     <title>如何创建ArcMap的启动日志？</title>
-    <link href="http://www.kikitamap.com/2017/08/14/New-folder-2017-08-14-ArcMapStartupLog/"/>
-    <id>http://www.kikitamap.com/2017/08/14/New-folder-2017-08-14-ArcMapStartupLog/</id>
+    <link href="http://www.kikitamap.com/2017/08/14/ArcMapStartupLog/"/>
+    <id>http://www.kikitamap.com/2017/08/14/ArcMapStartupLog/</id>
     <published>2017-08-14T06:41:36.000Z</published>
     <updated>2017-08-14T07:31:33.495Z</updated>
     
@@ -544,8 +544,8 @@
   
   <entry>
     <title>回归后的新起点</title>
-    <link href="http://www.kikitamap.com/2017/08/01/New-folder-2017-08-01-AnotherBeginning/"/>
-    <id>http://www.kikitamap.com/2017/08/01/New-folder-2017-08-01-AnotherBeginning/</id>
+    <link href="http://www.kikitamap.com/2017/08/01/AnotherBeginning/"/>
+    <id>http://www.kikitamap.com/2017/08/01/AnotherBeginning/</id>
     <published>2017-08-01T01:55:02.000Z</published>
     <updated>2017-08-01T04:54:00.693Z</updated>
     
