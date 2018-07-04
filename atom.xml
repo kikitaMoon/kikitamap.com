@@ -273,11 +273,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
     
       <category term="License" scheme="http://www.kikitamap.com/tags/License/"/>
     
-      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
     
   </entry>
   
