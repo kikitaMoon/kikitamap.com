@@ -2031,9 +2031,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
             
             <tag> 3D </tag>
             
-            <tag> ArcGIS Enterprise </tag>
-            
             <tag> ArcGIS Pro </tag>
+            
+            <tag> ArcGIS Enterprise </tag>
             
             <tag> Web </tag>
             
@@ -9226,9 +9226,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> CAD </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> CAD </tag>
             
         </tags>
         
