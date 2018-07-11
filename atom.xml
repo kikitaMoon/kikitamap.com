@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kikitamap.com/"/>
-  <updated>2018-04-12T09:30:24.878Z</updated>
+  <updated>2018-07-11T07:19:16.617Z</updated>
   <id>http://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何获取30天试用版 Esri CityEngine ？</title>
+    <link href="http://www.kikitamap.com/2018/07/10/CEFreeTrial/"/>
+    <id>http://www.kikitamap.com/2018/07/10/CEFreeTrial/</id>
+    <published>2018-07-10T09:43:04.000Z</published>
+    <updated>2018-07-11T07:19:16.617Z</updated>
+    
+    <content type="html"><![CDATA[<p>Esri CityEngine 是一款面向于大规模城市规划行业的，交互式、沉浸式高级三维建模软件，相比传统建模更加高效省时。 通过CityEngine我们可以基于现实世界的GIS数据，构造城市的现实状态，模拟城市的历史风貌，设计城市的未来蓝图。</p><p>如何申请Esri CityEngine 30天试用？</p><h2 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h2><p>访问Esri官方试用地址：<a href="https://www.esri.com/en-us/arcgis/products/esri-cityengine/trial" target="_blank" rel="noopener">https://www.esri.com/en-us/arcgis/products/esri-cityengine/trial</a></p><p> 点击“<strong>Start CityEngine Trial</strong>”</p><p><img src="http://kikitamap.com/images/blogImg/CEFreeTrial_Start.png" alt=""></p><h2 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h2><p>创建一个Esri账号，点击“<strong>Create a Public Account</strong>”； 如果已经拥有过 Esri 账号，可以直接登录。</p><blockquote><p>PS：每个邮箱只能申请一次试用。请申请试用时，确保邮箱是第一次注册。</p><p>​         国内不建议使用Facebook和Google账户登录，避免后续登录的麻烦，你懂的。</p></blockquote><p><img src="http://kikitamap.com/images/blogImg/CEFreeTrial_SignUp.png" alt=""></p><p>在新的创建账户的页面中添加，名字、姓氏、邮箱，点击创建账户按钮，直至收到如下提示。</p><blockquote><p>Thank you for signing up.</p><p>An e-mail has been sent to [上一步填写过的邮箱]</p></blockquote><h2 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h2><p>查看自己的邮箱，你会发现类似的一封，点击 “<strong>Activate Your Account</strong>”。</p><p><img src="http://kikitamap.com/images/blogImg/CEFreeTrial_Activate.png" alt=""></p><p>在弹出页面中，填写标星号的必要信息，例如：用户名、密码、国家、安全问题。然后点击创建账户。</p><p><img src="http://kikitamap.com/images/blogImg/CEFreeTrial_CreateUserName.png" alt=""></p><h2 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h2><p>选择几项附加信息，点击下一步，会看到最终的包含了类似 <strong><code>EVA123456789</code></strong> 格式授权码的页面。</p><p><img src="" alt="http://kikitamap.com/images/blogImg/CEFreeTrial_IndustryInfo.png"></p><p><img src="" alt="http://kikitamap.com/images/blogImg/CEFreeTrial_EVAcode.png"></p><p>请记录这个号码以备后用。如果忘记了也没有关系，注册邮箱中也会收到一封“<strong>Esri CityEngine Trial Confirmation</strong>”主题的邮件，可以查询。</p><h2 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h2><p>下载并安装 Esri CityEngine 2018 软件。</p><p>如果不确认自己的系统是否满足安装要求，请查看 <strong><a href="http://desktop.arcgis.com/en/cityengine/latest/get-started/esri-cityengine-system-requirements.htm" target="_blank" rel="noopener">Esri CityEngine 系统要求</a></strong> 。</p><p>大多数情况下，我们安装在 Windows 操作系统中；当然 CityEngine 也支持 Mac OS X，Linux。</p><p>安装过程简单，与常规应用程序无差，按向导下一步即可完成，不赘述。</p><h2 id="Step-6"><a href="#Step-6" class="headerlink" title="Step 6"></a>Step 6</h2><p>启动开始菜单 Esri CityEngine 目录下的 <strong>CityEngine 2018 Administrator</strong>。</p><p>选择左侧 CityEngine 节点，右边选择 <strong>高级版单机许可</strong>，</p><p><img src="http://kikitamap.com/images/blogImg/CEFreeTrial_AdvSingleUse.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Esri CityEngine 是一款面向于大规模城市规划行业的，交互式、沉浸式高级三维建模软件，相比传统建模更加高效省时。 通过CityEngine我们可以基于现实世界的GIS数据，构造城市的现实状态，模拟城市的历史风貌，设计城市的未来蓝图。&lt;/p&gt;
+&lt;p&gt;如何申请Esr
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+    
+      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+    
+  </entry>
   
   <entry>
     <title>在 CityEngine 中使用 Python</title>
@@ -539,30 +567,6 @@
     
     
       <category term="Performance" scheme="http://www.kikitamap.com/tags/Performance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>回归后的新起点</title>
-    <link href="http://www.kikitamap.com/2017/08/01/AnotherBeginning/"/>
-    <id>http://www.kikitamap.com/2017/08/01/AnotherBeginning/</id>
-    <published>2017-08-01T01:55:02.000Z</published>
-    <updated>2017-08-01T04:54:00.693Z</updated>
-    
-    <content type="html"><![CDATA[<p>离开kikitamap.com有点久，这期间完成了人生的一件大事，如今已经返回工作，又开始了探索技术的无尽模式。 发现育儿并不比ArcGIS更简单，哈，现在需要学习的东西真的是成倍的增长，无论我是愚公还是天神，“两座大山”摆在面前，都得需要翻越或者搬起。</p><p>人生很奇妙，有的成长几乎是一瞬间完成的，就如孩子的微笑、抬头、翻身，忽然有一天就给你带来惊喜；与孩子一同成长，我也变得愈加淡定从容，愈加理解人生真正所求，愈加懂得取悦自己。 记得有朋友问过我，为啥不弄个公众号，现在不流行博客。 公众号当下很好，但它在于广而告之，推广是核心，可是这不是我想要的；我喜欢有个属于自己的角落随意写点东西，研究点有意思的事情，而不被它所牵制，更多的是留给自己与真正需要和关心的人。</p><p>“活到老，学到老。” —— 一句老气的至理名言。 学习是条渴望尽头却没有尽头的不归路，但是也不要轻易的“回头是岸”，或是吭哧吭哧地“苦作舟”，自己寻点乐子吧。 </p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_Cute.jpg-kikitaMaps" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;离开kikitamap.com有点久，这期间完成了人生的一件大事，如今已经返回工作，又开始了探索技术的无尽模式。 发现育儿并不比ArcGIS更简单，哈，现在需要学习的东西真的是成倍的增长，无论我是愚公还是天神，“两座大山”摆在面前，都得需要翻越或者搬起。&lt;/p&gt;
-&lt;p&gt;人生
-      
-    
-    </summary>
-    
-      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
     
   </entry>
   
