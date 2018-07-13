@@ -11,6 +11,7 @@
 <p>这个细节的概念，在2013年的开发者大会中提过一次，结合模型层次结构的幻灯片理解下：</p>
 <p><img src="http://kikitamap.com/images/blogImg/CELeafShape_2013DS.png" alt=""></p>
 <p><img src="http://kikitamap.com/images/blogImg/CELeafShape_2013DS2.png" alt=""></p>
+<p>完整的幻灯片可以点 <a href="https://github.com/kikitaMoon/kikitamap.github.io/blob/gh-pages/attaches/EsriChinaDevSum-2013-EsriCityEngine%E8%A7%84%E5%88%99%E5%BC%80%E5%8F%91-%E6%85%95%E6%99%93%E7%87%95.pdf" target="_blank" rel="noopener"><strong>这里</strong></a> 下载。</p>
 </blockquote>
 <p>为什么说是“迭代繁衍”？ 因为除了 Leaf Shape 之外的所有shape 在建模过程中都被紧跟它其后的shape替代而消亡了。</p>
 <p>举例子，在这条规则中，</p>
@@ -23,7 +24,7 @@
 <p><img src="http://kikitamap.com/images/blogImg/CELeafShape_SLPK.png" alt="Export to Scene Layer Package"></p>
 <p>这些导出的模型数据拿到其他软件中使用，例如ArcGIS Pro，各组件即为不同的静态模型对象。</p>
 <p><img src="http://kikitamap.com/images/blogImg/CELeafShape_Pro.png" alt=""></p>
-<p><em>这个示例的CGA脚本在<a href="https://github.com/kikitaMoon/BuildingCGA/tree/master/Demoforkikitamap.com/4-FloorsAsLeafshape" target="_blank" rel="noopener">我的Github</a>可以查看和下载。</em></p>
+<p><em>这个示例的CGA脚本在 <a href="https://github.com/kikitaMoon/BuildingCGA/tree/master/Demoforkikitamap.com/4-FloorsAsLeafshape" target="_blank" rel="noopener">我的<strong>Github</strong></a> 可以查看和下载。</em></p>
 ]]></content>
       
         <categories>
