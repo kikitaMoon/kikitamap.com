@@ -3,9 +3,28 @@
   
     
     <entry>
-      <title><![CDATA[CELeafshape]]></title>
+      <title><![CDATA[你知道 CityEngine 中的 Leaf Shape 吗？]]></title>
       <url>/2018/07/13/CELeafshape/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>CityEngine 的CGA建模过程是个不断迭代繁衍的过程，我们将这个过程想象成一棵树。</p>
+<p>通过 Shapefile，File Geodatabase，AutoCAD DXF 这些矢量数据格式导入CityEngine中的2D基面（Footprint），通常称为 CityEngine <strong>Initial Shape</strong>，这是这棵树的根节点。通过CGA中的命令符 <code>--&gt;</code> ，将一个shape经过各种形状（Geometry）和位置（Pivot，Scope） 的函数操作，生成另一个shape。直到最后，模型建立，最终的shape节点，通常称为 CityEngine <strong>Leaf Shape</strong>。</p>
+<blockquote>
+<p>这个细节的概念，在2013年的开发者大会中提过一次，结合模型层次结构的幻灯片理解下：</p>
+<p><img src="http://kikitamap.com/images/blogImg/CELeafShape_2013DS.png" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CELeafShape_2013DS2.png" alt=""></p>
+</blockquote>
+<p>为什么说是“迭代繁衍”？ 因为除了 Leaf Shape 之外的所有shape 在建模过程中都被紧跟它其后的shape替代而消亡了。</p>
+<p>举例子，在这条规则中，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A --&gt; function() B </span><br><span class="line">      B  --&gt; function() C</span><br></pre></td></tr></table></figure>
+<p>这条规则中 ，A shape 对象已经消亡被B替代，在后续的规则中无法再调用到 A， 如果希望取到与A相同的对象，就需要提前复制出来，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A --&gt; <span class="function">Anew <span class="title">function</span><span class="params">()</span> B            <span class="comment">//A被复制而创建了分支</span></span></span><br><span class="line"><span class="function">      B    --&gt; <span class="title">function</span><span class="params">()</span> C</span></span><br><span class="line"><span class="function">      Anew --&gt; <span class="title">function</span><span class="params">()</span> D</span></span><br></pre></td></tr></table></figure>
+<p>了解了这些，那么我们可以进一步回答这个问题：“如何将CityEngine规则建模的模型导出成各组件独立存储的模型？”   </p>
+<p>可以的，再导出FileGDB或 Scene Layer Package的时候选中 “<strong>One Feature per Leaf Shape</strong>” 即可。</p>
+<p><img src="http://kikitamap.com/images/blogImg/CELeafShape_FGDB.png" alt="Export to FileGDB"></p>
+<p><img src="http://kikitamap.com/images/blogImg/CELeafShape_SLPK.png" alt="Export to Scene Layer Package"></p>
+<p>这些导出的模型数据拿到其他软件中使用，例如ArcGIS Pro，各组件即为不同的静态模型对象。</p>
+<p><img src="http://kikitamap.com/images/blogImg/CELeafShape_Pro.png" alt=""></p>
+<p><em>这个示例的CGA脚本在<a href="https://github.com/kikitaMoon/BuildingCGA/tree/master/Demoforkikitamap.com/4-FloorsAsLeafshape" target="_blank" rel="noopener">我的Github</a>可以查看和下载。</em></p>
+]]></content>
       
         <categories>
             
@@ -13,6 +32,18 @@
             
         </categories>
         
+        
+        <tags>
+            
+            <tag> 3D </tag>
+            
+            <tag> CityEngine </tag>
+            
+            <tag> ArcGIS Pro </tag>
+            
+            <tag> CGA </tag>
+            
+        </tags>
         
     </entry>
     
@@ -128,6 +159,8 @@
             
             <tag> CityEngine </tag>
             
+            <tag> CGA </tag>
+            
         </tags>
         
     </entry>
@@ -199,6 +232,8 @@
             <tag> 3D </tag>
             
             <tag> CityEngine </tag>
+            
+            <tag> CGA </tag>
             
         </tags>
         
@@ -286,6 +321,8 @@
             <tag> 3D </tag>
             
             <tag> CityEngine </tag>
+            
+            <tag> CGA </tag>
             
         </tags>
         
