@@ -3,6 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[Contributing to Our Github Project]]></title>
+      <url>/2018/07/20/lovelyGit/</url>
+      <content type="html"><![CDATA[<p>这是一篇日记。</p>
+<p>最近，终于把年初我和<a href="https://makeling.github.io/" target="_blank" rel="noopener">马老师</a>的脑洞项目 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools" target="_blank" rel="noopener"><strong>局部更新矢量切片</strong></a> 放在了大型程序员G友交流社区，开始出 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases" target="_blank" rel="noopener">release</a>了…… </p>
+<p>在项目的开始，这个需求来自于用户的真实需求，如下是正经的背景信息：</p>
+<blockquote>
+<p>矢量切片是Esri在新版本中推出的一项亮点新技术，通过ArcGIS Pro中的Create Vector Tile Service工具生成切片包，再通过Portal发布成 Vector Tile Service，在前端支持各种应用，采用统一的接口进行调用，实现了一体化的平台应用解决方案。矢量切片技术充分利用GPU的渲染能力，以全新方式在设备、浏览器中以矢量的方式展现缓存地图。这项技术解决了传统基于栅格缓存切片展现地图存在的诸多问题：如设备分辨率对地图渲染效果的影响，缓存创建后无法再动态更改样式，生成缓存切片的周期过长，对硬件的需求过大等等。</p>
+<p>众所周知，矢量切片包的生成速度相对于传统的栅格切片包具有指数极的性能提升，这也是体现矢量切片优越性的一个重要方面。对于一个常规数据量在100MB-10GB级的数据，全部生成一次矢量切片包的速度在分钟级。可能正是因为这个原因，截至目前最新版本（ArcGIS Pro 2.2），Esri仍未提供局部更新矢量切片包的功能。虽然矢量切片生成速度很快，但是到了TB级别的大数据来说，生成一次完整的切片包也是需要相当长的时间的，如果仅是更新了局部的小范围数据，那基于更新范围自动化更新矢量切片就是一个非常有实际应用价值的需求。 正是在这样的背景下，我们发起了创建自动化局部更新矢量切片工具的项目。</p>
+<p>—— @马老师</p>
+</blockquote>
+<p>既然是两个人的项目，又会涉及很多版本的更新同步问题，<em>Why not Github</em> ？</p>
+<p>我们一共设计了5个Python工具，用于扩展ArcGIS Pro的功能，分别实现原始矢量切片包的创建，局部矢量切片包的创建，以及矢量切片包的更新，矢量切片服务的更新，托管在阿里云平台的矢量切片服务的更新。</p>
+<p>截止到今天的版本 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases/tag/1.1.0" target="_blank" rel="noopener">Partially Upate ArcGIS Vector Tiles Toolbox 1.1.0</a></p>
+<p><strong>Mark：</strong></p>
+<p>后续还有很多有待优化的关键点：</p>
+<ul>
+<li>Bundle空间范围的精确计算</li>
+<li>LOD值的自动计算</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Web </tag>
+            
+            <tag> Github </tag>
+            
+            <tag> Vector Tiles </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[你知道 CityEngine 中的 Leaf Shape 吗？]]></title>
       <url>/2018/07/13/CELeafshape/</url>
       <content type="html"><![CDATA[<p>CityEngine 的CGA建模过程是个不断迭代繁衍的过程，我们将这个过程想象成一棵树。</p>
@@ -154,11 +197,11 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> 3D </tag>
             
             <tag> CityEngine </tag>
+            
+            <tag> Python </tag>
             
             <tag> CGA </tag>
             
@@ -2719,9 +2762,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> Python </tag>
             
         </tags>
         
@@ -2757,9 +2800,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> Python </tag>
             
         </tags>
         
@@ -9209,9 +9252,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geoprocessing </tag>
-            
             <tag> Raster </tag>
+            
+            <tag> Geoprocessing </tag>
             
         </tags>
         
@@ -9300,9 +9343,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> CAD </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         

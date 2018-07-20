@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kikitamap.com/"/>
-  <updated>2018-07-13T06:29:44.236Z</updated>
+  <updated>2018-07-20T10:27:47.604Z</updated>
   <id>http://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Contributing to Our Github Project</title>
+    <link href="http://www.kikitamap.com/2018/07/20/lovelyGit/"/>
+    <id>http://www.kikitamap.com/2018/07/20/lovelyGit/</id>
+    <published>2018-07-20T09:47:40.000Z</published>
+    <updated>2018-07-20T10:27:47.604Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一篇日记。</p><p>最近，终于把年初我和<a href="https://makeling.github.io/" target="_blank" rel="noopener">马老师</a>的脑洞项目 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools" target="_blank" rel="noopener"><strong>局部更新矢量切片</strong></a> 放在了大型程序员G友交流社区，开始出 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases" target="_blank" rel="noopener">release</a>了…… </p><p>在项目的开始，这个需求来自于用户的真实需求，如下是正经的背景信息：</p><blockquote><p>矢量切片是Esri在新版本中推出的一项亮点新技术，通过ArcGIS Pro中的Create Vector Tile Service工具生成切片包，再通过Portal发布成 Vector Tile Service，在前端支持各种应用，采用统一的接口进行调用，实现了一体化的平台应用解决方案。矢量切片技术充分利用GPU的渲染能力，以全新方式在设备、浏览器中以矢量的方式展现缓存地图。这项技术解决了传统基于栅格缓存切片展现地图存在的诸多问题：如设备分辨率对地图渲染效果的影响，缓存创建后无法再动态更改样式，生成缓存切片的周期过长，对硬件的需求过大等等。</p><p>众所周知，矢量切片包的生成速度相对于传统的栅格切片包具有指数极的性能提升，这也是体现矢量切片优越性的一个重要方面。对于一个常规数据量在100MB-10GB级的数据，全部生成一次矢量切片包的速度在分钟级。可能正是因为这个原因，截至目前最新版本（ArcGIS Pro 2.2），Esri仍未提供局部更新矢量切片包的功能。虽然矢量切片生成速度很快，但是到了TB级别的大数据来说，生成一次完整的切片包也是需要相当长的时间的，如果仅是更新了局部的小范围数据，那基于更新范围自动化更新矢量切片就是一个非常有实际应用价值的需求。 正是在这样的背景下，我们发起了创建自动化局部更新矢量切片工具的项目。</p><p>—— @马老师</p></blockquote><p>既然是两个人的项目，又会涉及很多版本的更新同步问题，<em>Why not Github</em> ？</p><p>我们一共设计了5个Python工具，用于扩展ArcGIS Pro的功能，分别实现原始矢量切片包的创建，局部矢量切片包的创建，以及矢量切片包的更新，矢量切片服务的更新，托管在阿里云平台的矢量切片服务的更新。</p><p>截止到今天的版本 <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases/tag/1.1.0" target="_blank" rel="noopener">Partially Upate ArcGIS Vector Tiles Toolbox 1.1.0</a></p><p><strong>Mark：</strong></p><p>后续还有很多有待优化的关键点：</p><ul><li>Bundle空间范围的精确计算</li><li>LOD值的自动计算</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是一篇日记。&lt;/p&gt;
+&lt;p&gt;最近，终于把年初我和&lt;a href=&quot;https://makeling.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;马老师&lt;/a&gt;的脑洞项目 &lt;a href=&quot;https://github.com/ma
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+    
+      <category term="Github" scheme="http://www.kikitamap.com/tags/Github/"/>
+    
+      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
+    
+  </entry>
   
   <entry>
     <title>你知道 CityEngine 中的 Leaf Shape 吗？</title>
@@ -118,11 +150,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
-    
       <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
     
       <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
     
       <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
     
@@ -133,7 +165,7 @@
     <link href="http://www.kikitamap.com/2018/04/04/Parthenon/"/>
     <id>http://www.kikitamap.com/2018/04/04/Parthenon/</id>
     <published>2018-04-04T04:00:00.000Z</published>
-    <updated>2018-07-03T06:13:25.278Z</updated>
+    <updated>2018-07-13T06:17:15.462Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>摄于 2014-5-9, Acropolis, Athens, Greece</p></blockquote><p>CityEngine的教程中刚好有个Parthenon Temple 的 Demo</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_ParthenonModel.png-kikitaMaps" alt=""></p><p>不禁会想起在雅典卫城里它的断壁残垣，晒晒我们的合影</p><p>不知道几年过去，修复工作又向前推进了多少</p><p>那些带有编号的石头是不是已经归位了呢</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_Athens.jpg-kikitaMaps" alt=""></p><p>整个卫城中我最喜欢的是上图中最后一张的“厄瑞克忒翁神庙”，据说用于供奉雅典娜、波塞冬和英雄厄瑞克忒翁。</p><p>神庙一侧的女神柱像精致优美，即使经过了这么多的时光，都可以感受到雕刻师的精湛技艺。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/XJL_IMG_3545.JPG-kikitaMaps" alt="厄瑞克忒翁神庙"></p>]]></content>
     
@@ -543,33 +575,6 @@
     
     
       <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
-    
-      <category term="Certification" scheme="http://www.kikitamap.com/tags/Certification/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ArcGIS Desktop Professional 10.5 Certification</title>
-    <link href="http://www.kikitamap.com/2017/10/26/AGSDeskProCA/"/>
-    <id>http://www.kikitamap.com/2017/10/26/AGSDeskProCA/</id>
-    <published>2017-10-26T01:41:48.000Z</published>
-    <updated>2017-12-22T06:44:52.837Z</updated>
-    
-    <content type="html"><![CDATA[<p>The ArcGIS Desktop Professional exam tests the candidate’s experience applying ArcGIS concepts and processes to workflows. Qualified candidates should demonstrate proficiency when applying advanced GIS concepts and knowledge to establish workflows, processes, troubleshooting non-routine issues, and skilled at defining and successfully completing complex GIS projects. Qualified candidates should have five years of applied experience, and should be proficient in best practices and uses of Esri’s ArcGIS technologies.</p><h2 id="Qualifications"><a href="#Qualifications" class="headerlink" title="Qualifications"></a>Qualifications</h2><p><strong>A qualified candidate should be able to perform the following tasks:</strong></p><ul><li>Apply and interpret fundamental spatial statistics and visualization techniques</li><li>Build a reference data set and an address locator</li><li>Build a transportation network and apply solvers</li><li>Implement and apply Python scripting</li><li>Perform advanced vector and raster analysis</li><li>Perform fundamentals of geodatabase design and operate within a multi-user geodatabase</li><li>Perform surface modeling and analysis</li><li>Utilize advanced modeling techniques</li><li>Identify and resolve common workflows</li><li>Author a mosaic dataset</li><li>Demonstrate proficiency in ArcGIS Desktop user interface and environment configuration</li><li>Determine and define an appropriate coordinate system</li><li>Manipulate data with Spatial Analyst, 3D Analyst, and Network Analyst extensions</li><li>Author and publish to a web GIS portal</li><li>Implement and apply web content or services to perform analyses</li><li>Configure web app templates and Web AppBuilder widgets</li></ul><p><strong>A qualified candidate should be familiar with the following tools:</strong></p><ul><li>ArcGIS Desktop (ArcCatalog, ArcMap and ArcGIS Pro)</li><li>ArcGIS Online</li><li>ArcGIS Enterprise</li><li>ArcGIS Network Analyst</li><li>ArcGIS Spatial Analyst</li><li>ArcGIS 3D Analyst</li><li>Python</li></ul><p><strong>A qualified candidate should NOT be expected to perform the following tasks:</strong></p><ul><li>Deliver production quality cartographic output with specific industry solutions</li><li>Administer a multi-user geodatabase</li><li>Develop or administer websites</li><li>Develop tools or apps using any SDK or API</li><li>Network or systems administration</li><li>Administer an ArcGIS Online organization</li></ul><h2 id="Skill-Measured"><a href="#Skill-Measured" class="headerlink" title="Skill Measured"></a>Skill Measured</h2><p>The following list will familiarize candidates with the exam sections to help guide exam preparation. The relative weight of each section is provided to illustrate the approximate size of each section. Candidates should review this list and assess their knowledge of each skill. Specific preparation resources are available to assist with refreshing in areas where any knowledge gaps are found.</p><p><strong>Data Storage — 21%</strong></p><ul><li>Given requirements for a specific project, determine how to design a geodatabase</li><li>Select appropriate data formats for an intended use</li><li>Given a task, determine the data, settings, and parameters for creating a complex data set</li><li>Given a task, determine the data, settings, and parameters for creating an address locator</li><li>Given a scenario, determine how to synchronize replicated data</li></ul><p><strong>Managing Data — 26%</strong></p><ul><li>Given a scenario, convert and aggregate data to an appropriate format</li><li>Given a task, determine the necessary schema changes so that the data can support a particular operation</li><li>Given datasets that do not align, determine the best workflow to resolve the issue</li><li>Given a project, determine how to manage coordinate systems</li><li>Given a scenario, determine the method to create a surface dataset</li><li>Given a scenario, determine how to automate data management</li></ul><p><strong>Visualizing and Sharing Data — 21%</strong></p><ul><li>Given a scenario, use advanced cartographic techniques to visualize content across the ArcGIS platform</li><li>Given a scenario, determine how to optimize rendering of maps across the platform</li><li>Given a scenario, determine how to create and render scenes</li><li>Identify procedures to create and publish layers, maps, and apps for a given task</li><li>Given a scenario, determine the most effective process for sharing content</li><li>Given a scenario, determine how to automate visualization and sharing using ArcPy in ArcGIS Desktop</li></ul><p><strong>Analysis and Geoprocessing — 31%</strong></p><ul><li>Determine how to create and edit a Python script to automate a simple repetitive process in an ArcGIS workflow</li><li>Determine how to create and edit a model in ModelBuilder to automate a complex workflow in ArcGIS for a given task</li><li>Given a failed workflow, determine the cause of the failure</li><li>Given user requirements, determine an appropriate method for sharing a geoprocessing model, script, package, toolbox, etc.</li><li>Determine how to customize the user interface to perform a task</li><li>Determine how to author tasks in ArcGIS Pro</li><li>Given a scenario that requires an analysis, determine the workflow, data, tools, settings, and parameters to perform the analysis</li></ul><h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><p>A qualified candidate should be familiar with following software:</p><ul><li>ArcGIS Desktop (ArcCatalog 10.5, ArcMap 10.5 and ArcGIS Pro 1.4)</li><li>ArcGIS Spatial Analyst extension</li><li>ArcGIS Network Analyst extension</li><li>ArcGIS 3D Analyst extension</li><li>ArcGIS Online</li><li>ArcGIS Enterprise 10.5</li><li>Python 2.7 and 3.5</li></ul><h2 id="Exam-Details"><a href="#Exam-Details" class="headerlink" title="Exam Details"></a>Exam Details</h2><p>Number of questions: 80<br>Certification code: EADP105<br>Exam duration: 2 Hours<br>Exam type: Multiple choice, multiple select<br>Published date: June 2017<br>Exam state: Available to public</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;The ArcGIS Desktop Professional exam tests the candidate’s experience applying ArcGIS concepts and processes to workflows. Qualified cand
-      
-    
-    </summary>
-    
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
-    
-    
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
       <category term="Certification" scheme="http://www.kikitamap.com/tags/Certification/"/>
     
