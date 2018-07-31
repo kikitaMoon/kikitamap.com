@@ -3,6 +3,102 @@
   
     
     <entry>
+      <title><![CDATA[紧凑型缓存技术小结]]></title>
+      <url>/2018/07/23/CompactCache/</url>
+      <content type="html"><![CDATA[<h2 id="Tiling-Scheme"><a href="#Tiling-Scheme" class="headerlink" title="Tiling Scheme"></a>Tiling Scheme</h2><p>每个缓存服务的切片目录中都会包含一个 <strong>Conf.xml</strong>，也是就是tile scheme 文件了。</p>
+<p>这个文件包含了很多有关切片设置的信息：</p>
+<ul>
+<li>Spatial reference information</li>
+<li>Tile origin</li>
+<li>Tile width/height</li>
+<li>DPI</li>
+<li>LODs (Levels of detail - scales)</li>
+<li>Tile Image format</li>
+<li>Compression quality</li>
+<li>Antialiasing settings</li>
+<li>Storage method</li>
+</ul>
+<h2 id="Version-Issue"><a href="#Version-Issue" class="headerlink" title="Version Issue"></a>Version Issue</h2><p>紧凑型缓存的存储格式为<strong>.bundle</strong> 。但有时我们会看到缓存目录中包含<strong>.bundlx</strong> 这样的文件，这说明这些缓存是ArcGIS 10.2.2 或以下版本创建的。从 ArcGIS 10.3 开始，紧凑型缓存做了些改进， .bundlx（tile index information） 文件被包含到了 .bundle 文件中 ，从而进一步降低了文件的数量。</p>
+<p>你可以在缓存服务的tiling scheme “<strong>Conf.xml</strong>“ 中查看确认：</p>
+<p><em>10.3 or later (Compact cache V1)</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">'typens:CacheStorageInfo'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompact<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>10.2.2 or former (Compact cache V2)</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">'typens:CacheStorageInfo'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompactV2<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>10.3 及之后版本的 ArcGIS Server 仍然可以使用低版本的生产的切片来运行现有服务。如果我们需要将低版本的缓存拷贝过来给高版本的服务用，要注意这个<code>&lt;StorageFormat&gt;</code>参数的一致性。</li>
+<li>ArcToolbox工具 <strong>Upgrade Map Server Cache Storage Format</strong>  来升级缓存。升级的过程中不会重新创建切片，而是重组原有的切片。这个工具在ArcGIS Pro 中没有提供。目前，我们还只能使用ArcMap或者使用ArcGIS Server 带有的arcpy包，通过Python来调用。</li>
+<li>不支持将高版本的切片供低版本软件使用。如果希望降级，可以使用 <strong>Export Map Server Cache</strong> 工具导出紧凑型切片。</li>
+</ul>
+<h2 id="Tile-Format"><a href="#Tile-Format" class="headerlink" title="Tile Format"></a>Tile Format</h2><p>Tile Format 是指存储切片使用了何种栅格格式，而不是切片文件的本身存储格式/Storage Format（Exploded/Compact）。</p>
+<ul>
+<li><p><strong>PNG</strong>   </p>
+<p>ArcGIS 10.1开始引入的类型。选择这种类型，Server会自行确认每张切片的PNG位深，从而达到缩减磁盘占用的目的。在我们不确定使用何种PNG格式时，保持这个默认设置就不错。</p>
+<p>如果磁盘空间不在考虑范围下，而希望优先考虑切片速度，那最好选择MIXED格式了。</p>
+</li>
+<li><p><strong>PNG8</strong></p>
+<p>位深为8位的PNG图片格式；可以最多存储256色，支持布尔透明，磁盘空间占用小，并且无损。适合于颜色相对简单，并且需要透明背景的地图，例如公路数据切图。</p>
+</li>
+<li><p><strong>PNG24</strong></p>
+<p>位深为24的PNG图片格式；可以最多支持约1600万色。当地图的色彩复杂程度超过256时，你就该考虑使用这个格式。但是，PNG24不支持透明，另外不建议在IE6及以前版本浏览器中使用。</p>
+</li>
+<li><p><strong>PNG32</strong></p>
+<p>在PNG24的基础上增加了Alpha通道，因而增加了各种程度半透明的支持。当地图色彩复杂，并开启了抗锯齿功能，PNG32就是最佳选择了，并且PNG32在各个版本的浏览器中支持良好。</p>
+</li>
+<li><p><strong>JPEG</strong></p>
+<p>当切片中不需要透明背景时，JPEG是最常用的切片格式，并且JPEG可以hold住大量的复杂色彩。例如，包含影像、符号化精细程度高的矢量地图都可以使用这个格式。</p>
+<p>JPEG是种有损压缩格式，可以在1%-100%间设置压缩比率，默认值75%一般是显示质量和磁盘空间的最佳平衡。如果觉得噪点过多质量不够，可以调高这个百分比，但你需要在响应性能和图片质量之间做好博弈。</p>
+</li>
+<li><p><strong>MIXED</strong></p>
+<p>顾名思义，混合格式，在切片不透明区域使用JPEG，在透明区域使用PNG32。这是种非常智能的搭配方案，降低硬盘占用的同时，很好的解决了例如在切片边缘需要的透明需求。</p>
+</li>
+<li><p><strong>LERC</strong></p>
+<p>LERC是Esri自主研发的开源的有损压缩格式，点<a href="http://esri.github.io/lerc/" target="_blank" rel="noopener">这里</a>有更多信息。推荐用于位深较大的单波段影像或高程数据服务中，如浮点型，32-bit、16-bit、12-bit的数据。 官方声称，LERC压缩方法在压缩速度和压缩质量方面分别是LZ77的5-10倍。当LERC用于整型栅格数据时，损失率在0.99或更低，几乎可以视为无损压缩。</p>
+<p>LERC压缩方式目前只支持Image Service ，而不支持 Map Service。</p>
+</li>
+</ul>
+<h2 id="Performance-Suggestion"><a href="#Performance-Suggestion" class="headerlink" title="Performance Suggestion"></a>Performance Suggestion</h2><p>紧凑型切片比松散型切片有诸多有点，详见文末的官方文档。但不是说选了紧凑型切片性能就没有继续改善的余地了，下面的这些点也是提升切片性能的一些有效建议：</p>
+<ul>
+<li>地图数据尽可能使用本地数据，共享目录的数据切片时间可能会更长些；</li>
+<li>尽可能的避免使用动态投影；</li>
+<li>设置图层的可见比例尺；</li>
+<li>谨慎设置反锯齿的级别，标注的反锯齿对切片性能影响甚微，但要素符号的反锯齿会显著增长切片的时长；</li>
+<li>建议切片期间关闭防病毒等安全软件；</li>
+<li>尽可能地使用MIXED格式</li>
+<li>在切片之前为所有数据创建空间索引</li>
+<li>CachingTools服务的最大实例数 = 核数 + 1，这是官方给出的最佳实践建议</li>
+<li>降低日志的级别，如果在大量切图任务中把Server日志开到Debug或Verbose级别，会产生极大的资源浪费。</li>
+</ul>
+<h2 id="Tile-SuperTile-Bundle"><a href="#Tile-SuperTile-Bundle" class="headerlink" title="Tile|SuperTile|Bundle"></a>Tile|SuperTile|Bundle</h2><p>这三者的关系早在多年前就有大牛们探索发现过，见本文末的相关文章，文中有逻辑缜密且经得起时间检验的详细演绎过程……</p>
+<p>简言之，他们的关系是个简单的数学关系，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果：</span><br><span class="line">    Tile = <span class="number">256</span> × <span class="number">256</span> pixel             <span class="comment"># 256×256 是ArcGIS Server默认的切片大小</span></span><br><span class="line">    Supertile = <span class="number">4096</span> × <span class="number">4096</span> pixel      <span class="comment"># 未开抗锯齿情况下是 4096×4096</span></span><br><span class="line">那么：</span><br><span class="line">	Supertile = <span class="number">16</span> × <span class="number">16</span> Tile           </span><br><span class="line">已知：</span><br><span class="line">	Bundle = <span class="number">128</span> × <span class="number">128</span> Tile            </span><br><span class="line">因此：</span><br><span class="line">	Bundle 范围是 N<span class="number">-3</span> 级的 Supertile 的范围</span><br></pre></td></tr></table></figure>
+<p>看图说话：</p>
+<p><img src="http://kikitamap.com/images/blogImg/CompactCache_SupertileBundle.png" alt=""></p>
+<blockquote>
+<p><em>官方文档：</em></p>
+<ul>
+<li><a href="http://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/inside-the-compact-cache-storage-format.htm" target="_blank" rel="noopener">了解紧凑型缓存存储格式</a></li>
+</ul>
+<p><em>相关文章：</em></p>
+<ul>
+<li><p><a href="http://blog.newnaw.com/?p=789" target="_blank" rel="noopener">菩提老王的葡萄架子：ArcGIS Server 10中的切图/缓存机制深入</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/warrenwyf/article/details/6069711" target="_blank" rel="noopener">ArcGIS 切片缓存紧凑文件格式分析与使用</a></p>
+</li>
+<li><a href="https://blog.csdn.net/arcgis_all/article/details/50536569" target="_blank" rel="noopener">ArcGIS for Server 10.3.X 新型紧凑型缓存的解读和应用</a></li>
+</ul>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Contributing to Our Github Project]]></title>
       <url>/2018/07/20/lovelyGit/</url>
       <content type="html"><![CDATA[<p>这是一篇日记。</p>
@@ -197,11 +293,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> 3D </tag>
             
             <tag> CityEngine </tag>
-            
-            <tag> Python </tag>
             
             <tag> CGA </tag>
             
@@ -1965,9 +2061,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Coordinate System </tag>
-            
             <tag> Mapping </tag>
+            
+            <tag> Coordinate System </tag>
             
         </tags>
         
@@ -2762,9 +2858,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -2800,9 +2896,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -8178,6 +8274,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -8230,51 +8371,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://kikitamap.com/images/blogImg/SAMultiDimensions_Toolbar.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
@@ -9252,9 +9348,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Raster </tag>
-            
             <tag> Geoprocessing </tag>
+            
+            <tag> Raster </tag>
             
         </tags>
         
