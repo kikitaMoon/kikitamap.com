@@ -29,7 +29,7 @@
 <li>ArcToolbox工具 <strong>Upgrade Map Server Cache Storage Format</strong>  来升级缓存。升级的过程中不会重新创建切片，而是重组原有的切片。这个工具在ArcGIS Pro 中没有提供。目前，我们还只能使用ArcMap或者使用ArcGIS Server 带有的arcpy包，通过Python来调用。</li>
 <li>不支持将高版本的切片供低版本软件使用。如果希望降级，可以使用 <strong>Export Map Server Cache</strong> 工具导出紧凑型切片。</li>
 </ul>
-<h2 id="Tile-Format"><a href="#Tile-Format" class="headerlink" title="Tile Format"></a>Tile Format</h2><p>Tile Format 是指存储切片使用了何种栅格格式，而不是切片文件的本身存储格式/Storage Format（Exploded/Compact）。</p>
+<h2 id="Tile-Format"><a href="#Tile-Format" class="headerlink" title="Tile Format"></a>Tile Format</h2><p>Tile Format 是指存储切片使用了何种栅格格式，而不是切片文件的本身存储格式 / Storage Format ( Exploded / Compact )。</p>
 <ul>
 <li><p><strong>PNG</strong>   </p>
 <p>ArcGIS 10.1开始引入的类型。选择这种类型，Server会自行确认每张切片的PNG位深，从而达到缩减磁盘占用的目的。在我们不确定使用何种PNG格式时，保持这个默认设置就不错。</p>
@@ -80,11 +80,9 @@
 </ul>
 <p><em>相关文章：</em></p>
 <ul>
-<li><p><a href="http://blog.newnaw.com/?p=789" target="_blank" rel="noopener">菩提老王的葡萄架子：ArcGIS Server 10中的切图/缓存机制深入</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/warrenwyf/article/details/6069711" target="_blank" rel="noopener">ArcGIS 切片缓存紧凑文件格式分析与使用</a></p>
-</li>
-<li><a href="https://blog.csdn.net/arcgis_all/article/details/50536569" target="_blank" rel="noopener">ArcGIS for Server 10.3.X 新型紧凑型缓存的解读和应用</a></li>
+<li><a href="http://blog.newnaw.com/?p=789" target="_blank" rel="noopener">菩提老王的葡萄架子：ArcGIS Server 10中的切图/缓存机制深入</a></li>
+<li><a href="https://blog.csdn.net/warrenwyf/article/details/6069711" target="_blank" rel="noopener">牛魔王的作坊：ArcGIS 切片缓存紧凑文件格式分析与使用</a></li>
+<li><a href="https://blog.csdn.net/arcgis_all/article/details/50536569" target="_blank" rel="noopener">ArcGIS产品与技术专栏：Esri中国ArcGIS for Server 10.3.X 新型紧凑型缓存的解读和应用</a></li>
 </ul>
 </blockquote>
 ]]></content>
@@ -182,28 +180,6 @@
             <tag> ArcGIS Pro </tag>
             
             <tag> CGA </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ArcGIS Javascript API Samples]]></title>
-      <url>/2018/07/13/ArcGISJSsamples/</url>
-      <content type="html"></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Web </tag>
-            
-            <tag> Javascript </tag>
             
         </tags>
         
