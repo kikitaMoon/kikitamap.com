@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kikitamap.com/"/>
-  <updated>2018-08-14T02:56:15.330Z</updated>
+  <updated>2018-08-16T08:45:17.700Z</updated>
   <id>http://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Testing Report for Using Cloud Storage Raster Data Source (Part One)</title>
+    <link href="http://www.kikitamap.com/2018/08/15/cloudStorage4MD/"/>
+    <id>http://www.kikitamap.com/2018/08/15/cloudStorage4MD/</id>
+    <published>2018-08-15T01:50:20.000Z</published>
+    <updated>2018-08-16T08:45:17.700Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>For the purpose of assisting and sharing ,  I will try to write in English. </p></blockquote><p>The new tool <strong>Create Cloud Storage Connection File</strong> is first introduced to ArcGIS Desktop 10.6.1 which is the latest version until now.  The <a href="file:///C:/Program%20Files/ArcGIS/Pro/Resources/Help/pro-app/tool-reference/data-management/create-cloud-storage-connection-file.htm" target="_blank" rel="noopener">Create Cloud Storage Connection File</a> tool creates a connection file (<strong>*.acs</strong>) for ArcGIS-supported cloud storage.  It allows existing raster geoprocessing tools to <strong>write</strong> cloud raster format (CRF) datasets into the cloud storage bucket or <strong>read</strong> raster datasets (not limited to CRF) stored in the cloud storage as input.</p><p>This is an amazing new feature of ArcGIS Desktop, including <strong>ArcMap 10.6.1</strong> and <strong>ArcGIS Pro 2.2</strong>.  The stuff from one of our partners and I are doing some researching on the new capability.  This article is something about the testing report, which indicates the feasibility of various workflows for adding raster datasets to mosaic dataset. </p><p><strong>Local Environment</strong></p><ul><li><p>Latest Esri Technologies</p><ul><li><p>ArcMap 10.6.1</p></li><li><p>ArcGIS Pro 2.2.1</p></li></ul></li><li>Windows 10 Pro 64 bit English Version</li></ul><h2 id="Huawei-Cloud"><a href="#Huawei-Cloud" class="headerlink" title="Huawei Cloud"></a>Huawei Cloud</h2><h3 id="ArcMap"><a href="#ArcMap" class="headerlink" title="ArcMap"></a>ArcMap</h3><p><strong>Steps</strong></p><ol><li><p>Create Huawei Cloud connection file   <strong>(√)</strong></p></li><li><p>Create a mosaic dataset in a local file geodatabase   <strong>(√)</strong></p></li><li><p>Add raster to mosaic dataset   <strong>(√)</strong></p></li></ol><p><strong>Conclusion</strong></p><ul><li>Bingo!  This workflow for source raster dataset in Huawei Cloud is perfect.</li></ul><h3 id="ArcGIS-Pro"><a href="#ArcGIS-Pro" class="headerlink" title="ArcGIS Pro"></a>ArcGIS Pro</h3><p><strong>Steps</strong></p><ol><li><p>Create Huawei Cloud connection file   <strong>(√)</strong></p></li><li><p>Add Raster to Mosaic Dataset    <strong>(×)</strong></p><p>Error Message as below:</p><p><em>Failed to execute. Parameters are not valid.</em><br><em>Error: 000732  Input Data: Dataset D:\CloudIssue\HuaWeiConnection.acs\LC81380342013173LGN00\LC81380342013173LGN00_MTL.txt does not exist or is not supported</em></p></li><li><p>Trying  workaround:  Add Raster to Mosaic Dataset using arcpy  (python 3.x for ArcGIS Pro).    (×)</p></li><li><p>For the purpose of verification ,  Add Raster to Mosaic Dataset using arcpy  (python 2.x for ArcMap), it works.  (√) </p></li></ol><p><strong>Conclusion</strong></p><ul><li><p>It should be a bug of ArcGIS Pro,  that the  tool <strong>Add Rasters To Mosaic Dataset</strong> can not recognize the logical file path including cloud connection.  The tool will justify the path if it exists. The path containing cloud connection is a logical path , not a physical path.   The same input file path works in ArcMap.</p></li><li><p>Internal case submitted</p><p>   <a href="https://my.esri.com/#/support/cases/02166069" target="_blank" rel="noopener">#02166069 parameter error occurred when adding raster referencing cloud storage connection file</a> </p></li></ul><h2 id="ALiBaBa-Cloud"><a href="#ALiBaBa-Cloud" class="headerlink" title="ALiBaBa Cloud"></a>ALiBaBa Cloud</h2><p>   In China, we also call it ALiYun.</p><h3 id="ArcMap-1"><a href="#ArcMap-1" class="headerlink" title="ArcMap"></a>ArcMap</h3><p><strong>Steps</strong></p><ol><li><p>Create ALiBaBa Cloud connection file   (×)</p><p>The connection file was created,  but there was a warning: <code>WARNING 002574: Could not connect to cloud storage</code> in the log </p></li><li><p>Create a mosaic dataset in a local file geodatabase   (√)</p></li><li><p>Add raster to mosaic dataset   (×) </p><p> An error occurred: <code>Error: 8004205f: No new mosaic dataset item was added.</code>    This error may due to the warning before, I think.</p></li></ol><p><strong>Conclusion</strong></p><ul><li><p>It may be a bug related to creating connection file to ALiBaBa Cloud Storage.  ArcPy (python 27) for ArcMap didn’t work, either.</p></li><li><p>Internal case submitted</p><p> <a href="https://my.esri.com/#/support/cases/02157762" target="_blank" rel="noopener">#02157762 Issue with connecting cloud storage and using the images inside</a></p></li><li><p>Extra diagnose</p><ul><li><p>Using Fiddler to capture the HTTP(S) requests…</p><p>I have used Fiddler Software to catch the HTTP(S) requests made by ArcMap, but nothing was found. I had enable the https capture before testing. </p><p>At the same time , I checked the Windows Task Manager and Resource Monitor that there was a lot of network activities.</p></li></ul></li></ul><h3 id="ArcGIS-Pro-1"><a href="#ArcGIS-Pro-1" class="headerlink" title="ArcGIS Pro"></a>ArcGIS Pro</h3><p><strong>Steps</strong></p><pre><code>1. Create ALiBaBa Cloud connection file   (×)2. Create a mosaic dataset in a local file geodatabase   (√)3. Add raster to mosaic dataset   (×)</code></pre><p><strong>Conclusion</strong></p><ul><li>Same issue with using HUAWEI cloud source data, and the issue points to the tool not to the cloud itself.</li><li>ArcPy (python 36) for ArcGIS Pro didn’t work, either.</li></ul><h2 id="Custom-Cloud"><a href="#Custom-Cloud" class="headerlink" title="Custom Cloud"></a>Custom Cloud</h2><p>using s3 compatible cloud, for example,  Tencent Cloud.</p><p><strong>Steps</strong></p><ol><li>Create Tencent Cloud connection file using ArcPy (python 27) for ArcMap </li><li>Capture network interaction information using WireShark<ul><li>As Amazon Provider selected, the region and endpoint will request Amazon CNAME address. In this condition, I don’t think the custom cloud works for now.</li></ul></li></ol><p>Internal case submitted</p><p><a href="https://my.esri.com/#/support/cases/02157772" target="_blank" rel="noopener">#02157772 Can Service End Point parameter be customized by users when connecting to the cloud storage ?</a> </p><h2 id="Other-Issue"><a href="#Other-Issue" class="headerlink" title="Other Issue"></a>Other Issue</h2><p>failure with file Geodatabase transfer</p><p><strong>Details</strong></p><p>When the file geodatabase was copied to a new location ,which was some scheme of path as before, on the other new machine . The mosaic dataset didn’t show up the source raster data at all. </p><p>Internal case submitted</p><p><a href="https://my.esri.com/#/support/cases/02165287" target="_blank" rel="noopener">#02165287 how to transfer mosaic dataset referencing raster dataset in cloud storage</a> </p><p>The information above is valid as the day it published, I will try my best to have it up to date.</p><p>Thank you for reviewing.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;For the purpose of assisting and sharing ,  I will try to write in English. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The new tool &lt;strong&gt;Creat
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
+    
+      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
+    
+  </entry>
   
   <entry>
     <title>探索矢量切片的Bundle</title>
@@ -37,9 +71,9 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
-    
       <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+    
+      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
       <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
     
@@ -96,9 +130,9 @@
     
       <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
     
-      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
-    
       <category term="Github" scheme="http://www.kikitamap.com/tags/Github/"/>
+    
+      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
     
   </entry>
   
@@ -561,29 +595,6 @@
     
     
       <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tidy up the code ...</title>
-    <link href="http://www.kikitamap.com/2017/11/14/tidyup/"/>
-    <id>http://www.kikitamap.com/2017/11/14/tidyup/</id>
-    <published>2017-11-14T02:07:18.000Z</published>
-    <updated>2017-12-08T06:47:59.344Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：<a href="https://github.com/kikitaMoon/ArcGIS-Python" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python</a></p><p>开始从来不知道自己会在编程的道路上越走越远，积极用脑、专注做事可能是推迟进入油腻中年的最好途径。 这一年生命中多了一个人，生活有了很多变化，纵然精力旺盛的我也开始觉得分身乏力，感谢宝宝的乖巧才让我有了很多的时间做“贤妻良母”之外的事情。希望我的宝宝长大后，可以看到妈妈的文字，互相感恩乐观前行。</p><p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/SSN_python-toolbox.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;学习python是个有趣的过程，不知不觉累积了一些有意思的小案例和小工具，一直都在本地磁盘流浪，这好像不是一个好主人的作风呢。 把它们放到该去的地方，在这里：&lt;a href=&quot;https://github.com/kikitaMoon/ArcGIS-Python&quot; targ
-      
-    
-    </summary>
-    
-      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
     
   </entry>
   

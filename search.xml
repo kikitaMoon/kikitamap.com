@@ -3,6 +3,138 @@
   
     
     <entry>
+      <title><![CDATA[Testing Report for Using Cloud Storage Raster Data Source (Part One)]]></title>
+      <url>/2018/08/15/cloudStorage4MD/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>For the purpose of assisting and sharing ,  I will try to write in English. </p>
+</blockquote>
+<p>The new tool <strong>Create Cloud Storage Connection File</strong> is first introduced to ArcGIS Desktop 10.6.1 which is the latest version until now.  The <a href="file:///C:/Program%20Files/ArcGIS/Pro/Resources/Help/pro-app/tool-reference/data-management/create-cloud-storage-connection-file.htm" target="_blank" rel="noopener">Create Cloud Storage Connection File</a> tool creates a connection file (<strong>*.acs</strong>) for ArcGIS-supported cloud storage.  It allows existing raster geoprocessing tools to <strong>write</strong> cloud raster format (CRF) datasets into the cloud storage bucket or <strong>read</strong> raster datasets (not limited to CRF) stored in the cloud storage as input.</p>
+<p>This is an amazing new feature of ArcGIS Desktop, including <strong>ArcMap 10.6.1</strong> and <strong>ArcGIS Pro 2.2</strong>.  The stuff from one of our partners and I are doing some researching on the new capability.  This article is something about the testing report, which indicates the feasibility of various workflows for adding raster datasets to mosaic dataset. </p>
+<p><strong>Local Environment</strong></p>
+<ul>
+<li><p>Latest Esri Technologies</p>
+<ul>
+<li><p>ArcMap 10.6.1</p>
+</li>
+<li><p>ArcGIS Pro 2.2.1</p>
+</li>
+</ul>
+</li>
+<li>Windows 10 Pro 64 bit English Version</li>
+</ul>
+<h2 id="Huawei-Cloud"><a href="#Huawei-Cloud" class="headerlink" title="Huawei Cloud"></a>Huawei Cloud</h2><h3 id="ArcMap"><a href="#ArcMap" class="headerlink" title="ArcMap"></a>ArcMap</h3><p><strong>Steps</strong></p>
+<ol>
+<li><p>Create Huawei Cloud connection file   <strong>(√)</strong></p>
+</li>
+<li><p>Create a mosaic dataset in a local file geodatabase   <strong>(√)</strong></p>
+</li>
+<li><p>Add raster to mosaic dataset   <strong>(√)</strong></p>
+</li>
+</ol>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>Bingo!  This workflow for source raster dataset in Huawei Cloud is perfect.</li>
+</ul>
+<h3 id="ArcGIS-Pro"><a href="#ArcGIS-Pro" class="headerlink" title="ArcGIS Pro"></a>ArcGIS Pro</h3><p><strong>Steps</strong></p>
+<ol>
+<li><p>Create Huawei Cloud connection file   <strong>(√)</strong></p>
+</li>
+<li><p>Add Raster to Mosaic Dataset    <strong>(×)</strong></p>
+<p>Error Message as below:</p>
+<p><em>Failed to execute. Parameters are not valid.</em><br><em>Error: 000732  Input Data: Dataset D:\CloudIssue\HuaWeiConnection.acs\LC81380342013173LGN00\LC81380342013173LGN00_MTL.txt does not exist or is not supported</em></p>
+</li>
+<li><p>Trying  workaround:  Add Raster to Mosaic Dataset using arcpy  (python 3.x for ArcGIS Pro).    (×)</p>
+</li>
+<li><p>For the purpose of verification ,  Add Raster to Mosaic Dataset using arcpy  (python 2.x for ArcMap), it works.  (√) </p>
+</li>
+</ol>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li><p>It should be a bug of ArcGIS Pro,  that the  tool <strong>Add Rasters To Mosaic Dataset</strong> can not recognize the logical file path including cloud connection.  The tool will justify the path if it exists. The path containing cloud connection is a logical path , not a physical path.   The same input file path works in ArcMap.</p>
+</li>
+<li><p>Internal case submitted</p>
+<p>   <a href="https://my.esri.com/#/support/cases/02166069" target="_blank" rel="noopener">#02166069 parameter error occurred when adding raster referencing cloud storage connection file</a> </p>
+</li>
+</ul>
+<h2 id="ALiBaBa-Cloud"><a href="#ALiBaBa-Cloud" class="headerlink" title="ALiBaBa Cloud"></a>ALiBaBa Cloud</h2><p>   In China, we also call it ALiYun.</p>
+<h3 id="ArcMap-1"><a href="#ArcMap-1" class="headerlink" title="ArcMap"></a>ArcMap</h3><p><strong>Steps</strong></p>
+<ol>
+<li><p>Create ALiBaBa Cloud connection file   (×)</p>
+<p>The connection file was created,  but there was a warning: <code>WARNING 002574: Could not connect to cloud storage</code> in the log </p>
+</li>
+<li><p>Create a mosaic dataset in a local file geodatabase   (√)</p>
+</li>
+<li><p>Add raster to mosaic dataset   (×) </p>
+<p> An error occurred: <code>Error: 8004205f: No new mosaic dataset item was added.</code>    This error may due to the warning before, I think.</p>
+</li>
+</ol>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li><p>It may be a bug related to creating connection file to ALiBaBa Cloud Storage.  ArcPy (python 27) for ArcMap didn’t work, either.</p>
+</li>
+<li><p>Internal case submitted</p>
+<p> <a href="https://my.esri.com/#/support/cases/02157762" target="_blank" rel="noopener">#02157762 Issue with connecting cloud storage and using the images inside</a></p>
+</li>
+<li><p>Extra diagnose</p>
+<ul>
+<li><p>Using Fiddler to capture the HTTP(S) requests…</p>
+<p>I have used Fiddler Software to catch the HTTP(S) requests made by ArcMap, but nothing was found. I had enable the https capture before testing. </p>
+<p>At the same time , I checked the Windows Task Manager and Resource Monitor that there was a lot of network activities.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ArcGIS-Pro-1"><a href="#ArcGIS-Pro-1" class="headerlink" title="ArcGIS Pro"></a>ArcGIS Pro</h3><p><strong>Steps</strong></p>
+<pre><code>1. Create ALiBaBa Cloud connection file   (×)
+2. Create a mosaic dataset in a local file geodatabase   (√)
+3. Add raster to mosaic dataset   (×)
+</code></pre><p><strong>Conclusion</strong></p>
+<ul>
+<li>Same issue with using HUAWEI cloud source data, and the issue points to the tool not to the cloud itself.</li>
+<li>ArcPy (python 36) for ArcGIS Pro didn’t work, either.</li>
+</ul>
+<h2 id="Custom-Cloud"><a href="#Custom-Cloud" class="headerlink" title="Custom Cloud"></a>Custom Cloud</h2><p>using s3 compatible cloud, for example,  Tencent Cloud.</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li>Create Tencent Cloud connection file using ArcPy (python 27) for ArcMap </li>
+<li>Capture network interaction information using WireShark<ul>
+<li>As Amazon Provider selected, the region and endpoint will request Amazon CNAME address. In this condition, I don’t think the custom cloud works for now.</li>
+</ul>
+</li>
+</ol>
+<p>Internal case submitted</p>
+<p><a href="https://my.esri.com/#/support/cases/02157772" target="_blank" rel="noopener">#02157772 Can Service End Point parameter be customized by users when connecting to the cloud storage ?</a> </p>
+<h2 id="Other-Issue"><a href="#Other-Issue" class="headerlink" title="Other Issue"></a>Other Issue</h2><p>failure with file Geodatabase transfer</p>
+<p><strong>Details</strong></p>
+<p>When the file geodatabase was copied to a new location ,which was some scheme of path as before, on the other new machine . The mosaic dataset didn’t show up the source raster data at all. </p>
+<p>Internal case submitted</p>
+<p><a href="https://my.esri.com/#/support/cases/02165287" target="_blank" rel="noopener">#02165287 how to transfer mosaic dataset referencing raster dataset in cloud storage</a> </p>
+<p>The information above is valid as the day it published, I will try my best to have it up to date.</p>
+<p>Thank you for reviewing.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Raster </tag>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> Cloud Storage </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[探索矢量切片的Bundle]]></title>
       <url>/2018/08/13/vectorTileBundle/</url>
       <content type="html"><![CDATA[<p>为什么会有这个需求和想法呢？还是源自于 <a href="http://kikitamap.com/2018/07/20/lovelyGit/" target="_blank" rel="noopener"><strong>局部更新矢量切片</strong></a> 的想法，当我们遭遇一个海量矢量数据的矢量切片<strong>创建</strong>和<strong>更新</strong>任务时，希望尽可能少且尽可能准确地更新受影响的bundle，而不是全局，那么了解bundle的范围是十分必要的。在写上一篇<a href="http://kikitamap.com/2018/07/23/CompactCache/" target="_blank" rel="noopener"><strong>《紧凑型缓存技术小结》</strong></a>的时候，目的在于在其基础之上探索矢量切片的bundle。</p>
@@ -35,9 +167,9 @@
         
         <tags>
             
-            <tag> ArcGIS Pro </tag>
-            
             <tag> ArcGIS Enterprise </tag>
+            
+            <tag> ArcGIS Pro </tag>
             
             <tag> Web </tag>
             
@@ -176,9 +308,9 @@
             
             <tag> Web </tag>
             
-            <tag> Vector Tiles </tag>
-            
             <tag> Github </tag>
+            
+            <tag> Vector Tiles </tag>
             
         </tags>
         
@@ -2082,9 +2214,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Coordinate System </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -2265,9 +2397,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
             
             <tag> 3D </tag>
             
-            <tag> ArcGIS Pro </tag>
-            
             <tag> ArcGIS Enterprise </tag>
+            
+            <tag> ArcGIS Pro </tag>
             
             <tag> Web </tag>
             
@@ -8295,6 +8427,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -8347,51 +8524,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://kikitamap.com/images/blogImg/SAMultiDimensions_Toolbar.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
