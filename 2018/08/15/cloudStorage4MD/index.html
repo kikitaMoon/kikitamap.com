@@ -58,8 +58,9 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');
 <ul>
 <li><p>It should be a bug of ArcGIS Pro,  that the  tool <strong>Add Rasters To Mosaic Dataset</strong> can not recognize the logical file path including cloud connection.  The tool will justify the path if it exists. The path containing cloud connection is a logical path , not a physical path.   The same input file path works in ArcMap.</p>
 </li>
-<li><p>Internal case submitted</p>
-<p><a href="https://my.esri.com/#/support/cases/02166069" target="_blank" rel="noopener">#02166069 parameter error occurred when adding raster referencing cloud storage connection file</a> </p>
+<li><p>Internal case submitted <a href="https://my.esri.com/#/support/cases/02166069" target="_blank" rel="noopener">#02166069</a>  - <em>closed</em></p>
+<p>Related bug:  <em>BUG-000116191</em> </p>
+<p>Workaround:  Store the rasters in the root of the bucket, and add them from that location. </p>
 </li>
 </ul>
 </li>
@@ -83,9 +84,6 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');
 <li><p><strong>Conclusion</strong></p>
 <ul>
 <li><p>It may be a bug related to creating connection file to ALiBaBa Cloud Storage.  ArcPy (python 27) for ArcMap didn’t work, either.</p>
-</li>
-<li><p>Internal case submitted</p>
-<p><a href="https://my.esri.com/#/support/cases/02157762" target="_blank" rel="noopener">#02157762 Issue with connecting cloud storage and using the images inside</a></p>
 </li>
 <li><p>Extra diagnose</p>
 <ul>
@@ -115,6 +113,9 @@ ga('create','UA-74191197-1','auto');ga('send','pageview');
 </ul>
 </li>
 </ul>
+<p>Internal case submitted  <a href="https://my.esri.com/#/support/cases/02157762" target="_blank" rel="noopener">#02157762</a></p>
+<p>Related bug:  <em>BUG-000116297</em></p>
+<p>Workaround:  Internal Version 9226</p>
 <p><br></p>
 <h2 id="Custom-Cloud"><a href="#Custom-Cloud" class="headerlink" title="Custom Cloud"></a>Custom Cloud</h2><p>using s3 compatible cloud, for example,  Tencent Cloud.</p>
 <ul>
