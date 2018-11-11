@@ -1606,21 +1606,21 @@
       <title><![CDATA[生成线要素分段缓冲区]]></title>
       <url>/2017/01/23/CreateSplittedBuffer/</url>
       <content type="html"><![CDATA[<p>前段时间做了个小工具，可以生成线要素的分段缓冲区，补充 ArcGIS 现有缓冲区工具的不足，用来辅助实现更多的功能。</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferTool.png-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreateSplittedBuffer_Tool.png" alt=""></p>
 <p>工具基于 arcpy、maths、os 几个模块实习，arcpy 中并没有提供现成的计算切线方向的函数或接口，我就尝试通过点处微小偏移量的三角定理计算方法构造切线，然后进行角度换算实现垂线的构造，最后再用垂线去切割缓冲区条带。</p>
 <p><br></p>
 <p>链接中可以下载 ArcGIS Desktop 或者 ArcGIS Pro 的工具箱版本（ 开发版本：Desktop 10.5，Pro 1.3，其他版本需要自己测试下 ）：</p>
 <p><a href="https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/tree/master/LazyWorker/BambooBuffer</a><br>(更新20171204：改SplittedBuffer为BambooBuffer，好像更形象一点)</p>
 <p>以在 ArcGIS Pro 中添加和使用为例：</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBufferUI.png-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreateSplittedBuffer_UI.png" alt=""></p>
 <p><br></p>
 <p>工具源码参考：<br><a href="https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py" target="_blank" rel="noopener">https://github.com/kikitaMoon/ArcGIS-Python/blob/master/LazyWorker/BambooBuffer/PerpendicularLine_2.0_Tool.py</a></p>
 <p><br></p>
 <p>基于工具的应用实例：</p>
 <p>1  统计公路各分段的拥堵情况</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_Road.png-kikitaMaps" alt="enter image description here"></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreateSplittedBuffer_Road.png" alt=""></p>
 <p>2  河道分段水位模拟</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_SplittedBuffer_River.png-kikitaMaps" alt="enter image description here"></p>
+<p><img src="http://kikitamap.com/images/blogImg/CreateSplittedBuffer_River.png" alt=""></p>
 ]]></content>
       
         <categories>
@@ -1661,11 +1661,11 @@
 <p><strong>4 添加图层并渲染</strong></p>
 <p>例如使用热度图/Heatmap 渲染器</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Add layer using heatmap renderer</span></span><br><span class="line">featureitem = search_result[<span class="number">0</span>]</span><br><span class="line">mymap.add_layer(featureitem.layers[<span class="number">0</span>], &#123;<span class="string">"renderer"</span>:<span class="string">"HeatmapRenderer"</span>, <span class="string">"opacity"</span>:<span class="number">0.7</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_PythonAPI_MapWidget.gif-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/PythonAPIFunction1_MapWidget.gif" alt=""></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>假设需求是实现采样点插值，数据来源是桌面产品自带的ArcGIS Tutorial中的数据（Geostatistical Analyst\ca_ozone.gdb\O3_Sep06_3pm）。</p>
 <p>除了通过搜索的方法，如果知道 itemid ，也能直接获得到内容，可以使用方法 gis.content.get()</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> arcgis <span class="keyword">import</span> gis</span><br><span class="line">gis = gis.GIS(<span class="string">"https://kikita.mycloud.com/arcgis"</span>,<span class="string">"portaladmin"</span>,<span class="string">"Super123"</span>, verify_cert=<span class="keyword">False</span>)</span><br><span class="line">search_result = gis.content.get(<span class="string">'15b012af7f15484293517c844d2d65ab'</span>)</span><br><span class="line">search_result</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_PythonAPI_GetItem.png-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/PythonAPIFunction1_GetItem.png" alt=""></p>
 <p>还是使用地图微件，用来显示下数据和分析结果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mymap = gis.map(<span class="string">'California'</span>)</span><br><span class="line">mymap.height = <span class="string">'500px'</span></span><br><span class="line">mymap</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">O3layer = search_result.layers[<span class="number">0</span>]</span><br><span class="line">mymap.add_layer(O3layer)</span><br></pre></td></tr></table></figure>
