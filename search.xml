@@ -807,7 +807,7 @@
 <p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p>
 <p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p>
 <p>在如下示例图中了解：</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_importingModel.png-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/importingmodels.png" alt=""></p>
 ]]></content>
       
         <categories>
