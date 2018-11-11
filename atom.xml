@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.kikitamap.com/"/>
-  <updated>2018-09-27T14:22:17.706Z</updated>
+  <updated>2018-11-11T09:57:52.245Z</updated>
   <id>http://www.kikitamap.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>解决七牛云存储bucket无法访问问题</title>
+    <link href="http://www.kikitamap.com/2018/11/11/qiniuIssue/"/>
+    <id>http://www.kikitamap.com/2018/11/11/qiniuIssue/</id>
+    <published>2018-11-11T00:56:07.000Z</published>
+    <updated>2018-11-11T09:57:52.245Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为工作的事情，最近忙于切换节奏适应新环境，有一个月没来 kikitaMap “巡检”了。果然昨天发现了小故障，七牛云存储的存储空间的临时域名失效了，之上的我的图床也就挂了。涉及到的对象：<a href="https://kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" target="_blank" rel="noopener">碎碎念</a> 中的全部图片和 <a href="https://kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/" target="_blank" rel="noopener">木工开物</a> 的小部分博客中图片。Just too bad …</p><p>这种情况下只能发工单联系技术支持了，七牛的技术支持回复比较及时，给出了解决方案，如下：</p><blockquote><p>有两种方式来获取文件：</p><p>1.<br>您需要先新建一个同区域存储空间，会分配一个新的测试域名到新空间。<br>通过qshell batchcopy 到有域名的同区域空间然后再进行qdownload下载操作<br>1）<code>qshell listbucket 原bucket名 list.txt</code><br>​       （list出全部文件，<a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="noopener">listbucket的文档</a>）<br>2）<code>cat list.txt | awk &#39;{print $1}&#39; &gt;list_final.txt</code><br>​       （用awk获取list结果的第一列）<br>3）<code>qshell batchcopy 原bucket名 新bucket名 list_final.txt</code><br>​       （复制到新bucket的文件和原bucket文件名一致，<a href="https://github.com/qiniu/qshell/blob/master/docs/batchcopy.md" target="_blank" rel="noopener">batchcopy的文档</a>）<br>4）<code>qshell qdownload newfilelist.txt</code><br>​      （newfilelist.txt为下载的<a href="https://github.com/qiniu/qshell/blob/master/docs/qdownload.md" target="_blank" rel="noopener">配置文档</a>）<br> <br>qshell安装包及文档请参考<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell</a></p><p>如果您不熟悉命令行工具的安装使用，也可以结合文档最后提供的视频教程<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell#9" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell#9</a><br> <br>2.<br>使用工具qrsctl<br><a href="https://developer.qiniu.com/kodo/tools/1300/qrsctl" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1300/qrsctl</a><br><code>qrsctl get &lt;bucket&gt; &lt;file&gt; &lt;file&gt;</code></p></blockquote><p>选择了第一种方式，问题解决，因为看起来像是批量的。</p><p>按照提示下载的zip包类似 qshell-v2.2.0.zip 这样的名字，里面包含了Windows，Linux，Mac各操作系统使用的程序。</p><p>我以Mac为例，使用Mac自带的 Commandline 访问解压之后的文件夹 qshell-v2.2.0。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:SoftwareSetup kikitamoon$ cd qshell-v2.2.0</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ls</span><br><span class="line">qshell-darwin-x64qshell-linux-x64qshell-windows-x64.exe</span><br><span class="line">qshell-linux-armqshell-linux-x86qshell-windows-x86.exe</span><br></pre></td></tr></table></figure><p>其中 qshell-darwin-x64 是Mac可用的 Qshell 版本。在使用Qshell之前需要配置账户信息，qshell account即可设置AK和SK，然后执行技术支持给我的建议。过程如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64</span><br><span class="line">Use help or help [cmd1 [cmd2 [cmd3 ...]]] to see supported commands.</span><br><span class="line"></span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 account</span><br><span class="line">Open account file error, open /Users/kikitamoon/.qshell/account.json: no such file or directory, please use `account` to set AccessKey and SecretKey first</span><br><span class="line"></span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 account &lt;AK&gt; &lt;SK&gt;</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 listbucket kikitamapgallery list.txt</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ cat list.txt | awk '&#123;print $1&#125;' &gt;list_final.txt</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 batchcopy kikitamapgallery kikitamapgallerycopy list_final.txt</span><br></pre></td></tr></table></figure><p>OK，至此，原有的图片文件用新地址可以重新正常访问了。当然我还需要把我的网站中使用到旧地址的位置update一下喽。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;因为工作的事情，最近忙于切换节奏适应新环境，有一个月没来 kikitaMap “巡检”了。果然昨天发现了小故障，七牛云存储的存储空间的临时域名失效了，之上的我的图床也就挂了。涉及到的对象：&lt;a href=&quot;https://kikitamap.com/categories/%
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="Cloud Storage, Webmaster" scheme="http://www.kikitamap.com/tags/Cloud-Storage-Webmaster/"/>
+    
+  </entry>
+  
+  <entry>
     <title>矢量切片局部更新工具改进与工作收尾</title>
     <link href="http://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/"/>
     <id>http://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/</id>
     <published>2018-09-27T11:56:08.000Z</published>
-    <updated>2018-09-27T14:22:17.706Z</updated>
+    <updated>2018-09-27T14:22:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="http://kikitamap.com/2018/08/13/vectorTileBundle/" target="_blank" rel="noopener">上一篇博客</a>中提到工具还有投影坐标系支持和切片方案（.xml）自动获取的问题尚未解决，更新这篇的目的在于说明问题已经找到了workaround，并且新的版本已经在上周五（9.21）发布了。</p><h2 id="问题诊断过程"><a href="#问题诊断过程" class="headerlink" title="问题诊断过程"></a>问题诊断过程</h2><p>这两个问题其实本质上是一个问题。</p><p>我们知道，当需要生成矢量切片的地图的坐标系不是 3857（web mercator）时，ArcGIS Pro 提供的 Create Vector Tile Package / Index 工具可以自动生成与地图的坐标系统一致的切片方案（.xml）文件，默认放置于 C:\Users\当前用户\AppData\Local\ESRI\Geoprocessing 下。<br>这是个极好的功能，但是通过python调用此工具时，这个功能是没有提供接口的。此处的疑惑，也咨询了Esri US 的工程师，确实arcpy没有提供像工具UI中的自动计算功能。</p><p>在最初的版本中，我尝试使用arcpy.GenerateMapServerCacheTilingScheme_server() 来生成xml文件，可以应对地理坐标系的地图。也是这个过程中遇到了切片原点传参失败<a href="http://kikitamap.com/2018/02/05/AlterXMLScheme/" target="_blank" rel="noopener">这个坑</a>。<br>投影坐标系的切片原点不像是地理坐标系一样简单粗暴，不同的投影方法都会导致不同的原点坐标，我想过将常用坐标系枚举出来，可是从工具的通用角度来讲，不是个好事。最佳的解决方法还是想办法生成相同的xml，至少可以获取工具生成的xml。</p><p>在上个版本的局部更新矢量切片工具中，我和马老师还自命名了“Advanced Vector Tile Package”的矢量切片包，我们在矢量切片包中还打包塞入了切片方案和切片索引面。这样，局部工具在更新这种包时，可以自动解析原包获取xml和index。但是，需要用户事先使用我们定制的 Create Advanced Vector Tile Package 工具来创建矢量切片包。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>考虑到用户在更新矢量切片之前，已经做过该地图的矢量切片，那么在User那个目录下已经有了对应的xml文件，那么我只要代码中获取了地图的坐标系，然后按照xml的命名规则顺藤摸瓜并顺手牵羊即可。<br>现实总是比想象骨感。ArcGIS Pro 的 arcpy 中提供的 Map 对象竟然没有提供查询其坐标系统的属性或方法…… 测试基于ArcGIS Pro 2.2.1，写这篇时的最新版本。相信新的版本早晚会有的。好在我还是找到了一个workaround：从map的defaultCamera属性中获取，如下图左边最下部分所示。（现在没有测试环境，图出自讨论时的聊天记录，将就看吧）<br><img src="http://kikitamap.com/images/blogImg/partialUpdateVTPKv3_defaultCamera.jpg" alt=""></p><p>使用这个思路之后，解决了本文开头提到的问题，但是要求用户本机user目录下事先有相关的xml文件，没有的话需要打开创建矢量切片工具自动生产一次。</p><p>工具的相关代码都进行了更新，采用了新的逻辑，目前可以支持矢量切片工具自身支持的全部坐标系统。并同时保留了，上个版本的局部更新工具中可以自动解析 Advanced Vector Tile Package 功能。<br><img src="http://kikitamap.com/images/blogImg/partialUpdateVTPKv3_AdvancedSupport.jpg" alt=""></p><h2 id="工具地址"><a href="#工具地址" class="headerlink" title="工具地址"></a>工具地址</h2><p><strong>Latest Version</strong>： <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases/tag/3.1.0" target="_blank" rel="noopener">Partially Upate ArcGIS Vector Tiles Toolbox 3.1.0</a></p><h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>这个工具即与工作相关，又是业余之作。自己执念太重，希望在esri工作的最后一天归还机器前尽快改好发布出来，因为将来的投入时间和测试环境，不知道是否能够保证。自己可见的坑还是自己填好比较稳妥，哈。姑且把这个版本当成最后的latest版本吧。因为这个工具的更新，搞得最后一天的时间特别紧张，没有和很多同事道别，不过将来总有机会再见的。</p>]]></content>
     
@@ -60,11 +85,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
-    
       <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
     
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
     
       <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
     
@@ -94,11 +119,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
-    
       <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
     
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
+      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
     
       <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
     
@@ -125,11 +150,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
+      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+    
       <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
       <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
-    
-      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
     
       <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
     
@@ -180,9 +205,9 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
-    
       <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+    
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
     
       <category term="Github" scheme="http://www.kikitamap.com/tags/Github/"/>
     
@@ -272,11 +297,11 @@
       <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
+      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+    
       <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
     
       <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
-    
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
     
       <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
     
@@ -569,31 +594,6 @@
       <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
     
       <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《面向ArcGIS的Python脚本编程》读后</title>
-    <link href="http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/"/>
-    <id>http://www.kikitamap.com/2018/01/11/ReadingPyScriptingforAGS/</id>
-    <published>2018-01-11T04:57:19.000Z</published>
-    <updated>2018-02-07T10:03:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>​        这篇是读书笔记。同事手里有本《面向ArcGIS的Python脚本编程》，系统的介绍了如何结合ArcGIS使用python。最近拿来阅读，觉得受益颇多。最早期我是通过python自身的学习资源、书籍、ArcGIS帮助文档入门的，知识体系虽然建立起来了，但是很多细节没有考虑到，对照书中的内容温故知新、查漏补缺。</p><h2 id="arcpy与AO"><a href="#arcpy与AO" class="headerlink" title="arcpy与AO"></a>arcpy与AO</h2><p>​        书的开篇就介绍了脚本语言和程序语言的区别。我将其引申到日常工作中用户会经常问到的，“为什么AO可以实现的东西，arcpy却不能？”“为什么arcpy的功能这么‘粗粒度’？” </p><p>​         AO中包含了ArcGIS用到的所有编程对象，包含了数以千计的不同对象，因此程序员可以精细控制软件的外观和运行机制。Python作为一种非常平易近人的语言，既是脚本语言又是程序语言，在ArcGIS平台中，python更多充当的是脚本语言的角色，例如：访问ArcGIS现有的功能，组合各种现有功能来扩展ArcGIS的功能，更可以作为一种“粘合剂”将更多的功能整合进来。用书中的话讲，脚本语言就是在“控制其他应用程序以实现任务自动化”。arcpy是ArcGIS提供的python站点包，用于访问ArcGIS 的地理处理功能，定位正在于此。</p><h2 id="arcpy与model-builder"><a href="#arcpy与model-builder" class="headerlink" title="arcpy与model builder"></a><strong>arcpy</strong>与<strong>model builder</strong></h2><p>​          model builder（简称MB吧）是ArcGIS Desktop中我认为最可爱的功能没有之一，它采用了编程的思想却免去了书写代码，是给非程序员实践创造的启航之地。日常工作中，很多逻辑简单、功能清晰的任务都可以使用MB实现。以前写过一篇，<a href="http://kikitamap.com/2015/12/06/IterationinArcGISforDesktop/" target="_blank" rel="noopener">《如何在ArcGIS for Desktop中实现批量任务》</a>，具体不再展开。你可能由这些疑问，“MB也能完成批量任务，我何时应该考虑使用python？”  当然这里回答的是“不得不”的问题，如果你本来就是编程高手，从一开始就会觉得MB限制了你的想象力，如下回答可能不需要考虑。 </p><p>​          MB的局限性有什么？或者说相比之下，python能更多实现什么？</p><ul><li>python可以实现更高级的编程逻辑。例如嵌套循环是MB的软肋，一遇到多重遍历之类的任务就只能呵呵了。</li><li>python可以实现更底层的处理任务。例如我们可以使用Cursor，遍历表并对其增删改等等。</li><li>python可以集成第三方的资源。例如R语言等第三方类库来处理数据执行任务。</li><li>python可以不在ArcGIS软件内部执行任务，只需要安装并授权ArcGIS软件，然后通过独立脚本的形式运行。既然可以独立运行，就可以定义系统任务定时执行。</li></ul><h2 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h2><h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><p>​        这本书中也提到了命名规范的内容，这是我在初期没有考虑到的问题。随着时间的推移和协同工作的需要，渐渐发现这是个非常重要的内容，大型的科技公司会更重视这个方面。编程和写文章一样，仅仅懂得一种语言的语法、词汇是不足够的，更重要的是如何将文章写的清晰优雅，对应到代码中就是简洁高效。python的官方命名规范：<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">Style Guide for Python Code</a>，它是PEPs（Python Enhancement Proposals）中的一部分。</p><p>​        变量名及脚本文件名：</p><ul><li>变量名以字母开头，不能使用特殊字符开头</li><li>全部使用小写字母</li><li>必要的时候使用下划线，增加代码可读性</li><li>使用描述性变量，避免使用俚语或缩写</li><li>变量名尽量简短</li></ul><p>​        缩进：</p><ul><li>建议使用四个空格表示缩进</li><li>不要同时使用tab和空格进行缩进</li></ul><p>​        注释：</p><ul><li>建议每个功能块都有相关注释</li><li>每个脚本工具或函数文件前需要有个头文件，应该包含脚本文件名、功能介绍、运行要求、作者、开发时间等信息。</li></ul><h3 id="从脚本外部输入参数"><a href="#从脚本外部输入参数" class="headerlink" title="从脚本外部输入参数"></a>从脚本外部输入参数</h3><p>​        使用系统参数 sys.agv 。系统参数sys.argv[0]存储的是脚本自身的地址，因此额外的系统参数是从1开始。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This is content of testInputPara.py.</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">x = int(sys.argv[<span class="number">1</span>])</span><br><span class="line">y = int(sys.argv[<span class="number">2</span>])</span><br><span class="line">print(x*y)</span><br></pre></td></tr></table></figure><p>​        在命令行中执行：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\ForTempTest&gt;python testInputPara<span class="selector-class">.py</span> <span class="number">2</span> <span class="number">8</span></span><br><span class="line"><span class="number">16</span></span><br></pre></td></tr></table></figure><p>​        在交互式python编译器中使用 input()，可以接收用户输入。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = input(<span class="string">""</span>)</span><br><span class="line">bingo</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(x)</span><br><span class="line">bingo</span><br></pre></td></tr></table></figure><p>​        ArcGIS 中通过创建脚本工具，与GP框架结合的调用方法，是更适合ArcGIS用户的方法。以前写过 《在ArcGIS中创建Python工具<a href="http://kikitamap.com/2015/08/31/CreatePythonTool1/" target="_blank" rel="noopener"><strong>（一）</strong></a>、<a href="http://kikitamap.com/2015/09/02/CreatePythonTool2/" target="_blank" rel="noopener"><strong>（二）</strong></a>、<a href="http://kikitamap.com/2015/09/10/CreatePythonTool3/" target="_blank" rel="noopener"><strong>（三）</strong></a>》几篇，点击链接可以近一步了解脚本工具。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;​        这篇是读书笔记。同事手里有本《面向ArcGIS的Python脚本编程》，系统的介绍了如何结合ArcGIS使用python。最近拿来阅读，觉得受益颇多。最早期我是通过python自身的学习资源、书籍、ArcGIS帮助文档入门的，知识体系虽然建立起来了，但是很
-      
-    
-    </summary>
-    
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
-    
-    
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
     
   </entry>
   

@@ -3,6 +3,40 @@
   
     
     <entry>
+      <title><![CDATA[解决七牛云存储bucket无法访问问题]]></title>
+      <url>/2018/11/11/qiniuIssue/</url>
+      <content type="html"><![CDATA[<p>因为工作的事情，最近忙于切换节奏适应新环境，有一个月没来 kikitaMap “巡检”了。果然昨天发现了小故障，七牛云存储的存储空间的临时域名失效了，之上的我的图床也就挂了。涉及到的对象：<a href="https://kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" target="_blank" rel="noopener">碎碎念</a> 中的全部图片和 <a href="https://kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/" target="_blank" rel="noopener">木工开物</a> 的小部分博客中图片。Just too bad …</p>
+<p>这种情况下只能发工单联系技术支持了，七牛的技术支持回复比较及时，给出了解决方案，如下：</p>
+<blockquote>
+<p>有两种方式来获取文件：</p>
+<p>1.<br>您需要先新建一个同区域存储空间，会分配一个新的测试域名到新空间。<br>通过qshell batchcopy 到有域名的同区域空间然后再进行qdownload下载操作<br>1）<code>qshell listbucket 原bucket名 list.txt</code><br>​       （list出全部文件，<a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="noopener">listbucket的文档</a>）<br>2）<code>cat list.txt | awk &#39;{print $1}&#39; &gt;list_final.txt</code><br>​       （用awk获取list结果的第一列）<br>3）<code>qshell batchcopy 原bucket名 新bucket名 list_final.txt</code><br>​       （复制到新bucket的文件和原bucket文件名一致，<a href="https://github.com/qiniu/qshell/blob/master/docs/batchcopy.md" target="_blank" rel="noopener">batchcopy的文档</a>）<br>4）<code>qshell qdownload newfilelist.txt</code><br>​      （newfilelist.txt为下载的<a href="https://github.com/qiniu/qshell/blob/master/docs/qdownload.md" target="_blank" rel="noopener">配置文档</a>）<br> <br>qshell安装包及文档请参考<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell</a></p>
+<p>如果您不熟悉命令行工具的安装使用，也可以结合文档最后提供的视频教程<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell#9" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell#9</a><br> <br>2.<br>使用工具qrsctl<br><a href="https://developer.qiniu.com/kodo/tools/1300/qrsctl" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1300/qrsctl</a><br><code>qrsctl get &lt;bucket&gt; &lt;file&gt; &lt;file&gt;</code></p>
+</blockquote>
+<p>选择了第一种方式，问题解决，因为看起来像是批量的。</p>
+<p>按照提示下载的zip包类似 qshell-v2.2.0.zip 这样的名字，里面包含了Windows，Linux，Mac各操作系统使用的程序。</p>
+<p>我以Mac为例，使用Mac自带的 Commandline 访问解压之后的文件夹 qshell-v2.2.0。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:SoftwareSetup kikitamoon$ cd qshell-v2.2.0</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ls</span><br><span class="line">qshell-darwin-x64	qshell-linux-x64	qshell-windows-x64.exe</span><br><span class="line">qshell-linux-arm	qshell-linux-x86	qshell-windows-x86.exe</span><br></pre></td></tr></table></figure>
+<p>其中 qshell-darwin-x64 是Mac可用的 Qshell 版本。在使用Qshell之前需要配置账户信息，qshell account即可设置AK和SK，然后执行技术支持给我的建议。过程如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64</span><br><span class="line">Use help or help [cmd1 [cmd2 [cmd3 ...]]] to see supported commands.</span><br><span class="line"></span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 account</span><br><span class="line">Open account file error, open /Users/kikitamoon/.qshell/account.json: no such file or directory, please use `account` to set AccessKey and SecretKey first</span><br><span class="line"></span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 account &lt;AK&gt; &lt;SK&gt;</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 listbucket kikitamapgallery list.txt</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ cat list.txt | awk '&#123;print $1&#125;' &gt;list_final.txt</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ./qshell-darwin-x64 batchcopy kikitamapgallery kikitamapgallerycopy list_final.txt</span><br></pre></td></tr></table></figure>
+<p>OK，至此，原有的图片文件用新地址可以重新正常访问了。当然我还需要把我的网站中使用到旧地址的位置update一下喽。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Cloud Storage, Webmaster </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[矢量切片局部更新工具改进与工作收尾]]></title>
       <url>/2018/09/27/partialUpdateVTPKv3/</url>
       <content type="html"><![CDATA[<p>在<a href="http://kikitamap.com/2018/08/13/vectorTileBundle/" target="_blank" rel="noopener">上一篇博客</a>中提到工具还有投影坐标系支持和切片方案（.xml）自动获取的问题尚未解决，更新这篇的目的在于说明问题已经找到了workaround，并且新的版本已经在上周五（9.21）发布了。</p>
@@ -85,11 +119,11 @@
         
         <tags>
             
-            <tag> Raster </tag>
-            
             <tag> Geoprocessing </tag>
             
             <tag> Python </tag>
+            
+            <tag> Raster </tag>
             
             <tag> Cloud Storage </tag>
             
@@ -254,11 +288,11 @@
         
         <tags>
             
-            <tag> Raster </tag>
-            
             <tag> Geoprocessing </tag>
             
             <tag> Python </tag>
+            
+            <tag> Raster </tag>
             
             <tag> Cloud Storage </tag>
             
@@ -299,11 +333,11 @@
         
         <tags>
             
+            <tag> Web </tag>
+            
             <tag> ArcGIS Pro </tag>
             
             <tag> ArcGIS Enterprise </tag>
-            
-            <tag> Web </tag>
             
             <tag> Vector Tiles </tag>
             
@@ -436,9 +470,9 @@
         
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Web </tag>
+            
+            <tag> Python </tag>
             
             <tag> Github </tag>
             
@@ -578,11 +612,11 @@
         
         <tags>
             
+            <tag> Python </tag>
+            
             <tag> 3D </tag>
             
             <tag> CityEngine </tag>
-            
-            <tag> Python </tag>
             
             <tag> CGA </tag>
             
@@ -1643,11 +1677,11 @@
         
         <tags>
             
+            <tag> Web </tag>
+            
             <tag> Python </tag>
             
             <tag> ArcGIS Enterprise </tag>
-            
-            <tag> Web </tag>
             
         </tags>
         
@@ -1728,11 +1762,11 @@
         
         <tags>
             
+            <tag> Web </tag>
+            
             <tag> Python </tag>
             
             <tag> ArcGIS Enterprise </tag>
-            
-            <tag> Web </tag>
             
         </tags>
         
@@ -2527,13 +2561,13 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
+            <tag> Web </tag>
+            
             <tag> 3D </tag>
             
             <tag> ArcGIS Pro </tag>
             
             <tag> ArcGIS Enterprise </tag>
-            
-            <tag> Web </tag>
             
         </tags>
         
@@ -2787,9 +2821,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Web </tag>
+            
+            <tag> Mapping </tag>
             
             <tag> Map Story </tag>
             
@@ -3143,9 +3177,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -3181,9 +3215,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Python </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -8559,6 +8593,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -8611,51 +8690,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://kikitamap.com/images/blogImg/SAMultiDimensions_Toolbar.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
@@ -9633,9 +9667,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Raster </tag>
-            
             <tag> Geoprocessing </tag>
+            
+            <tag> Raster </tag>
             
         </tags>
         
