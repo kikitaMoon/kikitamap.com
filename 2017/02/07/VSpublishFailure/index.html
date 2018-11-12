@@ -4,14 +4,14 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 ga('create','UA-74191197-1','auto');ga('send','pageview');
 </script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">VS部署应用程序失败'找不到SignTool.exe'</h1><a id="logo" href="/.">kikita &amp; Maps</a><p class="description">For Tech and Fun</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/history/"><i class="fa fa-book"> Timeline</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">VS部署应用程序失败'找不到SignTool.exe'</h1><div class="post-meta">Feb 7, 2017<span> | </span><span class="category"><a href="/categories/木工开物/">木工开物</a></span></div><div class="post-content"><p>在使用 Visual Studio 2015 部署应用的时候遇到一个问题，在进行publish之后又提示错误：“An error occurred while signing: SignTool.exe not found.”。</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_VSpublishFailure_Error.jpg-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/VSpublishFailure_Error.jpg" alt=""></p>
 <p>查了下官方的技术文档，解决方法如下：</p>
 <p>先确认下自己的机器是否安装了 signtool.exe, 如果安装了则位于：</p>
 <pre><code>`%programfiles(x86)%\Microsoft SDKs\Windows\v7.0A\Bin   for x64 system`
 `%programfiles%\Microsoft SDKs\Windows\v7.0A\Bin        for x86 system`
 </code></pre><p>signtool.exe 是 Windows平台SDK的一部分，如果在上面的路径中没有发现这个文件，那就需要安装下。 <a href="https://msdn.microsoft.com/en-us/library/8s9b9yaz.aspx" target="_blank" rel="noopener">signtool.exe 是什么？</a></p>
 <p>方法很简单，重新执行VS的安装程序，选择Custom模式，补充安装 <code>ClickOnce Publishing Tools</code> 。</p>
-<p><img src="http://7xs3vz.com1.z0.glb.clouddn.com/MGKW_VSpublishFailure_Setup.png-kikitaMaps" alt=""></p>
+<p><img src="http://kikitamap.com/images/blogImg/VSpublishFailure_Setup.png" alt=""></p>
 <p>安装完成后，问题解决。</p>
 <p><br></p>
 <p>技术文档详情，点<a href="https://blogs.msdn.microsoft.com/vsnetsetup/2013/11/18/an-error-occurred-while-signing-signtool-exe-not-found/" target="_blank" rel="noopener">这里</a>。</p>
