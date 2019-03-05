@@ -5,9 +5,9 @@
   <subtitle>For Tech and Fun</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.kikitamap.com/"/>
-  <updated>2018-11-13T04:41:10.249Z</updated>
-  <id>http://www.kikitamap.com/</id>
+  <link href="https://www.kikitamap.com/"/>
+  <updated>2018-11-13T04:41:10.000Z</updated>
+  <id>https://www.kikitamap.com/</id>
   
   <author>
     <name>Xiaoyan Mu</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>解决七牛云存储bucket无法访问问题</title>
-    <link href="http://www.kikitamap.com/2018/11/11/qiniuIssue/"/>
-    <id>http://www.kikitamap.com/2018/11/11/qiniuIssue/</id>
+    <link href="https://www.kikitamap.com/2018/11/11/qiniuIssue/"/>
+    <id>https://www.kikitamap.com/2018/11/11/qiniuIssue/</id>
     <published>2018-11-11T00:56:07.000Z</published>
-    <updated>2018-11-13T04:41:10.249Z</updated>
+    <updated>2018-11-13T04:41:10.000Z</updated>
     
-    <content type="html"><![CDATA[<p>因为工作的事情，最近忙于切换节奏适应新环境，有一个月没来 kikitaMap “巡检”了。果然昨天发现了小故障，七牛云存储的存储空间的临时域名失效了，之上的我的图床也就挂了。涉及到的对象：<a href="https://kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" target="_blank" rel="noopener">碎碎念</a> 、<a href="http://kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/" target="_blank" rel="noopener">相机里</a> 中的全部图片和 <a href="https://kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/" target="_blank" rel="noopener">木工开物</a> 的小部分博客中图片。Just too bad …</p><h2 id="解决方法建议"><a href="#解决方法建议" class="headerlink" title="解决方法建议"></a>解决方法建议</h2><p>这种情况下只能发工单联系技术支持了，七牛的技术支持回复比较及时，给出了解决方案，如下：</p><blockquote><p>有两种方式来获取文件：</p><p>1.<br>您需要先新建一个同区域存储空间，会分配一个新的测试域名到新空间。<br>通过qshell batchcopy 到有域名的同区域空间然后再进行qdownload下载操作<br>1）<code>qshell listbucket 原bucket名 list.txt</code><br>​       （list出全部文件，<a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="noopener">listbucket的文档</a>）<br>2）<code>cat list.txt | awk &#39;{print $1}&#39; &gt;list_final.txt</code><br>​       （用awk获取list结果的第一列）<br>3）<code>qshell batchcopy 原bucket名 新bucket名 list_final.txt</code><br>​       （复制到新bucket的文件和原bucket文件名一致，<a href="https://github.com/qiniu/qshell/blob/master/docs/batchcopy.md" target="_blank" rel="noopener">batchcopy的文档</a>）<br>4）<code>qshell qdownload newfilelist.txt</code><br>​      （newfilelist.txt为下载的<a href="https://github.com/qiniu/qshell/blob/master/docs/qdownload.md" target="_blank" rel="noopener">配置文档</a>）<br> <br>qshell安装包及文档请参考<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell</a></p><p>如果您不熟悉命令行工具的安装使用，也可以结合文档最后提供的视频教程<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell#9" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell#9</a><br> <br>2.<br>使用工具qrsctl<br><a href="https://developer.qiniu.com/kodo/tools/1300/qrsctl" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1300/qrsctl</a><br><code>qrsctl get &lt;bucket&gt; &lt;file&gt; &lt;file&gt;</code></p></blockquote><h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><p>选择了第一种方式，问题解决，因为看起来像是批量的。</p><p>按照提示下载的zip包类似 qshell-v2.2.0.zip 这样的名字，里面包含了Windows，Linux，Mac各操作系统使用的程序。</p><p>我以Mac为例，使用Mac自带的 Commandline 访问解压之后的文件夹 qshell-v2.2.0。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:SoftwareSetup kikitamoon$ cd qshell-v2.2.0</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ls</span><br><span class="line">qshell-darwin-x64qshell-linux-x64qshell-windows-x64.exe</span><br><span class="line">qshell-linux-armqshell-linux-x86qshell-windows-x86.exe</span><br></pre></td></tr></table></figure><p>其中 qshell-darwin-x64 是Mac可用的 Qshell 版本。在使用Qshell之前需要配置账户信息，qshell account即可设置AK和SK。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64</span><br><span class="line">Use help or help [cmd1 [cmd2 [cmd3 ...]]] to see supported commands.</span><br><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64 account</span><br><span class="line">Open account file error, open /Users/kikitamoon/.qshell/account.json: no such file or directory, please use `account` to set AccessKey and SecretKey first</span><br><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64 account &lt;AK&gt; &lt;SK&gt;</span><br></pre></td></tr></table></figure><p>接着使用七牛技术支持给出的建议，将旧库的文件list出来，然后batchcopy到新库中。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64 listbucket kikitamapgallery list.txt</span><br><span class="line"><span class="meta">kikitamoon$</span> cat list.txt | awk '&#123;print $1&#125;' &gt;list_final.txt</span><br><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64 batchcopy kikitamapgallery kikitamapgallerycopy list_final.txt</span><br></pre></td></tr></table></figure><p>最后，通过 qdownload 命令下载所有源文件。在执行命令之前还需要做个配置文件，download.conf ; 并且可以设置开几个任务并行下载。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span> ./qshell-darwin-x64 qdownload 4 download.conf</span><br><span class="line"></span><br><span class="line">Writing download log to file /Users/kikitamoon/.qshell/qdownload/7d41b43ca364d28da34dbd030f1331be/7d41b43ca364d28da34dbd030f1331be.log</span><br><span class="line">Downloading MGKW_ArcGIS_Daemon.png [1/62, 1.6%] ...</span><br><span class="line">Downloading MGKW_ArcMapStartupLog.png [2/62, 3.2%] ...</span><br><span class="line">Downloading MGKW_BatchClip.png [3/62, 4.8%] ...</span><br><span class="line">Downloading MGKW_FeatureTable.png [4/62, 6.5%] ...</span><br><span class="line">Downloading MGKW_HelloArcGISPythonAPI.png [5/62, 8.1%] ...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Downloading XJL_TripToGreece.png [61/62, 98.4%] ...</span><br><span class="line">Downloading XJL_TripToHongkong.png [62/62, 100.0%] ...</span><br><span class="line">See download log at path /Users/kikitamoon/.qshell/qdownload/7d41b43ca364d28da34dbd030f1331be/7d41b43ca364d28da34dbd030f1331be.log</span><br><span class="line"></span><br><span class="line"><span class="meta">kikitamoon$</span></span><br></pre></td></tr></table></figure><p>至此，源图片文件算是都找回来了。当然我还需要把我的网站中使用到旧地址的位置update一下喽。</p>]]></content>
+    <content type="html"><![CDATA[<p>因为工作的事情，最近忙于切换节奏适应新环境，有一个月没来 kikitaMap “巡检”了。果然昨天发现了小故障，七牛云存储的存储空间的临时域名失效了，之上的我的图床也就挂了。涉及到的对象：<a href="https://kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" target="_blank" rel="noopener">碎碎念</a> 、<a href="http://kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/" target="_blank" rel="noopener">相机里</a> 中的全部图片和 <a href="https://kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/" target="_blank" rel="noopener">木工开物</a> 的小部分博客中图片。Just too bad …</p><h2 id="解决方法建议"><a href="#解决方法建议" class="headerlink" title="解决方法建议"></a>解决方法建议</h2><p>这种情况下只能发工单联系技术支持了，七牛的技术支持回复比较及时，给出了解决方案，如下：</p><blockquote><p>有两种方式来获取文件：</p><p>1.<br>您需要先新建一个同区域存储空间，会分配一个新的测试域名到新空间。<br>通过qshell batchcopy 到有域名的同区域空间然后再进行qdownload下载操作<br>1）<code>qshell listbucket 原bucket名 list.txt</code><br>​       （list出全部文件，<a href="https://github.com/qiniu/qshell/blob/master/docs/listbucket.md" target="_blank" rel="noopener">listbucket的文档</a>）<br>2）<code>cat list.txt | awk &#39;{print $1}&#39; &gt;list_final.txt</code><br>​       （用awk获取list结果的第一列）<br>3）<code>qshell batchcopy 原bucket名 新bucket名 list_final.txt</code><br>​       （复制到新bucket的文件和原bucket文件名一致，<a href="https://github.com/qiniu/qshell/blob/master/docs/batchcopy.md" target="_blank" rel="noopener">batchcopy的文档</a>）<br>4）<code>qshell qdownload newfilelist.txt</code><br>​      （newfilelist.txt为下载的<a href="https://github.com/qiniu/qshell/blob/master/docs/qdownload.md" target="_blank" rel="noopener">配置文档</a>）<br> <br>qshell安装包及文档请参考<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell</a></p><p>如果您不熟悉命令行工具的安装使用，也可以结合文档最后提供的视频教程<br> <a href="https://developer.qiniu.com/kodo/tools/1302/qshell#9" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1302/qshell#9</a><br> <br>2.<br>使用工具qrsctl<br><a href="https://developer.qiniu.com/kodo/tools/1300/qrsctl" target="_blank" rel="noopener">https://developer.qiniu.com/kodo/tools/1300/qrsctl</a><br><code>qrsctl get &lt;bucket&gt; &lt;file&gt; &lt;file&gt;</code></p></blockquote><h2 id="实践过程"><a href="#实践过程" class="headerlink" title="实践过程"></a>实践过程</h2><p>选择了第一种方式，问题解决，因为看起来像是批量的。</p><p>按照提示下载的zip包类似 qshell-v2.2.0.zip 这样的名字，里面包含了Windows，Linux，Mac各操作系统使用的程序。</p><p>我以Mac为例，使用Mac自带的 Commandline 访问解压之后的文件夹 qshell-v2.2.0。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kikitamoondeMBP:SoftwareSetup kikitamoon$ cd qshell-v2.2.0</span><br><span class="line">kikitamoondeMBP:qshell-v2.2.0 kikitamoon$ ls</span><br><span class="line">qshell-darwin-x64qshell-linux-x64qshell-windows-x64.exe</span><br><span class="line">qshell-linux-armqshell-linux-x86qshell-windows-x86.exe</span><br></pre></td></tr></table></figure><p>其中 qshell-darwin-x64 是Mac可用的 Qshell 版本。在使用Qshell之前需要配置账户信息，qshell account即可设置AK和SK。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64</span></span><br><span class="line">Use help or help [cmd1 [cmd2 [cmd3 ...]]] to see supported commands.</span><br><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64 account</span></span><br><span class="line">Open account file error, open /Users/kikitamoon/.qshell/account.json: no such file or directory, please use `account` to set AccessKey and SecretKey first</span><br><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64 account &lt;AK&gt; &lt;SK&gt;</span></span><br></pre></td></tr></table></figure><p>接着使用七牛技术支持给出的建议，将旧库的文件list出来，然后batchcopy到新库中。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64 listbucket kikitamapgallery list.txt</span></span><br><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> cat list.txt | awk <span class="string">'&#123;print $1&#125;'</span> &gt;list_final.txt</span></span><br><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64 batchcopy kikitamapgallery kikitamapgallerycopy list_final.txt</span></span><br></pre></td></tr></table></figure><p>最后，通过 qdownload 命令下载所有源文件。在执行命令之前还需要做个配置文件，download.conf ; 并且可以设置开几个任务并行下载。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">kikitamoon$</span><span class="bash"> ./qshell-darwin-x64 qdownload 4 download.conf</span></span><br><span class="line"></span><br><span class="line">Writing download log to file /Users/kikitamoon/.qshell/qdownload/7d41b43ca364d28da34dbd030f1331be/7d41b43ca364d28da34dbd030f1331be.log</span><br><span class="line">Downloading MGKW_ArcGIS_Daemon.png [1/62, 1.6%] ...</span><br><span class="line">Downloading MGKW_ArcMapStartupLog.png [2/62, 3.2%] ...</span><br><span class="line">Downloading MGKW_BatchClip.png [3/62, 4.8%] ...</span><br><span class="line">Downloading MGKW_FeatureTable.png [4/62, 6.5%] ...</span><br><span class="line">Downloading MGKW_HelloArcGISPythonAPI.png [5/62, 8.1%] ...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">Downloading XJL_TripToGreece.png [61/62, 98.4%] ...</span><br><span class="line">Downloading XJL_TripToHongkong.png [62/62, 100.0%] ...</span><br><span class="line">See download log at path /Users/kikitamoon/.qshell/qdownload/7d41b43ca364d28da34dbd030f1331be/7d41b43ca364d28da34dbd030f1331be.log</span><br><span class="line"></span><br><span class="line"><span class="meta">kikitamoon$</span><span class="bash"></span></span><br></pre></td></tr></table></figure><p>至此，源图片文件算是都找回来了。当然我还需要把我的网站中使用到旧地址的位置update一下喽。</p>]]></content>
     
     <summary type="html">
     
@@ -34,23 +34,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+      <category term="Deployment" scheme="https://www.kikitamap.com/tags/Deployment/"/>
     
-      <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
+      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
     
-      <category term="Webmaster" scheme="http://www.kikitamap.com/tags/Webmaster/"/>
+      <category term="Webmaster" scheme="https://www.kikitamap.com/tags/Webmaster/"/>
     
   </entry>
   
   <entry>
     <title>矢量切片局部更新工具改进与工作收尾</title>
-    <link href="http://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/"/>
-    <id>http://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/</id>
+    <link href="https://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/"/>
+    <id>https://www.kikitamap.com/2018/09/27/partialUpdateVTPKv3/</id>
     <published>2018-09-27T11:56:08.000Z</published>
-    <updated>2018-11-12T15:11:17.731Z</updated>
+    <updated>2018-11-12T15:11:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="http://kikitamap.com/2018/08/13/vectorTileBundle/" target="_blank" rel="noopener">上一篇博客</a>中提到工具还有投影坐标系支持和切片方案（.xml）自动获取的问题尚未解决，更新这篇的目的在于说明问题已经找到了workaround，并且新的版本已经在上周五（9.21）发布了。</p><h2 id="问题诊断过程"><a href="#问题诊断过程" class="headerlink" title="问题诊断过程"></a>问题诊断过程</h2><p>这两个问题其实本质上是一个问题。</p><p>我们知道，当需要生成矢量切片的地图的坐标系不是 3857（web mercator）时，ArcGIS Pro 提供的 Create Vector Tile Package / Index 工具可以自动生成与地图的坐标系统一致的切片方案（.xml）文件，默认放置于 C:\Users\当前用户\AppData\Local\ESRI\Geoprocessing 下。<br>这是个极好的功能，但是通过python调用此工具时，这个功能是没有提供接口的。此处的疑惑，也咨询了Esri US 的工程师，确实arcpy没有提供像工具UI中的自动计算功能。</p><p>在最初的版本中，我尝试使用arcpy.GenerateMapServerCacheTilingScheme_server() 来生成xml文件，可以应对地理坐标系的地图。也是这个过程中遇到了切片原点传参失败<a href="http://kikitamap.com/2018/02/05/AlterXMLScheme/" target="_blank" rel="noopener">这个坑</a>。<br>投影坐标系的切片原点不像是地理坐标系一样简单粗暴，不同的投影方法都会导致不同的原点坐标，我想过将常用坐标系枚举出来，可是从工具的通用角度来讲，不是个好事。最佳的解决方法还是想办法生成相同的xml，至少可以获取工具生成的xml。</p><p>在上个版本的局部更新矢量切片工具中，我和马老师还自命名了“Advanced Vector Tile Package”的矢量切片包，我们在矢量切片包中还打包塞入了切片方案和切片索引面。这样，局部工具在更新这种包时，可以自动解析原包获取xml和index。但是，需要用户事先使用我们定制的 Create Advanced Vector Tile Package 工具来创建矢量切片包。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>考虑到用户在更新矢量切片之前，已经做过该地图的矢量切片，那么在User那个目录下已经有了对应的xml文件，那么我只要代码中获取了地图的坐标系，然后按照xml的命名规则顺藤摸瓜并顺手牵羊即可。<br>现实总是比想象骨感。ArcGIS Pro 的 arcpy 中提供的 Map 对象竟然没有提供查询其坐标系统的属性或方法…… 测试基于ArcGIS Pro 2.2.1，写这篇时的最新版本。相信新的版本早晚会有的。好在我还是找到了一个workaround：从map的defaultCamera属性中获取，如下图左边最下部分所示。（现在没有测试环境，图出自讨论时的聊天记录，将就看吧）<br><img src="http://kikitamap.com/images/blogImg/partialUpdateVTPKv3_defaultCamera.jpg" alt=""></p><p>使用这个思路之后，解决了本文开头提到的问题，但是要求用户本机user目录下事先有相关的xml文件，没有的话需要打开创建矢量切片工具自动生产一次。</p><p>工具的相关代码都进行了更新，采用了新的逻辑，目前可以支持矢量切片工具自身支持的全部坐标系统。并同时保留了，上个版本的局部更新工具中可以自动解析 Advanced Vector Tile Package 功能。<br><img src="http://kikitamap.com/images/blogImg/partialUpdateVTPKv3_AdvancedSupport.jpg" alt=""></p><h2 id="工具地址"><a href="#工具地址" class="headerlink" title="工具地址"></a>工具地址</h2><p><strong>Latest Version</strong>： <a href="https://github.com/makeling/PartiallyUpateArcGISVectorTilesTools/releases/tag/3.1.0" target="_blank" rel="noopener">Partially Upate ArcGIS Vector Tiles Toolbox 3.1.0</a></p><h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>这个工具即与工作相关，又是业余之作。自己执念太重，希望在esri工作的最后一天归还机器前尽快改好发布出来，因为将来的投入时间和测试环境，不知道是否能够保证。自己可见的坑还是自己填好比较稳妥，哈。姑且把这个版本当成最后的latest版本吧。因为这个工具的更新，搞得最后一天的时间特别紧张，没有和很多同事道别，不过将来总有机会再见的。</p>]]></content>
     
@@ -63,25 +63,25 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+      <category term="Geoprocessing" scheme="https://www.kikitamap.com/tags/Geoprocessing/"/>
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
+      <category term="Raster" scheme="https://www.kikitamap.com/tags/Raster/"/>
     
-      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
+      <category term="Vector Tiles" scheme="https://www.kikitamap.com/tags/Vector-Tiles/"/>
     
-      <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
+      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
     
   </entry>
   
   <entry>
     <title>Testing Report for Image Service</title>
-    <link href="http://www.kikitamap.com/2018/08/30/cloudStorageImageService/"/>
-    <id>http://www.kikitamap.com/2018/08/30/cloudStorageImageService/</id>
+    <link href="https://www.kikitamap.com/2018/08/30/cloudStorageImageService/"/>
+    <id>https://www.kikitamap.com/2018/08/30/cloudStorageImageService/</id>
     <published>2018-08-30T03:30:40.000Z</published>
     <updated>2018-08-31T07:14:12.000Z</updated>
     
@@ -96,23 +96,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+      <category term="Geoprocessing" scheme="https://www.kikitamap.com/tags/Geoprocessing/"/>
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
+      <category term="Raster" scheme="https://www.kikitamap.com/tags/Raster/"/>
     
-      <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
+      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
     
   </entry>
   
   <entry>
     <title>Testing Report for Raster Data Source in Cloud Storage</title>
-    <link href="http://www.kikitamap.com/2018/08/15/cloudStorage4MD/"/>
-    <id>http://www.kikitamap.com/2018/08/15/cloudStorage4MD/</id>
+    <link href="https://www.kikitamap.com/2018/08/15/cloudStorage4MD/"/>
+    <id>https://www.kikitamap.com/2018/08/15/cloudStorage4MD/</id>
     <published>2018-08-15T01:50:20.000Z</published>
     <updated>2018-08-31T06:06:24.000Z</updated>
     
@@ -130,23 +130,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Geoprocessing" scheme="http://www.kikitamap.com/tags/Geoprocessing/"/>
+      <category term="Geoprocessing" scheme="https://www.kikitamap.com/tags/Geoprocessing/"/>
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="Raster" scheme="http://www.kikitamap.com/tags/Raster/"/>
+      <category term="Raster" scheme="https://www.kikitamap.com/tags/Raster/"/>
     
-      <category term="Cloud Storage" scheme="http://www.kikitamap.com/tags/Cloud-Storage/"/>
+      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
     
   </entry>
   
   <entry>
     <title>探索矢量切片的Bundle</title>
-    <link href="http://www.kikitamap.com/2018/08/13/vectorTileBundle/"/>
-    <id>http://www.kikitamap.com/2018/08/13/vectorTileBundle/</id>
+    <link href="https://www.kikitamap.com/2018/08/13/vectorTileBundle/"/>
+    <id>https://www.kikitamap.com/2018/08/13/vectorTileBundle/</id>
     <published>2018-08-13T02:13:29.000Z</published>
     <updated>2018-08-14T02:56:15.000Z</updated>
     
@@ -161,23 +161,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+      <category term="Web" scheme="https://www.kikitamap.com/tags/Web/"/>
     
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+      <category term="ArcGIS Pro" scheme="https://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
-      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+      <category term="ArcGIS Enterprise" scheme="https://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
     
-      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
+      <category term="Vector Tiles" scheme="https://www.kikitamap.com/tags/Vector-Tiles/"/>
     
   </entry>
   
   <entry>
     <title>紧凑型缓存技术小结</title>
-    <link href="http://www.kikitamap.com/2018/07/23/CompactCache/"/>
-    <id>http://www.kikitamap.com/2018/07/23/CompactCache/</id>
+    <link href="https://www.kikitamap.com/2018/07/23/CompactCache/"/>
+    <id>https://www.kikitamap.com/2018/07/23/CompactCache/</id>
     <published>2018-07-23T04:49:48.000Z</published>
     <updated>2018-07-31T05:05:42.000Z</updated>
     
@@ -192,15 +192,15 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
   </entry>
   
   <entry>
     <title>Contributing to Our Github Project</title>
-    <link href="http://www.kikitamap.com/2018/07/20/lovelyGit/"/>
-    <id>http://www.kikitamap.com/2018/07/20/lovelyGit/</id>
+    <link href="https://www.kikitamap.com/2018/07/20/lovelyGit/"/>
+    <id>https://www.kikitamap.com/2018/07/20/lovelyGit/</id>
     <published>2018-07-20T09:47:40.000Z</published>
     <updated>2018-07-24T03:40:12.000Z</updated>
     
@@ -216,23 +216,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Web" scheme="http://www.kikitamap.com/tags/Web/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Web" scheme="https://www.kikitamap.com/tags/Web/"/>
     
-      <category term="Github" scheme="http://www.kikitamap.com/tags/Github/"/>
+      <category term="Github" scheme="https://www.kikitamap.com/tags/Github/"/>
     
-      <category term="Vector Tiles" scheme="http://www.kikitamap.com/tags/Vector-Tiles/"/>
+      <category term="Vector Tiles" scheme="https://www.kikitamap.com/tags/Vector-Tiles/"/>
     
   </entry>
   
   <entry>
     <title>你知道 CityEngine 中的 Leaf Shape 吗？</title>
-    <link href="http://www.kikitamap.com/2018/07/13/CELeafshape/"/>
-    <id>http://www.kikitamap.com/2018/07/13/CELeafshape/</id>
+    <link href="https://www.kikitamap.com/2018/07/13/CELeafshape/"/>
+    <id>https://www.kikitamap.com/2018/07/13/CELeafshape/</id>
     <published>2018-07-13T02:50:36.000Z</published>
     <updated>2018-07-13T06:29:44.000Z</updated>
     
@@ -248,23 +248,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+      <category term="ArcGIS Pro" scheme="https://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
-      <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
+      <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
     
   </entry>
   
   <entry>
     <title>如何获取30天试用版 Esri CityEngine ？</title>
-    <link href="http://www.kikitamap.com/2018/07/11/CEFreeTrial/"/>
-    <id>http://www.kikitamap.com/2018/07/11/CEFreeTrial/</id>
+    <link href="https://www.kikitamap.com/2018/07/11/CEFreeTrial/"/>
+    <id>https://www.kikitamap.com/2018/07/11/CEFreeTrial/</id>
     <published>2018-07-11T09:43:04.000Z</published>
     <updated>2018-07-11T09:31:17.000Z</updated>
     
@@ -280,19 +280,19 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+      <category term="Deployment" scheme="https://www.kikitamap.com/tags/Deployment/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
   <entry>
     <title>在 CityEngine 中使用 Python</title>
-    <link href="http://www.kikitamap.com/2018/04/10/pythonInCE/"/>
-    <id>http://www.kikitamap.com/2018/04/10/pythonInCE/</id>
+    <link href="https://www.kikitamap.com/2018/04/10/pythonInCE/"/>
+    <id>https://www.kikitamap.com/2018/04/10/pythonInCE/</id>
     <published>2018-04-10T09:40:11.000Z</published>
     <updated>2018-07-13T06:17:29.000Z</updated>
     
@@ -308,25 +308,25 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
-      <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
+      <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
     
   </entry>
   
   <entry>
     <title>Parthenon Temple</title>
-    <link href="http://www.kikitamap.com/2018/04/04/Parthenon/"/>
-    <id>http://www.kikitamap.com/2018/04/04/Parthenon/</id>
+    <link href="https://www.kikitamap.com/2018/04/04/Parthenon/"/>
+    <id>https://www.kikitamap.com/2018/04/04/Parthenon/</id>
     <published>2018-04-04T04:00:00.000Z</published>
-    <updated>2018-11-11T11:23:32.902Z</updated>
+    <updated>2018-11-11T11:23:32.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>摄于 2014-5-9, Acropolis, Athens, Greece</p></blockquote><p>CityEngine的教程中刚好有个Parthenon Temple 的 Demo</p><p><img src="http://kikitamap.com/images/blogImg/Parthenon_ParthenonModel.png" alt=""></p><p>不禁会想起在雅典卫城里它的断壁残垣，晒晒我们的合影</p><p>不知道几年过去，修复工作又向前推进了多少</p><p>那些带有编号的石头是不是已经归位了呢</p><p><img src="http://kikitamap.com/images/blogImg/Parthenon_Athens.jpg" alt=""></p><p>整个卫城中我最喜欢的是上图中最后一张的“厄瑞克忒翁神庙”，据说用于供奉雅典娜、波塞冬和英雄厄瑞克忒翁。</p><p>神庙一侧的女神柱像精致优美，即使经过了这么多的时光，都可以感受到雕刻师的精湛技艺。</p><p><img src="http://kikitamap.com/images/blogImg/Parthenon_IMG_3545.jpg" alt="厄瑞克忒翁神庙"></p>]]></content>
     
@@ -343,21 +343,21 @@
     
     </summary>
     
-      <category term="相机里" scheme="http://www.kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/"/>
+      <category term="相机里" scheme="https://www.kikitamap.com/categories/%E7%9B%B8%E6%9C%BA%E9%87%8C/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
   <entry>
     <title>CityEngine中纹理贴图之道(二)</title>
-    <link href="http://www.kikitamap.com/2018/03/30/textureinCE2/"/>
-    <id>http://www.kikitamap.com/2018/03/30/textureinCE2/</id>
+    <link href="https://www.kikitamap.com/2018/03/30/textureinCE2/"/>
+    <id>https://www.kikitamap.com/2018/03/30/textureinCE2/</id>
     <published>2018-03-30T06:54:44.000Z</published>
-    <updated>2018-11-11T11:44:08.592Z</updated>
+    <updated>2018-11-11T11:42:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>​        接着<a href="http://kikitamap.com/2018/03/22/textureinCE/" target="_blank" rel="noopener">上一篇</a>。</p><p>​       <img src="http://kikitamap.com/images/blogImg/textureinCE_6.png" alt=""></p><p>​        为了让脚本看起来更连贯，无需跳转上一篇，我们从头开始。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * File:    MyTestforBaseTexure.cga</span></span><br><span class="line"><span class="comment"> * Created: 30 Mar 2018 08:16:37 GMT</span></span><br><span class="line"><span class="comment"> * Author:  Xiaoyan Mu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">version <span class="string">"2017.1"</span></span><br><span class="line">attr height = <span class="number">10</span></span><br><span class="line">attr groundfloor_height = <span class="number">4</span></span><br><span class="line">attr floor_height = <span class="number">3.5</span></span><br><span class="line">attr tile_width = <span class="number">3.5</span></span><br><span class="line"></span><br><span class="line">wall_tex        = <span class="string">"facades/textures/brickwall.jpg"</span></span><br><span class="line">dirt_tex        = <span class="string">"facades/textures/dirtmap.15.tif"</span></span><br><span class="line">graffiti_tex    = <span class="string">"facades/textures/Graffiti.jpg"</span></span><br><span class="line">window_tex      = <span class="string">"facades/textures/window.5.tif"</span></span><br><span class="line"></span><br><span class="line">Lot --&gt; extrude(height) Building</span><br><span class="line"></span><br><span class="line">Building --&gt; comp(f) &#123;<span class="attr">front</span> : Sidefacade&#125;</span><br></pre></td></tr></table></figure><p>​        假设我希望在这面墙上“凿”出窗户，就需要将<code>Sidefacade</code>进行细化切割。贴纹理时也要注意一下新的技巧，也就是在细分表面之前先定义纹理UV，细分之后再用上一篇中提到的贴纹理的方法应用到<code>Wall</code>，这样就可以得到连续的墙体贴图。这样的做的原因在于，CE中的shape都是被不断迭代替换的，如果不在细分之前定义UV，<code>Sidefacade</code>对象在细分之后已经消亡了。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># Sidefacade is modified</span><br><span class="line"></span><br><span class="line">Sidefacade --&gt;  </span><br><span class="line">    # Setup texturing</span><br><span class="line">    setupProjection(<span class="number">1</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>) </span><br><span class="line">    setupProjection(<span class="number">2</span>, scope.xy, scope.sx, scope.sy)</span><br><span class="line">    # Divide Sidefacade</span><br><span class="line"> split(y)&#123; <span class="attr">groundfloor_height</span>: Wall | &#123;~floor_height : Floor&#125;* &#125;</span><br><span class="line"></span><br><span class="line">Floor --&gt;</span><br><span class="line">split(x)&#123; <span class="number">1</span> : Wall | &#123; ~tile_width : Tile &#125;* | <span class="number">1</span> : Wall &#125;            </span><br><span class="line">Tile --&gt;</span><br><span class="line">split(x)&#123; ~<span class="number">1</span> : Wall |  <span class="number">2</span> : split(y)&#123; ~<span class="number">1</span>: Wall | <span class="number">1.5</span>: Window | ~<span class="number">1</span>: Wall &#125; | ~<span class="number">1</span> : Wall &#125;</span><br><span class="line"></span><br><span class="line">Wall --&gt;</span><br><span class="line">    # Apply the texture         </span><br><span class="line">    set(material.bumpmap,wall_tex)</span><br><span class="line">    set(material.dirtmap, dirt_tex)</span><br><span class="line">    projectUV(<span class="number">1</span>)</span><br><span class="line">    projectUV(<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>) </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;</span><br><span class="line">  setupProjection(<span class="number">0</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line">  texture(window_tex)</span><br><span class="line">projectUV(<span class="number">0</span>)      </span><br><span class="line">      WondowFrame --&gt;</span><br><span class="line">      extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><h2 id="material-opacitymap"><a href="#material-opacitymap" class="headerlink" title="material.opacitymap"></a>material.opacitymap</h2><p><code>material.opacitymap</code> 通道可以用于控制纹理的透明度。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_7.png" alt=""></p><p>继续上面的例子，如果希望做出透明的窗户效果，可以将Window的代码替换为如下的样子。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>) </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;    </span><br><span class="line">      setupProjection(<span class="number">4</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line">      set(material.opacitymap, window_tex)</span><br><span class="line">      projectUV(<span class="number">4</span>) </span><br><span class="line">    WondowFrame --&gt;</span><br><span class="line">    extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><h2 id="material-specularmap"><a href="#material-specularmap" class="headerlink" title="material.specularmap"></a>material.specularmap</h2><p>为了虚拟现实，窗户玻璃来点反光效果吧。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_8.png" alt=""></p><p>上代码：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>)   </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;   </span><br><span class="line"> setupProjection(<span class="number">0</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line"> texture(window_tex)</span><br><span class="line"> projectUV(<span class="number">0</span>)</span><br><span class="line"> set(material.specular.r, <span class="number">1</span>) </span><br><span class="line">     set(material.specular.g, <span class="number">1</span>)   </span><br><span class="line">     set(material.specular.b, <span class="number">1</span>)</span><br><span class="line"> set(material.shininess, <span class="number">2</span>)</span><br><span class="line"> setupProjection(<span class="number">3</span>, scope.xy, scope.sx,  scope.sy)</span><br><span class="line"> set(material.specularmap, specular_tex)</span><br><span class="line"> projectUV(<span class="number">3</span>)</span><br><span class="line">    WondowFrame --&gt;</span><br><span class="line">    extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><p>剩下最后的 normalmap了，法向贴图。手里没有什么好例子，找到一篇<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">OpenGL的文档</a>，帮助理解。</p><p>完结。</p>]]></content>
     
@@ -371,23 +371,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
-      <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
+      <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
     
   </entry>
   
   <entry>
     <title>CityEngine中纹理贴图之道(一)</title>
-    <link href="http://www.kikitamap.com/2018/03/22/textureinCE/"/>
-    <id>http://www.kikitamap.com/2018/03/22/textureinCE/</id>
+    <link href="https://www.kikitamap.com/2018/03/22/textureinCE/"/>
+    <id>https://www.kikitamap.com/2018/03/22/textureinCE/</id>
     <published>2018-03-22T09:39:33.000Z</published>
-    <updated>2018-11-11T11:40:06.841Z</updated>
+    <updated>2018-11-11T11:40:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>​        </p><p>​        经常看到官微、公众号的各种推送，了解到很多轰动一时的大片和电游的视觉制作都有CityEngine 助力过。CityEngine 在影娱视觉行业早已硕果累累，而对于GIS大众，CityEngine 算是刚从幕后走到了台前，从神秘娱乐圈走近了烟火人间。这几年来，这个不姓“Arc”的非主流产品在不断地推陈出新，吸引着慕名围观的用户去了解。3D模型的纹理贴图问题通常是建模中的高频问题，作为前排围观群众之一，我今天就用CityEngine做一面“墙”娱乐一下吧。</p><blockquote><p>环境： Esri City Engine 2017.1</p></blockquote><p>​        在 CityEngine中的 <code>shape</code> 对象具有<code>material</code>属性，这一属性可以控制模型的纹理贴图、阴影效果、外观等。CityEngine 支持的纹理图片的格式有：<strong>.bmp、.gif、.jpg/.jpeg、.png、.tif/.tiff</strong>。 CityEngine贴图支持6个纹理通道，它们通过特定的关键字来表达，如下：</p><table><thead><tr><th>uv-set</th><th>Texture Layer</th></tr></thead><tbody><tr><td>0</td><td>colormap</td></tr><tr><td>1</td><td>bumpmap</td></tr><tr><td>2</td><td>dirtmap</td></tr><tr><td>3</td><td>specularmap</td></tr><tr><td>4</td><td>opacitymap</td></tr><tr><td>5</td><td>normalmap</td></tr></tbody></table><p><strong>下面我通过几个实例来说明下它们的用途：</strong></p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_1.png" alt=""></p><p>​        基于共同的基础脚本向下进行，这里不再解释，相信你一看即懂。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * File:    MyTestforBaseTexure.cga</span></span><br><span class="line"><span class="comment"> * Created: 21 Mar 2018 08:26:37 GMT</span></span><br><span class="line"><span class="comment"> * Author:  Xiaoyan Mu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">version <span class="string">"2017.1"</span></span><br><span class="line">attr height = <span class="number">6</span></span><br><span class="line">wall_tex        = <span class="string">"facades/textures/brickwall.jpg"</span></span><br><span class="line">dirt_tex        = <span class="string">"facades/textures/dirtmap.15.tif"</span></span><br><span class="line">graffiti_tex    = <span class="string">"facades/kiktia/Graffiti.jpg"</span></span><br><span class="line">Lot --&gt; extrude(height) Building</span><br><span class="line">Building --&gt; comp(f) &#123;<span class="attr">side</span> : Sidefacade&#125;</span><br></pre></td></tr></table></figure><h2 id="material-colormap"><a href="#material-colormap" class="headerlink" title="material.colormap"></a>material.colormap</h2><p><img src="http://kikitamap.com/images/blogImg/textureinCE_2.png" alt=""></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">setupProjection(<span class="number">0</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">texture(wall_tex)  # set(material.colormap,wall_tex)</span><br><span class="line">projectUV(<span class="number">0</span>)</span><br></pre></td></tr></table></figure><p>​        <code>texture(wall_tex)</code> ，实际是 <code>set(material.colormap,wall_tex)</code> 的简写，这个函数仅用于为当前shape指定纹理图片，而没有创建纹理坐标系。因此事先需要使用 <code>setupProjection()</code> ，用于指定贴图表面上的UV坐标系，以及贴图矩阵的排布样式。最后使用 <code>ProjectUV()</code>将贴图UV坐标系应用到贴图表面，这个过程有时被称为“烘焙（bake）”。相关函数的具体语法请查 <a href="http://cehelp.esri.com/help/index.jsp?topic=/com.procedural.cityengine.help/html/toc.html" target="_blank" rel="noopener"><strong>帮助</strong></a>。</p><p>​        “烘焙”是个形象生动的词，是个3D建模领域的常用词，对于GIS圈子的朋友可能有点陌生，在一个<strong><a href="https://www.blenderartists.org/forum/showthread.php?116259-what-is-texture-baking" target="_blank" rel="noopener">论坛</a></strong>里找到一个描述觉得不错分享大家。</p><blockquote><p>“Baking” generally refers to the process of recording as an image, some aspect of the Material or Mesh characteristics of a model. One value of this is that certain kinds of Material parameters can take longer to compute and apply to a model than an Image Texture, so it saves rendering time. Baking is usually done once a Material or Mesh is finalized. </p><p>In texture baking, for example, what is originally a procedural texture can be recorded as an image. Sometimes various “channels” of a material can be consolidated into a single image, simplifying the number of texture images used. Material colors applied in Texture Paint mode can be saved to an image. Texture baking can also help with disguising seams on a UV unwrap, a somewhat complicated but very useful process.</p><p>In normal baking, the mesh normals (which affect how light appears to reflect from the model’s surface) can be recorded – this results in very specialized images with RGB values based on normal vectors.</p><p>Usually baking requires having the model UV-unwrapped and -mapped, so the resulting image is properly fit to the model.</p></blockquote><h2 id="material-bumpmap"><a href="#material-bumpmap" class="headerlink" title="material.bumpmap"></a>material.bumpmap</h2><p>​    <code>material.bumpmap</code> 可以实现贴图的浮雕效果。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_3.png" alt=""></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">setupProjection(<span class="number">1</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">set(material.bumpmap,wall_tex)  </span><br><span class="line">projectUV(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><h2 id="material-dirtmap"><a href="#material-dirtmap" class="headerlink" title="material.dirtmap"></a>material.dirtmap</h2><p>​        如果想使这面墙更逼真，来点“做旧”的感觉，可以使用 <code>material.dirtmap</code> 通道来增加图片镶嵌的效果。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_4.png" alt=""></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sidefacade --&gt;</span><br><span class="line">setupProjection(<span class="number">0</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>, <span class="number">1</span>) </span><br><span class="line">texture(wall_tex)</span><br><span class="line">projectUV(<span class="number">0</span>) </span><br><span class="line">    # Add dirtmap channel</span><br><span class="line">    setupProjection(<span class="number">2</span>, scope.xy, scope.sx, scope.sy)</span><br><span class="line">set(material.dirtmap, dirt_tex)</span><br><span class="line">projectUV(<span class="number">2</span>)</span><br></pre></td></tr></table></figure><p>​        相同的方法来做一面涂鸦墙也可以哦。（涂鸦图片来自网络，侵删）</p><p>​        将dirtmap换张图，  <code>set(material.dirtmap, graffiti_tex)</code></p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_5.png" alt=""></p><p>先到这里，下篇继续……</p><p>## </p>]]></content>
     
@@ -401,23 +401,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
-      <category term="CGA" scheme="http://www.kikitamap.com/tags/CGA/"/>
+      <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
     
   </entry>
   
   <entry>
     <title>导入3D模型至CityEngine</title>
-    <link href="http://www.kikitamap.com/2018/03/21/importingmodels/"/>
-    <id>http://www.kikitamap.com/2018/03/21/importingmodels/</id>
+    <link href="https://www.kikitamap.com/2018/03/21/importingmodels/"/>
+    <id>https://www.kikitamap.com/2018/03/21/importingmodels/</id>
     <published>2018-03-21T03:06:12.000Z</published>
-    <updated>2018-11-11T11:56:00.758Z</updated>
+    <updated>2018-11-11T11:56:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。</p><p>OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是由导入窗口中的 <code>Import as static model</code> 设置控制的。</p><blockquote><p><strong>Import as static model</strong></p><p>When checked, the file will be imported ‘as is’ and will not be modifiable by cga rules.</p><ul><li>Shapes—Serve as a base for CGA generation. A typical example is footprint data.</li><li>Static models—Can be scaled, rotated, and translated after import but cannot be processed further with CGA. </li></ul></blockquote><p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p><p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p><p>在如下示例图中了解：</p><p><img src="http://kikitamap.com/images/blogImg/importingmodels.png" alt=""></p>]]></content>
     
@@ -431,21 +431,21 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="3D" scheme="http://www.kikitamap.com/tags/3D/"/>
+      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
   <entry>
     <title>《Scent of a Woman》</title>
-    <link href="http://www.kikitamap.com/2018/03/18/ScentofaWoman/"/>
-    <id>http://www.kikitamap.com/2018/03/18/ScentofaWoman/</id>
+    <link href="https://www.kikitamap.com/2018/03/18/ScentofaWoman/"/>
+    <id>https://www.kikitamap.com/2018/03/18/ScentofaWoman/</id>
     <published>2018-03-18T04:00:00.000Z</published>
-    <updated>2018-11-11T12:02:50.656Z</updated>
+    <updated>2018-11-11T12:02:50.000Z</updated>
     
     <content type="html"><![CDATA[<p>这是一部老片。</p><p>年少无知的时候，看到题目《闻香识女人》，暗自以为这是一部有关调情高手的电影，完全无感，从此错过。</p><p>在没有很多电影可以走入内心的今天，翻看旧电影真的是种享受。竟然有几句台词可以让我记住和感动。</p><blockquote><hr><p>Now I’ve come to the crossroad in my life. I always knew what the right path was.  Without exception.  I knew, but I never took it. You know why. It’s was too damn hard.</p><hr><p>But there is nothing like the sight of an amputated spirit. There is no prosthetic for that.</p><hr></blockquote><p>我虽不是很相信人有灵魂，但我确信看到过人性的高贵。</p><p><img src="http://kikitamap.com/images/blogImg/ScentofaWoman_1.jpg" alt=""></p><p><img src="http://kikitamap.com/images/blogImg/ScentofaWoman_2.jpg" alt=""></p>]]></content>
     
@@ -462,17 +462,17 @@
     
     </summary>
     
-      <category term="碎碎念" scheme="http://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+      <category term="碎碎念" scheme="https://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
     
     
   </entry>
   
   <entry>
     <title>OSM在ArcGIS产品线中的使用小结</title>
-    <link href="http://www.kikitamap.com/2018/03/15/osm2ce/"/>
-    <id>http://www.kikitamap.com/2018/03/15/osm2ce/</id>
+    <link href="https://www.kikitamap.com/2018/03/15/osm2ce/"/>
+    <id>https://www.kikitamap.com/2018/03/15/osm2ce/</id>
     <published>2018-03-15T06:56:00.000Z</published>
-    <updated>2018-11-11T12:11:28.696Z</updated>
+    <updated>2018-11-11T12:11:17.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://kikitamap.com/images/blogImg/osm2ce_1.png" alt=""></p><p>说到免费开放的数据，自然会想到 Open Street Map，这里分享下在 ArcGIS 产品线中osm数据的使用实践。</p><blockquote><p>环境：ArcGIS Desktop 10.6， Esri CityEngine 2017.1</p></blockquote><h3 id="在ArcMap中使用osm数据"><a href="#在ArcMap中使用osm数据" class="headerlink" title="在ArcMap中使用osm数据"></a><strong>在ArcMap中使用osm数据</strong></h3><p>一般情况下，我们可以在 <a href="https://www.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a> 官网可以通过指定范围直接下载osm格式数据，然后在 ArcMap中直接读取。如下，以Esri中国所在的金泰大厦为中心的数据：</p><p><img src="http://kikitamap.com/images/blogImg/osm2ce_2.png" alt="ArcMap直读OSM"></p><p>osm数据是基于xml的数据格式，ArcMap不能直接编辑。如果希望导入地理数据库中编辑，可以利用插件，这是Esri额外提供的一个桌面端的免费开源的osm插件，<a href="https://www.arcgis.com/home/item.html?id=0c4b24608fc94542ba5d1130c0606802" target="_blank" rel="noopener">ArcGIS Editor for OSM 10.6.x Desktop</a>。 通过这个插件可以下载、更新OSM数据有关这个插件的源码、文档，可以在<a href="https://github.com/Esri/arcgis-osm-editor" target="_blank" rel="noopener">Github</a>上获得。</p><blockquote><p>OSM is an XML-based format used to describe vector data in a map. It defines three basic data types—nodes, ways, and closed ways—which are used to describe all the other elements: </p><ul><li>Nodes—Points between which segments are drawn. </li><li>Ways—Ordered list of nodes, displayed as connected by line segments in the editor. </li><li>Closed Ways—Ways that go in a complete loop. They are used to describe areas such as parks, lakes, or islands.</li></ul></blockquote><p>以前10.3年代的时候，整理过一次简单的说明，点<a href="http://kikitamap.com/2015/04/01/ArcGISEditorforOSM103xDesktop/" target="_blank" rel="noopener">这里</a>直达。通过测试，相同的网络环境下，官网下载osm数据，之后再使用 Load OSM File 导入GDB，效率明显优于直接使用 Download OSM Data导入GDB。</p><h3 id="在CityEngine中使用osm数据"><a href="#在CityEngine中使用osm数据" class="headerlink" title="在CityEngine中使用osm数据"></a><strong>在CityEngine中使用osm数据</strong></h3><p>如果osm数据用于CityEngine，那么无需事先导入GDB，CityEngine可以直接解析osm并可分类导入数据，例如下图中导入highway，Building类：</p><p><img src="http://kikitamap.com/images/blogImg/osm2ce_3.png" alt="导入OSM至CityEngine场景"></p><p>在CityEngine中导入osm时，可以勾选“Map OSM tags”，从而CityEngine会通过OSM street type来定义道路的宽度，并给与不同道路组成部分不同的起始规则，方便后续利用规则批量建模。如下，以金泰大厦以南的东直门大枢纽为例，复杂的交通仍然保持错落有致：</p><p><img src="http://kikitamap.com/images/blogImg/osm2ce_4.png" alt="OSM Highway"></p><p>选中<code>Jintai_Streets</code> 这个图层，可以在Inspect窗口中看到图层的属性，其中即为默认情况下osm数据在CityEngine中的映射规则，可以根据需要修改：</p><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//------------------------- </span></span><br><span class="line"><span class="comment">// Example OSM Tag Mapping</span></span><br><span class="line"></span><br><span class="line">streetscale = <span class="number">1</span>  <span class="comment">// street width scale factor</span></span><br><span class="line"></span><br><span class="line">width = getObjectAttr(<span class="string">"width"</span>, <span class="literal">false</span>)</span><br><span class="line">lanes = getObjectAttr(<span class="string">"lanes"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">attr streetWidth = <span class="comment">// street width dependeding on available attributes</span></span><br><span class="line">    <span class="keyword">case</span> width &gt; <span class="number">0</span> : width       * streetscale</span><br><span class="line">    <span class="keyword">case</span> lanes &gt; <span class="number">0</span> : lanes * <span class="number">3.5</span> * streetscale</span><br><span class="line">    <span class="keyword">else</span>           : streetWidthByClass * streetscale * oneway</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> = getObjectAttr(<span class="string">"highway"</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">streetWidthByClass =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">8</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">7</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"motorway"</span>    : <span class="number">12</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"trunk"</span>       : <span class="number">11</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"road"</span>        : <span class="number">6</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">5</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"footway"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"cycleway"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"steps"</span>       : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">4</span></span><br><span class="line"></span><br><span class="line">oneway = <span class="comment">// oneway width correction</span></span><br><span class="line">    <span class="function"><span class="keyword">case</span> <span class="title">getObjectAttr</span>(<span class="params"><span class="string">"oneway"</span>, <span class="literal">false</span></span>) </span>== <span class="string">"yes"</span> : <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">else</span>                                  : <span class="number">1</span></span><br><span class="line"></span><br><span class="line">sidewalkscale = <span class="number">1</span> <span class="comment">// sidewalk width scale factor</span></span><br><span class="line"></span><br><span class="line">sidewalkWidth =</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"primary"</span>     : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"secondary"</span>   : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"tertiary"</span>    : <span class="number">2</span></span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">class</span> == <span class="string">"residential"</span> : <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>                        : <span class="number">0</span></span><br><span class="line"></span><br><span class="line">attr sidewalkWidthLeft = sidewalkWidth * sidewalkscale</span><br><span class="line">attr sidewalkWidthRight = sidewalkWidth * sidewalkscale</span><br></pre></td></tr></table></figure><p>默认情况下，进入cityEngine中的道路数据，会使用Esri.lib库中的规则Street_Modern_Standard.cga，当然也可以自己来编写。</p><p><img src="http://kikitamap.com/images/blogImg/osm2ce_5.png" alt=""></p>]]></content>
     
@@ -486,19 +486,19 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Geodata" scheme="http://www.kikitamap.com/tags/Geodata/"/>
+      <category term="Geodata" scheme="https://www.kikitamap.com/tags/Geodata/"/>
     
-      <category term="CityEngine" scheme="http://www.kikitamap.com/tags/CityEngine/"/>
+      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
   <entry>
     <title>CityEngine中的Terrain Map Layer</title>
-    <link href="http://www.kikitamap.com/2018/03/13/CEMaplayer/"/>
-    <id>http://www.kikitamap.com/2018/03/13/CEMaplayer/</id>
+    <link href="https://www.kikitamap.com/2018/03/13/CEMaplayer/"/>
+    <id>https://www.kikitamap.com/2018/03/13/CEMaplayer/</id>
     <published>2018-03-13T04:40:14.000Z</published>
     <updated>2018-03-15T02:36:11.000Z</updated>
     
@@ -514,15 +514,15 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
   </entry>
   
   <entry>
     <title>如何部署通过Portal管理的ArcGIS Pro Named User许可？</title>
-    <link href="http://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/"/>
-    <id>http://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/</id>
+    <link href="https://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/"/>
+    <id>https://www.kikitamap.com/2018/03/09/ProNamedUserforPortalUse/</id>
     <published>2018-03-09T03:50:45.000Z</published>
     <updated>2018-05-25T07:38:33.000Z</updated>
     
@@ -547,23 +547,23 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+      <category term="Deployment" scheme="https://www.kikitamap.com/tags/Deployment/"/>
     
-      <category term="License" scheme="http://www.kikitamap.com/tags/License/"/>
+      <category term="License" scheme="https://www.kikitamap.com/tags/License/"/>
     
-      <category term="ArcGIS Enterprise" scheme="http://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
+      <category term="ArcGIS Enterprise" scheme="https://www.kikitamap.com/tags/ArcGIS-Enterprise/"/>
     
   </entry>
   
   <entry>
     <title>网站主题更换备忘录</title>
-    <link href="http://www.kikitamap.com/2018/02/26/sitebuilding/"/>
-    <id>http://www.kikitamap.com/2018/02/26/sitebuilding/</id>
+    <link href="https://www.kikitamap.com/2018/02/26/sitebuilding/"/>
+    <id>https://www.kikitamap.com/2018/02/26/sitebuilding/</id>
     <published>2018-02-26T03:06:22.000Z</published>
-    <updated>2018-11-12T15:14:17.387Z</updated>
+    <updated>2018-11-12T15:14:17.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener"><strong>Maupassant 主题</strong></a><br>安装主题和渲染器：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/tufu9441/maupassant-hexo.git themes/maupassant</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-pug --save</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-sass --save</span></span><br></pre></td></tr></table></figure></p><p>编辑Hexo目录下的 <code>_config.yml</code>，将<code>theme</code>的值改为<code>maupassant</code>。</p><h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>默认配置:</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">_config.yml_config.ymlfancybox:</span> <span class="literal">true</span> <span class="comment">## If you want to use fancybox please set the value to true.</span></span><br><span class="line"><span class="attr">disqus:</span> <span class="comment">## Your disqus_shortname, e.g. username</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Gitment comment system please set the value to true.</span></span><br><span class="line"><span class="attr">  owner:</span> <span class="comment">## Your GitHub ID, e.g. username</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="comment">## The repository to store your comments, make sure you're the repo's owner, e.g. imsun.github.io</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="comment">## GitHub client ID, e.g. 75752dafe7907a897619</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="comment">## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50</span></span><br><span class="line"><span class="attr">uyan:</span> <span class="comment">## Your uyan_id. e.g. 1234567</span></span><br><span class="line"><span class="attr">livere:</span> <span class="comment">## Your livere data-uid, e.g. MTAyMC8zMDAxOC78NTgz</span></span><br><span class="line"><span class="attr">changyan:</span> <span class="comment">## Your changyan appid, e.g. cyrALsXc8</span></span><br><span class="line"><span class="attr">changyan_conf:</span> <span class="comment">## Your changyan conf, e.g. prod_d8a508c2825ab57eeb43e7c69bba0e8b</span></span><br><span class="line"><span class="attr">valine:</span> <span class="comment">## https://valine.js.org</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use Valine comment system, please set the value to true.</span></span><br><span class="line"><span class="attr">  appid:</span>  <span class="comment">## Your LeanCloud application App ID, e.g. pRBBL2JR4N7kLEGojrF0MsSs-gzGzoHsz</span></span><br><span class="line"><span class="attr">  appkey:</span>  <span class="comment">## Your LeanCloud application App Key, e.g. tjczHpDfhjYDSYddzymYK1JJ</span></span><br><span class="line"><span class="attr">  notify:</span> <span class="literal">false</span> <span class="comment">## Mail notifier, see https://github.com/xCss/Valine/wiki/Valine-评论系统中的邮件提醒设置</span></span><br><span class="line"><span class="attr">  verify:</span> <span class="literal">false</span> <span class="comment">## Validation code.</span></span><br><span class="line"><span class="attr">  placeholder:</span> <span class="string">Just</span> <span class="string">so</span> <span class="string">so</span> <span class="comment">## Comment box placeholders.</span></span><br><span class="line"><span class="attr">  avatar:</span> <span class="string">'mm'</span> <span class="comment">## Gravatar type, see https://github.com/xCss/Valine/wiki/avatar-setting-for-valine</span></span><br><span class="line"><span class="attr">  pageSize:</span> <span class="number">10</span> <span class="comment">## Number of comments per page.</span></span><br><span class="line"><span class="attr">  guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment">## Attributes of reviewers.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">google_search:</span> <span class="literal">true</span> <span class="comment">## Use Google search, true/false.</span></span><br><span class="line"><span class="attr">baidu_search:</span> <span class="literal">false</span> <span class="comment">## Use Baidu search, true/false.</span></span><br><span class="line"><span class="attr">swiftype:</span> <span class="comment">## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT</span></span><br><span class="line"><span class="attr">tinysou:</span> <span class="comment">## Your tinysou_key, e.g. 4ac092ad8d749fdc6293</span></span><br><span class="line"><span class="attr">self_search:</span> <span class="literal">false</span> <span class="comment">## Use a jQuery-based local search engine, true/false.</span></span><br><span class="line"><span class="attr">google_analytics:</span> <span class="comment">## Your Google Analytics tracking id, e.g. UA-42425684-2</span></span><br><span class="line"><span class="attr">baidu_analytics:</span> <span class="comment">## Your Baidu Analytics tracking id, e.g. 8006843039519956000</span></span><br><span class="line"><span class="attr">show_category_count:</span> <span class="literal">false</span> <span class="comment">## If you want to show the count of categories in the sidebar widget please set the value to true.</span></span><br><span class="line"><span class="attr">toc_number:</span> <span class="literal">true</span> <span class="comment">## If you want to add list number to toc please set the value to true.</span></span><br><span class="line"><span class="attr">shareto:</span> <span class="literal">false</span> <span class="comment">## If you want to use the share button please set the value to true, you must have hexo-helper-qrcode installed.</span></span><br><span class="line"><span class="attr">busuanzi:</span> <span class="literal">false</span> <span class="comment">## If you want to use Busuanzi page views please set the value to true.</span></span><br><span class="line"><span class="attr">widgets_on_small_screens:</span> <span class="literal">false</span> <span class="comment">## Set to true to enable widgets on small screens.</span></span><br><span class="line"><span class="attr">canvas_nest:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to use dynamic background please set the value to true, you can also fill the following parameters to customize the dynamic effect, or just leave them blank to keep the default effect.</span></span><br><span class="line"><span class="attr">  color:</span> <span class="comment">## RGB value of the color, e.g. "100,99,98"</span></span><br><span class="line"><span class="attr">  opacity:</span> <span class="comment">## Transparency of lines, e.g. "0.7"</span></span><br><span class="line"><span class="attr">  zIndex:</span> <span class="comment">## The z-index property of the background, e.g. "-1"</span></span><br><span class="line"><span class="attr">  count:</span> <span class="comment">## Quantity of lines, e.g. "150"</span></span><br><span class="line"><span class="attr">donate:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span> <span class="comment">## If you want to show the donate button after each post, please set the value to true and fill the following items according to your need. You can also enable donate button in a page by adding a "donate: true" item to the front-matter.</span></span><br><span class="line"><span class="attr">  github:</span> <span class="comment">## GitHub URL, e.g. https://github.com/Kaiyuan/donate-page</span></span><br><span class="line"><span class="attr">  alipay_qr:</span> <span class="comment">## Path of Alipay QRcode image, e.g. /img/AliPayQR.png</span></span><br><span class="line"><span class="attr">  wechat_qr:</span> <span class="comment">## Path of Wechat QRcode image, e.g. /img/WeChatQR.png</span></span><br><span class="line"><span class="attr">  btc_qr:</span> <span class="comment">## Path of Bitcoin QRcode image, e.g. /img/BTCQR.png</span></span><br><span class="line"><span class="attr">  btc_key:</span> <span class="comment">## Bitcoin key, e.g. 1KuK5eK2BLsqpsFVXXSBG5wbSAwZVadt6L</span></span><br><span class="line"><span class="attr">  paypal_url:</span> <span class="comment">## Paypal URL, e.g. https://paypal.me/tufu9441</span></span><br><span class="line"></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">home</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-home</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">archive</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">archives/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-archive</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">about</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">about/</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-user</span></span><br><span class="line"><span class="attr">  - page:</span> <span class="string">rss</span></span><br><span class="line"><span class="attr">    directory:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">    icon:</span> <span class="string">fa-rss</span></span><br><span class="line"></span><br><span class="line"><span class="attr">widgets:</span> <span class="comment">## Six widgets in sidebar provided: search, category, tag, recent_posts, rencent_comments and links.</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">search</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">category</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">tag</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_posts</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">recent_comments</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">links</span></span><br><span class="line"></span><br><span class="line"><span class="attr">links:</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name1</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example1.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name2</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example2.com/</span></span><br><span class="line"><span class="attr">  - title:</span> <span class="string">site-name3</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">http://www.example3.com/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">timeline:</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/06/12-Start</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2014</span><span class="string">/11/29-XXX</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">    word:</span> <span class="number">2015</span><span class="string">/02/18-DDD</span></span><br><span class="line"><span class="attr">  - num:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">    word:</span> <span class="string">More</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Static files</span></span><br><span class="line"><span class="attr">js:</span> <span class="string">js</span></span><br><span class="line"><span class="attr">css:</span> <span class="string">css</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Theme version</span></span><br><span class="line"><span class="attr">version:</span> <span class="number">0.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure><ul><li>fancybox - 是否启用<a href="http://fancyapps.com/fancybox/" target="_blank" rel="noopener">Fancybox</a>图片灯箱效果</li><li>disqus - <a href="https://disqus.com/" target="_blank" rel="noopener">Disqus评论</a> shortname</li><li>gitment - <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">Gitment评论</a>相关参数</li><li>uyan - <a href="http://www.uyan.cc/" target="_blank" rel="noopener">友言评论</a> id</li><li>livere - <a href="https://livere.com/" target="_blank" rel="noopener">来必力评论</a> data-uid</li><li>changyan - <a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">畅言评论</a> appid</li><li>valine - <a href="https://valine.js.org/" target="_blank" rel="noopener">Valine评论</a>相关参数</li><li>google_search - 默认使用Google搜索引擎</li><li>baidu_search - 若想使用百度搜索，将其设定为<code>true</code>。</li><li>swiftype - <a href="https://swiftype.com/" target="_blank" rel="noopener">Swiftype</a> 站内搜索key</li><li>tinysou - <a href="http://tinysou.com/" target="_blank" rel="noopener">微搜索</a> key</li><li>self_search - 基于jQuery的<a href="http://hahack.com/codes/local-search-engine-for-hexo" target="_blank" rel="noopener">本地搜索引擎</a>，需要安装<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a>插件使用。</li><li>google_analytics - <a href="https://www.google.com/analytics/" target="_blank" rel="noopener">Google Analytics</a> 跟踪ID</li><li>baidu_analytics - <a href="http://tongji.baidu.com/" target="_blank" rel="noopener">百度统计</a> 跟踪ID</li><li>show_category_count - 是否显示侧边栏分类数目</li><li>toc_number - 是否显示文章中目录列表自动编号</li><li>shareto - 是否使用分享按鈕，需要安装<a href="https://github.com/yscoder/hexo-helper-qrcode" target="_blank" rel="noopener">hexo-helper-qrcode</a>插件使用</li><li>busuanzi - 是否使用<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子</a>页面访问计数</li><li>widgets_on_small_screens - 是否在移动设备屏幕底部显示侧边栏</li><li><a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md" target="_blank" rel="noopener">canvas_nest</a> - 是否使用canvas动态背景</li><li>donate - 是否启用捐赠按钮</li><li>menu - 自定义页面及菜单，依照已有格式填写。填写后请在<code>source</code>目录下建立相应名称的文件夹，并包含<code>index.md</code>文件，以正确显示页面。导航菜单中集成了<a href="http://fontawesome.io/" target="_blank" rel="noopener">FontAwesome</a>图标字体，可以在<a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">这里</a>选择新的图标，并按照相关说明使用。</li><li>widgets - 选择和排列希望使用的侧边栏小工具。</li><li>links - 友情链接，请依照格式填写。</li><li>timeline - 网站历史时间线，在页面<code>front-matter</code>中设置<code>layout: timeline</code>可显示。</li><li>Static files - 静态文件存储路径，方便设置CDN缓存。</li><li>Theme version - 主题版本，便于静态文件更新后刷新CDN缓存。</li></ul><h2 id="主题特性"><a href="#主题特性" class="headerlink" title="主题特性"></a>主题特性</h2><h3 id="网站图标"><a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h3><p>若要设置网站Favicon，可以将 <strong>favicon.ico</strong> 放在Hexo根目录的<code>source</code>文件夹下，建议的大小：32px*32px。</p><p>若要为网站添加苹果设备图标，请将命名为 <strong>apple-touch-icon.png</strong> 的图片放在同样的位置，建议的大小：114px*114px。</p><h3 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h3><p>首页默认显示文章摘要而非全文，可以在文章的<code>front-matter</code>中填写一项<code>description:</code>来设置你想显示的摘要，或者直接在文章内容中插入<code>&lt;!--more--&gt;</code>以隐藏后面的内容。<br>若两者都未设置，则自动截取文章第一段作为摘要。</p><h3 id="添加页面"><a href="#添加页面" class="headerlink" title="添加页面"></a>添加页面</h3><p>在<code>source</code>目录下建立相应名称的文件夹，然后在文件夹中建立<code>index.md</code>文件，并在<code>index.md</code>的<code>front-matter</code>中设置layout为<code>layout: page</code>。若需要单栏页面，就将layout设置为 <code>layout: single-column</code>。</p><h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><p>在文章的<code>front-matter</code>中添加<code>toc: true</code>即可让该篇文章显示目录。</p><h3 id="文章评论"><a href="#文章评论" class="headerlink" title="文章评论"></a>文章评论</h3><p>文章和页面的评论功能可以通过在<code>front-matter</code>中设置<code>comments: true</code>或<code>comments: false</code>来进行开启或关闭（默认开启）。</p><h3 id="语法高亮"><a href="#语法高亮" class="headerlink" title="语法高亮"></a>语法高亮</h3><p>要启用代码高亮，请在Hexo目录的<code>_config.yml</code>中将<code>highlight</code>选项按照如下设置：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure><h3 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h3><p>要启用数学公式支持，请在Hexo目录的<code>_config.yml</code>中添加：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>并在相应文章的<code>front-matter</code>中添加<code>mathjax: true</code>，例如：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Test</span> <span class="string">Math</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2016</span><span class="bullet">-04</span><span class="bullet">-05</span> <span class="number">14</span><span class="string">:16:00</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">math</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure><p>数学公式的默认定界符是<code>$$...$$</code>和<code>\\[...\\]</code>（对于块级公式），以及<code>$...$</code>和<code>\\(...\\)</code>（对于行内公式）。</p><p>但是，如果你的文章内容中经常出现美元符号“<code>$</code>”, 或者说你想将“<code>$</code>”用作美元符号而非行内公式的定界符，请在Hexo目录的<code>_config.yml</code>中添加：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mathjax2:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>而不是<code>mathjax: true</code>。 相应地，在需要使用数学公式的文章的<code>front-matter</code>中也添加<code>mathjax2: true</code>。</p><p><a href="http://zhongpu.info/2016/05/06/Mathjax%20and%20Hexo/" target="_blank" rel="noopener">示例</a>。</p><p><a href="https://www.haomwei.com/images/maupassant.jpg" target="_blank" rel="noopener"><img src="https://www.haomwei.com/images/maupassant.jpg" alt="主题效果"></a>主题效果</p><p>转自：<a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">屠城: 大道至简——Hexo简洁主题推荐</a></p>]]></content>
     
@@ -576,19 +576,19 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Deployment" scheme="http://www.kikitamap.com/tags/Deployment/"/>
+      <category term="Deployment" scheme="https://www.kikitamap.com/tags/Deployment/"/>
     
-      <category term="Webmaster" scheme="http://www.kikitamap.com/tags/Webmaster/"/>
+      <category term="Webmaster" scheme="https://www.kikitamap.com/tags/Webmaster/"/>
     
   </entry>
   
   <entry>
     <title>解析xml修改切片原点绕开工具的坑</title>
-    <link href="http://www.kikitamap.com/2018/02/05/AlterXMLScheme/"/>
-    <id>http://www.kikitamap.com/2018/02/05/AlterXMLScheme/</id>
+    <link href="https://www.kikitamap.com/2018/02/05/AlterXMLScheme/"/>
+    <id>https://www.kikitamap.com/2018/02/05/AlterXMLScheme/</id>
     <published>2018-02-05T09:00:14.000Z</published>
     <updated>2018-02-08T01:54:29.000Z</updated>
     
@@ -604,12 +604,12 @@
     
     </summary>
     
-      <category term="木工开物" scheme="http://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
     
     
-      <category term="Python" scheme="http://www.kikitamap.com/tags/Python/"/>
+      <category term="Python" scheme="https://www.kikitamap.com/tags/Python/"/>
     
-      <category term="ArcGIS Pro" scheme="http://www.kikitamap.com/tags/ArcGIS-Pro/"/>
+      <category term="ArcGIS Pro" scheme="https://www.kikitamap.com/tags/ArcGIS-Pro/"/>
     
   </entry>
   
