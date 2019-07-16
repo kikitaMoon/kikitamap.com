@@ -3,6 +3,63 @@
   
     
     <entry>
+      <title><![CDATA[WiFi Network Positioning]]></title>
+      <url>/2019/06/27/wlanNetworks/</url>
+      <content type="html"><![CDATA[<p>在设备开启WiFi之后，会对周边 WiFi Access Point (AP)进行扫描，并将这些可见WiFi名称推给用户供选择。这是几乎是我们的PC和手机的日常。 除了连接WiFi登录Internet 之外，实际上，我们还可以通过 WiFi AP进行定位。</p>
+<p>定位和地图一直是紧密联系的，无论是面向消费者的第一人称应用，还是关于管理者的追踪需求。各大LBS厂商，早就提供了各种定位功能，尤其HERE，Positioning 历史可以追溯到 Nokia年代，包括基于 GPS，WiFi network，cell signal，Bluetooth 等各种信号源的定位能力。</p>
+<p><br></p>
+<h1 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h1><ul>
+<li>除了Mobile Hotspot、WiFi Egg，大多数情况下 AP不会经常的移动， 这就为WiFi定位的基础参照位置信息；</li>
+<li><p>理论上，每一个 AP 都有全球唯一标识符— mac地址；当然也不排除有重复mac的问题，至于如何去重和更新后端数据库就是 another story，这里不展开了；</p>
+</li>
+<li><p>设备WiFi扫描到AP即可同时获取AP的信息，信号的强度，mac地址（BSSID）等，无论是否连接上；</p>
+</li>
+<li>根据WiFi信号强度衰减和距离的函数，可以判断设备离AP的距离；如果多个AP存在，那么这多个圆相交的区域就可以判定设备的位置；</li>
+</ul>
+<p>从上面的原理可以看出，AP的位置越准确，设备扫描到的AP越多，那么设备的位置越准确。</p>
+<p><br></p>
+<h1 id="Quick-Testing"><a href="#Quick-Testing" class="headerlink" title="Quick Testing"></a>Quick Testing</h1><p>做个小测试，帮助快速理解。</p>
+<p>假设已经拥有了 HERE Developer 账号和密钥，如果没有，这里 <a href="https://developer.here.com/?create=Freemium-Basic&amp;keepState=true&amp;step=account" target="_blank" rel="noopener">免费注册</a>。 </p>
+<p>以我手头的 Windows 和 <a href="https://developer.here.com/documentation/positioning/topics/request-constructing.html" target="_blank" rel="noopener">HERE Positioning API</a> 的 WLAN Positioning为例。</p>
+<p><br></p>
+<p><strong>1</strong>   获取周边WiFi信息，可以使用 <code>netsh</code> 命令查到当前扫描到的AP。 </p>
+<p>   <code>netsh wlan show networks mode=BSSID</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">C:\WINDOWS\system32&gt;netsh wlan show networks <span class="attribute">mode</span>=BSSID</span><br><span class="line"></span><br><span class="line">Interface name : Wi-Fi</span><br><span class="line">There are 18 networks currently visible.</span><br><span class="line"></span><br><span class="line">SSID 1 : guest</span><br><span class="line">   <span class="built_in"> Network type </span>           : Infrastructure</span><br><span class="line">    Authentication          : WPA2-Personal</span><br><span class="line">    Encryption              : CCMP</span><br><span class="line">    BSSID 1                 : 0a:69:6c:0c:08:c2</span><br><span class="line">         Signal             : 30%</span><br><span class="line">         Radio<span class="built_in"> type </span>        : 802.11n</span><br><span class="line">         Channel            : 11</span><br><span class="line">         Basic rates (Mbps) : 1 2 5.5 11</span><br><span class="line">         Other rates (Mbps) : 6 9 12 18 24 36 48 54</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"></span><br><span class="line">SSID 18 : Regus-76</span><br><span class="line">   <span class="built_in"> Network type </span>           : Infrastructure</span><br><span class="line">    Authentication          : WPA2-Personal</span><br><span class="line">    Encryption              : CCMP</span><br><span class="line">    BSSID 1                 : 0c:d8:6c:9f:1e:80</span><br><span class="line">         Signal             : 68%</span><br><span class="line">         Radio<span class="built_in"> type </span>        : 802.11n</span><br><span class="line">         Channel            : 13</span><br><span class="line">         Basic rates (Mbps) : 1 2 5.5 11</span><br><span class="line">         Other rates (Mbps) : 6 9 12 18 24 36 48 54</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><strong>2</strong>  使用收集到的 BSSID 发送类似 <a href="https://developer.here.com/documentation/positioning/topics/example-wlan.html" target="_blank" rel="noopener">这个示例</a> 中的请求即可，so easy!</p>
+<p>   当然, 这只是 online WiFi positioning， 还有更黑科技的 offline positioning，有空再更。</p>
+<p>   <br></p>
+<p>   <br></p>
+<p><strong>Demo Screenshot</strong></p>
+<p>   Chian HLS JS API + Global Positioning API </p>
+<p>   <img src="http://kikitamap.com/images/blogImg/wlanNetworks_CHLS.png" alt=""></p>
+<p>   Global HLS Imagerary View</p>
+<p>   <img src="http://kikitamap.com/images/blogImg/wlanNetworks_imagary.png" alt=""></p>
+<p>Have Fun！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> HERE Map </tag>
+            
+            <tag> HLS </tag>
+            
+            <tag> Network </tag>
+            
+            <tag> Positioning </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HERE MAP API - Part4 Advanced Routing - 2]]></title>
       <url>/2019/05/12/Icecream_Part4-Adcanced-Routing_2/</url>
       <content type="html"><![CDATA[<p>在上一篇中，尝试给出三条备选路线方案，只是看看是不够的，还需要做些交互式的操作支持。</p>
@@ -750,9 +807,9 @@
             
             <tag> Web </tag>
             
-            <tag> Github </tag>
-            
             <tag> Vector Tiles </tag>
+            
+            <tag> Github </tag>
             
         </tags>
         
@@ -2668,9 +2725,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Coordinate System </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
@@ -10046,9 +10103,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> CAD </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
