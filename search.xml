@@ -6,7 +6,7 @@
       <title><![CDATA[WiFi Network Positioning]]></title>
       <url>/2019/06/27/wlanNetworks/</url>
       <content type="html"><![CDATA[<p>在设备开启WiFi之后，会对周边 WiFi Access Point (AP)进行扫描，并将这些可见WiFi名称推给用户供选择。这是几乎是我们的PC和手机的日常。 除了连接WiFi登录Internet 之外，实际上，我们还可以通过 WiFi AP进行定位。</p>
-<p>定位和地图一直是紧密联系的，无论是面向消费者的第一人称应用，还是关于管理者的追踪需求。各大LBS厂商，早就提供了各种定位功能，尤其HERE，Positioning 历史可以追溯到 Nokia年代，包括基于 GPS，WiFi network，cell signal，Bluetooth 等各种信号源的定位能力。</p>
+<p>定位和地图一直是紧密联系的，无论是面向消费者的第一人称应用，还是关于管理者的追踪需求。各大LBS厂商，早就提供了各种定位功能，尤其HERE，Positioning 历史可以追溯到 Nokia年代，包括基于 GPS，WiFi network，Cell Signal，Bluetooth 等各种信号源的定位能力。</p>
 <p><br></p>
 <h1 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h1><ul>
 <li>除了Mobile Hotspot、WiFi Egg，大多数情况下 AP不会经常的移动， 这就为WiFi定位的基础参照位置信息；</li>
@@ -33,7 +33,7 @@
 <p><strong>Demo Screenshot</strong></p>
 <p>   Chian HLS JS API + Global Positioning API </p>
 <p>   <img src="http://kikitamap.com/images/blogImg/wlanNetworks_CHLS.png" alt=""></p>
-<p>   Global HLS Imagerary View</p>
+<p>   Global HLS Imagery View</p>
 <p>   <img src="http://kikitamap.com/images/blogImg/wlanNetworks_imagary.png" alt=""></p>
 <p>Have Fun！</p>
 ]]></content>
