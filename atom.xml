@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.kikitamap.com/"/>
-  <updated>2019-07-17T02:35:03.621Z</updated>
+  <updated>2020-03-04T17:41:30.984Z</updated>
   <id>https://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>the Shade</title>
+    <link href="https://www.kikitamap.com/2020/03/05/theShade/"/>
+    <id>https://www.kikitamap.com/2020/03/05/theShade/</id>
+    <published>2020-03-04T16:15:57.000Z</published>
+    <updated>2020-03-04T17:41:30.984Z</updated>
+    
+    <content type="html"><![CDATA[<p>又是很久没来更新，以至于kikitamap.com这个域名因为没有续费而已经停用接近两周；要不是今晚忽然想写点什么，还不知道什么时候我才能发现。</p><p>工作结束了，宝贝睡下了，每到接近12点，似乎属于我自己的完整时间才开始展开。所以，我的母亲总是不解，为什么终于到了你的休息时间，反而又要”熬夜“ ？事情不能明天做吗？ 我总是无言以对，我这种矫情的时间独占需求，估计她不会理解，只好安抚她说马上就睡。大概，也不是所有人都有与自己独处的强需求。</p><p>我喜欢拍照，拍各种自认为有趣的东西，因此手机空间经常告急，只好翻一翻，删除一些不喜欢的或是没有什么内容的。忽然发现了这张很久前拍的。</p><p><img src="http://kikitamap.com/images/blogImg/SSN_theShade_20160403_TJWQ.jpg" alt=""></p><p>当时的场景是我在等人，刚好从站的位置，看到自己的影子叠在橱窗里的模特身上，感觉很有点意思，就顺手拍了下来。世间熙熙攘攘，我们大多数都是追寻成为模特壳子的样子；住在壳子里面的人的样子呢？ta们是同一个吗？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;又是很久没来更新，以至于kikitamap.com这个域名因为没有续费而已经停用接近两周；要不是今晚忽然想写点什么，还不知道什么时候我才能发现。&lt;/p&gt;
+&lt;p&gt;工作结束了，宝贝睡下了，每到接近12点，似乎属于我自己的完整时间才开始展开。所以，我的母亲总是不解，为什么终于到了
+      
+    
+    </summary>
+    
+      <category term="碎碎念" scheme="https://www.kikitamap.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>WiFi Network Positioning</title>
@@ -599,34 +623,6 @@
       <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
       <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>导入3D模型至CityEngine</title>
-    <link href="https://www.kikitamap.com/2018/03/21/importingmodels/"/>
-    <id>https://www.kikitamap.com/2018/03/21/importingmodels/</id>
-    <published>2018-03-21T03:06:12.000Z</published>
-    <updated>2018-11-11T11:56:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。</p><p>OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是由导入窗口中的 <code>Import as static model</code> 设置控制的。</p><blockquote><p><strong>Import as static model</strong></p><p>When checked, the file will be imported ‘as is’ and will not be modifiable by cga rules.</p><ul><li>Shapes—Serve as a base for CGA generation. A typical example is footprint data.</li><li>Static models—Can be scaled, rotated, and translated after import but cannot be processed further with CGA. </li></ul></blockquote><p>通过如上说明，我们可以清晰的了解到把模型转为shape或Static Model的差异。 一般实际应用中，我们会把当作“素材”使用的模型小件作为static model用；而把表示基础结构的模型作为shape来使用。</p><p>static model导入之后，仍然可以再转换为shape，操作：菜单栏 Shapes-&gt;Convert  Models to Shapes。成为shapes 之后，就可以通过cga对这个模型的继续进行改造了。</p><p>在如下示例图中了解：</p><p><img src="http://kikitamap.com/images/blogImg/importingmodels.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我们可以将2D矢量数据、3D模型格式导入到CityEngine 中使用，前者一般作为CityEngine shape 来使用，后者作为模型来使用。&lt;/p&gt;
-&lt;p&gt;OBJ，DAE，FBX这几种模型格式导入时可以作为两种角色来使用，shape 或 static model。这是
-      
-    
-    </summary>
-    
-      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
-    
-    
-      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
-    
-      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
     
   </entry>
   
