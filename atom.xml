@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.kikitamap.com/"/>
-  <updated>2020-03-09T13:56:06.343Z</updated>
+  <updated>2020-03-11T08:35:48.081Z</updated>
   <id>https://www.kikitamap.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HERE mSDK - Map Rendering</title>
+    <link href="https://www.kikitamap.com/2020/03/11/HmSDK_MapRendering/"/>
+    <id>https://www.kikitamap.com/2020/03/11/HmSDK_MapRendering/</id>
+    <published>2020-03-10T17:17:23.000Z</published>
+    <updated>2020-03-11T08:35:48.081Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过上一个<a href="http://kikitamap.com/2020/03/09/HmSDK_QuickStart/" target="_blank" rel="noopener">入门篇</a>，相信你已经对 HERE mSDK 有了一定的印象。<br>作为一个地图SDK，最基础最重要的功能首先是地图渲染， 那么今天我们仍然以 HERE mSDK （Premium Edition）为例一起了解下。在 HERE services 中有一个 <a href="https://developer.here.com/documentation#maps_section" target="_blank" rel="noopener">Interactive Maps Service</a>，用于访问服务器端预渲染的瓦片服务/tile map， 这就是今天要用到的原料。</p><p>Let’s get our hands dirty ！<br>今天这篇我们先从最基础的 Map Rendering 和 Map Schemes 开始。 <code>AndroidXMapFragment</code> 类提供了交互式地图体验支持， 例如缩放、平移等等。<code>AndroidXMapFragment</code>初始化之后，可以通过<code>Map map = mapFragment.getMap();</code> 获取 <code>Map</code> 。<br><code>Map</code> 类中提供了很多 map attributes 帮助开发者确定地图的展示方式，例如：map center，zoom level,  tilt, orientation, map projection, map animation …… </p><blockquote><p>详见开发文档：<a href="https://developer.here.com/documentation/android-premium/dev_guide/topics/maps.html" target="_blank" rel="noopener"><strong>Map</strong></a></p></blockquote><p>HERE Interactive Maps 提供了很多样式的地图外观（Map Scheme）可供选择，以满足不同审美和专题的需求。简而言之，地图数据是一套，皮肤可有很多种。 </p><blockquote><p>在开发者文档中，有一页图文可供参考：<a href="https://developer.here.com/documentation/android-premium/dev_guide/topics/map-schemes.html" target="_blank" rel="noopener"><strong>Map Scheme</strong></a></p></blockquote><p>HERE 在 Github上有官方的示例代码库，这篇的相关示例可以在这个连接中找到：<a href="https://github.com/heremaps/here-android-sdk-examples/tree/master/map-attribute" target="_blank" rel="noopener"><strong>Map Attribute</strong></a></p><p>我在这个工程中稍作修改，增加了 Satallite Mode 和 Night Mode，  因为后者是最近备受欢迎的一种渲染方式，这么好看的地图不做在样例里觉得有点可惜。 Night Mode 一方面可以作为夜晚时段的地图展示，另一方面可以作为设备暗色主题搭配的地图显示。<br>另外，这个示例工程中，还包含了公交/Transit 主题地图的展示（None/公交站/公交线路），以及路况/Realtime Traffic Service 的展示 （Traffic Flow / Incident）。</p><p>如下是在 Nexus 10 模拟器中的录屏动图:<br><img src="http://kikitamap.com/images/blogImg/MapRendering.GIF" alt=""></p><p>Happy testing ^^<br><a href="http://kikitamap.com/images/blogImg/HmSDK_MapRendering.jpg" target="_blank" rel="noopener"></a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通过上一个&lt;a href=&quot;http://kikitamap.com/2020/03/09/HmSDK_QuickStart/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;入门篇&lt;/a&gt;，相信你已经对 HERE mSDK 有了一定的印象。&lt;br&gt;作为一个
+      
+    
+    </summary>
+    
+      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
+    
+    
+      <category term="HERE Map" scheme="https://www.kikitamap.com/tags/HERE-Map/"/>
+    
+      <category term="HLS" scheme="https://www.kikitamap.com/tags/HLS/"/>
+    
+      <category term="Mobile SDK" scheme="https://www.kikitamap.com/tags/Mobile-SDK/"/>
+    
+      <category term="Android" scheme="https://www.kikitamap.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Quick Start of HERE SDK for Android</title>
@@ -285,9 +316,9 @@
     
       <category term="Deployment" scheme="https://www.kikitamap.com/tags/Deployment/"/>
     
-      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
-    
       <category term="Webmaster" scheme="https://www.kikitamap.com/tags/Webmaster/"/>
+    
+      <category term="Cloud Storage" scheme="https://www.kikitamap.com/tags/Cloud-Storage/"/>
     
   </entry>
   
@@ -595,36 +626,6 @@
       <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
     
       <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CityEngine中纹理贴图之道(二)</title>
-    <link href="https://www.kikitamap.com/2018/03/30/textureinCE2/"/>
-    <id>https://www.kikitamap.com/2018/03/30/textureinCE2/</id>
-    <published>2018-03-30T06:54:44.000Z</published>
-    <updated>2018-11-11T11:42:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>​        接着<a href="http://kikitamap.com/2018/03/22/textureinCE/" target="_blank" rel="noopener">上一篇</a>。</p><p>​       <img src="http://kikitamap.com/images/blogImg/textureinCE_6.png" alt=""></p><p>​        为了让脚本看起来更连贯，无需跳转上一篇，我们从头开始。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * File:    MyTestforBaseTexure.cga</span></span><br><span class="line"><span class="comment"> * Created: 30 Mar 2018 08:16:37 GMT</span></span><br><span class="line"><span class="comment"> * Author:  Xiaoyan Mu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">version <span class="string">"2017.1"</span></span><br><span class="line">attr height = <span class="number">10</span></span><br><span class="line">attr groundfloor_height = <span class="number">4</span></span><br><span class="line">attr floor_height = <span class="number">3.5</span></span><br><span class="line">attr tile_width = <span class="number">3.5</span></span><br><span class="line"></span><br><span class="line">wall_tex        = <span class="string">"facades/textures/brickwall.jpg"</span></span><br><span class="line">dirt_tex        = <span class="string">"facades/textures/dirtmap.15.tif"</span></span><br><span class="line">graffiti_tex    = <span class="string">"facades/textures/Graffiti.jpg"</span></span><br><span class="line">window_tex      = <span class="string">"facades/textures/window.5.tif"</span></span><br><span class="line"></span><br><span class="line">Lot --&gt; extrude(height) Building</span><br><span class="line"></span><br><span class="line">Building --&gt; comp(f) &#123;<span class="attr">front</span> : Sidefacade&#125;</span><br></pre></td></tr></table></figure><p>​        假设我希望在这面墙上“凿”出窗户，就需要将<code>Sidefacade</code>进行细化切割。贴纹理时也要注意一下新的技巧，也就是在细分表面之前先定义纹理UV，细分之后再用上一篇中提到的贴纹理的方法应用到<code>Wall</code>，这样就可以得到连续的墙体贴图。这样的做的原因在于，CE中的shape都是被不断迭代替换的，如果不在细分之前定义UV，<code>Sidefacade</code>对象在细分之后已经消亡了。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># Sidefacade is modified</span><br><span class="line"></span><br><span class="line">Sidefacade --&gt;  </span><br><span class="line">    # Setup texturing</span><br><span class="line">    setupProjection(<span class="number">1</span>, scope.xy, <span class="number">1.5</span>, <span class="number">1</span>) </span><br><span class="line">    setupProjection(<span class="number">2</span>, scope.xy, scope.sx, scope.sy)</span><br><span class="line">    # Divide Sidefacade</span><br><span class="line"> split(y)&#123; <span class="attr">groundfloor_height</span>: Wall | &#123;~floor_height : Floor&#125;* &#125;</span><br><span class="line"></span><br><span class="line">Floor --&gt;</span><br><span class="line">split(x)&#123; <span class="number">1</span> : Wall | &#123; ~tile_width : Tile &#125;* | <span class="number">1</span> : Wall &#125;            </span><br><span class="line">Tile --&gt;</span><br><span class="line">split(x)&#123; ~<span class="number">1</span> : Wall |  <span class="number">2</span> : split(y)&#123; ~<span class="number">1</span>: Wall | <span class="number">1.5</span>: Window | ~<span class="number">1</span>: Wall &#125; | ~<span class="number">1</span> : Wall &#125;</span><br><span class="line"></span><br><span class="line">Wall --&gt;</span><br><span class="line">    # Apply the texture         </span><br><span class="line">    set(material.bumpmap,wall_tex)</span><br><span class="line">    set(material.dirtmap, dirt_tex)</span><br><span class="line">    projectUV(<span class="number">1</span>)</span><br><span class="line">    projectUV(<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>) </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;</span><br><span class="line">  setupProjection(<span class="number">0</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line">  texture(window_tex)</span><br><span class="line">projectUV(<span class="number">0</span>)      </span><br><span class="line">      WondowFrame --&gt;</span><br><span class="line">      extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><h2 id="material-opacitymap"><a href="#material-opacitymap" class="headerlink" title="material.opacitymap"></a>material.opacitymap</h2><p><code>material.opacitymap</code> 通道可以用于控制纹理的透明度。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_7.png" alt=""></p><p>继续上面的例子，如果希望做出透明的窗户效果，可以将Window的代码替换为如下的样子。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>) </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;    </span><br><span class="line">      setupProjection(<span class="number">4</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line">      set(material.opacitymap, window_tex)</span><br><span class="line">      projectUV(<span class="number">4</span>) </span><br><span class="line">    WondowFrame --&gt;</span><br><span class="line">    extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><h2 id="material-specularmap"><a href="#material-specularmap" class="headerlink" title="material.specularmap"></a>material.specularmap</h2><p>为了虚拟现实，窗户玻璃来点反光效果吧。</p><p><img src="http://kikitamap.com/images/blogImg/textureinCE_8.png" alt=""></p><p>上代码：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Window --&gt;</span><br><span class="line">    offset(<span class="number">0.05</span>)   </span><br><span class="line">    comp(f) &#123; <span class="attr">inside</span>: WondowInner | border: WondowFrame &#125;</span><br><span class="line">    WondowInner --&gt;   </span><br><span class="line"> setupProjection(<span class="number">0</span>, scope.xy, scope.sx,  scope.sy) </span><br><span class="line"> texture(window_tex)</span><br><span class="line"> projectUV(<span class="number">0</span>)</span><br><span class="line"> set(material.specular.r, <span class="number">1</span>) </span><br><span class="line">     set(material.specular.g, <span class="number">1</span>)   </span><br><span class="line">     set(material.specular.b, <span class="number">1</span>)</span><br><span class="line"> set(material.shininess, <span class="number">2</span>)</span><br><span class="line"> setupProjection(<span class="number">3</span>, scope.xy, scope.sx,  scope.sy)</span><br><span class="line"> set(material.specularmap, specular_tex)</span><br><span class="line"> projectUV(<span class="number">3</span>)</span><br><span class="line">    WondowFrame --&gt;</span><br><span class="line">    extrude(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure><p>剩下最后的 normalmap了，法向贴图。手里没有什么好例子，找到一篇<a href="http://www.opengl-tutorial.org/cn/intermediate-tutorials/tutorial-13-normal-mapping/" target="_blank" rel="noopener">OpenGL的文档</a>，帮助理解。</p><p>完结。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;​        接着&lt;a href=&quot;http://kikitamap.com/2018/03/22/textureinCE/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;上一篇&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;​       &lt;img src=&quot;http:/
-      
-    
-    </summary>
-    
-      <category term="木工开物" scheme="https://www.kikitamap.com/categories/%E6%9C%A8%E5%B7%A5%E5%BC%80%E7%89%A9/"/>
-    
-    
-      <category term="3D" scheme="https://www.kikitamap.com/tags/3D/"/>
-    
-      <category term="CityEngine" scheme="https://www.kikitamap.com/tags/CityEngine/"/>
-    
-      <category term="CGA" scheme="https://www.kikitamap.com/tags/CGA/"/>
     
   </entry>
   
