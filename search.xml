@@ -16,7 +16,10 @@
 </blockquote>
 <p>HERE 在 Github上有官方的示例代码库，这篇的相关示例可以在这个连接中找到：<a href="https://github.com/heremaps/here-android-sdk-examples/tree/master/map-attribute" target="_blank" rel="noopener"><strong>Map Attribute</strong></a></p>
 <p>我在这个工程中稍作修改，增加了 Satallite Mode 和 Night Mode，  因为后者是最近备受欢迎的一种渲染方式，这么好看的地图不做在样例里觉得有点可惜。 Night Mode 一方面可以作为夜晚时段的地图展示，另一方面可以作为设备暗色主题搭配的地图显示。<br>另外，这个示例工程中，还包含了公交/Transit 主题地图的展示（None/公交站/公交线路），以及路况/Realtime Traffic Service 的展示 （Traffic Flow / Incident）。</p>
-<p>如下是在 Nexus 10 模拟器中的录屏动图:<br><img src="http://kikitamap.com/images/blogImg/MapRendering.GIF" alt=""></p>
+<p>如下是在 Nexus 10 模拟器中的录屏:</p>
+<video width="550" height="854" src="http://kikitamap.com/images/blogImg/HmSDK_MapRenderingDemo.mp4" autoplay="autoplay"></video>
+
+
 <p>Happy testing ^^<br><a href="http://kikitamap.com/images/blogImg/HmSDK_MapRendering.jpg" target="_blank" rel="noopener"></a></p>
 ]]></content>
       
@@ -481,9 +484,9 @@
             
             <tag> Deployment </tag>
             
-            <tag> Webmaster </tag>
-            
             <tag> Cloud Storage </tag>
+            
+            <tag> Webmaster </tag>
             
         </tags>
         
@@ -2859,9 +2862,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Mapping </tag>
-            
             <tag> Coordinate System </tag>
+            
+            <tag> Mapping </tag>
             
         </tags>
         
