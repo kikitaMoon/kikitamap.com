@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[HERE mSDK - Vector Tile / Map Feedback]]></title>
-      <url>/2020/03/29/HmSDK-AdvPositioning/</url>
+      <url>/2020/03/29/HmSDK-Vector_MFs/</url>
       <content type="html"><![CDATA[<p><a href="http://kikitamap.com/2020/03/11/HmSDK_MapRendering/" target="_blank" rel="noopener"><strong>上一篇</strong></a>，我们一起结合  Interactive Maps 了解了HERE Map Service 的地图渲染样式， 在此之外，HERE Mobile SDK 向开发者提供的在线地图产品中，还有 Vector Tile 和 Map Feedback service 值得拥有。</p>
 <p><em>PS：除了SDK产品之外，<a href="https://developer.here.com/documentation#maps_section" target="_blank" rel="noopener"><strong>HERE 在线地图产品</strong></a>中的 RESTful API 产品包括：Vector Tile，Image Map，Map Tile，Weather，Map Feeddback。</em></p>
 <h2 id="Vector-Tile"><a href="#Vector-Tile" class="headerlink" title="Vector Tile"></a>Vector Tile</h2><p>Vector Tile 在 HERE 产品家族中是新进一员，截至此文章的发布日期，仅在 <a href="https://developer.here.com/documentation/android-sdk/dev_guide/topics/custom-map-styles-lite.html" target="_blank" rel="noopener"><strong>mSDK Lite 版本</strong></a> 中有支持，目前为 Lite Edition 4.2  。我们静待 mSDK Premium Edition 的 4.x 版本吧，快了。</p>
