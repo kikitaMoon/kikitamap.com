@@ -3,60 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[HERE mSDK - Vector Tile / Map Feedback]]></title>
-      <url>/2020/03/29/HmSDK_VectorTile-MFs/</url>
-      <content type="html"><![CDATA[<p><a href="http://kikitamap.com/2020/03/11/HmSDK_MapRendering/" target="_blank" rel="noopener"><strong>上一篇</strong></a>，我们一起结合  Interactive Maps 了解了HERE Map Service 的地图渲染样式， 在此之外，HERE Mobile SDK 向开发者提供的在线地图产品中，还有 Vector Tile 和 Map Feedback service 值得拥有。</p>
-<p><em>PS：除了SDK产品之外，<a href="https://developer.here.com/documentation#maps_section" target="_blank" rel="noopener"><strong>HERE 在线地图产品</strong></a>中的 RESTful API 产品包括：Vector Tile，Image Map，Map Tile，Weather，Map Feeddback。</em></p>
-<h2 id="Vector-Tile"><a href="#Vector-Tile" class="headerlink" title="Vector Tile"></a>Vector Tile</h2><p>Vector Tile 在 HERE 产品家族中是新进一员，截至此文章的发布日期，仅在 <a href="https://developer.here.com/documentation/android-sdk/dev_guide/topics/custom-map-styles-lite.html" target="_blank" rel="noopener"><strong>mSDK Lite 版本</strong></a> 中有支持，目前为 Lite Edition 4.2  。我们静待 mSDK Premium Edition 的 4.x 版本吧，快了。</p>
-<p>这使用这个服务之前，可能我首先需要回答大家的十万个为什么。</p>
-<p>例如，什么是Vector Tile？为什么使用 Vector Tile ？</p>
-<p>Vector Tile 是相较于传统的 raster tile 而言的，可能很多读者会问，地图数据本身不就是vector data 吗？为什么早期的地图服务反而会是 raster tile ？哪种好？ 我该用什么？</p>
-<p>在传统的地图服务生产过程中，后台地图数据是专业复杂的数据格式（如 Oracle Spatial，shapefile，FileGDB，等一切地理数据格式），需要专业的重地图数据编辑器才能读写（如商用专业的ArcGIS Desktop/Pro，免费的QGIS等）。当我们希望通过B/S服务的形式提供在线地图时，对浏览器要求不高、支持友好的png，jpg，tiff等图片就成了解决方案。 将地图在服务器端按预定义的切片结构/caching scheme 进行预渲染，然后，进行大量切片缓存工作。 在浏览器请求地图服务时，推送不同层级的图片（Raster Tile）就成了传统地图服务器的日常，其性能的保障都是依赖分布式高可用的服务器配置。例如，HERE 提供覆盖全球的地图服务（在Developer Portal可以查看具体的 <a href="https://developer.here.com/documentation/map-tile/dev_guide/topics/coverage-map.html" target="_blank" rel="noopener"><strong>map coverage level</strong></a>，就是由部署在AWS全球6个数据中心上支持的。 </p>
-<p>自 <a href="https://github.com/mapbox/vector-tile-spec/" target="_blank" rel="noopener"><strong>Mapbox</strong></a> 提出更智慧的 vector tile ，这种切片格式早已备受各大GIS、LBS厂商的青睐。vector tile 采用了与 raster tile 类似的 caching scheme，只是每片tile的内容从raster 变成了vector。 我们想象一下，如果表示几条路的一片512px×512px 的tile，用raster格式，那就需要几个512×512 的矩阵表示，而用vector格式，只需要包含数对坐标和位移的串表示。 因此，vector tile 在尺寸上有明显优势，从而传输性能就高了。这是因为这个特性，vector tile 允许用户在客户端自定义 vector style ，例如路或点状地物的颜色和符号， 不像 raster tile 是预渲染的镜像，已经是静态结果，渲染样式不能被客户端修改。</p>
-<p>如果提到vector 和 raster 哪个好？ 我想答案可能不是绝对唯一的。如果从传输性能和客户端简单符号的自定义的角度，一定是vector tile更优； 但如果从地图渲染丰富度、复杂度的支持角度，raster tile 还是占有一席之地。</p>
-<p>现在回到 HERE Vector Tile Service ，为了方便客户快速生成 vector style configuration file ，HERE 提供了在线工具 <a href="https://enterprise.here.com/map-style-editor/" target="_blank" rel="noopener"><strong>Map Style Editor</strong></a>。可以在登录 Developer Portal之后，点击前面的连接进入即可，如下图：</p>
-<p><img src="http://kikitamap.com/images/blogImg/HmSDK_VectorTile-MFs_map_editor.jpg" alt=""></p>
-<ul>
-<li><p>Github 获取到 mSDK Android Lite Edition 在线地图的官方 <a href="https://github.com/heremaps/here-sdk-examples/tree/master/examples/4.2.0.0/lite/android" target="_blank" rel="noopener"><strong>代码样例</strong></a>。</p>
-</li>
-<li><p>Developer Portal 定制地图渲染样式的 <a href="https://developer.here.com/documentation/android-sdk/dev_guide/topics/custom-map-styles-lite.html" target="_blank" rel="noopener"><strong>说明</strong></a>。</p>
-</li>
-</ul>
-<p><img src="http://kikitamap.com/images/blogImg/HmSDK_VectorTile-MFs_Lite_Demo.jpg" alt=""></p>
-<h2 id="Map-Feedback"><a href="#Map-Feedback" class="headerlink" title="Map Feedback"></a>Map Feedback</h2><p>创建地图应用时，最常见问题之一就是“巧妇难为无米之炊” ，地图数据是“米”，之上的各种在线地图及位置能力的实现是“炊”。HERE 攒了30多年的数据采集经验，米仓充盈。在丰富的数据采集手段中，其中最平易近人的一支就是来自用户的数据问题回报。</p>
-<p>无论是商业客户，还是免费社区，全球用户都可以使用 Map Feedback API 提出数据缺漏或错误。当然可想而知，整个群体数量非常庞大，数据生产单元会根据一系列的规则评定用户的信用优先级，来管理这些回报过来的数据问题的处理策略。</p>
-<p>在 <a href="https://developer.here.com/documentation/map-feedback/dev_guide/topics/quick-start-submit-feedback.html" target="_blank" rel="noopener"><strong>Rest API</strong></a> ， <a href="https://developer.here.com/documentation/embedded-editor/dev_guide/topics/add-as-app-component.html" target="_blank" rel="noopener"><strong>mobile SDK</strong></a> ， <a href="https://developer.here.com/documentation/embedded-editor/dev_guide/topics/add-to-website.html" target="_blank" rel="noopener"><strong>Web SDK</strong></a> 各版本都有对数据回报的支持，其中最完整的开发文档，还是建议看 Rest API 的部分，它包含了全部可枚举的错误类型和信息上报的说明。用户也可以追踪数据问题的处理结果，例如，被采纳或拒绝，以及采纳后预计更新时间。</p>
-<ul>
-<li>Rest API - Request URL 的请见 <a href="https://developer.here.com/documentation/examples/rest/map_feedback" target="_blank" rel="noopener"><strong>样例</strong></a>。</li>
-</ul>
-<p>另外，在HERE 官方地图应用中，<a href="http://mapcreator.here.com/" target="_blank" rel="noopener"><strong>Map Creater</strong></a> 和 <a href="https://wego.here.com/" target="_blank" rel="noopener"><strong>HERE Wego</strong></a> 都包含了这个功能，只是这两个网站目前还在墙外，希望早日能与我们正式见面。</p>
-<p><img src="http://kikitamap.com/images/blogImg/HmSDK_VectorTile-MFs_Map_Creator.jpg" alt=""></p>
-<p>关于这两个服务就说这么多了，有空再继续进行下一集。</p>
-<p>Stay tuned ！</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> HERE Map </tag>
-            
-            <tag> HLS </tag>
-            
-            <tag> Mobile SDK </tag>
-            
-            <tag> Android </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[HERE mSDK - Map Rendering]]></title>
       <url>/2020/03/11/HmSDK_MapRendering/</url>
       <content type="html"><![CDATA[<p>通过上一个<a href="http://kikitamap.com/2020/03/09/HmSDK_QuickStart/" target="_blank" rel="noopener">入门篇</a>，相信你已经对 HERE mSDK 有了一定的印象。<br>作为一个地图SDK，最基础最重要的功能首先是地图渲染， 那么今天我们仍然以 HERE mSDK （Premium Edition）为例一起了解下。在 HERE Location Services 中有一个 <a href="https://developer.here.com/documentation#maps_section" target="_blank" rel="noopener">Interactive Maps Service</a>，用于访问服务器端预渲染的瓦片服务/tile map， 这就是今天要用到的原料。</p>
@@ -9132,51 +9078,6 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
     </entry>
     
     <entry>
-      <title><![CDATA[空间分析之插值分析]]></title>
-      <url>/2012/08/27/SAInterpolation/</url>
-      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
-<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
-<p><br></p>
-<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
-<p><strong>幂参数：</strong></p>
-<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
-<p><strong>障碍：</strong></p>
-<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
-<p><strong>注意事项：</strong></p>
-<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
-<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
-<p>工具执行截图：</p>
-<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
-<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
-<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
-<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
-<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
-<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
-<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
-<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
-<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
-<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Geoprocessing </tag>
-            
-            <tag> Spatial Analyst </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[空间分析之多元分析]]></title>
       <url>/2012/08/27/SAMultiDimensions/</url>
       <content type="html"><![CDATA[<p>通过多元统计分析可以探查许多不同类型的属性之间的关系。</p>
@@ -9229,6 +9130,51 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
 <p>以上提到的几个工具，在ArcGIS 10.x版本中，除了在ArcToolbox中可以找到，在 Image Classification 工具条中也可以找到对应的功能，如下图：</p>
 <p><img src="http://kikitamap.com/images/blogImg/SAMultiDimensions_Toolbar.png" alt=""></p>
 <p>这个工具集涉及很多遥感的理论知识，仅仅使用工具是不够的，后面需要多多学习…… </p>
+]]></content>
+      
+        <categories>
+            
+            <category> 木工开物 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Geoprocessing </tag>
+            
+            <tag> Spatial Analyst </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[空间分析之插值分析]]></title>
+      <url>/2012/08/27/SAInterpolation/</url>
+      <content type="html"><![CDATA[<p>在实际工作中，由于成本的限制、测量工作实施困难大等因素，我们不能对研究区域的每一位置都进行测量（如高程、降雨、化学物质浓度和噪声等级）。这时，我们可以考虑合理选取采样点，然后通过采样点的测量值，使用适当的数学模型，对区域所有位置进行预测，形成测量值表面。插值之所以可称为一种可行的方案，是因为我们假设，空间分布对象都是空间相关的，也就是说，彼此接近的对象往往具有相似的特征。</p>
+<p>ArcGIS的空间分析中，提供了插值（Interpolation）工具集，如下：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Toolset.png" alt=""></p>
+<p><br></p>
+<h1 id="1-反距离权重法（IDW–Inverse-Distance-Weighted）"><a href="#1-反距离权重法（IDW–Inverse-Distance-Weighted）" class="headerlink" title="1. 反距离权重法（IDW–Inverse Distance Weighted）"></a><strong>1. 反距离权重法（IDW–Inverse Distance Weighted）</strong></h1><p>此方法假定所映射的变量因受到与其采样位置间的距离的影响而减小。</p>
+<p><strong>幂参数：</strong></p>
+<p>IDW主要依赖于反距离的幂值。基于距输出点的距离，幂参数可以控制已知点对内插值的影响。幂参数是一个正实数，默认值为 2，一般在0.5至3之间取值。随着幂值的增大，内插值将逐渐接近最近采样点的值。指定较小的幂值，将对距离较远的周围点产生更大影响，会产生更加平滑的表面。由于反距离权重公式与任何实际物理过程都不关联，因此无法确定特定幂值是否过大。作为常规准则，认为值为 30 的幂是超大幂，因此不建议使用。此外还需牢记一点，如果距离或幂值较大，则可能生成错误结果。</p>
+<p><strong>障碍：</strong></p>
+<p>障碍是一个用作可限制输入采样点搜索的隔断线的折线 (polyline) 数据集。一条折线 (polyline) 可以表示地表中的悬崖、山脊或某种其他中断。仅将那些位于障碍同一侧的输入采样点视为当前待处理像元。</p>
+<p><strong>注意事项：</strong></p>
+<p>（1）因为反距离权重法是加权平均距离，所以该平均值不可能大于最大输入或小于最小输入。因此，如果尚未对这些极值采样，便无法创建山脊或山谷。</p>
+<p>（2）此工具最多可处理约 4,500 万个输入点。如果输入要素类包含 4,500 万个以上的点，工具可能无法创建结果。</p>
+<p>工具执行截图：</p>
+<p><img src="http://kikitamap.com/images/blogImg/SAInterpolation_Demo.png" alt=""></p>
+<h1 id="2-克里金法（Kriging）"><a href="#2-克里金法（Kriging）" class="headerlink" title="2. 克里金法（Kriging）"></a><strong>2. 克里金法（Kriging）</strong></h1><p>克里金法假定采样点之间的距离或方向可以反映可用于说明表面变化的空间相关性。克里金法是一个多步过程；它包括数据的探索性统计分析、变异函数建模和创建表面，还包括研究方差表面。该方法通常用在土壤科学和地质中。</p>
+<h1 id="3-自然邻域法（Natural-Neighbor）"><a href="#3-自然邻域法（Natural-Neighbor）" class="headerlink" title="3. 自然邻域法（Natural Neighbor）"></a><strong>3. 自然邻域法（Natural Neighbor）</strong></h1><p>可找到距查询点最近的输入样本子集，并基于区域大小按比例对这些样本应用权重来进行插值。该插值也称为 Sibson 或“区域占用 (area-stealing)”插值。</p>
+<h1 id="4-样条函数（Spline）"><a href="#4-样条函数（Spline）" class="headerlink" title="4. 样条函数（Spline）"></a><strong>4. 样条函数（Spline）</strong></h1><p>使用二维最小曲率样条法将点插值成栅格表面。生成的平滑表面恰好经过输入点。</p>
+<h1 id="5-含障碍的样条函数（Spline-with-Barriers）"><a href="#5-含障碍的样条函数（Spline-with-Barriers）" class="headerlink" title="5. 含障碍的样条函数（Spline with Barriers）"></a><strong>5. 含障碍的样条函数（Spline with Barriers）</strong></h1><p>通过最小曲率样条法利用障碍将点插值成栅格表面。障碍以面要素或折线要素的形式输入。样条函数法工具所使用的插值方法使用可最小化整体表面曲率的数学函数来估计值。</p>
+<h1 id="6-地形转栅格（Topo-to-Raster）"><a href="#6-地形转栅格（Topo-to-Raster）" class="headerlink" title="6. 地形转栅格（Topo to Raster）"></a><strong>6. 地形转栅格（Topo to Raster）</strong></h1><p>将点、线和面数据插值成符合真实地表的栅格表面。</p>
+<p>依据文件实现地形转栅格（Topo to Raster by file）</p>
+<p>通过文件中指定的参数将点、线和面数据插值成符合真实地表的栅格表面。通过这种技术创建的表面可更好的保留输入等值线数据中的山脊线和河流网络。</p>
+<h1 id="7-趋势（trend）"><a href="#7-趋势（trend）" class="headerlink" title="7. 趋势（trend）"></a><strong>7. 趋势（trend）</strong></h1><p>使用趋势面法将点插值成栅格曲面。趋势表面会逐渐变化，并捕捉数据中的粗尺度模式。</p>
+<p>以上是插值工具的简单说明与比较，这些工具的背后都有庞大的理论基础和复杂的算法，需要进一步学习整理和补充。</p>
 ]]></content>
       
         <categories>
@@ -10297,9 +10243,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> CAD </tag>
-            
             <tag> Geodata </tag>
+            
+            <tag> CAD </tag>
             
         </tags>
         
