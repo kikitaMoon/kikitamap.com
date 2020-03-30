@@ -10297,9 +10297,9 @@ call &quot;%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\propy&quot; myscript.py
         
         <tags>
             
-            <tag> Geodata </tag>
-            
             <tag> CAD </tag>
+            
+            <tag> Geodata </tag>
             
         </tags>
         
