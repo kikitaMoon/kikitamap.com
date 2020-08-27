@@ -3,20 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[HERE Data Hub 大数据文件上传 - shapfile]]></title>
-      <url>/2020/08/27/HDataHub-shp/</url>
-      <content type="html"></content>
-      
-        <categories>
-            
-            <category> 木工开物 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[HERE Data Hub CLI]]></title>
       <url>/2020/08/24/HDataHubCLI/</url>
       <content type="html"><![CDATA[<p>HERE Data Hub 是一个用于空间数据存储的云服务，能够使用户简便地访问、管理空间数据。上一篇 HERE Studio 就是构建在 Data Hub 之上的网页应用程序。</p>
